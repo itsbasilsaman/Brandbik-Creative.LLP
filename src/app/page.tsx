@@ -6,11 +6,12 @@ import ServicesSection from "@/components/services";
 
 export default function Home() {
   return (
-    <div className="">
+    <div  >
     
       <HeroSection/>
        <ServicesSection/>
        <Footer/>
     </div>
+
   );
 }
