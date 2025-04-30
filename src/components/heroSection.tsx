@@ -32,11 +32,12 @@ export default function Home() {
 
   
   return (
+    
     <main className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/brandbik-banner.jpg"
+          src="/images/banner-bg.png"
           alt="Green ivy growing on wall with billboard"
           fill
           priority
@@ -73,7 +74,7 @@ export default function Home() {
       <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center  rounded-full border border-white/10 bg-white/10 backdrop-blur-sm md:h-20 md:w-20">
         {/* Position the mouse icon in the center initially, then move based on scroll */}
         <div 
-          className="absolute left-[58px] top-[55px] -translate-x-1/2 -translate-y-1/2 transition-transform duration-200"
+          className="absolute left-[74%] top-[60%]   flex justify-center items-center   -translate-x-1/2 -translate-y-1/2 transition-transform duration-200"
           style={{ transform: `translate(-50%, calc(-50% + ${mouseTranslateY}))` }}
         >
           {/* Custom mouse SVG icon */}

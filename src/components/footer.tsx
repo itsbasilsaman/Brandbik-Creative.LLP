@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight} from "lucide-react"
+ 
 import Image from "next/image"
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -9,32 +9,9 @@ import { FaInstagram } from "react-icons/fa6";
 
 export default function Footer() {
   return (
+    
     <div className="flex flex-col w-full">
-      {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-r from-black via-black to-teal-950 px-6 py-20 md:px-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight"> Lets work with Us</h1>
-              <p className="text-white/90 text-base md:text-lg max-w-2xl">
-                Our portfolio tells you why we are the best <span className="underline">app development</span> company,
-                why we are the best web development company, why we are the best SEO company, why we are the best
-                Digital marketing agency. Our social media pages has some of our recent works and you can understand
-                what makes us Unique.
-              </p>
-            </div>
-            <div className="flex justify-end">
-              <Link
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-teal-500 text-white hover:bg-teal-900/30 transition-colors"
-              >
-                Connect <ArrowRight className="h-5 w-5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
+     
       {/* Footer */}
       <footer className="w-full bg-gradient-to-r from-black to-gray-900 px-6 py-16 md:px-20">
         <div className="max-w-7xl mx-auto">

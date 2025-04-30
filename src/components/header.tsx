@@ -6,27 +6,34 @@ import Image from "next/image"
 import { ChevronRight } from "lucide-react"
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
+      setScrollY(window.scrollY)
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Calculate opacity based on scroll position (0 to 1)
+  const opacity = Math.min(scrollY / 100, 1)
+
   return (
     <header
-      className={`fixed top-0 left-0 z-20 w-full px-8 md:px-16 lg:px-24 transition-colors duration-300 ${
-        scrolled ? "bg-[#20629b40]" : ""
-      }`}
-      style={!scrolled ? {
-        backgroundImage: "url('/forest-background.jpg')",
+      className="fixed top-0 left-0 z-50 w-full px-8 md:px-16 lg:px-24 transition-all duration-500"
+      style={{
+        background: opacity > 0 
+          ? `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity}))`
+          : "transparent",
+        backgroundImage: opacity === 0 
+          ? "url('/forest-background.jpg')" 
+          : `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity})), url('/forest-background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-      } : {}}
+        backgroundBlendMode: opacity > 0 ? "overlay" : "normal",
+      }}
     >
       <div className="relative z-10 container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex-shrink-0">

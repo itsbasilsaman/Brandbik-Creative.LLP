@@ -8,6 +8,44 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.primary-background {
+  background: url('../../public/images/about-bg.png');
+}
+.secondary-color {
+  color: rgba(0, 0, 0, 0.61);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #2C6BD8 0%, #08E6D5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.custom-corner-border {
+  position: relative;
+}
+
+.custom-corner-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 150px;
+  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0)), linear-gradient(to right, white, rgba(255, 255, 255, 0));
+  background-repeat: no-repeat;
+  background-size: 2px 100%, 100% 2px;
+  background-position: left top, left top;
+  border-top-left-radius: 22px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+
+
+
 
 @layer utilities {
   .text-balance {
