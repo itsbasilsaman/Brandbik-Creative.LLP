@@ -136,11 +136,13 @@ export default function AboutSection() {
         </div>
 
         {/* Main text content */}
-        <div className="max-w-4xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[40px] font-medium text-white leading-tight">
-            {renderTextWithHighlights()}
-          </h1>
-        </div>
+       <div className="flex flex-col items-start justify-center   w-full">
+          <div className="max-w-4xl ">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[40px] font-medium text-white leading-tight">
+              {renderTextWithHighlights()}
+            </h1>
+          </div>
+       </div>
 
         {/* Stats section */}
         {/* <div ref={statsRef} className="mt-auto flex flex-wrap justify-start gap-4 sm:gap-8">

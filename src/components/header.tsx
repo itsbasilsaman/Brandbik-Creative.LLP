@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 z-50 w-full px-8 md:px-16 lg:px-24 transition-all duration-500"
+      className="fixed top-0 left-0 z-50 w-full px-4 md:px-16 lg:px-24 transition-all duration-500"
       style={{
         background: opacity > 0 
           ? `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity}))`
