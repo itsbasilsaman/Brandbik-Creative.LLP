@@ -67,7 +67,7 @@ export default function Header() {
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </span>
           </Link>
-        </nav>
+        </nav>                                       
 
         <div className="flex-shrink-0">
           <Link

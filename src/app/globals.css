@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss"; 
 
- 
+
 
 body {
   background: var(--background);
@@ -11,6 +11,7 @@ body {
 .primary-background {
   background: url('../../public/images/about-bg.png');
 }
+
 .secondary-color {
   color: rgba(0, 0, 0, 0.61);
 }
@@ -20,7 +21,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 .custom-corner-border {
   position: relative;
@@ -40,12 +40,26 @@ body {
   border-top-left-radius: 22px;
   z-index: 2;
   pointer-events: none;
+  color: rgba(70, 70, 70, 0.441);
 }
 
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
+@keyframes float-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
 
+.animate-up {
+  animation: float-up 3s ease-in-out infinite;
+}
 
-
+.animate-down {
+  animation: float-down 3s ease-in-out infinite;
+}
 
 @layer utilities {
   .text-balance {
@@ -54,6 +68,9 @@ body {
   }
   .animate-slow-spin {
     animation: slow-spin 20s linear infinite;
+  }
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
@@ -64,6 +81,35 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Custom animations */
+@keyframes floating-up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floating-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.animate-floating-up {
+  animation: floating-up 4s ease-in-out infinite;
+}
+
+.animate-floating-down {
+  animation: floating-down 4s ease-in-out infinite;
 }
 
 @layer base {
@@ -137,15 +183,4 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
- */
-
+ 

@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function ServicesSection() {
   return (
-    <div className="container mx-auto px-8 md:px-16 lg:px-24 py-[80px] w-full ">
+    <div className="container mx-auto px-5 md:px-16 lg:px-24 py-[80px] w-full ">
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium mb-8 sm:mb-12 md:mb-16">Services</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
@@ -153,6 +153,8 @@ export default function ServicesSection() {
           </div>
         </div>
       </div>
+
+    
     </div>
   )
 }

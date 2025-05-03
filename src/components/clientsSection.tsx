@@ -1,5 +1,6 @@
 import Image from "next/image"
 import React from 'react';
+import { FaArrowRight } from "react-icons/fa";
 
 export default function ClientsSection() {
   const clients = [
@@ -27,7 +28,7 @@ export default function ClientsSection() {
 
   return (
 
-    <section className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <section className="max-w-7xl mx-auto px-4 py-16 pb-24 sm:px-6 lg:px-8">
       <div className="space-y-12">
         <div className="max-w-[818px]">
           <h2 className="text-[88px] font-medium tracking-tight text-black mb-4">Clients</h2>
@@ -54,6 +55,16 @@ export default function ClientsSection() {
           ))}
         </div>
       </div>
+      <div className="w-full flex justify-center items-center  pt-16 ">
+      <button className="group relative inline-flex items-center justify-center gap-3 px-[2px] py-[2px] rounded-full text-sm font-medium text-black before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-[linear-gradient(90deg,#2C6BD8,#08E6D5)] before:content-[''] before:z-0 transition-all duration-500 cursor-pointer">
+  <span className="relative z-10 bg-white rounded-full px-4 py-3 flex items-center gap-3 text-[16px] text-black transition-all duration-500    ">
+    View all clients
+    <FaArrowRight className="transition-transform duration-500 group-hover:translate-x-1" />
+  </span>
+</button>
+
+      </div>
+
     </section>
   )
 }

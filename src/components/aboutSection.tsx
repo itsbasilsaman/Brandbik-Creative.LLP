@@ -3,7 +3,14 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useAnimation, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
-// import StatCounter from "./stat-counter"
+import StatCounter from "./stat-counter"
+import { Onest } from 'next/font/google';
+
+const onest = Onest({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
+});
 
 export default function AboutSection() {
   const controls = useAnimation()
@@ -14,11 +21,21 @@ export default function AboutSection() {
   const shapeRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: shapeRef,
-    offset: ["start end", "end start"], // from bottom of screen to top
+    offset: ["start end", "end start"],
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.6])
+  // Transformations for the abstract shape
+  const shapeY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"])
+  const shapeScale = useTransform(scrollYProgress, [0, 1], [1, 1.6])
+
+  // Transformations for the stats items with parallax effect
+  const leftStatY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
+  const middleStatY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"])
+  const rightStatY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
+  
+  const leftStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
+  const middleStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
+  const rightStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
 
   const highlightedPhrases = [
     "We're Brandbik",
@@ -44,9 +61,6 @@ export default function AboutSection() {
 
     return () => clearInterval(interval)
   }, [])
-
-  const text =
-    `We're Brandbik. A creative studio for visionary brands. We partner with ambitious teams to shape brands, design experiences, and bring ideas to life.`
 
   const renderTextWithHighlights = () => {
     const currentHighlight = highlightedPhrases[highlightedTextIndex]
@@ -97,8 +111,10 @@ export default function AboutSection() {
     })
   }
 
+  const text = `We're Brandbik. A creative studio for visionary brands. We partner with ambitious teams to shape brands, design experiences, and bring ideas to life.`
+
   return (
-    <div className="relative min-h-screen w-full primary-background px-8 md:px-16 lg:px-32 overflow-hidden">
+    <div className="relative min-h-screen w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
       {/* Background diagonal stripes */}
       <div className="absolute inset-0 z-0">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -117,8 +133,8 @@ export default function AboutSection() {
       {/* Abstract 3D shape with scroll animation */}
       <motion.div
         ref={shapeRef}
-        style={{ y, scale }}
-        className="absolute bottom-[-100px] right-0 z-10 w-full h-[300px] pointer-events-none"
+        style={{ y: shapeY, scale: shapeScale }}
+        className="absolute bottom-[-200px] right-0 z-10 w-full h-[420px] pointer-events-none"
       >
         <Image
           src="/images/abstract5g.png"
@@ -129,23 +145,24 @@ export default function AboutSection() {
         />
       </motion.div>
 
-      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col min-h-screen">
+      <div className="relative z-20 container mx-auto px-1 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col min-h-screen">
         {/* About button */}
         <div className="mb-12">
           <button className="bg-teal-700 text-white px-4 py-2 rounded-full text-sm">About</button>
         </div>
 
         {/* Main text content */}
-       <div className="flex flex-col items-start justify-center   w-full">
-          <div className="max-w-4xl ">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[40px] font-medium text-white leading-tight">
+        <div className="flex flex-col items-start justify-center w-full">
+          <div className="max-w-4xl">
+            <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-[40px] font-medium text-white leading-tight">
               {renderTextWithHighlights()}
             </h1>
           </div>
-       </div>
+        </div>
 
-        {/* Stats section */}
-        {/* <div ref={statsRef} className="mt-auto flex flex-wrap justify-start gap-4 sm:gap-8">
+        {/* Stats section with enhanced parallax effect */}
+        <div ref={statsRef} className="mt-auto flex flex-wrap items-end justify-center gap-4 sm:gap-8 relative z-30">
+          {/* Left item - moves down and back */}
           <motion.div
             initial="hidden"
             animate={controls}
@@ -154,12 +171,20 @@ export default function AboutSection() {
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-zinc-900/80 backdrop-blur-sm px-6 py-3 rounded-xl flex flex-col items-center"
+            style={{
+              backgroundColor: 'rgba(70, 70, 70, 0.441)',
+              backdropFilter: 'blur(30px)',
+              WebkitBackdropFilter: 'blur(30px)',
+              y: leftStatY,
+              scale: leftStatScale
+            }}
+            className={`px-6 py-2 rounded-xl flex items-center gap-2 border border-gray-600 ${onest.className}`}
           >
-            <StatCounter end={1000} suffix="+" className="text-3xl sm:text-4xl font-bold text-white" />
-            <span className="text-zinc-400 text-sm">Projects</span>
+            <StatCounter end={1000} suffix="+" className="text-3xl sm:text-[32px] font-normal text-white" />
+            <span className="text-gray-300 text-sm font-extralight text-[20px]">Projects</span>
           </motion.div>
 
+          {/* Middle item - moves up and forward (more prominent) */}
           <motion.div
             initial="hidden"
             animate={controls}
@@ -168,12 +193,20 @@ export default function AboutSection() {
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-zinc-900/80 backdrop-blur-sm px-6 py-3 rounded-xl flex flex-col items-center"
+            style={{
+              backgroundColor: 'rgba(70, 70, 70, 0.441)',
+              backdropFilter: 'blur(30px)',
+              WebkitBackdropFilter: 'blur(30px)',
+              y: middleStatY,
+              scale: middleStatScale
+            }}
+            className={`px-6 py-2 rounded-xl flex items-center gap-2 border border-gray-600 ${onest.className} mb-40`}
           >
-            <StatCounter end={14} suffix="+" className="text-3xl sm:text-4xl font-bold text-white" />
-            <span className="text-zinc-400 text-sm">Countries</span>
+            <StatCounter end={14} suffix="+" className="text-3xl sm:text-[32px] font-normal text-white" />
+            <span className="text-gray-300 text-sm font-extralight text-[20px]">Countries</span>
           </motion.div>
 
+          {/* Right item - moves down and back */}
           <motion.div
             initial="hidden"
             animate={controls}
@@ -182,12 +215,19 @@ export default function AboutSection() {
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="bg-zinc-900/80 backdrop-blur-sm px-6 py-3 rounded-xl flex flex-col items-center"
+            style={{
+              backgroundColor: 'rgba(70, 70, 70, 0.441)',
+              backdropFilter: 'blur(30px)',
+              WebkitBackdropFilter: 'blur(30px)',
+              y: rightStatY,
+              scale: rightStatScale
+            }}
+            className={`px-6 py-2 rounded-xl flex items-center gap-2 border border-gray-600 ${onest.className}`}
           >
-            <StatCounter end={200} suffix="+" className="text-3xl sm:text-4xl font-bold text-white" />
-            <span className="text-zinc-400 text-sm">Clients</span>
+            <StatCounter end={200} suffix="+" className="text-3xl sm:text-[32px] font-normal text-white" />
+            <span className="text-gray-300 text-sm font-extralight text-[20px]">Clients</span>
           </motion.div>
-        </div> */}
+        </div>
       </div>
     </div>
   )

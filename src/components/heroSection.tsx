@@ -47,12 +47,12 @@ export default function Home() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex h-full flex-col justify-center px-8 md:px-16 lg:px-24">
+      <div className="relative z-10 flex h-full flex-col justify-center px-5 md:px-16 lg:px-24">
         <div className="max-w-[800px]">
           <h1 className="font-sans text-[43px]   font-bold leading-tight tracking-tight text-white md:text-6xl lg:text-[85px]">
             <span className="font-medium">We build</span > bold  brands<span className="font-medium"> and </span>digital experiences.
           </h1>
-          <p className="mt-6 text-lg text-white/90 md:text-xl">Strategy, identity, and design — elevated.</p>
+          <p className="mt-6 text-lg text-white/90 md:text-xl ">Strategy, identity, and design — elevated.</p>
         </div>
       </div>
 
