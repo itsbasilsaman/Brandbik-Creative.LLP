@@ -24,9 +24,8 @@ export default function AboutSection() {
     offset: ["start end", "end start"],
   })
 
-  // Transformations for the abstract shape
-  const shapeY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"])
-  const shapeScale = useTransform(scrollYProgress, [0, 1], [1, 1.6])
+ 
+ 
 
   // Transformations for the stats items with parallax effect
   const leftStatY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
@@ -130,20 +129,86 @@ export default function AboutSection() {
         ))}
       </div>
 
-      {/* Abstract 3D shape with scroll animation */}
-      <motion.div
-        ref={shapeRef}
-        style={{ y: shapeY, scale: shapeScale }}
-        className="absolute bottom-[-200px] right-0 z-10 w-full h-[420px] pointer-events-none"
-      >
-        <Image
-          src="/images/abstract5g.png"
-          alt="Abstract shape"
-          fill
-          className="object-contain object-center"
-          priority
-        />
-      </motion.div>
+{/* Abstract 3D shape with entrance animation */}
+<motion.div
+  ref={shapeRef}
+  initial={{ 
+    scale: 1.5,
+    height: "650px",
+    width: "650px",
+    y: "40%",  // Start showing only bottom half
+    opacity: 0.8
+  }}
+  animate={isInView ? { 
+    scale: 1.3,
+    height: "630px",
+    width: "630px",
+    y: "30%",
+    opacity: 1
+  } : {}}
+  transition={{
+    duration: 1.5,
+    ease: [0.16, 1, 0.3, 1]
+  }}
+  className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-10 w-full pointer-events-none origin-bottom"
+  style={{
+    // Ensure proper image containment
+    overflow: 'hidden'
+  }}
+>
+  {/* Main shape */}
+  <motion.div
+    className="relative w-full h-full"
+    initial={{ scale: 1.2 }}
+    animate={isInView ? { scale: 1 } : {}}
+    transition={{ duration: 1.2 }}
+  >
+    <Image
+      src="/images/about-shape.png"
+      alt="Abstract shape"
+      fill
+      className="object-contain object-bottom"  // Align to bottom initially
+      priority
+    />
+  </motion.div>
+  
+  {/* Duplicate shapes */}
+  <motion.div
+    initial={{ opacity: 0.6, scale: 1.3, y: "20%" }}
+    animate={isInView ? {
+      opacity: 0,
+      scale: 0.9,
+      y: "-10%",
+      transition: { duration: 1, delay: 0.2 }
+    } : {}}
+    className="absolute inset-0"
+  >
+    <Image
+      src="/images/about-shape.png"
+      alt="Abstract shape duplicate"
+      fill
+      className="object-contain object-bottom"
+    />
+  </motion.div>
+  
+  <motion.div
+    initial={{ opacity: 0.4, scale: 1.5, y: "30%" }}
+    animate={isInView ? {
+      opacity: 0,
+      scale: 0.8,
+      y: "-20%",
+      transition: { duration: 1, delay: 0.3 }
+    } : {}}
+    className="absolute inset-0"
+  >
+    <Image
+      src="/images/about-shape.png"
+      alt="Abstract shape duplicate"
+      fill
+      className="object-contain object-bottom"
+    />
+  </motion.div>
+</motion.div>
 
       <div className="relative z-20 container mx-auto px-1 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col min-h-screen">
         {/* About button */}
