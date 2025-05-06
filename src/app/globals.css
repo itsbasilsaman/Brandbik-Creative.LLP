@@ -61,6 +61,26 @@ body {
   animation: float-down 3s ease-in-out infinite;
 }
 
+@keyframes float-up {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes float-down {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-floating-up {
+  animation: float-up 3s ease-in-out infinite;
+}
+
+.animate-floating-down {
+  animation: float-down 3s ease-in-out infinite;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -64,7 +64,7 @@ const projects = [
       alt: "Gaming Website"
     }
   ],
-  // Second set of projects (you can add more)
+  // Second set of projects
   [
     {
       id: 8,
@@ -130,16 +130,27 @@ export default function Works() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [activeSet, setActiveSet] = useState(0)
   const animationRef = useRef<number>(null);
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Check if mobile on mount and on resize
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    
+    checkIfMobile()
+    window.addEventListener('resize', checkIfMobile)
+    
+    return () => window.removeEventListener('resize', checkIfMobile)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Start the animation when section is in view
             startAutoScroll()
             
-            // Add animation classes when section is in view
             const upElements = document.querySelectorAll(".animate-up")
             const downElements = document.querySelectorAll(".animate-down")
 
@@ -151,7 +162,6 @@ export default function Works() {
               el.classList.add("animate-floating-down")
             })
           } else {
-            // Stop the animation when section is out of view
             stopAutoScroll()
           }
         })
@@ -172,9 +182,9 @@ export default function Works() {
   }, [])
 
   const startAutoScroll = () => {
-    stopAutoScroll() // Clear any existing animation
+    stopAutoScroll()
     
-    const scrollInterval = 4000 // Change every 4 seconds
+    const scrollInterval = isMobile ? 3000 : 2000 // Slower on mobile
     animationRef.current = window.setInterval(() => {
       setActiveSet(prev => (prev + 1) % projects.length)
     }, scrollInterval)
@@ -277,51 +287,61 @@ export default function Works() {
   }
 
   return (
-    <div className="min-h-screen bg-[#262527] text-white px-5 md:px-20" ref={sectionRef}>
+    <div className="lg:h-screen h-auto pb-4 lg:pb-0 bg-[#262527] text-white px-5 md:px-20" ref={sectionRef}>
       <div className="container mx-auto px-4 h-full">
+        {/* Mobile Header - Only visible on small screens */}
+        <div className="lg:hidden py-8">
+          <h1 className="text-5xl md:text-7xl font-medium">Works</h1>
+          <p className="text-lg max-w-[350px] mt-4">Explore our work where creativity made a difference.</p>
+          <Link
+            href="/works"
+            className="inline-flex items-center gap-2 border border-gray-600 rounded-full px-4 py-2 w-fit mt-6 hover:bg-gray-900 transition-colors"
+          >
+            <span>View All</span>
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 h-full">
-          {/* Left Column */}
-          <div className="lg:col-span-5 flex flex-col justify-around h-full relative overflow-hidden">
-  {/* Rotating Image instead of sliding */}
-  <div className="absolute top-0 right-0 w-full h-full pointer-events-none">
-  <div
-    className="absolute top-[-30px] right-[-180px] transform -translate-x-1/2 w-[180px] h-[180px] md:w-[200px] md:h-[220px] transition-transform duration-1000 ease-in-out"
-    style={{
-      transform: `translateX(-50%) rotate(${activeSet * 30}deg)`
-    }}
-  >
-    <Image
-      src="/images/work-ring.png"
-      alt="Rotating ring"
-      fill
-      className="object-contain "
-    />
-  </div>
-</div>
+          {/* Left Column - Hidden on mobile */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-around h-full relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-full h-full pointer-events-none">
+              <div
+                className="absolute top-[-30px] right-[-180px] transform -translate-x-1/2 w-[180px] h-[180px] md:w-[200px] md:h-[220px] transition-transform duration-1000 ease-in-out"
+                style={{
+                  transform: `translateX(-50%) rotate(${activeSet * 30}deg)`
+                }}
+              >
+                <Image
+                  src="/images/work-ring.png"
+                  alt="Rotating ring"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
 
+            <div className="relative z-10 space-y-4 md:space-y-6 h-screen py-4 flex justify-around flex-col">
+              <div className="space-y-4 md:space-y-6">
+                <h1 className="text-5xl md:text-7xl font-medium mt-8 md:mt-16">Works</h1>
+                <p className="text-lg max-w-[350px]">Explore our work where creativity made a difference.</p>
+              </div>
+              <Link
+                href="/works"
+                className="inline-flex items-center gap-2 border border-gray-600 rounded-full px-4 py-2 md:px-6 md:py-3 w-fit mt-8 md:mt-12 hover:bg-gray-900 transition-colors"
+              >
+                <span>View All</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
 
-  {/* Content overlay */}
-  <div className="relative z-10 space-y-4 md:space-y-6 h-screen py-4 flex justify-around flex-col">
-    <div className="space-y-4 md:space-y-6">
-      <h1 className="text-5xl md:text-7xl font-medium mt-8 md:mt-16">Works</h1>
-      <p className="text-lg max-w-[350px]">Explore our work where creativity made a difference.</p>
-    </div>
-    <Link
-      href="/works"
-      className="inline-flex items-center gap-2 border border-gray-600 rounded-full px-4 py-2 md:px-6 md:py-3 w-fit mt-8 md:mt-12 hover:bg-gray-900 transition-colors"
-    >
-      <span>View All</span>
-      <ArrowRight size={16} />
-    </Link>
-  </div>
-</div>
-
-          {/* Right Column - Project Grid */}
-          <div className="lg:col-span-7 h-full overflow-hidden relative">
+          {/* Right Column - Project Grid (Full width on mobile) */}
+          <div className="col-span-1 lg:col-span-7 h-[50vh] lg:h-full w-full overflow-hidden relative">
             <div 
               className="absolute inset-0 grid grid-cols-2 auto-rows-[1fr] gap-1 border-l border-t border-gray-800 transition-transform duration-1000 ease-in-out"
               style={{ 
-                transform: `translateY(-${activeSet * 70}%)`,
+                transform: `translateY(-${activeSet * (isMobile ? 100 : 70)}%)`,
                 height: `${projects.length * 100}%`
               }}
             >

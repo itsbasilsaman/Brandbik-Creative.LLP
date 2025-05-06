@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useAnimation, useScroll, useTransform } from "framer-motion"
+import { useMediaQuery } from 'react-responsive'
+
 import Image from "next/image"
 import StatCounter from "./stat-counter"
 import { Onest } from 'next/font/google';
@@ -24,13 +26,24 @@ export default function AboutSection() {
     offset: ["start end", "end start"],
   })
 
- 
- 
+  const isMobile = useMediaQuery({ maxWidth: 640 })
+  const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1024 })
 
-  // Transformations for the stats items with parallax effect
-  const leftStatY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
+  const shapeSizes = isMobile
+    ? { width: "560px", height: "560px", scale: 1.2 }
+    : isTablet
+    ? { width: "500px", height: "500px", scale: 1.3 }
+    : { width: "650px", height: "650px", scale: 1.5 }
+
+  const shapeTargetSizes = isMobile
+    ? { width: "540px", height: "540px", scale: 1.1, y: "28%" }
+    : isTablet
+    ? { width: "480px", height: "480px", scale: 1.2, y: "25%" }
+    : { width: "630px", height: "630px", scale: 1.3, y: "32%" }
+
+  const leftStatY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"])
   const middleStatY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"])
-  const rightStatY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
+  const rightStatY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"])
   
   const leftStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
   const middleStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
@@ -129,88 +142,108 @@ export default function AboutSection() {
         ))}
       </div>
 
-{/* Abstract 3D shape with entrance animation */}
-<motion.div
-  ref={shapeRef}
-  initial={{ 
-    scale: 1.5,
-    height: "650px",
-    width: "650px",
-    y: "40%",  // Start showing only bottom half
-    opacity: 0.8
-  }}
-  animate={isInView ? { 
-    scale: 1.3,
-    height: "630px",
-    width: "630px",
-    y: "30%",
-    opacity: 1
-  } : {}}
-  transition={{
-    duration: 1.5,
-    ease: [0.16, 1, 0.3, 1]
-  }}
-  className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-10 w-full pointer-events-none origin-bottom"
-  style={{
-    // Ensure proper image containment
-    overflow: 'hidden'
-  }}
->
-  {/* Main shape */}
-  <motion.div
-    className="relative w-full h-full"
-    initial={{ scale: 1.2 }}
-    animate={isInView ? { scale: 1 } : {}}
-    transition={{ duration: 1.2 }}
-  >
-    <Image
-      src="/images/about-shape.png"
-      alt="Abstract shape"
-      fill
-      className="object-contain object-bottom"  // Align to bottom initially
-      priority
-    />
-  </motion.div>
-  
-  {/* Duplicate shapes */}
-  <motion.div
-    initial={{ opacity: 0.6, scale: 1.3, y: "20%" }}
-    animate={isInView ? {
-      opacity: 0,
-      scale: 0.9,
-      y: "-10%",
-      transition: { duration: 1, delay: 0.2 }
-    } : {}}
-    className="absolute inset-0"
-  >
-    <Image
-      src="/images/about-shape.png"
-      alt="Abstract shape duplicate"
-      fill
-      className="object-contain object-bottom"
-    />
-  </motion.div>
-  
-  <motion.div
-    initial={{ opacity: 0.4, scale: 1.5, y: "30%" }}
-    animate={isInView ? {
-      opacity: 0,
-      scale: 0.8,
-      y: "-20%",
-      transition: { duration: 1, delay: 0.3 }
-    } : {}}
-    className="absolute inset-0"
-  >
-    <Image
-      src="/images/about-shape.png"
-      alt="Abstract shape duplicate"
-      fill
-      className="object-contain object-bottom"
-    />
-  </motion.div>
-</motion.div>
+   {/* ===== SHADOW EFFECTS ===== */}
+{/* Top black shadow */}
+<div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/80 to-transparent z-10"></div>
 
-      <div className="relative z-20 container mx-auto px-1 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col min-h-screen">
+{/* Bottom black shadow */}
+<div className="absolute bottom-0 left-0 right-0 h-32 z-40 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+
+{/* Left side WHITE shadow */}
+<div className="absolute left-0 top-0 bottom-0 w-32 z-10">
+  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+</div>
+
+{/* Right side WHITE shadow */}
+<div className="absolute right-0 top-0 bottom-0 w-32 z-10">
+  <div className="absolute inset-0 bg-gradient-to-l from-white/20 to-transparent"></div>
+</div>
+
+
+      {/* Abstract 3D shape */}
+      <motion.div
+        ref={shapeRef}
+        initial={{
+          scale: shapeSizes.scale,
+          height: shapeSizes.height,
+          width: shapeSizes.width,
+          y: shapeTargetSizes.y,
+          opacity: 0.8,
+        }}
+        animate={
+          isInView
+            ? {
+                scale: shapeTargetSizes.scale,
+                height: shapeTargetSizes.height,
+                width: shapeTargetSizes.width,
+                y: shapeTargetSizes.y,
+                opacity: 1,
+              }
+            : {}
+        }
+        transition={{
+          duration: 1.5,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-20 w-full pointer-events-none origin-bottom"
+        style={{ overflow: "hidden" }}
+      >
+        {/* Main shape */}
+        <motion.div
+          className="relative w-full h-full"
+          initial={{ scale: 1.2 }}
+          animate={isInView ? { scale: 1 } : {}}
+          transition={{ duration: 1.2 }}
+        >
+          <Image
+            src="/images/about-shape.png"
+            alt="Abstract shape"
+            fill
+            className="object-contain object-bottom"
+            priority
+          />
+        </motion.div>
+        
+        {/* Duplicate shapes */}
+        <motion.div
+          initial={{ opacity: 0.6, scale: 1.3, y: "20%" }}
+          animate={isInView ? {
+            opacity: 0,
+            scale: 0.9,
+            y: "-10%",
+            transition: { duration: 1, delay: 0.2 }
+          } : {}}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/images/about-shape.png"
+            alt="Abstract shape duplicate"
+            fill
+            className="object-contain object-bottom"
+          />
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0.4, scale: 1.5, y: "30%" }}
+          animate={isInView ? {
+            opacity: 0,
+            scale: 0.8,
+            y: "-20%",
+            transition: { duration: 1, delay: 0.3 }
+          } : {}}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/images/about-shape.png"
+            alt="Abstract shape duplicate"
+            fill
+            className="object-contain object-bottom"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Main content */}
+      <div className="relative z-30 container mx-auto px-1 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col min-h-screen">
         {/* About button */}
         <div className="mb-12">
           <button className="bg-teal-700 text-white px-4 py-2 rounded-full text-sm">About</button>
@@ -219,15 +252,15 @@ export default function AboutSection() {
         {/* Main text content */}
         <div className="flex flex-col items-start justify-center w-full">
           <div className="max-w-4xl">
-            <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-[40px] font-medium text-white leading-tight">
+            <h1 className="text-[28px] sm:text-[30px] md:text-[34px] lg:text-[40px] font-medium text-white leading-tight">
               {renderTextWithHighlights()}
             </h1>
           </div>
         </div>
 
-        {/* Stats section with enhanced parallax effect */}
-        <div ref={statsRef} className="mt-auto flex flex-wrap items-end justify-center gap-4 sm:gap-8 relative z-30">
-          {/* Left item - moves down and back */}
+        {/* Stats section */}
+        <div ref={statsRef} className="mt-auto flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 pb-8 sm:pb-0">
+          {/* Left item */}
           <motion.div
             initial="hidden"
             animate={controls}
@@ -240,16 +273,16 @@ export default function AboutSection() {
               backgroundColor: 'rgba(70, 70, 70, 0.441)',
               backdropFilter: 'blur(30px)',
               WebkitBackdropFilter: 'blur(30px)',
-              y: leftStatY,
-              scale: leftStatScale
+              y: isMobile ? 0 : leftStatY,
+              scale: isMobile ? 1 : leftStatScale
             }}
-            className={`px-6 py-2 rounded-xl flex items-center gap-2 border border-gray-600 ${onest.className}`}
+            className={`w-full md:h-[60px] h-[50px] sm:w-auto lg:px-5 px-3 py-1 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className}`}
           >
-            <StatCounter end={1000} suffix="+" className="text-3xl sm:text-[32px] font-normal text-white" />
+            <StatCounter end={1000} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
             <span className="text-gray-300 text-sm font-extralight text-[20px]">Projects</span>
           </motion.div>
 
-          {/* Middle item - moves up and forward (more prominent) */}
+          {/* Middle item */}
           <motion.div
             initial="hidden"
             animate={controls}
@@ -262,16 +295,16 @@ export default function AboutSection() {
               backgroundColor: 'rgba(70, 70, 70, 0.441)',
               backdropFilter: 'blur(30px)',
               WebkitBackdropFilter: 'blur(30px)',
-              y: middleStatY,
-              scale: middleStatScale
+              y: isMobile ? 0 : middleStatY,
+              scale: isMobile ? 1 : middleStatScale
             }}
-            className={`px-6 py-2 rounded-xl flex items-center gap-2 border border-gray-600 ${onest.className} mb-40`}
+            className={`w-full sm:w-auto lg:px-5 md:h-[60px] h-[50px] px-10 md:px-3 md:py-1 py-2 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className} sm:mb-0 lg:mb-32`}
           >
-            <StatCounter end={14} suffix="+" className="text-3xl sm:text-[32px] font-normal text-white" />
+            <StatCounter end={14} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
             <span className="text-gray-300 text-sm font-extralight text-[20px]">Countries</span>
           </motion.div>
 
-          {/* Right item - moves down and back */}
+          {/* Right item */}
           <motion.div
             initial="hidden"
             animate={controls}
@@ -284,12 +317,12 @@ export default function AboutSection() {
               backgroundColor: 'rgba(70, 70, 70, 0.441)',
               backdropFilter: 'blur(30px)',
               WebkitBackdropFilter: 'blur(30px)',
-              y: rightStatY,
-              scale: rightStatScale
+              y: isMobile ? 0 : rightStatY,
+              scale: isMobile ? 1 : rightStatScale
             }}
-            className={`px-6 py-2 rounded-xl flex items-center gap-2 border border-gray-600 ${onest.className}`}
+            className={`w-full sm:w-auto lg:px-5 md:h-[60px] h-[50px] px-3 py-1 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className}`}
           >
-            <StatCounter end={200} suffix="+" className="text-3xl sm:text-[32px] font-normal text-white" />
+            <StatCounter end={200} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
             <span className="text-gray-300 text-sm font-extralight text-[20px]">Clients</span>
           </motion.div>
         </div>
