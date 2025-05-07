@@ -9,7 +9,7 @@ export default function ServicesSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
         {/* Web Development */}
-        <div className="rounded-lg   bg-blue-50 border border-blue-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-blue-100/70 group">
+        <div className="rounded-lg cursor-pointer   bg-blue-50 border border-blue-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-blue-100/70 group">
           <div className="mb-4">
           <div className="relative w-full h-28 sm:h-36 rounded-lg flex items-center justify-center transition-all duration-300">
   <Image
@@ -34,7 +34,7 @@ export default function ServicesSection() {
         </div>
 
         {/* App Development */}
-        <div className="rounded-lg   bg-amber-50 border border-amber-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-amber-100/70 group">
+        <div className="rounded-lg cursor-pointer   bg-amber-50 border border-amber-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-amber-100/70 group">
           <div className="mb-4">
           <div className="relative w-full h-28 sm:h-36 rounded-lg flex items-center justify-center transition-all duration-300">
   <Image
@@ -58,7 +58,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Branding */}
-        <div className="rounded-lg   bg-emerald-50 border border-emerald-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-emerald-100/70 group">
+        <div className="rounded-lg cursor-pointer   bg-emerald-50 border border-emerald-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-emerald-100/70 group">
           <div className="mb-4">
           <div className="relative w-full h-28 sm:h-36 rounded-lg flex items-center justify-center transition-all duration-300">
   <Image
@@ -82,7 +82,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Digital Marketing */}
-        <div className="rounded-lg   bg-pink-50 border border-pink-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-pink-100/70 group">
+        <div className="rounded-lg cursor-pointer   bg-pink-50 border border-pink-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-pink-100/70 group">
           <div className="mb-4">
           <div className="relative w-full h-28 sm:h-36 rounded-lg flex items-center justify-center transition-all duration-300">
   <Image
@@ -106,7 +106,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Social Media */}
-        <div className="rounded-lg   bg-purple-50 border border-purple-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-purple-100/70 group">
+        <div className="rounded-lg cursor-pointer   bg-purple-50 border border-purple-100 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-purple-100/70 group">
           <div className="mb-4">
           <div className="relative w-full h-28 sm:h-36 rounded-lg flex items-center justify-center transition-all duration-300">
   <Image
@@ -130,7 +130,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Advertising */}
-        <div className="rounded-lg   bg-gray-50 border border-gray-200 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-gray-100/70 group">
+        <div className="rounded-lg cursor-pointer   bg-gray-50 border border-gray-200 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:bg-gray-100/70 group">
           <div className="mb-4 ">
           <div className="relative w-full h-28 sm:h-36 rounded-lg flex items-center justify-center transition-all duration-300">
   <Image
@@ -153,6 +153,7 @@ export default function ServicesSection() {
           </div>
         </div>
       </div>
+
 
     
     </div>

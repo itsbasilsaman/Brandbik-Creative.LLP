@@ -11,7 +11,7 @@ const projects = [
   [
     {
       id: 1,
-      title: "",
+      title: " ",
       category: "",
       number: "",
       type: "image",
@@ -20,21 +20,71 @@ const projects = [
     },
     {
       id: 2,
-      title: "Helped with the App Development from scratch",
-      category: "App Development",
-      number: "0",
-      type: "text"
+      title: "Developed a Brand Identity from Scratch",
+      category: "Branding",
+      number: "1",
+      type: "text",
+      
     },
     {
       id: 3,
-      title: "",
-      category: "",
-      number: "",
-      alt: "Business Person"
+      title: "Led App Development from the Ground Up",
+      category: "App Development",
+      number: "2",
+      alt: "App Developer",
+      type: "text",
+    
     },
     {
       id: 4,
-      title: "",
+      title: " ",
+      category: "",
+      number: "",
+      type: "image",
+      src: "/images/APP.jpg",
+      alt: "Business Person"
+    },
+    {
+      id: 5,
+      title: " ",
+      category: "",
+      number: "",
+      type: "image",
+      src: "/images/GENCHI.jpg",
+      alt: "Business Person"
+    },
+    {
+      id: 6,
+      title: "Designed and Deployed a Full-Stack Web App",
+      category: "Web Development",
+      number: "3",
+      type: "text"
+    }
+,    
+{
+  id: 7,
+  title: "Crafted and Executed a Digital Marketing Strategy",
+  category: "Digital Marketing",
+  number: "4",
+  alt: "Gaming Website",
+  type: "text"
+}
+
+  ],
+  // Second set of projects
+  [
+    {
+      id: 8,
+      title: " ",
+      category: "",
+      number: "",
+      type: "image",
+      src: "/images/tenderoutes-min.jpg",
+      alt: "Business Person"
+    },
+    {
+      id: 9,
+      title: "Helped with the App Development from scratch",
       category: "",
       number: "",
       type: "image",
@@ -42,8 +92,70 @@ const projects = [
       alt: "Business Person"
     },
     {
-      id: 5,
+      id: 10,
+      title: "Managed Social Media Campaigns and Strategy",
+      category: "Social Media",
+      number: "5",
+      alt: "Social Media Manager",
+      type: "text"
+    }
+    ,
+    {
+      id: 11,
+      title: "Developed and Executed Advertising Campaigns from Scratch",
+      category: "Advertising",
+      number: "6",
+      alt: "Advertising Specialist",
+      type: "text"
+    }
+    ,
+    {
+      id: 12,
       title: "",
+      category: "",
+      number: "",
+      type: "image",
+      src: "/images/chef-pillai.jpg",
+      alt: "Business Person"
+    },
+    {
+      id: 13,
+      title: " ",
+      category: "",
+      number: "",
+      type: "image",
+      src: "/images/FINANCEVA.jpg",
+      alt: "Business Person"
+    },
+    {
+      id: 2,
+      title: "Developed a Brand Identity from Scratch",
+      category: "Branding",
+      number: "1",
+      type: "text",
+      
+    },
+    {
+      id: 3,
+      title: "Led App Development from the Ground Up",
+      category: "App Development",
+      number: "2",
+      alt: "App Developer",
+      type: "text",
+    
+    },
+    {
+      id: 4,
+      title: " ",
+      category: "",
+      number: "",
+      type: "image",
+      src: "/images/WE ON WHEELS-min.jpeg",
+      alt: "Business Person"
+    },
+    {
+      id: 5,
+      title: " ",
       category: "",
       number: "",
       type: "image",
@@ -52,77 +164,12 @@ const projects = [
     },
     {
       id: 6,
-      title: "",
-      category: "",
-      number: "",
-    },
-    {
-      id: 7,
-      title: "",
-      category: "",
-      number: "",
-      alt: "Gaming Website"
+      title: "Crafted and Implemented a Complete Branding Strategy",
+      category: "Branding",
+      number: "3",
+      type: "text"
     }
-  ],
-  // Second set of projects
-  [
-    {
-      id: 8,
-      title: "",
-      category: "",
-      number: "",
-      type: "image",
-      src: "/images/BRANDING.jpg",
-      alt: "Business Person"
-    },
-    {
-      id: 9,
-      title: "",
-      category: "",
-      number: "",
-      type: "image",
-      src: "/images/BRANDING.jpg",
-      alt: "Business Person"
-    },
-    {
-      id: 10,
-      title: "",
-      category: "",
-      number: "",
-      alt: "Business Person"
-    },
-    {
-      id: 11,
-      title: "",
-      category: "",
-      number: "",
-      alt: "Business Person"
-    },
-    {
-      id: 4,
-      title: "",
-      category: "",
-      number: "",
-      type: "image",
-      src: "/images/SOCIAL.jpg",
-      alt: "Business Person"
-    },
-    {
-      id: 11,
-      title: "",
-      category: "",
-      number: "",
-      type: "image",
-      src: "/images/SOCIAL.jpg",
-      alt: "Business Person"
-    },
-    {
-      id: 14,
-      title: "",
-      category: "",
-      number: "",
-      alt: "Gaming Website"
-    }
+    
   ]
 ];
 
@@ -131,6 +178,24 @@ export default function Works() {
   const [activeSet, setActiveSet] = useState(0)
   const animationRef = useRef<number>(null);
   const [isMobile, setIsMobile] = useState(false)
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [direction, setDirection] = useState<"forward" | "backward">("forward");
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 771);
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // Check if mobile on mount and on resize
@@ -182,14 +247,27 @@ export default function Works() {
   }, [])
 
   const startAutoScroll = () => {
-    stopAutoScroll()
-    
-    const scrollInterval = isMobile ? 3000 : 2000 // Slower on mobile
+    stopAutoScroll();
+  
+    const scrollInterval = isMobile ? 3000 : 2000;
+  
     animationRef.current = window.setInterval(() => {
-      setActiveSet(prev => (prev + 1) % projects.length)
-    }, scrollInterval)
-  }
-
+      setActiveSet(prev => {
+        const nextIndex = direction === "forward" ? prev + 1 : prev - 1;
+  
+        if (nextIndex >= projects.length) {
+          setDirection("backward");
+          return prev - 1; // go backward
+        } else if (nextIndex < 0) {
+          setDirection("forward");
+          return prev + 1; // start forward again
+        } else {
+          return nextIndex;
+        }
+      });
+    }, scrollInterval);
+  };
+  
   const stopAutoScroll = () => {
     if (animationRef.current) {
       clearInterval(animationRef.current)
@@ -202,8 +280,8 @@ export default function Works() {
       case "text":
         return (
           <div className="space-y-3 md:space-y-4">
-            <p className="text-sm">{project.title}</p>
-            <p className="text-xs text-gray-400">{project.category}</p>
+            <p className=" text-[12px] md:text-[16px]">{project.title}</p>
+            <p className="text-[14px] text-gray-400 font-medium">{project.category}</p>
           </div>
         )
       case "image":
@@ -216,71 +294,10 @@ export default function Works() {
             className="object-cover w-full h-full"
           />
         )
-      case "green-stripes":
-        return (
-          <>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-6xl md:text-9xl font-bold text-white">{project.number}</span>
-            </div>
-            <div className="absolute inset-0">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div key={i} className="absolute h-full w-4 bg-green-400" style={{ left: `${i * 10}%` }} />
-              ))}
-            </div>
-          </>
-        )
-      case "blue-stripes":
-        return (
-          <>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-6xl md:text-9xl font-bold text-white">{project.number}</span>
-            </div>
-            <div className="absolute inset-0">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div key={i} className="absolute h-full w-4 bg-blue-400" style={{ left: `${i * 10}%` }} />
-              ))}
-            </div>
-          </>
-        )
-      case "phone-icon":
-        return (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-white text-5xl md:text-7xl">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
-        )
-      case "laptop-icon":
-        return (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-white text-5xl md:text-7xl">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7H4V6z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14 15c0 3 2 5 2 5H8s2-2 2-5"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
-        )
+      
+       
+       
+       
       default:
         return null
     }
@@ -288,9 +305,9 @@ export default function Works() {
 
   return (
     <div className="lg:h-screen h-auto pb-4 lg:pb-0 bg-[#262527] text-white px-5 md:px-20" ref={sectionRef}>
-      <div className="container mx-auto px-4 h-full">
+      <div className="container mx-auto  h-full">
         {/* Mobile Header - Only visible on small screens */}
-        <div className="lg:hidden py-8">
+        <div className="lg:hidden  py-8">
           <h1 className="text-5xl md:text-7xl font-medium">Works</h1>
           <p className="text-lg max-w-[350px] mt-4">Explore our work where creativity made a difference.</p>
           <Link
@@ -358,7 +375,7 @@ export default function Works() {
                     {renderProject(project)}
                     {project.number && project.type !== 'green-stripes' && project.type !== 'blue-stripes' && (
                       <div className="absolute bottom-4 md:bottom-6 right-4 md:right-6 text-6xl md:text-9xl font-bold opacity-80">
-                        {project.number}
+                        {isLargeScreen && project.number}
                       </div>
                     )}
                   </div>

@@ -7,6 +7,23 @@ import { ChevronRight } from "lucide-react"
 
 export default function Header() {
   const [scrollY, setScrollY] = useState(0)
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 991);
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +55,7 @@ export default function Header() {
       <div className="relative z-10 container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex-shrink-0">
           <Link href="/">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="w-auto h-8" />
+           { isLargeScreen ? <Image src="/images/logo-brandbik.png" alt="Logo" width={120} height={40} className=" " /> : <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className=" " />}
           </Link>
         </div>
 
