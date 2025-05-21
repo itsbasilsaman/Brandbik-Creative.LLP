@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-20">
             {/* Logo and Tagline */}
             <div className="lg:w-1/3 space-y-5">
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+              <div className="relative w-28 h-10 sm:w-24 sm:h-14">
                 <Image
                   src="/images/logo-brandbik.png"
                   alt="Logo"
@@ -78,20 +78,7 @@ export default function Footer() {
                     <p>info@brandbik.com</p>
                     <p>+966 12 345 6789</p>
                     <p>123 Business District, Riyadh, Saudi Arabia</p>
-                    <div className="flex space-x-4 mt-3">
-                      <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
-                        <FaInstagram className="h-5 w-5" />
-                      </Link>
-                      <Link href="#" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
-                        <FaWhatsapp className="h-5 w-5" />
-                      </Link>
-                      <Link href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
-                        <FaLinkedinIn className="h-5 w-5" />
-                      </Link>
-                      <Link href="#" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
-                        <FaXTwitter className="h-5 w-5" />
-                      </Link>
-                    </div>
+                     
                   </div>
                 </div>
               </div>

@@ -39,7 +39,7 @@ export default function ClientsSection() {
     <Image src="/images/genchi-logo-2.png" alt="Genchi Global Limited" width={110} height={60} className="max-h-12 w-auto object-contain hover:grayscale transition-all duration-300" priority />
   </div>
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '150ms' : '0ms' }}>
-    <Image src="/images/indo-arab.png" alt="Chef Pillai" width={110} height={60} className="hover:grayscale transition-all duration-300" priority />
+    <Image src="/images/take-off-logo.png" alt=" " width={110} height={60} className="hover:grayscale transition-all duration-300" priority />
   </div>
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
     <Image src="/images/scitor academy-logo-4.png" alt="Cyber Seed" width={240} height={60} className="object-cover hover:grayscale transition-all duration-300" />
@@ -113,5 +113,6 @@ export default function ClientsSection() {
         </button>
       </div>
     </section>
+    
   );
 }

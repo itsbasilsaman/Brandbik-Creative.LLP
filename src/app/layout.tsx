@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from 'next/font/google';
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 // Load Poppins font with required weights
 const poppins = Poppins({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <Header/>
         {children}
+             <Footer/>
       </body>
     </html>
   );

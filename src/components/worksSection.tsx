@@ -180,7 +180,7 @@ export default function Works() {
   const [isMobile, setIsMobile] = useState(false)
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
-
+  const [bgColor, setBgColor] = useState("bg-[#262527]");
 
   useEffect(() => {
     const handleResize = () => {
@@ -257,11 +257,15 @@ export default function Works() {
   
         if (nextIndex >= projects.length) {
           setDirection("backward");
+          setBgColor("bg-[#3a393a]"); // Change to alternate color
           return prev - 1; // go backward
         } else if (nextIndex < 0) {
           setDirection("forward");
+          setBgColor("bg-[#262527]"); // Change back to original color
           return prev + 1; // start forward again
         } else {
+          // Toggle background color based on direction
+          setBgColor(direction === "forward" ? "bg-[#2f282f]" : "bg-[#262527]");
           return nextIndex;
         }
       });
@@ -294,20 +298,16 @@ export default function Works() {
             className="object-cover w-full h-full"
           />
         )
-      
-       
-       
-       
       default:
         return null
     }
   }
 
   return (
-    <div className="lg:h-screen h-auto pb-4 lg:pb-0 bg-[#262527] text-white px-5 md:px-20" ref={sectionRef}>
-      <div className="container mx-auto  h-full">
+    <div className={`lg:h-screen h-auto pb-4 lg:pb-0 ${bgColor} text-white px-5 md:px-20 transition-colors duration-1000 ease-in-out`} ref={sectionRef}>
+      <div className="container mx-auto h-full">
         {/* Mobile Header - Only visible on small screens */}
-        <div className="lg:hidden  py-8">
+        <div className="lg:hidden py-8">
           <h1 className="text-5xl md:text-7xl font-medium">Works</h1>
           <p className="text-lg max-w-[350px] mt-4">Explore our work where creativity made a difference.</p>
           <Link
@@ -368,12 +368,10 @@ export default function Works() {
                     key={`${setIndex}-${project.id}`}
                     className={`border-r border-b border-gray-800 relative h-full
                               ${index % 2 === 0 ? 'animate-up' : 'animate-down'}
-                              ${project.type === 'image' || project.type === 'green-stripes' || 
-                                project.type === 'phone-icon' || project.type === 'blue-stripes' || 
-                                project.type === 'laptop-icon' ? 'p-0' : 'p-4'}`}
+                              ${project.type === 'image' ? 'p-0' : 'p-4'}`}
                   >
                     {renderProject(project)}
-                    {project.number && project.type !== 'green-stripes' && project.type !== 'blue-stripes' && (
+                    {project.number && (
                       <div className="absolute bottom-4 md:bottom-6 right-4 md:right-6 text-6xl md:text-9xl font-bold opacity-80">
                         {isLargeScreen && project.number}
                       </div>

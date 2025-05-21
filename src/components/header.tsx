@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight } from "lucide-react"
 
+
 export default function Header() {
   const [scrollY, setScrollY] = useState(0)
   const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -40,17 +41,24 @@ export default function Header() {
   return (
     <header
       className="fixed top-0 left-0 z-50 w-full px-4 md:px-16 lg:px-24 transition-all duration-500"
+      // style={{
+      //   background: opacity > 0 
+      //     ? `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity}))`
+      //     : "transparent",
+      //   backgroundImage: opacity === 0 
+      //     ? "url('/forest-background.jpg')" 
+      //     : `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity})), url('/forest-background.jpg')`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backgroundBlendMode: opacity > 0 ? "overlay" : "normal",
+      // }}
       style={{
-        background: opacity > 0 
-          ? `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity}))`
-          : "transparent",
-        backgroundImage: opacity === 0 
-          ? "url('/forest-background.jpg')" 
-          : `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}), rgba(5, 24, 24, ${opacity})), url('/forest-background.jpg')`,
+        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(5, 24, 24, 0.6)), url('/forest-background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundBlendMode: opacity > 0 ? "overlay" : "normal",
+        backgroundBlendMode: "overlay",
       }}
+      
     >
       <div className="relative z-10 container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex-shrink-0">
@@ -66,15 +74,15 @@ export default function Header() {
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </span>
           </Link>
-          <Link href="/services" className="text-white font-medium relative group">
+          <Link href="/service" className="text-white font-medium relative group">
             <span className="relative">
               Services
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </span>
           </Link>
-          <Link href="/portfolio" className="text-white font-medium relative group">
+          <Link href="/works" className="text-white font-medium relative group">
             <span className="relative">
-              Portfolio
+              Works
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </span>
           </Link>
