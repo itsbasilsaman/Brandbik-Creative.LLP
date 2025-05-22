@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { Poppins } from 'next/font/google';
-import { useState } from 'react';
 
 const poppins = Poppins({
   weight: '400', // Regular
@@ -11,18 +10,16 @@ const poppins = Poppins({
 });
 
 export default function AboutBoxes() {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left; // x position within the element
-    const y = e.clientY - rect.top; // y position within the element
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = (y - centerY) / 10; // divide by 10 to reduce the rotation amount
+    const rotateX = (y - centerY) / 10;
     const rotateY = (centerX - x) / 10;
     
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
@@ -67,19 +64,19 @@ export default function AboutBoxes() {
           {/* Card 1 */}
           <div 
             className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out"
-            onMouseMove={(e) => handleMouseMove(e, 0)}
+            onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="  p-16 flex justify-center items-center   mb-0">
               <div className="w-16 h-16 flex items-center justify-center">
               <Image
-        src="/images/work-one.png"
-        alt="Team"
-         width={70}
-         height={70}
-        className="object-cover"
-      />
+                src="/images/work-one.png"
+                alt="Team"
+                width={70}
+                height={70}
+                className="object-cover"
+              />
               </div>
             </div>
             <div className="bg-white p-4">
@@ -91,7 +88,7 @@ export default function AboutBoxes() {
           {/* Card 2 */}
           <div 
             className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out"
-            onMouseMove={(e) => handleMouseMove(e, 1)}
+            onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d' }}
           >
@@ -99,12 +96,12 @@ export default function AboutBoxes() {
               <div className="w-16 h-16 flex items-center justify-center">
                
               <Image
-        src="/images/work-two.png"
-        alt="Team"
-         width={90}
-         height={90}
-        className="object-cover"
-      />
+                src="/images/work-two.png"
+                alt="Team"
+                width={90}
+                height={90}
+                className="object-cover"
+              />
       
               </div>
             </div>
@@ -117,19 +114,19 @@ export default function AboutBoxes() {
           {/* Card 3 */}
           <div 
             className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out"
-            onMouseMove={(e) => handleMouseMove(e, 2)}
+            onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="  p-16 flex justify-center items-center rounded-md mb-0">
               <div className="w-16 h-16 flex items-center justify-center">
               <Image
-        src="/images/work-three.png"
-        alt="Team"
-         width={90}
-         height={90}
-        className="object-cover"
-      />
+                src="/images/work-three.png"
+                alt="Team"
+                width={90}
+                height={90}
+                className="object-cover"
+              />
               </div>
             </div>
             <div className="bg-white p-4">
@@ -141,18 +138,18 @@ export default function AboutBoxes() {
           {/* Card 4 */}
           <div 
             className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out"
-            onMouseMove={(e) => handleMouseMove(e, 3)}
+            onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="  p-16 flex justify-center items-center rounded-md mb-0">
               <div className="w-16 h-16 flex items-center justify-center">  <Image
-        src="/images/work-four.png"
-        alt="Team"
-         width={90}
-         height={90}
-        className="object-cover"
-      />   
+                src="/images/work-four.png"
+                alt="Team"
+                width={90}
+                height={90}
+                className="object-cover"
+              />   
               </div>
             </div>
             <div className="bg-white p-4">
@@ -164,19 +161,19 @@ export default function AboutBoxes() {
           {/* Card 5 */}
           <div 
             className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out"
-            onMouseMove={(e) => handleMouseMove(e, 4)}
+            onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="  p-16 flex justify-center items-center rounded-md mb-0">
               <div className="w-16 h-16 flex items-center justify-center">
               <Image
-        src="/images/work-five.png"
-        alt="Team"
-         width={90}
-         height={90}
-        className="object-cover"
-      />
+                src="/images/work-five.png"
+                alt="Team"
+                width={90}
+                height={90}
+                className="object-cover"
+              />
               </div>
             </div>
             <div className="bg-white p-4">

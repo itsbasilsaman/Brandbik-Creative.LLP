@@ -7,7 +7,6 @@ import { ChevronRight } from "lucide-react"
 
 
 export default function Header() {
-  const [scrollY, setScrollY] = useState(0)
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
@@ -24,16 +23,6 @@ export default function Header() {
     // Clean up
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <header

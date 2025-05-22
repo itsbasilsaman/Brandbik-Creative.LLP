@@ -268,7 +268,7 @@ export default function Works() {
       }
       stopAutoScroll()
     }
-  }, [isMobile, direction, projects.length])
+  }, [isMobile, direction])
 
   
   const stopAutoScroll = () => {
