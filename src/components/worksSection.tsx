@@ -209,37 +209,37 @@ export default function Works() {
     return () => window.removeEventListener('resize', checkIfMobile)
   }, [])
 
-  const startAutoScroll = () => {
-    stopAutoScroll();
-  
-    const scrollInterval = isMobile ? 3000 : 2000;
-  
-    animationRef.current = window.setInterval(() => {
-      setActiveSet(prev => {
-        const nextIndex = direction === "forward" ? prev + 1 : prev - 1;
-  
-        if (nextIndex >= projects.length) {
-          setDirection("backward");
-          setBgColor("bg-[#3a393a]"); // Change to alternate color
-          return prev - 1; // go backward
-        } else if (nextIndex < 0) {
-          setDirection("forward");
-          setBgColor("bg-[#262527]"); // Change back to original color
-          return prev + 1; // start forward again
-        } else {
-          // Toggle background color based on direction
-          setBgColor(direction === "forward" ? "bg-[#2f282f]" : "bg-[#262527]");
-          return nextIndex;
-        }
-      });
-    }, scrollInterval);
-  };
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            const startAutoScroll = () => {
+              stopAutoScroll();
+            
+              const scrollInterval = isMobile ? 3000 : 2000;
+            
+              animationRef.current = window.setInterval(() => {
+                setActiveSet(prev => {
+                  const nextIndex = direction === "forward" ? prev + 1 : prev - 1;
+            
+                  if (nextIndex >= projects.length) {
+                    setDirection("backward");
+                    setBgColor("bg-[#3a393a]"); // Change to alternate color
+                    return prev - 1; // go backward
+                  } else if (nextIndex < 0) {
+                    setDirection("forward");
+                    setBgColor("bg-[#262527]"); // Change back to original color
+                    return prev + 1; // start forward again
+                  } else {
+                    // Toggle background color based on direction
+                    setBgColor(direction === "forward" ? "bg-[#2f282f]" : "bg-[#262527]");
+                    return nextIndex;
+                  }
+                });
+              }, scrollInterval);
+            };
+
             startAutoScroll()
             const upElements = document.querySelectorAll(".animate-up")
             const downElements = document.querySelectorAll(".animate-down")
@@ -268,8 +268,7 @@ export default function Works() {
       }
       stopAutoScroll()
     }
-  }, [startAutoScroll])
-
+  }, [isMobile, direction, projects.length])
 
   
   const stopAutoScroll = () => {

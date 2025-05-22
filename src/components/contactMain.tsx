@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react" 
 import { Instagram, Linkedin, Phone, Mail, Twitter } from "lucide-react"
+import Image from "next/image"
 
 export default function ContactMain() {
   const [formData, setFormData] = useState({
@@ -26,22 +27,24 @@ export default function ContactMain() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-5   relative overflow-hidden px-5 md:px-16 lg:px-24">
+    <div className="min-h-screen flex items-center justify-center pt-5 relative overflow-hidden px-5 md:px-16 lg:px-24">
       {/* Background image */}
-      <div className="absolute w-full h-full  ">
-        <img 
+      <div className="absolute w-full h-full">
+        <Image 
           src="/images/contact-bg.png" 
           alt="Contact background" 
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
       </div>
 
       <div className="container mx-auto px-4 py-12 z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Left side content */}
         <div className="lg:w-1/2 space-y-8">
-          <h1 className="text-5xl font-bold text-white mb-6">Let's work together.</h1>
+          <h1 className="text-5xl font-bold text-white mb-6">Let&apos;s work together.</h1>
           <p className="text-gray-300 text-lg mb-12 max-w-md">
-            Whether you're launching something new or reinventing your brand — we'd love to{" "}
+            Whether you&apos;re launching something new or reinventing your brand — we&apos;d love to{" "}
             <span className="text-blue-400">hear from you</span>.
           </p>
 

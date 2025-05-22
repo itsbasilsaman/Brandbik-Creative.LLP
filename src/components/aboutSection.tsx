@@ -72,7 +72,7 @@ export default function AboutSection() {
     }, 3000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [highlightedPhrases.length])
 
   const renderTextWithHighlights = () => {
     const currentHighlight = highlightedPhrases[highlightedTextIndex]
