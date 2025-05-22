@@ -36,7 +36,7 @@ export default function WorkBanner() {
   }
 
   return (
-    <section className=" w-full pt-24 lg:pt-32 mx-auto px-4 md:px-16 lg:px-24  py-8 sm:py-12 lg:py-16 h-screen">
+    <section className=" w-full pt-24 lg:pt-32 mx-auto px-4 md:px-16 lg:px-24  py-8 sm:py-12 lg:py-16 md:h-screen">
       <div className="inline-block mb-4 sm:mb-6">
         <span className="bg-gray-200 text-gray-600 px-3 py-1 sm:px-4 sm:py-1 rounded-full text-xs sm:text-sm">
           About

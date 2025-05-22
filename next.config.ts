@@ -2,6 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    
+    domains: [
+      'images.news9live.com',
+      'wallpapercave.com',
+      'm.economictimes.com' // 👈 Add this one too
+    ],
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,6 +20,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'image.freepik.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tse1.mm.bing.net',
       },
     ],
   },

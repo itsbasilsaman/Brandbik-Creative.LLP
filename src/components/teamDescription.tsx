@@ -2,16 +2,127 @@
 
 import { useState, useEffect } from "react"
 import { Poppins } from 'next/font/google';
+import { motion } from "framer-motion"
 
 const poppins = Poppins({
-  weight: '500', // Medium weight
+  weight: '500',
   subsets: ['latin'],
   display: 'swap',
 });
- 
+
+type AnimationType = "fade" | "scale" | "slide" | "bounce" | "rotate3d"
+type TransitionType = "spring" | "tween" | "bounce"
+
+interface AnimationVariant {
+  initial: Record<string, number>
+  animate: Record<string, number | number[]>
+  exit: Record<string, number>
+}
+
+interface Transition {
+  type: string
+  stiffness?: number
+  damping?: number
+  duration?: number
+  ease?: string
+}
+
+interface HighlightSet {
+  words: string[]
+  color: string
+  animation: AnimationType
+  transition: TransitionType
+}
 
 export default function TeamDescription() {
   const [isMobile, setIsMobile] = useState(false)
+  const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
+
+  const animationVariants: Record<AnimationType, AnimationVariant> = {
+    fade: {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 }
+    },
+    scale: {
+      initial: { scale: 0.8 },
+      animate: { scale: 1 },
+      exit: { scale: 0.8 }
+    },
+    slide: {
+      initial: { x: -20 },
+      animate: { x: 0 },
+      exit: { x: 20 }
+    },
+    bounce: {
+      initial: { y: 0 },
+      animate: { 
+        y: [-10, 0, -5, 0]
+      },
+      exit: { y: 0 }
+    },
+    rotate3d: {
+      initial: { 
+        rotateX: 10,
+        rotateY: 10,
+        scale: 0.8,
+        opacity: 0
+      },
+      animate: { 
+        rotateX: 0,
+        rotateY: 0,
+        scale: 1,
+        opacity: 1
+      },
+      exit: { 
+        rotateX: -10,
+        rotateY: -10,
+        scale: 0.8,
+        opacity: 0
+      }
+    }
+  }
+
+  const transitions: Record<TransitionType, Transition> = {
+    spring: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10
+    },
+    tween: {
+      type: "tween",
+      duration: 0.5,
+      ease: "easeInOut"
+    },
+    bounce: {
+      type: "spring",
+      stiffness: 300,
+      damping: 10
+    }
+  }
+
+  const highlightedSets: HighlightSet[] = [
+    { 
+      words: ["cross-disciplinary", "strategists", "designers"], 
+      color: "text-teal-400",
+      animation: "rotate3d",
+      transition: "spring"
+    },
+    { 
+      words: ["developers", "storytellers", "belief"], 
+      color: "text-blue-400",
+      animation: "rotate3d",
+      transition: "tween"
+    },
+    { 
+      words: ["design", "business", "together"], 
+      color: "text-purple-400",
+      animation: "rotate3d",
+      transition: "bounce"
+    }
+  ]
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -26,25 +137,88 @@ export default function TeamDescription() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setCurrentHighlightIndex((prev) => (prev + 1) % highlightedSets.length)
+      }, 3000)
+
+      return () => clearInterval(interval)
+    }
+  }, [isPaused])
+
+  const renderText = () => {
+    const text = "We're a cross-disciplinary team of strategists, designers, developers, and storytellers. What brings us together is a shared belief: good design is good business"
+    const currentSet = highlightedSets[currentHighlightIndex]
+    
+    return text.split(' ').map((word, index) => {
+      const isHighlighted = currentSet.words.includes(
+        word.toLowerCase().replace(/[.,—]/g, '')
+      )
+      
+      return (
+        <motion.span
+          key={index}
+          initial={isHighlighted ? animationVariants[currentSet.animation].initial : {}}
+          animate={isHighlighted ? animationVariants[currentSet.animation].animate : {}}
+          exit={isHighlighted ? animationVariants[currentSet.animation].exit : {}}
+          transition={isHighlighted ? transitions[currentSet.transition] : {}}
+          className={`inline-block ${isHighlighted ? currentSet.color : 'text-black'} ${index !== 0 ? 'ml-1' : ''}`}
+          style={{
+            transformStyle: "preserve-3d",
+            perspective: "1000px"
+          }}
+          whileHover={isHighlighted ? {
+            scale: 1.1,
+            rotateX: 10,
+            rotateY: 10,
+            transition: { duration: 0.2 }
+          } : {}}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          onClick={() => {
+            if (isHighlighted) {
+              setIsPaused(!isPaused)
+            }
+          }}
+        >
+          {word}
+        </motion.span>
+      )
+    })
+  }
+
   return (
-    <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24 py-12 sm:py-16 md:py-32 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+    <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24  py-12 pt-2  sm:py-12 md:py-24 md:pt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative">
       <div className="max-w-[957px] w-full">
-        <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-[40px] ${poppins.className} leading-tight`}>
-          We&apos;re a cross-disciplinary team of strategists, designers, developers, and storytellers.{" "}
-          What brings us together is a shared belief: good design is good business
+        <h2 
+          className={`text-xl sm:text-2xl md:text-3xl lg:text-[40px] ${poppins.className} leading-tight`}
+          style={{
+            perspective: "1000px",
+            transformStyle: "preserve-3d"
+          }}
+        >
+          {renderText()}
         </h2>
       </div>
-      <div className="flex items-center justify-center w-full md:w-auto mt-8 md:mt-0">
+      <div className="hidden md:flex items-center justify-center w-full md:w-auto">
         <div className="flex items-center justify-center w-full">
           <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center group">
-            {/* Outer Circle */}
             <div className="absolute w-full h-full rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 scale-105 group-hover:scale-110 transition-transform duration-300"></div>
-
-            {/* Inner Circle (button) */}
             <button className="relative z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm sm:text-base font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
               Contact Us
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Contact Button */}
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        <div className="relative w-20 h-20 flex items-center justify-center group">
+          <div className="absolute w-full h-full rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 scale-105 group-hover:scale-110 transition-transform duration-300"></div>
+          <button className="relative z-10  w-18 h-18 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-[14px] font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            Contact Us
+          </button>
         </div>
       </div>
     </div>
