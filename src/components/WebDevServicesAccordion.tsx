@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Poppins } from 'next/font/google'
+import Image from 'next/image'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -43,7 +44,7 @@ export default function WebDevServicesAccordion() {
         Web Development Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling. Whether you're launching, evolving, or scaling — we help you stand out with purpose.
+        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling. Whether you&apos;re launching, evolving, or scaling — we help you stand out with purpose.
       </p>
       <div className="border-b border-gray-200">
         {services.map((service, idx) => (
@@ -54,9 +55,11 @@ export default function WebDevServicesAccordion() {
             >
               <span className="flex-1">{service.title}</span>
               {idx === 0 && (
-                <img 
+                <Image 
                   src={service.image} 
                   alt="Service" 
+                  width={64}
+                  height={64}
                   className="w-12 h-12 md:w-16 md:h-16 object-cover mr-4 rounded-lg shadow-md" 
                 />
               )}

@@ -74,12 +74,11 @@ export default function AboutBoxes() {
             <div className="  p-16 flex justify-center items-center   mb-0">
               <div className="w-16 h-16 flex items-center justify-center">
               <Image
-        src="/images/work-one.png" // path relative to the public folder
+        src="/images/work-one.png"
         alt="Team"
          width={70}
          height={70}
-        objectFit="cover"      // cover, contain, etc.
-        className=" "
+        className="object-cover"
       />
               </div>
             </div>
@@ -100,13 +99,13 @@ export default function AboutBoxes() {
               <div className="w-16 h-16 flex items-center justify-center">
                
               <Image
-        src="/images/work-two.png" // path relative to the public folder
+        src="/images/work-two.png"
         alt="Team"
          width={90}
          height={90}
-        objectFit="cover"      // cover, contain, etc.
-        className=" "
+        className="object-cover"
       />
+      
               </div>
             </div>
             <div className="bg-white p-4">
@@ -125,12 +124,11 @@ export default function AboutBoxes() {
             <div className="  p-16 flex justify-center items-center rounded-md mb-0">
               <div className="w-16 h-16 flex items-center justify-center">
               <Image
-        src="/images/work-three.png" // path relative to the public folder
+        src="/images/work-three.png"
         alt="Team"
          width={90}
          height={90}
-        objectFit="cover"      // cover, contain, etc.
-        className=" "
+        className="object-cover"
       />
               </div>
             </div>
@@ -149,12 +147,11 @@ export default function AboutBoxes() {
           >
             <div className="  p-16 flex justify-center items-center rounded-md mb-0">
               <div className="w-16 h-16 flex items-center justify-center">  <Image
-        src="/images/work-four.png" // path relative to the public folder
+        src="/images/work-four.png"
         alt="Team"
          width={90}
          height={90}
-        objectFit="cover"      // cover, contain, etc.
-        className=" "
+        className="object-cover"
       />   
               </div>
             </div>
@@ -174,12 +171,11 @@ export default function AboutBoxes() {
             <div className="  p-16 flex justify-center items-center rounded-md mb-0">
               <div className="w-16 h-16 flex items-center justify-center">
               <Image
-        src="/images/work-five.png" // path relative to the public folder
+        src="/images/work-five.png"
         alt="Team"
          width={90}
          height={90}
-        objectFit="cover"      // cover, contain, etc.
-        className=" "
+        className="object-cover"
       />
               </div>
             </div>
