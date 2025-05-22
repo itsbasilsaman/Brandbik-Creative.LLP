@@ -35,9 +35,7 @@ interface HighlightSet {
 }
 
 export default function TeamDescription() {
-  const [isMobile, setIsMobile] = useState(false)
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
 
   const animationVariants: Record<AnimationType, AnimationVariant> = {
@@ -125,19 +123,6 @@ export default function TeamDescription() {
   ]
 
   useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
-
-    return () => {
-      window.removeEventListener("resize", checkIfMobile)
-    }
-  }, [])
-
-  useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
         setCurrentHighlightIndex((prev) => (prev + 1) % highlightedSets.length)
@@ -145,7 +130,7 @@ export default function TeamDescription() {
 
       return () => clearInterval(interval)
     }
-  }, [isPaused])
+  }, [isPaused, highlightedSets.length])
 
   const renderText = () => {
     const text = "We're a cross-disciplinary team of strategists, designers, developers, and storytellers. What brings us together is a shared belief: good design is good business"
@@ -174,8 +159,6 @@ export default function TeamDescription() {
             rotateY: 10,
             transition: { duration: 0.2 }
           } : {}}
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
           onClick={() => {
             if (isHighlighted) {
               setIsPaused(!isPaused)

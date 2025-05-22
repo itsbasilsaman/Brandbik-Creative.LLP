@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { useInView, useAnimation, motion, AnimatePresence } from "framer-motion"
+import { useInView, useAnimation, motion } from "framer-motion"
 
 // Define types for our animations
 type AnimationType = "fade" | "scale" | "slide" | "bounce" | "rotate3d"
@@ -33,7 +33,6 @@ export default function ServiceContent() {
   const statsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(statsRef, { once: true, amount: 0.3 })
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
 
   // Animation variants for different effects
@@ -142,7 +141,7 @@ export default function ServiceContent() {
 
       return () => clearInterval(interval)
     }
-  }, [isPaused])
+  }, [isPaused, highlightedSets.length])
 
   const renderText = () => {
     const text = "From strategy to execution — we help businesses grow through clarity, creativity, and design."
@@ -171,8 +170,6 @@ export default function ServiceContent() {
             rotateY: 10,
             transition: { duration: 0.2 }
           } : {}}
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
           onClick={() => {
             if (isHighlighted) {
               setIsPaused(!isPaused)

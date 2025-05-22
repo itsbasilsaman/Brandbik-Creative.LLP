@@ -209,43 +209,6 @@ export default function Works() {
     return () => window.removeEventListener('resize', checkIfMobile)
   }, [])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            startAutoScroll()
-            
-            const upElements = document.querySelectorAll(".animate-up")
-            const downElements = document.querySelectorAll(".animate-down")
-
-            upElements.forEach((el) => {
-              el.classList.add("animate-floating-up")
-            })
-
-            downElements.forEach((el) => {
-              el.classList.add("animate-floating-down")
-            })
-          } else {
-            stopAutoScroll()
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-      stopAutoScroll()
-    }
-  }, [])
-
   const startAutoScroll = () => {
     stopAutoScroll();
   
@@ -271,6 +234,43 @@ export default function Works() {
       });
     }, scrollInterval);
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startAutoScroll()
+            const upElements = document.querySelectorAll(".animate-up")
+            const downElements = document.querySelectorAll(".animate-down")
+            upElements.forEach((el) => {
+              el.classList.add("animate-floating-up")
+            })
+            downElements.forEach((el) => {
+              el.classList.add("animate-floating-down")
+            })
+          } else {
+            stopAutoScroll()
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+  
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+  
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+      stopAutoScroll()
+    }
+  }, [startAutoScroll])
+
+
   
   const stopAutoScroll = () => {
     if (animationRef.current) {
