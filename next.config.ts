@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     domains: [
       'images.news9live.com',
       'wallpapercave.com',
-      'm.economictimes.com' // 👈 Add this one too
+      'm.economictimes.com',
+      'wallup.net' // 👈 Add this one too
     ],
     remotePatterns: [
       {

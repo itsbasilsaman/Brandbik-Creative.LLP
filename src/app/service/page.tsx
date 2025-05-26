@@ -13,8 +13,7 @@ export default function About() {
        <ServicesSection/>
        <ServiceContent/>
        <ClientsSection/>
-      <BottomBar/>
-      <FaqAccordion/>
+      <BottomBar/> 
     </div>
   );
 };

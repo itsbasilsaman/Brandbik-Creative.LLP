@@ -133,7 +133,7 @@ export default function TeamDescription() {
   }, [isPaused, highlightedSets.length])
 
   const renderText = () => {
-    const text = "We're a cross-disciplinary team of strategists, designers, developers, and storytellers. What brings us together is a shared belief: good design is good business"
+    const text = "We're a cross-disciplinary team of strategists, designers, developers, and storytellers. What brings us together is a shared belief"
     const currentSet = highlightedSets[currentHighlightIndex]
     
     return text.split(' ').map((word, index) => {
@@ -175,7 +175,7 @@ export default function TeamDescription() {
     <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24  py-12 pt-2  sm:py-12 md:py-24 md:pt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative">
       <div className="max-w-[957px] w-full">
         <h2 
-          className={`text-xl sm:text-2xl md:text-3xl lg:text-[40px] ${poppins.className} leading-tight`}
+          className={`text-xl sm:text-left text-center sm:text-2xl md:text-3xl lg:text-[40px] ${poppins.className} leading-tight`}
           style={{
             perspective: "1000px",
             transformStyle: "preserve-3d"

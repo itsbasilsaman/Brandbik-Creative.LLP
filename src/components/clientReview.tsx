@@ -224,6 +224,7 @@ export default function ClientReviews() {
               Working with Brandbik was transformative. They understood our vision and brought it to life with precision
               and creativity.
             </p>
+            
             <div className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-600">
               <svg width="30" height="24" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-10 md:h-8">
                 <path

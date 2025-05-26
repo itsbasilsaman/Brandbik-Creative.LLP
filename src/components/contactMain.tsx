@@ -3,8 +3,19 @@
 import type React from "react"
 
 import { useState } from "react" 
-import { Instagram, Linkedin, Phone, Mail, Twitter } from "lucide-react"
-import Image from "next/image"
+import {   Phone, Mail  } from "lucide-react"
+// import Image from "next/image"
+import { Poppins } from 'next/font/google'
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: '500', // Medium
+  variable: '--font-poppins', // Optional, for Tailwind
+})
 
 export default function ContactMain() {
   const [formData, setFormData] = useState({
@@ -27,9 +38,9 @@ export default function ContactMain() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-5 relative overflow-hidden px-5 md:px-16 lg:px-24">
+    <div className={`min-h-screen flex items-center bg-black justify-center pt-20 md:pt-5 relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 ${poppins.className}`}>
       {/* Background image */}
-      <div className="absolute w-full h-full">
+      {/* <div className="absolute w-full h-full">
         <Image 
           src="/images/contact-bg.png" 
           alt="Contact background" 
@@ -37,55 +48,23 @@ export default function ContactMain() {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
 
-      <div className="container mx-auto px-4 py-12 z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-        {/* Left side content */}
-        <div className="lg:w-1/2 space-y-8">
-          <h1 className="text-5xl font-bold text-white mb-6">Let&apos;s work together.</h1>
-          <p className="text-gray-300 text-lg mb-12 max-w-md">
-            Whether you&apos;re launching something new or reinventing your brand — we&apos;d love to{" "}
-            <span className="text-blue-400">hear from you</span>.
-          </p>
-
-          <div className="space-y-6">
-            <div className="flex items-center gap-4 bg-zinc-900/70 p-4 rounded-lg">
-              <Phone className="text-white" />
-              <div className="text-gray-300">
-                <p>+91 90748 51748,</p>
-                <p>+91 8075347955</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 bg-zinc-900/70 p-4 rounded-lg">
-              <Mail className="text-white" />
-              <div className="text-gray-300">
-                <p>info@brandbik.com</p>
-                <p>hr@brandbik.com</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-6 mt-8">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">
-              <Instagram size={24} />
-            </a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">
-              <Twitter size={24} />
-            </a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">
-              <Linkedin size={24} />
-            </a>
-          </div>
-        </div>
-
+      <div className="container mx-auto px-2 sm:px-4 py-8 sm:py-12 z-10 flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-12">
         {/* Right side form */}
-        <div className="lg:w-1/2 w-full">
-          <div className="bg-zinc-800/80 backdrop-blur-sm p-8 rounded-lg">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="lg:w-1/2 w-full order-1 lg:order-2">
+          <div className="lg:bg-[#404040] backdrop-blur-sm p-0 sm:p-2 md:p-8 rounded-[12px] lg:border lg:border-[#dedddd] lg:shadow-lg">
+            <div className="sm:hidden block text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">Let&apos;s work together.</h1>
+          <p className="text-gray-300 text-[14px] sm:text-[16px] mb-8 sm:mb-12 lg:max-w-[460px] max-w-[300px] font-medium mx-auto lg:mx-0">
+            Whether you&apos;re launching something new or reinventing your brand — we&apos;d love to{" "}
+            hear from you.
+          </p>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="firstName" className="text-white">
+                  <label htmlFor="firstName" className="text-white font-medium text-left text-sm sm:text-base block">
                     First Name
                   </label>
                   <input
@@ -94,12 +73,12 @@ export default function ContactMain() {
                     value={formData.firstName}
                     onChange={handleChange}
                     placeholder="Value"
-                    className="w-full px-3 py-2 rounded-md bg-gray-400/30 border-0 text-white placeholder:text-gray-400"
+                    className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="lastName" className="text-white">
+                  <label htmlFor="lastName" className="text-white font-medium text-left text-sm sm:text-base block">
                     Last Name
                   </label>
                   <input
@@ -108,14 +87,14 @@ export default function ContactMain() {
                     value={formData.lastName}
                     onChange={handleChange}
                     placeholder="Value"
-                    className="w-full px-3 py-2 rounded-md bg-gray-400/30 border-0 text-white placeholder:text-gray-400"
+                    className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-white">
+                  <label htmlFor="email" className="text-white font-medium text-left text-sm sm:text-base block">
                     Email
                   </label>
                   <input
@@ -125,12 +104,12 @@ export default function ContactMain() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Value"
-                    className="w-full px-3 py-2 rounded-md bg-gray-400/30 border-0 text-white placeholder:text-gray-400"
+                    className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="mobile" className="text-white">
+                  <label htmlFor="mobile" className="text-white font-medium text-left text-sm sm:text-base block">
                     Mobile Number
                   </label>
                   <input
@@ -139,13 +118,13 @@ export default function ContactMain() {
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder="Value"
-                    className="w-full px-3 py-2 rounded-md bg-gray-400/30 border-0 text-white placeholder:text-gray-400"
+                    className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-white">
+                <label htmlFor="message" className="text-white font-medium text-left text-sm sm:text-base block">
                   Tell us more
                 </label>
                 <textarea
@@ -154,14 +133,61 @@ export default function ContactMain() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Value"
-                  className="w-full px-3 py-2 rounded-md bg-gray-400/30 border-0 text-white placeholder:text-gray-400 min-h-[120px]"
+                  className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light min-h-[120px] focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                 />
               </div>
 
-              <button type="submit" className="w-full bg-black hover:bg-zinc-900 text-white py-6 rounded-md">
+              <button 
+                type="submit" 
+                className="w-full bg-white sm:bg-black hover:bg-zinc-900 sm:text-white py-3 rounded-md transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] font-medium"
+              >
                 Submit
               </button>
             </form>
+          </div>
+        </div>
+
+        {/* Left side content */}
+        <div className=" w-full lg:w-1/2 space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
+         <div className="hidden sm:block">
+         <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">Let&apos;s work together.</h1>
+          <p className="text-gray-300 text-[14px] sm:text-[16px] mb-8 sm:mb-12 lg:max-w-[460px] max-w-[300px] font-medium mx-auto lg:mx-0">
+            Whether you&apos;re launching something new or reinventing your brand — we&apos;d love to{" "}
+            hear from you.
+          </p>
+         </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <div className="flex items-center gap-4 sm:gap-5 bg-[#1f1f1f] p-3 sm:p-4 px-6 sm:px-8 rounded-lg w-full sm:w-auto">
+              <Phone className="text-white w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="text-gray-300">
+                <p className="text-[14px] sm:text-[16px] font-medium">+91 90748 51748,</p>
+                <p className="text-[14px] sm:text-[16px] font-medium">+91 8075347955</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 sm:gap-5 bg-[#1f1f1f] p-3 sm:p-4 px-6 sm:px-8 rounded-lg w-full sm:w-auto">
+              <Mail className="text-white w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="text-gray-300">
+                <p className="text-[14px] sm:text-[16px] font-medium">info@brandbik.com</p>
+                <p className="text-[14px] sm:text-[16px] font-medium">hr@brandbik.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-6 mt-6 sm:mt-8 justify-center lg:justify-start">
+            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+              <FaInstagram className="text-[20px] sm:text-[24px]" />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+              <FaWhatsapp className="text-[20px] sm:text-[24px]" />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+              <FaXTwitter className="text-[20px] sm:text-[24px]" />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+              <FaLinkedin className="text-[20px] sm:text-[24px]" />
+            </a>
           </div>
         </div>
       </div>

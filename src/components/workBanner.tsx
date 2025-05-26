@@ -1,109 +1,102 @@
 "use client"
+
+import { useEffect, useRef } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useRef } from "react"
 import { Poppins } from 'next/font/google';
+import { Onest } from 'next/font/google'
+import { motion, useInView } from "framer-motion"
+
+const onest = Onest({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'], // Add other weights if needed
+  display: 'swap',
+})
 
 const poppins = Poppins({
-  weight: '500', // Medium weight
   subsets: ['latin'],
-  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins', // Optional, for Tailwind or CSS variables
 });
 
 export default function WorkBanner() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-
-  const images = [
-    "https://img.resized.co/siliconrepublic/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5zaWxpY29ucmVwdWJsaWMuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE5XFxcLzA0XFxcL0Fkb2JlU3RvY2tfMTQ3MDYyMTQwLmpwZWdcIixcIndpZHRoXCI6MTEwMCxcImhlaWdodFwiOjYwMCxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LnNpbGljb25yZXB1YmxpYy5jb21cXFwvd3AtY29udGVudFxcXC91cGxvYWRzXFxcLzIwMTRcXFwvMTJcXFwvMjAxMzAyXFxcL3B1enpsZS5qcGdcIixcIm9wdGlvbnNcIjpbXX0iLCJoYXNoIjoiZWU0YTQzNTk4NjdjZWU1Y2QwZDNmNmQ4YmYxZDI4MGNmNjViMmNkZCJ9/adobestock-147062140.jpeg",
-    "https://image.freepik.com/free-photo/young-man-sitting-computer-desk-office-working-with-documents_88135-1287.jpg",
-    "https://img.resized.co/siliconrepublic/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5zaWxpY29ucmVwdWJsaWMuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE5XFxcLzA0XFxcL0Fkb2JlU3RvY2tfMTQ3MDYyMTQwLmpwZWdcIixcIndpZHRoXCI6MTEwMCxcImhlaWdodFwiOjYwMCxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LnNpbGljb25yZXB1YmxpYy5jb21cXFwvd3AtY29udGVudFxcXC91cGxvYWRzXFxcLzIwMTRcXFwvMTJcXFwvMjAxMzAyXFxcL3B1enpsZS5qcGdcIixcIm9wdGlvbnNcIjpbXX0iLCJoYXNoIjoiZWU0YTQzNTk4NjdjZWU1Y2QwZDNmNmQ4YmYxZDI4MGNmNjViMmNkZCJ9/adobestock-147062140.jpeg",
-    "https://image.freepik.com/free-photo/young-man-sitting-computer-desk-office-working-with-documents_88135-1287.jpg",
-    "https://img.resized.co/siliconrepublic/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5zaWxpY29ucmVwdWJsaWMuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE5XFxcLzA0XFxcL0Fkb2JlU3RvY2tfMTQ3MDYyMTQwLmpwZWdcIixcIndpZHRoXCI6MTEwMCxcImhlaWdodFwiOjYwMCxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LnNpbGljb25yZXB1YmxpYy5jb21cXFwvd3AtY29udGVudFxcXC91cGxvYWRzXFxcLzIwMTRcXFwvMTJcXFwvMjAxMzAyXFxcL3B1enpsZS5qcGdcIixcIm9wdGlvbnNcIjpbXX0iLCJoYXNoIjoiZWU0YTQzNTk4NjdjZWU1Y2QwZDNmNmQ4YmYxZDI4MGNmNjViMmNkZCJ9/adobestock-147062140.jpeg",
-  ]
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 320 : 380
-      scrollContainerRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" })
-    }
-  }
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 320 : 380
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" })
-    }
-  }
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
 
   return (
-    <section className=" w-full pt-24 lg:pt-32 mx-auto px-4 md:px-16 lg:px-24  py-8 sm:py-12 lg:py-16 md:h-screen">
-      <div className="inline-block mb-4 sm:mb-6">
-        <span className="bg-gray-200 text-gray-600 px-3 py-1 sm:px-4 sm:py-1 rounded-full text-xs sm:text-sm">
-          About
-        </span>
+    <section ref={sectionRef} className="relative w-full h-[420px] overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/images/work-banner.png"
+          alt="Wavy background"
+          fill
+          priority
+          className="object-cover"
+        />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-8 sm:mb-10 lg:mb-12">
-        <div>
-          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight ${poppins.className}`}>
-            We build brands that move with purpose.
-          </h2>
-        </div>
+      {/* Content Container */}
+      <div className="relative z-10 container mx-auto h-full flex items-center">
+        <div className="w-full flex flex-col md:flex-row items-center justify-between">
+          {/* Left side - Text */}
+          <div className="md:w-1/2 px-4 md:px-0 text-center md:text-left mb-8 md:mb-0">
+            <h1 className={`text-4xl md:text-5xl pl-0  lg:pl-20 lg:text-[48px] font-medium text-black leading-tight ${poppins.className}`}>
+              Work that speaks louder
+              <br />
+              than words.
+            </h1>
+          </div>
 
-        <div className="space-y-4 sm:space-y-6">
-          <p className="text-gray-600 text-sm sm:text-base">
-            Brandbik is a creative agency crafting modern brands, digital experiences, and growth strategies for the
-            ambitious.
-          </p>
+          {/* Right side - Sphere and Stats */}
+          <div className="md:w-1/2 flex justify-center md:justify-end">
+            {/* Stats */}
+            <motion.div 
+              initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
+              animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute sm:bottom-[55%] sm:right-[2%] z-20"
+            >
+              <div className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl  px-4 sm:px-6 py-2   border border-gray-300 shadow-lg flex justify-center items-center gap-2">
+                <div className={`text-2xl lg:text-[32px] text-gray-700 font-semibold ${onest.className}`}>14+</div>
+                <div className={`text-gray-600 sm:text-[20px] font-extralight ${poppins.className}`}>Countries</div>
+              </div>
+            </motion.div>
 
-          <p className="text-gray-600 text-sm sm:text-base">
-            From early-stage startups to global companies, we design stories that connect — and endure.
-          </p>
-        </div>
-      </div>
+            <motion.div 
+              initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
+              animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="absolute  sm:bottom-[11%] sm:right-[16%] z-20"
+            >
+              <div className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl  px-4 sm:px-6 py-2  border border-gray-300 shadow-lg flex justify-center items-center gap-2">
+                <div className={`text-2xl lg:text-[32px] text-gray-700 font-semibold ${onest.className}`}>1000+</div>
+                <div className={`text-gray-600 sm:text-[20px] font-extralight ${poppins.className}`}>Projects</div>
+              </div>
+            </motion.div>
 
-      <div className="relative pt-6">
-        <div className="overflow-hidden">
-          <div
-            className="flex space-x-3 sm:space-x-4 overflow-x-auto scrollbar-hide scroll-smooth pb-2"
-            style={{ scrollBehavior: "smooth" }}
-            ref={scrollContainerRef}
-          >
-            {images.map((src, index) => (
-              <div
-                key={index}
-                className="flex-none w-[250px] sm:w-[320px] md:w-[480px] aspect-[4/3] rounded-sm overflow-hidden"
+            {/* Sphere Container */}
+            <div className="w-full h-full">
+              {/* Main Sphere */}
+              <motion.div 
+                initial={{ opacity: 0, x: "100%", y: "100%", scale: 0 }}
+                animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+                transition={{ 
+                  duration: 2,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+className="
+  absolute bottom-[-500px] left-1/2 transform -translate-x-1/2
+  sm:bottom-[-350px] sm:left-auto sm:right-[-300px] sm:translate-x-0 sm:transform-none
+  w-[820px] h-[820px] md:w-[800px] md:h-[800px]
+"
               >
                 <Image
-                  src={src || "/placeholder.svg"}
-                  alt={`Team member ${index + 1}`}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                  src="/images/about-shape.png"
+                  alt="3D Sphere"
+                  fill
+                  className="object-contain"
                 />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between mt-4 sm:mt-6">
-          <div className="flex items-center space-x-2">
-            <p className="text-gray-600 text-sm sm:text-base">Our team in action</p>
-            <div className="flex items-center space-x-1">
-              <button
-                onClick={scrollLeft}
-                className="p-1 rounded-full hover:bg-gray-100 transition-colors touch-manipulation"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-              <button
-                onClick={scrollRight}
-                className="p-1 rounded-full hover:bg-gray-100 transition-colors touch-manipulation"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
+              </motion.div>
             </div>
           </div>
         </div>

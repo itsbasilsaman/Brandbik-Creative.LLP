@@ -1,18 +1,15 @@
-import AboutBoxes from "@/components/aboutBoxes";
-import ApproachSection from "@/components/approachSection";
+ 
 import ClientReviews from "@/components/clientReview";
-import OurTeamSection from "@/components/ourTeamSection";
-import TeamDescription from "@/components/teamDescription";
 import WorkBanner from "@/components/workBanner";
+import WorkMain from "@/components/workMain";
+
+
 
 export default function Works() {
     return (
-        <div>
+        <div> 
             <WorkBanner/>
-            <TeamDescription/>
-            <AboutBoxes/>
-            <ApproachSection/>
-            <OurTeamSection/>
+            <WorkMain/>
             <ClientReviews/>
         </div>
     )
