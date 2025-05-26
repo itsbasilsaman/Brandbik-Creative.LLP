@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useRef } from "react"
+import { motion, useInView } from "framer-motion"
 
 import { Poppins } from 'next/font/google';
 
@@ -11,10 +12,25 @@ const poppins = Poppins({
   weight: '500', // Medium
 });
 
+// Add keyframes animation
+const cubeAnimation = `
+@keyframes slideInCube {
+  0% {
+    transform: translate(100%, 100%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+`;
+
 export default function ServiceMain() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
 
-
-    const bannerRef = useRef<HTMLDivElement>(null)
+  const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const banner = bannerRef.current
@@ -31,9 +47,9 @@ export default function ServiceMain() {
   }, [])
 
   return (
-    <section className="relative w-full min-h-[400px] flex flex-col justify-center sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px] overflow-hidden md:px-16 lg:px-24 pt-16">
+    <section ref={sectionRef} className="relative w-full min-h-[400px] flex flex-col justify-center sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px] overflow-hidden md:px-16 lg:px-24 pt-16">
       {/* Gradient background */}
-    <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full">
         {/* Two copies of the background for seamless looping */}
         <div
           ref={bannerRef}
@@ -48,7 +64,6 @@ export default function ServiceMain() {
               backgroundImage: `url('/images/service-banner.png')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-          
             }}
           />
           <div
@@ -62,11 +77,19 @@ export default function ServiceMain() {
         </div>
       </div>
 
-
       {/* 3D Cube decoration */}
-      <div className="cube-tilt absolute top-6 right-6 sm:top-8 sm:right-8 md:top-10 md:right-16 lg:top-20 lg:right-[-35px] w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-44 lg:h-44 z-10">
-        <Image src="/images/service-cube.png" alt="Decorative cube" width={196} height={196} className="w-full h-full" />
-      </div>
+      <style jsx global>{cubeAnimation}</style>
+      <motion.div 
+        initial={{ opacity: 0, x: "100%", y: "100%", scale: 0 }}
+        animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+        transition={{ 
+          duration: 1.5,
+          ease: [0.16, 1, 0.3, 1]
+        }}
+        className="absolute bottom-[-30px] right-[-40px] sm:bottom-8 sm:right-8 md:bottom-10 md:right-16 lg:bottom-[-60px] lg:right-[-60px] w-48 h-48 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-[380px] lg:h-[380px] z-10"
+      >
+        <Image src="/images/service-cube.png" alt="Decorative cube" width={296} height={296} className="w-full h-full" />
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">

@@ -96,7 +96,7 @@ export default function BottomBar() {
     <div className="w-full   primary-background  h-full  " ref={containerRef}>
       {/* Services Marquee Section */}
       <div 
-        className="relative   z-50 py-6 md:py-8 w-full rotate-3 mt-8 md:-mt-10"
+        className="relative   z-10 py-6 md:py-8 w-full rotate-3 mt-8 md:-mt-10"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >

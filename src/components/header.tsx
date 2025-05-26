@@ -122,7 +122,7 @@ export default function Header() {
         <div className="flex-shrink-0">
           <button
             onClick={() => setIsPanelOpen(true)}
-            className={`inline-flex items-center gap-2 ${
+            className={`inline-flex items-center gap-2 cursor-pointer ${
               isScrolled 
                 ? "bg-gray-800 hover:bg-gray-700" 
                 : "bg-white/30 hover:bg-white/40"
@@ -210,6 +210,18 @@ export default function Header() {
                 </div>
               </div>
             </nav>
+
+            {/* Connect Us Button */}
+            <div className="p-6  ">
+            <Link 
+  href="/contact" 
+  onClick={() => setIsPanelOpen(false)}
+  className="relative block w-full text-white text-center py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl before:absolute before:inset-0 before:rounded-lg before:z-[-1] before:bg-gradient-to-r before:from-[#2C6BD8] before:to-[#08E6D5] before:content-['']"
+>
+  Connect Us
+</Link>
+
+            </div>
           </div>
         </div>
       </div>

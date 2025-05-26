@@ -161,14 +161,12 @@ export default function WorkMain() {
                     transform: 'translate(-50%, -50%)'
                   }}
                 >
-                  <div
-                    className="flex items-center justify-center w-[50px] md:w-[60px] h-[50px] md:h-[60px] gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full"
-                    style={{
-                      background: "linear-gradient(to bottom right, #1F2937, #374151)",
-                    }}
-                  >
-                    <span className={`text-white text-xs md:text-sm font-light ${poppins.className}`}>View</span>
-                  </div>
+                <div
+  className="flex items-center justify-center w-[50px] md:w-[60px] h-[50px] md:h-[60px] gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full backdrop-blur-md bg-white/20"
+>
+  <span className={`text-white text-xs md:text-sm font-light ${poppins.className}`}>View</span>
+</div>
+
                 </div>
               )}
             </div>

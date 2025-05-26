@@ -97,6 +97,16 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(10px)" },
         },
+        "slideInCube": {
+          "0%": { 
+            transform: "translate(200%, 200%)",
+            opacity: "0"
+          },
+          "100%": { 
+            transform: "translate(0, 0)",
+            opacity: "1"
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +114,7 @@ const config: Config = {
         "slow-spin": "slow-spin 20s linear infinite",
         "floating-up": "floating-up 4s ease-in-out infinite",
         "floating-down": "floating-down 4s ease-in-out infinite",
+        "slideInCube": "slideInCube 1s ease-out forwards",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
