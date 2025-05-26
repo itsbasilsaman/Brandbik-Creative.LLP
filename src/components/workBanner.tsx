@@ -1,10 +1,11 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import Image from "next/image"
 import { Poppins } from 'next/font/google';
 import { Onest } from 'next/font/google'
 import { motion, useInView } from "framer-motion"
+import { useState } from "react"
 
 const onest = Onest({
   subsets: ['latin'],

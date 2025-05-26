@@ -28,7 +28,7 @@ export default function WorkMain() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, projectId: number) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     setMousePosition({
       x: e.clientX - rect.left,
@@ -141,7 +141,7 @@ export default function WorkMain() {
           <div key={project.id} className="project-card sm:mb-4 border border-gray-200 cursor-pointer">
             <div 
               className="mb-3 md:mb-4 overflow-hidden relative"
-              onMouseMove={(e) => handleMouseMove(e, project.id)}
+              onMouseMove={handleMouseMove}
               onMouseEnter={() => setHoveredProjectId(project.id)}
               onMouseLeave={() => setHoveredProjectId(null)}
             >

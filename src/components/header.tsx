@@ -11,6 +11,8 @@ export default function Header() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState("")
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,6 +42,10 @@ export default function Header() {
   useEffect(() => {
     setIsLoading(false);
   }, [pathname]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
     <header
