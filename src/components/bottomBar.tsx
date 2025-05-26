@@ -92,16 +92,15 @@ export default function BottomBar() {
   
 
   return (
-    <div className="w-full  h-full overflow-x-hidden" ref={containerRef}>
-     
 
+    <div className="w-full   primary-background  h-full  " ref={containerRef}>
       {/* Services Marquee Section */}
       <div 
-        className="relative overflow-hidden z-50 py-6 md:py-8 w-full rotate-3 mt-8 md:mt-12"
+        className="relative   z-50 py-6 md:py-8 w-full rotate-3 mt-8 md:-mt-10"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="absolute inset-0  bg-gradient-to-r from-teal-800 to-blue-900 z-0"></div>
+        <div className="absolute inset-0 top-[-10px]    bg-gradient-to-r from-teal-800 to-blue-900 z-0"></div>
         <div className="mx-auto px-4 relative z-10 overflow-hidden">
           <div 
             className="flex w-max"
