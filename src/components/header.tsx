@@ -185,29 +185,33 @@ export default function Header() {
             {/* Panel Navigation */}
             <nav className="flex-1 p-6">
               <div className="space-y-8">
-                <div className="py-4 border-b border-gray-200">
                   <Link href="/about" onClick={() => setIsPanelOpen(false)} className="text-xl text-gray-700 hover:text-black transition-colors">
+                  
+                <div className="py-4 border-b border-gray-200 w-full">
                     About
-                  </Link>
                 </div>
-
-                <div className="py-4 border-b border-gray-200">
+                  </Link> 
                   <Link href="/service" onClick={() => setIsPanelOpen(false)} className="text-xl text-gray-700 hover:text-black transition-colors">
+                
+                <div className="py-4 border-b border-gray-200 w-full">
                     Service
-                  </Link>
+                 
                 </div>
+                </Link>
 
-                <div className="py-4 border-b border-gray-200">
-                  <Link href="/works" onClick={() => setIsPanelOpen(false)} className="text-xl text-gray-700 hover:text-black transition-colors">
-                    Works
-                  </Link>
+                <Link href="/works" onClick={() => setIsPanelOpen(false)} className="text-xl text-gray-700 hover:text-black transition-colors">
+
+                <div className="py-4 border-b border-gray-200 w-full">
+                    Works         
                 </div>
+                </Link>
+                <Link href="/contact" onClick={() => setIsPanelOpen(false)} className="text-xl text-gray-700 hover:text-black transition-colors">
 
-                <div className="py-4 border-b border-gray-200">
-                  <Link href="/contact" onClick={() => setIsPanelOpen(false)} className="text-xl text-gray-700 hover:text-black transition-colors">
+                <div className="py-4 border-b border-gray-200 w-full">
                     Contact
-                  </Link>
                 </div>
+                
+                </Link>
               </div>
             </nav>
 
