@@ -11,8 +11,6 @@ export default function Header() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeLink, setActiveLink] = useState("")
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,19 +31,10 @@ export default function Header() {
   const isWorksPage = pathname === "/works";
   const isSpecialPage = isContactPage || isWorksPage;
 
-  const handleNavigation = (path: string) => {
-    setIsLoading(true);
-    router.push(path);
-  };
-
   // Reset loading state when pathname changes
   useEffect(() => {
     setIsLoading(false);
   }, [pathname]);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
 
   return (
     <header
