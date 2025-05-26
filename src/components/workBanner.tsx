@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import { Poppins } from 'next/font/google';
 import { Onest } from 'next/font/google'
@@ -21,6 +21,28 @@ const poppins = Poppins({
 export default function WorkBanner() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+  const [isMobile, setIsMobile] = useState(false)
+  const [showFirst, setShowFirst] = useState(true)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    const interval = setInterval(() => {
+      if (isMobile) {
+        setShowFirst(prev => !prev)
+      }
+    }, 1500)
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      clearInterval(interval)
+    }
+  }, [isMobile])
 
   return (
     <section ref={sectionRef} className="relative w-full h-[420px] overflow-hidden">
@@ -50,29 +72,55 @@ export default function WorkBanner() {
           {/* Right side - Sphere and Stats */}
           <div className="md:w-1/2 flex justify-center md:justify-end">
             {/* Stats */}
-            <motion.div 
-              initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
-              animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute sm:bottom-[55%] sm:right-[2%] z-20"
-            >
-              <div className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl  px-4 sm:px-6 py-2   border border-gray-300 shadow-lg flex justify-center items-center gap-2">
-                <div className={`text-2xl lg:text-[32px] text-gray-700 font-semibold ${onest.className}`}>14+</div>
-                <div className={`text-gray-600 sm:text-[20px] font-extralight ${poppins.className}`}>Countries</div>
-              </div>
-            </motion.div>
+            <div className="absolute sm:bottom-[55%] sm:right-[2%] z-20">
+              <motion.div 
+                initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
+                animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl px-4 sm:px-6 py-2 border border-gray-300 shadow-lg flex justify-center items-center gap-2 w-[140px]"
+              >
+                <motion.div
+                  key={showFirst ? "countries" : "projects"}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex justify-center items-center gap-2"
+                >
+                  <div className={`text-2xl lg:text-[32px] text-gray-700 font-semibold ${onest.className}`}>
+                    {isMobile ? (showFirst ? "14+" : "1000+") : "14+"}
+                  </div>
+                  <div className={`text-gray-600 sm:text-[20px] font-extralight ${poppins.className}`}>
+                    {isMobile ? (showFirst ? "Countries" : "Projects") : "Countries"}
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
-              animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="absolute  sm:bottom-[11%] sm:right-[16%] z-20"
-            >
-              <div className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl  px-4 sm:px-6 py-2  border border-gray-300 shadow-lg flex justify-center items-center gap-2">
-                <div className={`text-2xl lg:text-[32px] text-gray-700 font-semibold ${onest.className}`}>1000+</div>
-                <div className={`text-gray-600 sm:text-[20px] font-extralight ${poppins.className}`}>Projects</div>
-              </div>
-            </motion.div>
+            <div className="absolute sm:bottom-[11%] sm:right-[16%] z-20">
+              <motion.div 
+                initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
+                animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl px-4 sm:px-6 py-2 border border-gray-300 shadow-lg flex justify-center items-center gap-2 min-w-[140px]"
+              >
+                <motion.div
+                  key={showFirst ? "projects" : "countries"}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex justify-center items-center gap-2"
+                >
+                  <div className={`text-2xl lg:text-[32px] text-gray-700 font-semibold ${onest.className}`}>
+                    {isMobile ? (showFirst ? "1000+" : "14+") : "1000+"}
+                  </div>
+                  <div className={`text-gray-600 sm:text-[20px] font-extralight ${poppins.className}`}>
+                    {isMobile ? (showFirst ? "Projects" : "Countries") : "Projects"}
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
 
             {/* Sphere Container */}
             <div className="w-full h-full">
@@ -84,7 +132,7 @@ export default function WorkBanner() {
                   duration: 2,
                   ease: [0.16, 1, 0.3, 1]
                 }}
-className="
+        className="
   absolute bottom-[-500px] left-1/2 transform -translate-x-1/2
   sm:bottom-[-350px] sm:left-auto sm:right-[-300px] sm:translate-x-0 sm:transform-none
   w-[820px] h-[820px] md:w-[800px] md:h-[800px]
