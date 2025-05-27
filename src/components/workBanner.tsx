@@ -77,7 +77,7 @@ export default function WorkBanner() {
                 initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
                 animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl px-4 sm:px-6 py-2 border border-gray-300 shadow-lg flex justify-center items-center gap-2 w-[140px]"
+                className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl px-4 sm:px-6 py-2 border border-gray-300 shadow-lg flex justify-center items-center gap-2 w-[190px]"
               >
                 <motion.div
                   key={showFirst ? "countries" : "projects"}
@@ -102,7 +102,7 @@ export default function WorkBanner() {
                 initial={{ opacity: 0, x: "100%", y: "100%", scale: 0.5 }}
                 animate={isInView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl px-4 sm:px-6 py-2 border border-gray-300 shadow-lg flex justify-center items-center gap-2 min-w-[140px]"
+                className="bg-white/20 backdrop-blur-sm rounded-[9px] sm:rounded-xl px-4 sm:px-6 py-2 border border-gray-300 shadow-lg flex justify-center items-center gap-2  w-[210px]"
               >
                 <motion.div
                   key={showFirst ? "projects" : "countries"}

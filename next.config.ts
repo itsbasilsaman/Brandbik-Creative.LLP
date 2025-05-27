@@ -7,8 +7,12 @@ const nextConfig: NextConfig = {
       'images.news9live.com',
       'wallpapercave.com',
       'm.economictimes.com',
-      'wallup.net' // 👈 Add this one too
+       'clipart-library.com',
+      'static.vecteezy.com',
+      'wallup.net',
+       // 👈 Add this one too
     ],
+    
     remotePatterns: [
       {
         protocol: 'https',

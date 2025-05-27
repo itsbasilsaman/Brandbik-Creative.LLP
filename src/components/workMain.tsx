@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 // Define project categories
-type Category = "website" | "app" | "branding" | "social" | "advertising"
+type Category = "website" | "app" | "branding" | "social" | "digital-marketing"
 
 // Define project interface
 interface Project {
@@ -39,59 +39,196 @@ export default function WorkMain() {
   // Sample project data for all categories
   const allProjects: Project[] = [
     // Website Development Projects
-    ...Array(9)
-      .fill(null)
-      .map((_, i) => ({
-        id: i + 1,
-        title: "Gamegate",
-        description: "Gamegate is high-performance, feature-rich platform designed for esports gaming.",
-        image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
-        category: "website" as Category,
-      })),
+    {
+      id: 1,
+      title: "Tenderoutes",
+      description: "Tenderoutes is a Kerala-based travel agency specializing in personalized travel experiences across India and international destinations.",
+      image: "/images/game-gate.png",
+      category: "website",
+    },
+    {
+      id: 2,
+      title: "Scitor Academy",
+      description: "Scitor Academy is a skill-based institute offering courses in digital marketing, development, design, and AI to prepare students for tech careers.",
+      image: "/images/scitor-academy.jpg",
+      category: "website",
+    },
+    {
+      id: 3,
+      title: "AES School of commerce",
+      description: "AE's School of Commerce is a premier accounting institute located in Perinthalmanna, Malappuram, Kerala.",
+      image: "/images/aes-school-of-commerce.jpg",
+      category: "website",
+    },
+    {
+      id: 4,
+      title: "TeamAE",
+      description: "Team AE is a business consultancy firm based in Perinthalmanna, Kerala, offering services in taxation, auditing, and strategic planning.",
+      image: "/images/team-ae.jpg",
+      category: "website",
+    },
+    {
+      id: 5,
+      title: "Galaxy Paints",
+      description: "Galaxy Paints is a premium paint manufacturer based in Pune, India, offering eco-friendly and durable interior and exterior paints",
+      image: "/images/galaxey-paints.jpg",
+      category: "website",
+    },
+    {
+      id: 6,
+      title: "Zayior",
+      description: "Zayior Resort is a luxury nature retreat nestled in the scenic village of Kakkadampoyil, Kerala, near Kozhikode.",
+      image: "/images/aes-school-of-commerce.jpg",
+      category: "website",
+    },
+     {
+      id: 7,
+      title: "Gamegate",
+      description: "High-performance esports gaming platform with real-time tournaments and streaming capabilities.",
+      image: "/images/game-gate.png",
+      category: "website",
+    },
 
     // App Development Projects
-    ...Array(6)
-      .fill(null)
-      .map((_, i) => ({
-        id: 100 + i,
-        title: "FitTrack",
-        description: "Mobile fitness application with workout tracking and nutrition planning features.",
-        image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
-        category: "app" as Category,
-      })),
+    {
+      id: 101,
+      title: "FitTrack",
+      description: "Mobile fitness application with workout tracking and nutrition planning features.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "app",
+    },
+    {
+      id: 102,
+      title: "MediCare",
+      description: "Healthcare app for appointment scheduling and telemedicine consultations.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "app",
+    },
+    {
+      id: 103,
+      title: "TravelBuddy",
+      description: "Travel planning app with itinerary management and local recommendations.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "app",
+    },
 
     // Branding Projects
-    ...Array(4)
-      .fill(null)
-      .map((_, i) => ({
-        id: 200 + i,
-        title: "EcoSmart",
-        description: "Complete brand identity for sustainable products company including logo and guidelines.",
-        image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
-        category: "branding" as Category,
-      })),
+    {
+      id: 201,
+      title: "EcoSmart",
+      description: "Complete brand identity for sustainable products company including logo and guidelines.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "branding",
+    },
+    {
+      id: 202,
+      title: "TechFlow",
+      description: "Modern tech startup branding with minimalist design and dynamic visual elements.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "branding",
+    },
+    {
+      id: 203,
+      title: "UrbanBite",
+      description: "Restaurant chain rebranding with contemporary urban aesthetic and food photography.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "branding",
+    },
 
     // Social Media Projects
-    ...Array(5)
-      .fill(null)
-      .map((_, i) => ({
-        id: 300 + i,
-        title: "TrendWave",
-        description: "Social media campaign strategy and content creation for fashion retailer.",
-        image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
-        category: "social" as Category,
-      })),
+    {
+      id: 301,
+      title: "TrendWave",
+      description: "Social media campaign strategy and content creation for fashion retailer.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "social",
+    },
+    {
+      id: 302,
+      title: "FoodieGram",
+      description: "Instagram campaign for gourmet food delivery service with influencer partnerships.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "social",
+    },
+    {
+      id: 303,
+      title: "TechTalk",
+      description: "LinkedIn content strategy for B2B tech company with thought leadership articles.",
+      image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
+      category: "social",
+    },
 
     // Advertising Projects
-    ...Array(3)
-      .fill(null)
-      .map((_, i) => ({
-        id: 400 + i,
-        title: "GourmetDelight",
-        description: "Digital advertising campaign for premium food delivery service with measurable ROI.",
-        image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
-        category: "advertising" as Category,
-      })),
+    {
+      id: 401,
+      title: "AES School of commerce",
+      description: "AE's School of Commerce is a premier accounting institute located in Perinthalmanna, Malappuram, Kerala.",
+      image: "/images/Digital-Marketing/aes-min.jpg",
+      category: "digital-marketing",
+    },
+    {
+      id: 402,
+      title: "Chef Pillai",
+      description: "Chef Pillai offering traditional Kerala dishes with a modern twist ",
+      image: "/images/Digital-Marketing/chef-pillai.jpg",
+      category: "digital-marketing",
+    },
+    {
+      id: 403,
+      title: "Get Your Dubai Visa",
+      description: " Get Your Dubai Visa is a travel service provider specializing in facilitating Dubai visa applications for Indian travelers",
+      image: "/images/Digital-Marketing/dubai-min.jpg",
+      category: "digital-marketing",
+    },
+     {
+      id: 404,
+      title: "Galaxon Max",
+      description: "Galaxon Max is a construction solutions company based in Kerala, India, specializing in the exhibition, distribution, marketing, and retail of building materials, paints, varnishes, and adhesives used in construction.",
+      image: "/images/Digital-Marketing/galaxy-min.jpg",
+      category: "digital-marketing",
+    },
+    {
+      id: 405,
+      title: "Green Door Organics",
+      description: "Green Door Organics is an organic food company based in Kozhikode, Kerala, committed to promoting healthy living through natural and chemical-free products",
+      image: "/images/Digital-Marketing/chef-pillai.jpg",
+      category: "digital-marketing",
+    },
+    {
+      id: 406,
+      title: "INDOARAB",
+      description: "INDOARAB company specializes in the manufacture of perfumes and chemical products.",
+      image: "/images/Digital-Marketing/indo-min.jpg",
+      category: "digital-marketing",
+    },
+     {
+      id: 407,
+      title: "Tenderoutes",
+      description: "Tenderoutes is a Kerala-based travel agency specializing in personalized travel experiences across India and international destinations.",
+      image: "/images/Digital-Marketing/tenderoutes-min.jpg",
+      category: "digital-marketing",
+    },
+    {
+      id: 408,
+      title: "Ventes",
+      description: "Ventes is a Kerala-based brand specializing in frozen fruit products, including tender coconut pulp.",
+      image: "/images/Digital-Marketing/chef-pillai.jpg",
+      category: "digital-marketing",
+    },
+    {
+      id: 409,
+      title: "We Only Wheels",
+      description: "We Only Wheels is a Kerala-based automotive accessories brand specializing in alloy wheels for cars and motorcycles.",
+      image: "/images/Digital-Marketing/we-only-wheels.jpg",
+      category: "digital-marketing",
+    },
+      {
+      id: 410,
+      title: "Baba Ganoush",
+      description: "Baba Ganoush is a creamy Middle Eastern dip made from roasted eggplant, tahini, olive oil, lemon juice, and garlic.",
+      image: "/images/Digital-Marketing/baba-ganoush.jpg",
+      category: "digital-marketing",
+    },
   ]
 
   // Filter projects by active category
@@ -103,7 +240,7 @@ export default function WorkMain() {
     { id: "app", label: "App Development", count: allProjects.filter((p) => p.category === "app").length },
     { id: "branding", label: "Branding", count: allProjects.filter((p) => p.category === "branding").length },
     { id: "social", label: "Social Media", count: allProjects.filter((p) => p.category === "social").length },
-    { id: "advertising", label: "Advertising", count: allProjects.filter((p) => p.category === "advertising").length },
+    { id: "digital-marketing", label: "Digital Marketing", count: allProjects.filter((p) => p.category === "digital-marketing").length },
   ]
 
   return (
