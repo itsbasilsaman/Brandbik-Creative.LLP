@@ -1,18 +1,18 @@
 import React from 'react';
-import WebDevServicesAccordion from "@/components/WebDevServicesAccordion";
+import SocialMediaBanner from "@/components/socialMediaBanner";
+import SocialMediaServicesAccordion from "@/components/SocialMediaServicesAccordion";
 import ProcessSection from '@/components/processSection';
 import RelatedWorks from '@/components/relatedWorks';
-import WebDevelopmentBanner from '@/components/webDevelopmentBanner';
 import FaqAccordion from '@/components/faqAccordion';
-export default function WebDevelopment() {
+
+export default function SocialMedia() {
   return (
-    
     <div>
-      <WebDevelopmentBanner/>
-      <WebDevServicesAccordion />
+      <SocialMediaBanner/>
+      <SocialMediaServicesAccordion />
       <ProcessSection/>
       <RelatedWorks/>
       <FaqAccordion/>
     </div>
   );
-} 
+}

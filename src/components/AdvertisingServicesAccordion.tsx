@@ -12,43 +12,49 @@ const poppins = Poppins({
 
 const services = [
   {
-    title: "E-commerce Website Design",
+    title: "Digital Advertising",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We create and manage comprehensive digital advertising campaigns across multiple platforms including Google Ads, social media, and programmatic advertising. Our data-driven approach ensures optimal ROI and campaign performance.",
+    image: "/images/advertising/digital.jpg",
   },
   {
-    title: "Applications & Dashboard",
+    title: "Print & Outdoor Advertising",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "From billboards to magazine ads, we design and execute impactful print and outdoor advertising campaigns that capture attention and drive engagement. We handle everything from creative design to media placement.",
+    image: "/images/advertising/print.jpg",
   },
   {
-    title: "Custom Website Design",
+    title: "Social Media Advertising",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We develop targeted social media advertising strategies across platforms like Facebook, Instagram, LinkedIn, and Twitter. Our campaigns are designed to increase brand awareness, drive engagement, and generate leads.",
+    image: "/images/advertising/social.jpg",
   },
   {
-    title: "Redesign and Website Revamp",
+    title: "Video Advertising",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We create compelling video advertisements for TV, online platforms, and social media. Our video content is designed to tell your brand story and engage your audience through visual storytelling.",
+    image: "/images/advertising/video.jpg",
+  },
+  {
+    title: "Performance Marketing",
+    content:
+      "We implement performance-based marketing strategies that focus on measurable results. Our approach includes conversion rate optimization, A/B testing, and continuous campaign optimization to maximize ROI.",
+    image: "/images/advertising/performance.jpg",
   },
 ]
 
-export default function WebDevServicesAccordion() {
-  const [openIndex, setOpenIndex] = useState<number>(-1) // Custom Website Design open by default
+export default function AdvertisingServicesAccordion() {
+  const [openIndex, setOpenIndex] = useState<number>(-1)
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
   return (
     <div className="w-full px-5 md:px-16 lg:px-24 py-16 lg:py-24">
       <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 ${poppins.className}`}>
-        Web Development Services We Offer
+        Advertising Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling.
-        Whether you&apos;re launching, evolving, or scaling — we help you stand out with purpose.
+        At Brandbik, our Advertising services are designed to maximize your brand's reach and impact. 
+        From digital to traditional media, we create strategic advertising campaigns that drive results and deliver measurable ROI.
       </p>
 
       <div className="border-b border-gray-200 overflow-visible">
@@ -83,12 +89,12 @@ export default function WebDevServicesAccordion() {
                 </div>
 
                 {/* Tablet Image */}
-                <div className="relative w-40 h-28 hidden sm:block md:hidden">
+                <div className="relative w-40 h-24 hidden sm:block md:hidden">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="160px"
                   />
                 </div>
@@ -99,7 +105,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="192px"
                   />
                 </div>
@@ -110,7 +116,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="224px"
                   />
                 </div>
@@ -130,4 +136,4 @@ export default function WebDevServicesAccordion() {
       </div>
     </div>
   )
-}
+} 

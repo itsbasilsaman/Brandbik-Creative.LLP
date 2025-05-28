@@ -12,43 +12,43 @@ const poppins = Poppins({
 
 const services = [
   {
-    title: "E-commerce Website Design",
+    title: "Native App Development",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We develop high-performance native applications for iOS and Android platforms using Swift, Kotlin, and Java, ensuring optimal performance and platform-specific features.",
+    image: "/images/app-dev/native-app.jpg",
   },
   {
-    title: "Applications & Dashboard",
+    title: "Cross-Platform Development",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Using React Native and Flutter, we create cross-platform applications that work seamlessly across iOS and Android while maintaining native-like performance and user experience.",
+    image: "/images/app-dev/cross-platform.jpg",
   },
   {
-    title: "Custom Website Design",
+    title: "UI/UX Design",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Our expert designers create intuitive and engaging user interfaces that enhance user experience and drive engagement, following the latest design trends and best practices.",
+    image: "/images/app-dev/ui-ux.jpg",
   },
   {
-    title: "Redesign and Website Revamp",
+    title: "App Maintenance & Support",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We provide comprehensive maintenance and support services to ensure your app stays up-to-date, secure, and performs optimally across all devices and platforms.",
+    image: "/images/app-dev/maintenance.jpg",
   },
 ]
 
-export default function WebDevServicesAccordion() {
-  const [openIndex, setOpenIndex] = useState<number>(-1) // Custom Website Design open by default
+export default function AppDevServicesAccordion() {
+  const [openIndex, setOpenIndex] = useState<number>(-1)
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
   return (
     <div className="w-full px-5 md:px-16 lg:px-24 py-16 lg:py-24">
       <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 ${poppins.className}`}>
-        Web Development Services We Offer
+        App Development Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling.
-        Whether you&apos;re launching, evolving, or scaling — we help you stand out with purpose.
+        At Brandbik, our App Development services are designed to transform your ideas into powerful mobile applications. 
+        From native to cross-platform solutions, we deliver high-performance apps that drive business growth.
       </p>
 
       <div className="border-b border-gray-200 overflow-visible">
@@ -83,12 +83,12 @@ export default function WebDevServicesAccordion() {
                 </div>
 
                 {/* Tablet Image */}
-                <div className="relative w-40 h-28 hidden sm:block md:hidden">
+                <div className="relative w-40 h-24 hidden sm:block md:hidden">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="160px"
                   />
                 </div>
@@ -99,7 +99,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="192px"
                   />
                 </div>
@@ -110,7 +110,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="224px"
                   />
                 </div>
@@ -130,4 +130,4 @@ export default function WebDevServicesAccordion() {
       </div>
     </div>
   )
-}
+} 

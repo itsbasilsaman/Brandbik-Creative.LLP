@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Poppins } from 'next/font/google';
 import { motion } from "framer-motion"
+import { memo } from "react"
 
 const poppins = Poppins({
   weight: '500',
@@ -34,93 +35,149 @@ interface HighlightSet {
   transition: TransitionType
 }
 
+// Memoize the animation variants
+const animationVariants: Record<AnimationType, AnimationVariant> = {
+  fade: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
+  },
+  scale: {
+    initial: { scale: 0.8 },
+    animate: { scale: 1 },
+    exit: { scale: 0.8 }
+  },
+  slide: {
+    initial: { x: -20 },
+    animate: { x: 0 },
+    exit: { x: 20 }
+  },
+  bounce: {
+    initial: { y: 0 },
+    animate: { 
+      y: [-10, 0, -5, 0]
+    },
+    exit: { y: 0 }
+  },
+  rotate3d: {
+    initial: { 
+      rotateX: 10,
+      rotateY: 10,
+      scale: 0.8,
+      opacity: 0
+    },
+    animate: { 
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+      opacity: 1
+    },
+    exit: { 
+      rotateX: -10,
+      rotateY: -10,
+      scale: 0.8,
+      opacity: 0
+    }
+  }
+};
+
+// Memoize the transitions
+const transitions: Record<TransitionType, Transition> = {
+  spring: {
+    type: "spring",
+    stiffness: 100,
+    damping: 10
+  },
+  tween: {
+    type: "tween",
+    duration: 0.5,
+    ease: "easeInOut"
+  },
+  bounce: {
+    type: "spring",
+    stiffness: 300,
+    damping: 10
+  }
+};
+
+// Memoize the highlighted sets
+const highlightedSets: HighlightSet[] = [
+  { 
+    words: ["cross-disciplinary", "strategists", "designers"], 
+    color: "text-teal-400",
+    animation: "rotate3d",
+    transition: "spring"
+  },
+  { 
+    words: ["developers", "storytellers", "belief"], 
+    color: "text-blue-400",
+    animation: "rotate3d",
+    transition: "tween"
+  },
+  { 
+    words: ["design", "business", "together"], 
+    color: "text-purple-400",
+    animation: "rotate3d",
+    transition: "bounce"
+  }
+];
+
+interface AnimatedWordProps {
+  word: string;
+  isHighlighted: boolean;
+  currentSet: HighlightSet;
+  index: number;
+  onPauseToggle: () => void;
+}
+
+// Memoized Word Component
+const AnimatedWord = memo(({ 
+  word, 
+  isHighlighted, 
+  currentSet, 
+  index,
+  onPauseToggle
+}: AnimatedWordProps) => {
+  const handleClick = useCallback(() => {
+    if (isHighlighted) {
+      onPauseToggle();
+    }
+  }, [isHighlighted, onPauseToggle]);
+
+  return (
+    <motion.span
+      key={index}
+      initial={isHighlighted ? animationVariants[currentSet.animation].initial : {}}
+      animate={isHighlighted ? animationVariants[currentSet.animation].animate : {}}
+      exit={isHighlighted ? animationVariants[currentSet.animation].exit : {}}
+      transition={isHighlighted ? transitions[currentSet.transition] : {}}
+      className={`inline-block ${isHighlighted ? currentSet.color : 'text-black'} ${index !== 0 ? 'ml-1' : ''}`}
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: "1000px"
+      }}
+      whileHover={isHighlighted ? {
+        scale: 1.1,
+        rotateX: 10,
+        rotateY: 10,
+        transition: { duration: 0.2 }
+      } : {}}
+      onClick={handleClick}
+    >
+      {word}
+    </motion.span>
+  );
+});
+
+AnimatedWord.displayName = 'AnimatedWord';
+
 export default function TeamDescription() {
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
 
-  const animationVariants: Record<AnimationType, AnimationVariant> = {
-    fade: {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 }
-    },
-    scale: {
-      initial: { scale: 0.8 },
-      animate: { scale: 1 },
-      exit: { scale: 0.8 }
-    },
-    slide: {
-      initial: { x: -20 },
-      animate: { x: 0 },
-      exit: { x: 20 }
-    },
-    bounce: {
-      initial: { y: 0 },
-      animate: { 
-        y: [-10, 0, -5, 0]
-      },
-      exit: { y: 0 }
-    },
-    rotate3d: {
-      initial: { 
-        rotateX: 10,
-        rotateY: 10,
-        scale: 0.8,
-        opacity: 0
-      },
-      animate: { 
-        rotateX: 0,
-        rotateY: 0,
-        scale: 1,
-        opacity: 1
-      },
-      exit: { 
-        rotateX: -10,
-        rotateY: -10,
-        scale: 0.8,
-        opacity: 0
-      }
-    }
-  }
-
-  const transitions: Record<TransitionType, Transition> = {
-    spring: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10
-    },
-    tween: {
-      type: "tween",
-      duration: 0.5,
-      ease: "easeInOut"
-    },
-    bounce: {
-      type: "spring",
-      stiffness: 300,
-      damping: 10
-    }
-  }
-
-  const highlightedSets: HighlightSet[] = [
-    { 
-      words: ["cross-disciplinary", "strategists", "designers"], 
-      color: "text-teal-400",
-      animation: "rotate3d",
-      transition: "spring"
-    },
-    { 
-      words: ["developers", "storytellers", "belief"], 
-      color: "text-blue-400",
-      animation: "rotate3d",
-      transition: "tween"
-    },
-    { 
-      words: ["design", "business", "together"], 
-      color: "text-purple-400",
-      animation: "rotate3d",
-      transition: "bounce"
-    }
-  ]
+  const handlePauseToggle = useCallback(() => {
+    setIsPaused(prev => !prev);
+  }, []);
 
   useEffect(() => {
     if (!isPaused) {
@@ -130,9 +187,9 @@ export default function TeamDescription() {
 
       return () => clearInterval(interval)
     }
-  }, [isPaused, highlightedSets.length])
+  }, [isPaused])
 
-  const renderText = () => {
+  const renderText = useCallback(() => {
     const text = "We're a cross-disciplinary team of strategists, designers, developers, and storytellers. What brings us together is a shared belief"
     const currentSet = highlightedSets[currentHighlightIndex]
     
@@ -142,34 +199,17 @@ export default function TeamDescription() {
       )
       
       return (
-        <motion.span
+        <AnimatedWord
           key={index}
-          initial={isHighlighted ? animationVariants[currentSet.animation].initial : {}}
-          animate={isHighlighted ? animationVariants[currentSet.animation].animate : {}}
-          exit={isHighlighted ? animationVariants[currentSet.animation].exit : {}}
-          transition={isHighlighted ? transitions[currentSet.transition] : {}}
-          className={`inline-block ${isHighlighted ? currentSet.color : 'text-black'} ${index !== 0 ? 'ml-1' : ''}`}
-          style={{
-            transformStyle: "preserve-3d",
-            perspective: "1000px"
-          }}
-          whileHover={isHighlighted ? {
-            scale: 1.1,
-            rotateX: 10,
-            rotateY: 10,
-            transition: { duration: 0.2 }
-          } : {}}
-          onClick={() => {
-            if (isHighlighted) {
-              setIsPaused(!isPaused)
-            }
-          }}
-        >
-          {word}
-        </motion.span>
+          word={word}
+          isHighlighted={isHighlighted}
+          currentSet={currentSet}
+          index={index}
+          onPauseToggle={handlePauseToggle}
+        />
       )
     })
-  }
+  }, [currentHighlightIndex, handlePauseToggle])
 
   return (
     <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24  py-12 pt-2  sm:py-12 md:py-24 md:pt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative">

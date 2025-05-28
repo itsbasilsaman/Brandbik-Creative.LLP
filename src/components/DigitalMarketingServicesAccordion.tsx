@@ -12,43 +12,49 @@ const poppins = Poppins({
 
 const services = [
   {
-    title: "E-commerce Website Design",
+    title: "Search Engine Optimization (SEO)",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We optimize your online presence to improve visibility in search results, driving organic traffic through strategic keyword optimization, content creation, and technical SEO improvements.",
+    image: "/images/digital-marketing/seo.jpg",
   },
   {
-    title: "Applications & Dashboard",
+    title: "Pay-Per-Click Advertising (PPC)",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Our targeted PPC campaigns maximize your ROI through strategic ad placement, keyword research, and continuous optimization across Google Ads, social media platforms, and other digital channels.",
+    image: "/images/digital-marketing/ppc.jpg",
   },
   {
-    title: "Custom Website Design",
+    title: "Content Marketing",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We create engaging, valuable content that resonates with your target audience, including blog posts, articles, infographics, and videos that drive engagement and establish your brand authority.",
+    image: "/images/digital-marketing/content.jpg",
   },
   {
-    title: "Redesign and Website Revamp",
+    title: "Social Media Marketing",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Our social media strategies build brand awareness and engagement through platform-specific content, community management, and targeted advertising campaigns across major social networks.",
+    image: "/images/digital-marketing/social.jpg",
+  },
+  {
+    title: "Email Marketing",
+    content:
+      "We develop effective email marketing campaigns that nurture leads, retain customers, and drive conversions through personalized content, automation, and strategic segmentation.",
+    image: "/images/digital-marketing/email.jpg",
   },
 ]
 
-export default function WebDevServicesAccordion() {
-  const [openIndex, setOpenIndex] = useState<number>(-1) // Custom Website Design open by default
+export default function DigitalMarketingServicesAccordion() {
+  const [openIndex, setOpenIndex] = useState<number>(-1)
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
   return (
     <div className="w-full px-5 md:px-16 lg:px-24 py-16 lg:py-24">
       <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 ${poppins.className}`}>
-        Web Development Services We Offer
+        Digital Marketing Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling.
-        Whether you&apos;re launching, evolving, or scaling — we help you stand out with purpose.
+        At Brandbik, our Digital Marketing services are designed to drive growth and maximize your online presence. 
+        From SEO to social media, we create data-driven strategies that deliver measurable results.
       </p>
 
       <div className="border-b border-gray-200 overflow-visible">
@@ -83,12 +89,12 @@ export default function WebDevServicesAccordion() {
                 </div>
 
                 {/* Tablet Image */}
-                <div className="relative w-40 h-28 hidden sm:block md:hidden">
+                <div className="relative w-40 h-24 hidden sm:block md:hidden">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="160px"
                   />
                 </div>
@@ -99,7 +105,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="192px"
                   />
                 </div>
@@ -110,7 +116,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="224px"
                   />
                 </div>
@@ -130,4 +136,4 @@ export default function WebDevServicesAccordion() {
       </div>
     </div>
   )
-}
+} 

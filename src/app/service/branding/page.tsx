@@ -1,18 +1,18 @@
 import React from 'react';
-import WebDevServicesAccordion from "@/components/WebDevServicesAccordion";
+import BrandingBanner from "@/components/brandingBanner";
+import BrandingServicesAccordion from "@/components/BrandingServicesAccordion";
 import ProcessSection from '@/components/processSection';
 import RelatedWorks from '@/components/relatedWorks';
-import WebDevelopmentBanner from '@/components/webDevelopmentBanner';
 import FaqAccordion from '@/components/faqAccordion';
-export default function WebDevelopment() {
+
+export default function Branding() {
   return (
-    
     <div>
-      <WebDevelopmentBanner/>
-      <WebDevServicesAccordion />
+      <BrandingBanner/>
+      <BrandingServicesAccordion />
       <ProcessSection/>
       <RelatedWorks/>
       <FaqAccordion/>
     </div>
   );
-} 
+}

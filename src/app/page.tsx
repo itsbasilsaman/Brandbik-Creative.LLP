@@ -10,8 +10,8 @@ import Works from "@/components/worksSection";
 export default function Home() {
   return (
     <div>
-      <HeroSection/>
-      <AboutSection/>
+       <HeroSection/>
+       <AboutSection/>
        <ServicesSection/>
        <Works/>
        <ClientsSection/>

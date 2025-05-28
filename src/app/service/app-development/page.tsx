@@ -1,18 +1,18 @@
 import React from 'react';
-import WebDevServicesAccordion from "@/components/WebDevServicesAccordion";
+import AppDevelopmentBanner from "@/components/appDevelopmentBanner";
+import AppDevServicesAccordion from "@/components/AppDevServicesAccordion";
 import ProcessSection from '@/components/processSection';
 import RelatedWorks from '@/components/relatedWorks';
-import WebDevelopmentBanner from '@/components/webDevelopmentBanner';
 import FaqAccordion from '@/components/faqAccordion';
-export default function WebDevelopment() {
+
+export default function AppDevelopment() {
   return (
-    
     <div>
-      <WebDevelopmentBanner/>
-      <WebDevServicesAccordion />
+      <AppDevelopmentBanner/>
+      <AppDevServicesAccordion />
       <ProcessSection/>
       <RelatedWorks/>
       <FaqAccordion/>
     </div>
   );
-} 
+}

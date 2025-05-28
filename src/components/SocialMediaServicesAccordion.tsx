@@ -12,43 +12,49 @@ const poppins = Poppins({
 
 const services = [
   {
-    title: "E-commerce Website Design",
+    title: "Social Media Strategy",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We develop comprehensive social media strategies tailored to your brand's goals and target audience. Our approach includes platform selection, content planning, and performance metrics to ensure maximum impact and engagement.",
+    image: "/images/social-media/strategy.jpg",
   },
   {
-    title: "Applications & Dashboard",
+    title: "Content Creation",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Our creative team produces engaging, platform-optimized content including posts, stories, reels, and videos. We focus on creating content that resonates with your audience and aligns with your brand voice.",
+    image: "/images/social-media/content.jpg",
   },
   {
-    title: "Custom Website Design",
+    title: "Community Management",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We manage your social media presence by engaging with your audience, responding to comments, and fostering meaningful conversations. Our team ensures your brand maintains an active and positive community presence.",
+    image: "/images/social-media/community.jpg",
   },
   {
-    title: "Redesign and Website Revamp",
+    title: "Social Media Advertising",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We create and manage targeted social media advertising campaigns across platforms like Facebook, Instagram, LinkedIn, and Twitter. Our data-driven approach ensures optimal ROI and campaign performance.",
+    image: "/images/social-media/ads.jpg",
+  },
+  {
+    title: "Analytics & Reporting",
+    content:
+      "We provide detailed analytics and regular performance reports to track your social media success. Our insights help optimize your strategy and demonstrate ROI through key metrics and KPIs.",
+    image: "/images/social-media/analytics.jpg",
   },
 ]
 
-export default function WebDevServicesAccordion() {
-  const [openIndex, setOpenIndex] = useState<number>(-1) // Custom Website Design open by default
+export default function SocialMediaServicesAccordion() {
+  const [openIndex, setOpenIndex] = useState<number>(-1)
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
   return (
     <div className="w-full px-5 md:px-16 lg:px-24 py-16 lg:py-24">
       <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 ${poppins.className}`}>
-        Web Development Services We Offer
+        Social Media Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling.
-        Whether you&apos;re launching, evolving, or scaling — we help you stand out with purpose.
+        At Brandbik, our Social Media services are designed to build your brand's presence and engage your audience. 
+        From strategy to content creation, we help you connect with your community and achieve your social media goals.
       </p>
 
       <div className="border-b border-gray-200 overflow-visible">
@@ -83,12 +89,12 @@ export default function WebDevServicesAccordion() {
                 </div>
 
                 {/* Tablet Image */}
-                <div className="relative w-40 h-28 hidden sm:block md:hidden">
+                <div className="relative w-40 h-24 hidden sm:block md:hidden">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="160px"
                   />
                 </div>
@@ -99,7 +105,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="192px"
                   />
                 </div>
@@ -110,7 +116,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="224px"
                   />
                 </div>
@@ -130,4 +136,4 @@ export default function WebDevServicesAccordion() {
       </div>
     </div>
   )
-}
+} 

@@ -147,7 +147,7 @@ export default function AboutSection() {
 <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/80 to-transparent z-10"></div>
 
 {/* Bottom black shadow */}
-<div className="absolute bottom-0 left-0 right-0 h-32 z-40 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div className="absolute bottom-0 left-0 right-0 h-32 z-40 bg-gradient-to-t from-black/80 to-transparent  "></div>
 
 {/* Left side WHITE shadow */}
 <div className="absolute left-0 top-0 bottom-0 w-32 z-10">

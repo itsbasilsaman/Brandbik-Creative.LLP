@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useRef } from "react"
@@ -10,16 +11,18 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-export default function AboutBanner() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
+// Move images to a separate constant file or environment variables in production
+const images = [
+  "/images/team-1.jpg",
+  "/images/team-2.jpg",
+  "/images/team-3.jpg",
+  "/images/team-4.jpg",
+  "/images/team-5.jpg",
+];
 
-  const images = [
-    "https://img.resized.co/siliconrepublic/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5zaWxpY29ucmVwdWJsaWMuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE5XFxcLzA0XFxcL0Fkb2JlU3RvY2tfMTQ3MDYyMTQwLmpwZWdcIixcIndpZHRoXCI6MTEwMCxcImhlaWdodFwiOjYwMCxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LnNpbGljb25yZXB1YmxpYy5jb21cXFwvd3AtY29udGVudFxcXC91cGxvYWRzXFxcLzIwMTRcXFwvMTJcXFwvMjAxMzAyXFxcL3B1enpsZS5qcGdcIixcIm9wdGlvbnNcIjpbXX0iLCJoYXNoIjoiZWU0YTQzNTk4NjdjZWU1Y2QwZDNmNmQ4YmYxZDI4MGNmNjViMmNkZCJ9/adobestock-147062140.jpeg",
-    "https://image.freepik.com/free-photo/young-man-sitting-computer-desk-office-working-with-documents_88135-1287.jpg",
-    "https://img.resized.co/siliconrepublic/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5zaWxpY29ucmVwdWJsaWMuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE5XFxcLzA0XFxcL0Fkb2JlU3RvY2tfMTQ3MDYyMTQwLmpwZWdcIixcIndpZHRoXCI6MTEwMCxcImhlaWdodFwiOjYwMCxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LnNpbGljb25yZXB1YmxpYy5jb21cXFwvd3AtY29udGVudFxcXC91cGxvYWRzXFxcLzIwMTRcXFwvMTJcXFwvMjAxMzAyXFxcL3B1enpsZS5qcGdcIixcIm9wdGlvbnNcIjpbXX0iLCJoYXNoIjoiZWU0YTQzNTk4NjdjZWU1Y2QwZDNmNmQ4YmYxZDI4MGNmNjViMmNkZCJ9/adobestock-147062140.jpeg",
-    "https://image.freepik.com/free-photo/young-man-sitting-computer-desk-office-working-with-documents_88135-1287.jpg",
-    "https://img.resized.co/siliconrepublic/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5zaWxpY29ucmVwdWJsaWMuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE5XFxcLzA0XFxcL0Fkb2JlU3RvY2tfMTQ3MDYyMTQwLmpwZWdcIixcIndpZHRoXCI6MTEwMCxcImhlaWdodFwiOjYwMCxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LnNpbGljb25yZXB1YmxpYy5jb21cXFwvd3AtY29udGVudFxcXC91cGxvYWRzXFxcLzIwMTRcXFwvMTJcXFwvMjAxMzAyXFxcL3B1enpsZS5qcGdcIixcIm9wdGlvbnNcIjpbXX0iLCJoYXNoIjoiZWU0YTQzNTk4NjdjZWU1Y2QwZDNmNmQ4YmYxZDI4MGNmNjViMmNkZCJ9/adobestock-147062140.jpeg",
-  ]
+// Client component for scroll functionality
+function ImageScroll({ images }: { images: string[] }) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -36,7 +39,61 @@ export default function AboutBanner() {
   }
 
   return (
-    <section className=" w-full pt-24 lg:pt-32 mx-auto px-4 md:px-16 lg:px-24  py-8 sm:py-12 lg:py-16 md:h-screen">
+    <div className="relative pt-6">
+      <div className="overflow-hidden">
+        <div
+          className="flex space-x-3 sm:space-x-4 overflow-x-auto scrollbar-hide scroll-smooth pb-2"
+          style={{ scrollBehavior: "smooth" }}
+          ref={scrollContainerRef}
+        >
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="flex-none w-[250px] sm:w-[320px] md:w-[480px] aspect-[4/3] rounded-sm overflow-hidden"
+            >
+              <Image
+                src={src}
+                alt={`Team member ${index + 1}`}
+                width={600}
+                height={400}
+                className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                priority={index < 2} // Prioritize loading first two images
+                loading={index < 2 ? "eager" : "lazy"}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between mt-4 sm:mt-6">
+        <div className="flex items-center space-x-2">
+          <p className="text-gray-600 text-sm sm:text-base">Our team in action</p>
+          <div className="flex items-center space-x-1">
+            <button
+              onClick={scrollLeft}
+              className="p-1 rounded-full hover:bg-gray-100 transition-colors touch-manipulation"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+            <button
+              onClick={scrollRight}
+              className="p-1 rounded-full hover:bg-gray-100 transition-colors touch-manipulation"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Main server component
+export default function AboutBanner() {
+  return (
+    <section className="w-full pt-24 lg:pt-32 mx-auto px-4 md:px-16 lg:px-24 py-8 sm:py-12 lg:py-16 md:h-screen">
       <div className="inline-block mb-4 sm:mb-6">
         <span className="bg-gray-200 text-gray-600 px-3 py-1 sm:px-4 sm:py-1 rounded-full text-xs sm:text-sm">
           About
@@ -62,52 +119,7 @@ export default function AboutBanner() {
         </div>
       </div>
 
-      <div className="relative pt-6">
-        <div className="overflow-hidden">
-          <div
-            className="flex space-x-3 sm:space-x-4 overflow-x-auto scrollbar-hide scroll-smooth pb-2"
-            style={{ scrollBehavior: "smooth" }}
-            ref={scrollContainerRef}
-          >
-            {images.map((src, index) => (
-              <div
-                key={index}
-                className="flex-none w-[250px] sm:w-[320px] md:w-[480px] aspect-[4/3] rounded-sm overflow-hidden"
-              >
-                <Image
-                  src={src || "/placeholder.svg"}
-                  alt={`Team member ${index + 1}`}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between mt-4 sm:mt-6">
-          <div className="flex items-center space-x-2">
-            <p className="text-gray-600 text-sm sm:text-base">Our team in action</p>
-            <div className="flex items-center space-x-1">
-              <button
-                onClick={scrollLeft}
-                className="p-1 rounded-full hover:bg-gray-100 transition-colors touch-manipulation"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-              <button
-                onClick={scrollRight}
-                className="p-1 rounded-full hover:bg-gray-100 transition-colors touch-manipulation"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ImageScroll images={images} />
     </section>
   )
 }

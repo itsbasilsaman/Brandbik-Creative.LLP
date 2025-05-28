@@ -12,43 +12,49 @@ const poppins = Poppins({
 
 const services = [
   {
-    title: "E-commerce Website Design",
+    title: "Brand Strategy",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We develop comprehensive brand strategies that define your unique value proposition, target audience, and market positioning. Our strategic approach ensures your brand resonates with your audience and stands out in the market.",
+    image: "/images/branding/strategy.jpg",
   },
   {
-    title: "Applications & Dashboard",
+    title: "Logo Design",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Our creative team crafts distinctive logos that capture your brand's essence and create lasting impressions. We focus on creating memorable, versatile designs that work across all platforms and applications.",
+    image: "/images/branding/logo.jpg",
   },
   {
-    title: "Custom Website Design",
+    title: "Brand Identity Design",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We create cohesive brand identity systems including color palettes, typography, imagery guidelines, and design elements that maintain consistency across all brand touchpoints.",
+    image: "/images/branding/identity.jpg",
   },
   {
-    title: "Redesign and Website Revamp",
+    title: "Brand Voice & Messaging",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "We develop your brand's unique voice and messaging framework that communicates your values and connects with your audience. This includes tone of voice guidelines, key messages, and content strategy.",
+    image: "/images/branding/voice.jpg",
+  },
+  {
+    title: "Brand Guidelines",
+    content:
+      "We create comprehensive brand guidelines that ensure consistent implementation of your brand across all channels. These guidelines serve as a reference for maintaining brand integrity in all communications.",
+    image: "/images/branding/guidelines.jpg",
   },
 ]
 
-export default function WebDevServicesAccordion() {
-  const [openIndex, setOpenIndex] = useState<number>(-1) // Custom Website Design open by default
+export default function BrandingServicesAccordion() {
+  const [openIndex, setOpenIndex] = useState<number>(-1)
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
   return (
     <div className="w-full px-5 md:px-16 lg:px-24 py-16 lg:py-24">
       <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 ${poppins.className}`}>
-        Web Development Services We Offer
+        Branding Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our [Service Name] is crafted to align your business goals with impactful design and storytelling.
-        Whether you&apos;re launching, evolving, or scaling — we help you stand out with purpose.
+        At Brandbik, our Branding services are designed to create powerful, memorable brand experiences. 
+        From strategy to visual identity, we help you build a brand that resonates with your audience and drives business growth.
       </p>
 
       <div className="border-b border-gray-200 overflow-visible">
@@ -83,12 +89,12 @@ export default function WebDevServicesAccordion() {
                 </div>
 
                 {/* Tablet Image */}
-                <div className="relative w-40 h-28 hidden sm:block md:hidden">
+                <div className="relative w-40 h-24 hidden sm:block md:hidden">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="160px"
                   />
                 </div>
@@ -99,7 +105,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="192px"
                   />
                 </div>
@@ -110,7 +116,7 @@ export default function WebDevServicesAccordion() {
                     src={service.image || "/placeholder.svg"}
                     alt={`${service.title} preview`}
                     fill
-                    className="object-cover  shadow-xl transform transition-transform duration-300"
+                    className="object-cover shadow-xl transform transition-transform duration-300"
                     sizes="224px"
                   />
                 </div>
@@ -130,4 +136,4 @@ export default function WebDevServicesAccordion() {
       </div>
     </div>
   )
-}
+} 
