@@ -62,7 +62,7 @@ export default function DigitalMarketingBanner() {
         <button
           className="bg-slate-600 hover:bg-slate-500 flex justify-center items-center gap-2 text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg rounded-full shadow-2xl transition-all duration-300 hover:scale-105"
         >
-          <span>Let's Talk</span>
+          <span>Let&apos;s Talk</span>
           <ArrowUpRight className="ml-2 h-6 w-6 p-1 border border-gray-100 rounded-full" />
         </button>
       </div>
