@@ -1,4 +1,3 @@
- 
 import { ArrowUpRight } from "lucide-react"
 import { Poppins } from 'next/font/google';
 
@@ -108,6 +107,8 @@ export default function Component() {
         <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[88px]  font-medium text-white mb-6 sm:mb-8 tracking-tight leading-tight ${poppins.className}`}>
           Web Development
         </h1>
+
+        <p className="text-lg text-gray-600 mb-8">We&apos;re committed to delivering exceptional web solutions that drive results.</p>
 
         <button
          

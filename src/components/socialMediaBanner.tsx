@@ -57,6 +57,8 @@ export default function SocialMediaBanner() {
           Social Media
         </h1>
 
+        <p className="text-lg text-gray-600 mb-8">We&apos;re here to help you build and grow your social media presence.</p>
+
         <button
           className="bg-slate-600 hover:bg-slate-500 flex justify-center items-center gap-2 text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg rounded-full shadow-2xl transition-all duration-300 hover:scale-105"
         >
