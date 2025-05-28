@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
     .map((input) => {
       if (typeof input === 'object' && input !== null) {
         return Object.entries(input)
-          .filter(([_, value]) => Boolean(value))
+          .filter(([, value]) => Boolean(value))
           .map(([key]) => key)
           .join(' ')
       }
