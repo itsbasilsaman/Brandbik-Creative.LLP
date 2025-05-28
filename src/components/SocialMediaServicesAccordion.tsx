@@ -53,7 +53,7 @@ export default function SocialMediaServicesAccordion() {
         Social Media Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our Social Media services are designed to build your brand's presence and engage your audience. 
+        At Brandbik, our Social Media services are designed to build your brand&apos;s presence and engage your audience. 
         From strategy to content creation, we help you connect with your community and achieve your social media goals.
       </p>
 

@@ -53,7 +53,7 @@ export default function AdvertisingServicesAccordion() {
         Advertising Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">
-        At Brandbik, our Advertising services are designed to maximize your brand's reach and impact. 
+        At Brandbik, our Advertising services are designed to maximize your brand&apos;s reach and impact. 
         From digital to traditional media, we create strategic advertising campaigns that drive results and deliver measurable ROI.
       </p>
 
