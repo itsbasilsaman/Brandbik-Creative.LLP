@@ -5,13 +5,8 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimation, useInView } from "framer-motion"
 
-type Service = {
-  name: string;
-  id: string;
-};
-
 export default function BottomBar() {
-  const [isPaused, setIsPaused] = useState(false)
+  const [isPaused] = useState(false)
   const services = [
     "Web Development",
     "Mobile Development",
@@ -86,8 +81,24 @@ export default function BottomBar() {
   }, [isInView, controls]);
 
   return (
-    <div className="w-full   primary-background  h-full  " ref={containerRef}>
-     
+    <div className="w-full primary-background h-full" ref={containerRef}>
+      {/* Services Slider */}
+      <div className="overflow-hidden py-8">
+        <div 
+          ref={sliderRef}
+          className="flex whitespace-nowrap"
+          style={{ willChange: 'transform' }}
+        >
+          {[...services, ...services].map((service, index) => (
+            <div
+              key={index}
+              className="inline-block px-6 text-white/80 text-lg font-medium"
+            >
+              {service}
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* CTA Section */}
       <div className="relative primary-background w-full px-4 sm:px-6 py-12 md:py-20 lg:px-8 overflow-hidden">
