@@ -14,6 +14,8 @@ export default function Home() {
           alt="Green ivy growing on wall with billboard"
           fill
           priority
+
+          
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/30" />
