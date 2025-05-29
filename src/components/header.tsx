@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, ChevronDown } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { RiCloseLargeLine } from "react-icons/ri"
 import { motion, AnimatePresence } from "framer-motion"

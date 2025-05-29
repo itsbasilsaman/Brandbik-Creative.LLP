@@ -9,6 +9,7 @@ import * as THREE from "three"
 
 import { Poppins } from "next/font/google"
 import { useState } from "react";
+import { usePathname } from "next/navigation"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -74,7 +75,15 @@ export default function ServiceMain() {
   const bannerRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
   const [renderer, setRenderer] = useState<THREE.WebGLRenderer | null>(null)
-  const [isContextLost, setIsContextLost] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isPanelOpen, setIsPanelOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("impact")
+  const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0])
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
+  const pathname = usePathname()
+  const [isAchievementHovered, setIsAchievementHovered] = useState(false)
+  const [animationTimer, setAnimationTimer] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     setIsClient(true)
@@ -100,7 +109,6 @@ export default function ServiceMain() {
     const handleContextLost = (event: Event) => {
       event.preventDefault()
       console.log('WebGL context lost. Attempting to recover...')
-      setIsContextLost(true)
       
       // Dispose of the current renderer
       if (renderer) {
@@ -125,7 +133,6 @@ export default function ServiceMain() {
             })
             newRenderer.setPixelRatio(0.5)
             setRenderer(newRenderer)
-            setIsContextLost(false)
           } catch (error) {
             console.error("Failed to create new renderer:", error)
           }
@@ -135,7 +142,6 @@ export default function ServiceMain() {
 
     const handleContextRestored = () => {
       console.log('WebGL context restored')
-      setIsContextLost(false)
       if (renderer) {
         renderer.setSize(renderer.domElement.width, renderer.domElement.height)
       }
