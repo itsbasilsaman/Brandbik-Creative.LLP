@@ -9,7 +9,6 @@ import * as THREE from "three"
 
 import { Poppins } from "next/font/google"
 import { useState } from "react";
-import { usePathname } from "next/navigation"
 
 const poppins = Poppins({
   subsets: ["latin"],
