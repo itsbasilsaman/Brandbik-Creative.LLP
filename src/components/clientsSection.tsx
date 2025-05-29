@@ -30,7 +30,7 @@ export default function ClientsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
   {/* Row 1 */}
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '50ms' : '0ms' }}>
     <Image src="/images/CHRFFFF-logo-1.png" alt="SeaStar International" width={150} height={50} className="object-contain hover:grayscale transition-all duration-300 w-auto" priority />

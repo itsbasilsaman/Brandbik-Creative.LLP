@@ -118,7 +118,6 @@ const contentSections: Record<string, ContentSection> = {
 
 export default function Header() {
   const [isLargeScreen, setIsLargeScreen] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("impact")
@@ -127,6 +126,11 @@ export default function Header() {
   const pathname = usePathname()
   const [isAchievementHovered, setIsAchievementHovered] = useState(false)
   const [animationTimer, setAnimationTimer] = useState<NodeJS.Timeout | null>(null)
+
+  // Close panel when route changes
+  useEffect(() => {
+    setIsPanelOpen(false)
+  }, [pathname])
 
   // Handle screen resize
   useEffect(() => {
@@ -166,11 +170,6 @@ export default function Header() {
     }
   }, [isPanelOpen])
 
-  // Reset loading state on pathname change
-  useEffect(() => {
-    setIsLoading(false)
-  }, [pathname])
-
   // Close language dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = () => {
@@ -188,14 +187,12 @@ export default function Header() {
 
   const handleAchievementHover = (isHovering: boolean) => {
     if (isHovering) {
-      // Clear any existing timer
       if (animationTimer) {
         clearTimeout(animationTimer)
         setAnimationTimer(null)
       }
       setIsAchievementHovered(true)
     } else {
-      // Set timer to hide animation after 3 seconds
       const timer = setTimeout(() => {
         setIsAchievementHovered(false)
         setAnimationTimer(null)
@@ -216,8 +213,19 @@ export default function Header() {
   const handleLanguageChange = (language: Language) => {
     setCurrentLanguage(language)
     setIsLanguageDropdownOpen(false)
-    // Here you would typically update your i18n context or call your translation service
     console.log("Language changed to:", language.code)
+  }
+
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const href = e.currentTarget.getAttribute('href')
+    if (href) {
+      setIsPanelOpen(false)
+      // Small delay to allow panel to close before navigation
+      setTimeout(() => {
+        window.location.href = href
+      }, 50)
+    }
   }
 
   const currentContent = contentSections[activeSection]
@@ -234,7 +242,7 @@ export default function Header() {
           isScrolled 
             ? "bg-gray-100 hover:bg-gray-200" 
             : "bg-white/20 hover:bg-white/30"
-        } ${isMobile ? "w-[80px]" : "w-[85px]"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+        } ${isMobile ? "w-[80px]" : "w-[85px]"}`}
         whileTap={{ scale: 0.95 }}
       >
         {/* Toggle Track */}
@@ -302,8 +310,8 @@ export default function Header() {
             <nav className="hidden md:flex items-center space-x-8">
               <Link
                 href="/about"
-                prefetch
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+                onClick={handleNavigation}
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   About
@@ -314,8 +322,8 @@ export default function Header() {
               </Link>
               <Link
                 href="/service"
-                prefetch
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+                onClick={handleNavigation}
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   Services
@@ -326,8 +334,8 @@ export default function Header() {
               </Link>
               <Link
                 href="/works"
-                prefetch
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+                onClick={handleNavigation}
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   Works
@@ -338,8 +346,8 @@ export default function Header() {
               </Link>
               <Link
                 href="/contact"
-                prefetch
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+                onClick={handleNavigation}
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   Contact Us
@@ -359,9 +367,9 @@ export default function Header() {
               {/* Get Started Button */}
               <button
                 onClick={() => setIsPanelOpen(true)}
-                className={` hidden sm:inline-flex items-center gap-2 cursor-pointer ${
+                className={`hidden sm:inline-flex items-center gap-2 cursor-pointer ${
                   isScrolled ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
-                } text-white px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+                } text-white px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group`}
               >
                 <span className="text-white">Get Started</span>
                 <div
@@ -688,84 +696,81 @@ export default function Header() {
 
           {/* Panel */}
           <div
-            className={`absolute top-0 right-0 h-full w-full bg-white transform transition-transform duration-500 ease-in-out ${
-              isPanelOpen ? "translate-x-0" : "translate-x-full"
+            className={`absolute top-0 right-0 h-full w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 transform transition-all duration-500 ease-in-out backdrop-blur-xl ${
+              isPanelOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             }`}
           >
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full relative overflow-hidden">
+              {/* Animated Background Elements */}
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl transform rotate-12 animate-pulse" />
+                <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-cyan-500/20 to-indigo-500/20 rounded-full blur-3xl transform -rotate-12 animate-pulse delay-1000" />
+              </div>
+
               {/* Panel Header */}
-              <div className="flex items-center justify-between p-6 border-b">
-                <div>
+              <div className="flex items-center justify-between p-6 border-b border-white/10 relative z-10">
+                <div className="transform hover:scale-105 transition-transform duration-300">
                   <Link href="/" onClick={() => setIsPanelOpen(false)} prefetch>
-                    <Image src="/images/brandbik-blue-logo-.png" alt="Logo" width={120} height={40} className="" />
+                    <Image src="/images/logo-brandbik.png" alt="Logo" width={120} height={40} className="brightness-200" />
                   </Link>
                 </div>
                 <div className="flex items-center gap-4">
-                  {/* Language Switcher for Mobile */}
-                  <LanguageSwitcher isMobile={true} />
-                  <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
-                  </button>
                   <button
                     onClick={() => setIsPanelOpen(false)}
-                    className="p-2 text-[20px] hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
+                    className="p-2 text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90"
                   >
-                    <RiCloseLargeLine />
+                    <RiCloseLargeLine className="w-6 h-6" />
                   </button>
                 </div>
               </div>
 
               {/* Panel Navigation */}
-              <nav className="flex-1 p-6">
-                <div className="space-y-8">
-                  <Link
-                    href="/about"
-                    onClick={() => setIsPanelOpen(false)}
-                    className="text-xl text-gray-700 hover:text-black transition-colors"
-                  >
-                    <div className="py-4 border-b border-gray-200 w-full">About</div>
-                  </Link>
-                  <Link
-                    href="/service"
-                    onClick={() => setIsPanelOpen(false)}
-                    className="text-xl text-gray-700 hover:text-black transition-colors"
-                  >
-                    <div className="py-4 border-b border-gray-200 w-full">Service</div>
-                  </Link>
-                  <Link
-                    href="/works"
-                    onClick={() => setIsPanelOpen(false)}
-                    className="text-xl text-gray-700 hover:text-black transition-colors"
-                  >
-                    <div className="py-4 border-b border-gray-200 w-full">Works</div>
-                  </Link>
-                  <Link
-                    href="/contact"
-                    onClick={() => setIsPanelOpen(false)}
-                    className="text-xl text-gray-700 hover:text-black transition-colors"
-                  >
-                    <div className="py-4 border-b border-gray-200 w-full">Contact</div>
-                  </Link>
+              <nav className="flex-1 p-6 relative z-10">
+                <div className="space-y-4">
+                  {[
+                    { href: "/about", label: "About" },
+                    { href: "/service", label: "Service" },
+                    { href: "/works", label: "Works" },
+                    { href: "/contact", label: "Contact" }
+                  ].map((item, index) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={handleNavigation}
+                      className="block transform hover:translate-x-2 transition-all duration-300"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="group relative py-3 px-6 rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 transition-all duration-300">
+                        <span className="text-xl text-white font-medium group-hover:text-blue-400 transition-colors">
+                          {item.label}
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </nav>
 
               {/* Connect Us Button */}
-              <div className="p-6">
+              <div className="p-6 relative z-10">
                 <Link
                   href="/contact"
                   onClick={() => setIsPanelOpen(false)}
-                  className="relative block w-full text-white text-center py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl before:absolute before:inset-0 before:rounded-lg before:z-[-1] before:bg-gradient-to-r before:from-[#2C6BD8] before:to-[#08E6D5] before:content-['']"
+                  className="group relative block w-full text-white text-center py-4 rounded-xl font-medium text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
                 >
-                  Connect Us
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Connect Us
+                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
                 </Link>
               </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
             </div>
           </div>
         </div>

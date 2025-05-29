@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useInView, useAnimation, useScroll, useTransform } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useMediaQuery } from 'react-responsive'
 
 import Image from "next/image"
@@ -15,9 +15,8 @@ const onest = Onest({
 });
 
 export default function AboutSection() {
-  const controls = useAnimation()
   const statsRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(statsRef, { once: true, amount: 0.3 })
+  const isInView = useInView(statsRef, { once: false, amount: 0.1 })
   const [highlightedTextIndex, setHighlightedTextIndex] = useState(0)
 
   const shapeRef = useRef(null)
@@ -30,13 +29,13 @@ export default function AboutSection() {
   const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1024 })
 
   const shapeSizes = isMobile
-    ? { width: "560px", height: "560px", scale: 1.2 }
+    ? { width: "500px", height: "500px", scale: 1.1 }
     : isTablet
     ? { width: "500px", height: "500px", scale: 1.3 }
     : { width: "650px", height: "650px", scale: 1.5 }
 
   const shapeTargetSizes = isMobile
-    ? { width: "540px", height: "540px", scale: 1.1, y: "28%" }
+    ? { width: "890px", height: "890px", scale: 1.0, y: "34%" }
     : isTablet
     ? { width: "480px", height: "480px", scale: 1.2, y: "25%" }
     : { width: "630px", height: "630px", scale: 1.3, y: "32%" }
@@ -58,21 +57,26 @@ export default function AboutSection() {
     "shape brands",
     "design experiences",
     "bring ideas to life",
+    "shaping bold brands",
+    "stunning designs",
+    "big ideas"
+  ]
+
+  const [currentStat, setCurrentStat] = useState(0)
+  const stats = [
+    { value: "1000+", label: "Projects" },
+    { value: "14+", label: "Countries" },
+    { value: "200+", label: "Clients" }
   ]
 
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible")
+    if (isMobile) {
+      const interval = setInterval(() => {
+        setCurrentStat((prev) => (prev + 1) % stats.length)
+      }, 2000)
+      return () => clearInterval(interval)
     }
-  }, [controls, isInView])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setHighlightedTextIndex((prev) => (prev + 1) % highlightedPhrases.length)
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [highlightedPhrases.length])
+  }, [isMobile])
 
   const renderTextWithHighlights = () => {
     const currentHighlight = highlightedPhrases[highlightedTextIndex]
@@ -123,10 +127,12 @@ export default function AboutSection() {
     })
   }
 
-  const text = `We're Brandbik. A creative studio for visionary brands. We partner with ambitious teams to shape brands, design experiences, and bring ideas to life.`
+  const text = isMobile 
+    ? `We're Brandbik. A creative studio shaping bold brands, stunning designs, and big ideas.`
+    : `We're Brandbik. A creative studio for visionary brands. We partner with ambitious teams to shape brands, design experiences, and bring ideas to life.`
 
   return (
-    <div className="relative min-h-screen w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
+    <div className="relative  h-screen w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
       {/* Background diagonal stripes */}
       <div className="absolute inset-0 z-0">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -167,7 +173,7 @@ export default function AboutSection() {
           scale: shapeSizes.scale,
           height: shapeSizes.height,
           width: shapeSizes.width,
-          y: shapeTargetSizes.y,
+          y: isMobile ? "100%" : shapeTargetSizes.y,
           opacity: 0.8,
         }}
         animate={
@@ -185,13 +191,13 @@ export default function AboutSection() {
           duration: 1.5,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-20 w-full pointer-events-none origin-bottom"
+        className="absolute bottom-[0px] left-1/2 -translate-x-1/2 z-20    w-full pointer-events-none origin-bottom"
         style={{ overflow: "hidden" }}
       >
         {/* Main shape */}
         <motion.div
           className="relative w-full h-full"
-          initial={{ scale: 1.2 }}
+          initial={{ scale: isMobile ? 1.5 : 1.2 }}
           animate={isInView ? { scale: 1 } : {}}
           transition={{ duration: 1.2 }}
         >
@@ -206,11 +212,11 @@ export default function AboutSection() {
         
         {/* Duplicate shapes */}
         <motion.div
-          initial={{ opacity: 0.6, scale: 1.3, y: "20%" }}
+          initial={{ opacity: 0.6, scale: isMobile ? 1.5 : 1.3, y: isMobile ? "50%" : "20%" }}
           animate={isInView ? {
             opacity: 0,
-            scale: 0.9,
-            y: "-10%",
+            scale: isMobile ? 1.1 : 0.9,
+            y: isMobile ? "-20%" : "-10%",
             transition: { duration: 1, delay: 0.2 }
           } : {}}
           className="absolute inset-0"
@@ -224,11 +230,11 @@ export default function AboutSection() {
         </motion.div>
         
         <motion.div
-          initial={{ opacity: 0.4, scale: 1.5, y: "30%" }}
+          initial={{ opacity: 0.4, scale: isMobile ? 1.7 : 1.5, y: isMobile ? "60%" : "30%" }}
           animate={isInView ? {
             opacity: 0,
-            scale: 0.8,
-            y: "-20%",
+            scale: isMobile ? 1.2 : 0.8,
+            y: isMobile ? "-30%" : "-20%",
             transition: { duration: 1, delay: 0.3 }
           } : {}}
           className="absolute inset-0"
@@ -260,71 +266,100 @@ export default function AboutSection() {
 
         {/* Stats section */}
         <div ref={statsRef} className="mt-auto flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 pb-8 sm:pb-0">
-          {/* Left item */}
-          <motion.div
-            initial="hidden"
-            animate={controls}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            style={{
-              backgroundColor: 'rgba(70, 70, 70, 0.441)',
-              backdropFilter: 'blur(30px)',
-              WebkitBackdropFilter: 'blur(30px)',
-              y: isMobile ? 0 : leftStatY,
-              scale: isMobile ? 1 : leftStatScale
-            }}
-            className={`w-full md:h-[60px] h-[50px] sm:w-auto lg:px-5 px-3 py-1 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className}`}
-          >
-            <StatCounter end={1000} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
-            <span className="text-gray-300 text-sm font-extralight text-[20px]">Projects</span>
-          </motion.div>
+          {isMobile ? (
+            // Mobile view - Single animated stat
+            <motion.div
+              initial={{ opacity: 0, x: "0%", y: "30%", scale: 0.5 }}
+              animate={isInView ? { opacity: 1, x: 0, y: "-20%", scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+              className={` bg-white/20 backdrop-blur-sm rounded-[12px] sm:rounded-xl px-4 sm:px-6 py-3 border border-gray-300 shadow-lg flex justify-center items-center gap-2 w-[210px] ${onest.className}`}
+            >
+              <motion.div
+                key={currentStat}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="flex justify-center items-center gap-2"
+              >
+                <span className="text-[22px] sm:text-[32px] font-normal text-white">
+                  {stats[currentStat].value}
+                </span>
+                <span className="text-gray-300 text-sm font-extralight text-[20px]">
+                  {stats[currentStat].label}
+                </span>
+              </motion.div>
+            </motion.div>
+          ) : (
+            // Desktop view - Three separate stats
+            <>
+              {/* Left item */}
+              <motion.div
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                style={{
+                  backgroundColor: 'rgba(70, 70, 70, 0.441)',
+                  backdropFilter: 'blur(30px)',
+                  WebkitBackdropFilter: 'blur(30px)',
+                  y: leftStatY,
+                  scale: leftStatScale
+                }}
+                className={`w-full md:h-[60px] h-[50px] sm:w-auto lg:px-5 px-3 py-1 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className}`}
+              >
+                <StatCounter end={1000} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
+                <span className="text-gray-300 text-sm font-extralight text-[20px]">Projects</span>
+              </motion.div>
 
-          {/* Middle item */}
-          <motion.div
-            initial="hidden"
-            animate={controls}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            style={{
-              backgroundColor: 'rgba(70, 70, 70, 0.441)',
-              backdropFilter: 'blur(30px)',
-              WebkitBackdropFilter: 'blur(30px)',
-              y: isMobile ? 0 : middleStatY,
-              scale: isMobile ? 1 : middleStatScale
-            }}
-            className={`w-full sm:w-auto lg:px-5 md:h-[60px] h-[50px] px-10 md:px-3 md:py-1 py-2 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className} sm:mb-0 lg:mb-32`}
-          >
-            <StatCounter end={14} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
-            <span className="text-gray-300 text-sm font-extralight text-[20px]">Countries</span>
-          </motion.div>
+              {/* Middle item */}
+              <motion.div
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                style={{
+                  backgroundColor: 'rgba(70, 70, 70, 0.441)',
+                  backdropFilter: 'blur(30px)',
+                  WebkitBackdropFilter: 'blur(30px)',
+                  y: middleStatY,
+                  scale: middleStatScale
+                }}
+                className={`w-full sm:w-auto lg:px-5 md:h-[60px] h-[50px] px-10 md:px-3 md:py-1 py-2 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className} sm:mb-0 lg:mb-32`}
+              >
+                <StatCounter end={14} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
+                <span className="text-gray-300 text-sm font-extralight text-[20px]">Countries</span>
+              </motion.div>
 
-          {/* Right item */}
-          <motion.div
-            initial="hidden"
-            animate={controls}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            style={{
-              backgroundColor: 'rgba(70, 70, 70, 0.441)',
-              backdropFilter: 'blur(30px)',
-              WebkitBackdropFilter: 'blur(30px)',
-              y: isMobile ? 0 : rightStatY,
-              scale: isMobile ? 1 : rightStatScale
-            }}
-            className={`w-full sm:w-auto lg:px-5 md:h-[60px] h-[50px] px-3 py-1 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className}`}
-          >
-            <StatCounter end={200} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
-            <span className="text-gray-300 text-sm font-extralight text-[20px]">Clients</span>
-          </motion.div>
+              {/* Right item */}
+              <motion.div
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                style={{
+                  backgroundColor: 'rgba(70, 70, 70, 0.441)',
+                  backdropFilter: 'blur(30px)',
+                  WebkitBackdropFilter: 'blur(30px)',
+                  y: rightStatY,
+                  scale: rightStatScale
+                }}
+                className={`w-full sm:w-auto lg:px-5 md:h-[60px] h-[50px] px-3 py-1 rounded-xl flex items-center justify-center gap-2 border border-gray-600 ${onest.className}`}
+              >
+                <StatCounter end={200} suffix="+" className="text-[22px] sm:text-[32px] font-normal text-white" />
+                <span className="text-gray-300 text-sm font-extralight text-[20px]">Clients</span>
+              </motion.div>
+            </>
+          )}
         </div>
       </div>
     </div>
