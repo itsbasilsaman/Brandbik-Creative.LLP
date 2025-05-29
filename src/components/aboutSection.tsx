@@ -17,7 +17,7 @@ const onest = Onest({
 export default function AboutSection() {
   const statsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(statsRef, { once: false, amount: 0.1 })
-  const [highlightedTextIndex, setHighlightedTextIndex] = useState(0)
+  const [highlightedTextIndex] = useState(0)
 
   const shapeRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -76,7 +76,7 @@ export default function AboutSection() {
       }, 2000)
       return () => clearInterval(interval)
     }
-  }, [isMobile])
+  }, [isMobile, stats.length])
 
   const renderTextWithHighlights = () => {
     const currentHighlight = highlightedPhrases[highlightedTextIndex]
