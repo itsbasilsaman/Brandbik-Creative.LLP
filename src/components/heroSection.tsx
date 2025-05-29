@@ -4,27 +4,7 @@
 import Image from "next/image"
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
-import { useState, useEffect } from 'react';
-
-
 export default function Home() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  
-  // Track scroll position to move the mouse icon
-  useEffect(() => {
-    const handleScroll = () => {
-      // Get scroll position as percentage (0-100)
-      const scrollPercentage = Math.min(
-        100, 
-        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-      );
-      setScrollPosition(scrollPercentage);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <main className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
