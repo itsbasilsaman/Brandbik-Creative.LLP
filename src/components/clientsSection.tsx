@@ -33,13 +33,13 @@ export default function ClientsSection() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
   {/* Row 1 */}
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '50ms' : '0ms' }}>
-    <Image src="/images/CHRFFFF-logo-1.png" alt="SeaStar International" width={150} height={50} className="object-contain hover:grayscale transition-all duration-300" priority />
+    <Image src="/images/CHRFFFF-logo-1.png" alt="SeaStar International" width={150} height={50} className="object-contain hover:grayscale transition-all duration-300 w-auto" priority />
   </div>
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
     <Image src="/images/genchi-logo-2.png" alt="Genchi Global Limited" width={110} height={60} className="max-h-12 w-auto object-contain hover:grayscale transition-all duration-300" priority />
   </div>
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '150ms' : '0ms' }}>
-    <Image src="/images/take-off-logo.png" alt=" " width={110} height={60} className="hover:grayscale transition-all duration-300" priority />
+    <Image src="/images/take-off-logo.png" alt=" " width={110} height={60} className="hover:grayscale transition-all duration-300 w-auto" priority />
   </div>
   <div className={`flex items-center justify-center p-4 bg-white rounded-xl transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
     <Image src="/images/scitor academy-logo-4.png" alt="Cyber Seed" width={240} height={60} className="object-cover hover:grayscale transition-all duration-300" />

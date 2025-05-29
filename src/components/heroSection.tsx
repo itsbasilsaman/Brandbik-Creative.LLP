@@ -32,7 +32,6 @@ export default function Home() {
 
   
   return (
-    
     <main className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">

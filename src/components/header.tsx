@@ -226,200 +226,167 @@ export default function Header() {
   const LanguageSwitcher = ({ isMobile = false }: { isMobile?: boolean }) => (
     <div className="relative" onClick={(e) => e.stopPropagation()}>
       <motion.button
-        onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-        className={`inline-flex items-center gap-2 cursor-pointer ${
-          isScrolled ? "bg-gray-100 hover:bg-gray-200 text-gray-800" : "bg-white/20 hover:bg-white/30 text-white"
-        } ${isMobile ? "px-3 py-2" : "px-4 py-2.5"} rounded-[8px] transition-all duration-300 hover:transform hover:scale-105 group ${
-          isLoading ? "opacity-50 pointer-events-none" : ""
-        } shadow-sm hover:shadow-md`}
-        whileHover={{ scale: 1.05 }}
+        onClick={() => {
+          const newLanguage = currentLanguage.code === "en" ? languages[1] : languages[0];
+          handleLanguageChange(newLanguage);
+        }}
+        className={`relative inline-flex items-center h-[42px] px-0 rounded-full cursor-pointer transition-all duration-300 ${
+          isScrolled 
+            ? "bg-gray-100 hover:bg-gray-200" 
+            : "bg-white/20 hover:bg-white/30"
+        } ${isMobile ? "w-[80px]" : "w-[85px]"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
         whileTap={{ scale: 0.95 }}
       >
-        {/* <span className={`${isMobile ? "text-base" : "text-lg"}`}>{currentLanguage.flag}</span> */}
-        <Image
-          src={currentLanguage.flag} 
-          alt={currentLanguage.name}
-          width={20}
-          height={20}
-          className={`${isMobile ? "h-4 w-4" : "h-5 w-5"}`}
-        />
-        <span className={`${isMobile ? "text-xs" : "text-sm"} font-medium hidden sm:block`}>
-          {currentLanguage.name}
-        </span>
-        <span className={`${isMobile ? "text-xs" : "text-sm"} font-medium sm:hidden`}>
-          {currentLanguage.code.toUpperCase()}
-        </span>
-        <motion.div
-          animate={{ rotate: isLanguageDropdownOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="ml-1"
-        >
-          <ChevronDown className={`${isMobile ? "h-3 w-3" : "h-4 w-4"} opacity-70`} />
-        </motion.div>
-      </motion.button>
-
-      <AnimatePresence>
-        {isLanguageDropdownOpen && (
+        {/* Toggle Track */}
+        <div className="relative w-full h-full flex items-center justify-between px-1">
+          {/* Language Labels */}
+          <span className={`text-sm pl-2 font-medium z-10 ${
+            isScrolled 
+              ? (currentLanguage.code === "en" ? "text-white" : "text-gray-300")
+              : (currentLanguage.code === "en" ? "text-black" : "text-gray-100")
+          }`}>
+            EN
+          </span>
+          <span className={`text-sm pr-1 font-medium z-10 ${
+            isScrolled 
+              ? (currentLanguage.code === "ar" ? "text-white" : "text-gray-300")
+              : (currentLanguage.code === "ar" ? "text-black" : "text-gray-100")
+          }`}>
+            عربي
+          </span>
+          
+          {/* Toggle Circle */}
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`absolute ${isMobile ? "top-full mt-2 right-0" : "top-full mt-2 left-0"} z-50 min-w-[160px] bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden backdrop-blur-sm`}
-          >
-            <div className="py-2">
-              {languages.map((language, index) => (
-                <motion.button
-                  key={language.code}
-                  onClick={() => handleLanguageChange(language)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 relative ${
-                    currentLanguage.code === language.code
-                      ? "bg-blue-50 text-blue-600 border-r-2 border-blue-500"
-                      : "text-gray-700 hover:text-gray-900"
-                  }`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{
-                    backgroundColor: currentLanguage.code === language.code ? "#dbeafe" : "#f9fafb",
-                    x: 4,
-                  }}
-                >
-                   <Image
-          src={currentLanguage.flag} 
-          alt={currentLanguage.name}
-          width={20}
-          height={20}
-          className={`${isMobile ? "h-4 w-4" : "h-5 w-5"}`}
-        />
-                  <div className="flex flex-col flex-1 min-w-0">
-                    <span className="text-sm font-medium truncate">{language.name}</span>
-                    <span className="text-xs text-gray-500 truncate">
-                      {language.code === "en" ? "English" : "العربية"}
-                    </span>
-                  </div>
-                  {currentLanguage.code === language.code && (
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"
-                    />
-                  )}
-                </motion.button>
-              ))}
-            </div>
-
-            
-          </motion.div>
-        )}
-      </AnimatePresence>
+            className={`absolute h-[34px] w-[38px] rounded-full ${
+              isScrolled ? "bg-gray-800" : "bg-white"
+            } shadow-md`}
+            animate={{
+              x: currentLanguage.code === "en" ? 0 : isMobile ? "36px" : "39px"
+            }}
+            transition={{ type: "spring", stiffness: 500, damping: 20 }}
+          />
+        </div>
+      </motion.button>
     </div>
   )
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full px-4 md:px-16 lg:px-24 transition-all duration-500 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 z-50 w-full sm:px-4 md:px-16 lg:px-24 transition-all duration-500 ${
+        "bg-transparent"
       }`}
-      style={{
-        backgroundImage: !isScrolled
-          ? `linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(5, 24, 24, 0.6)), url('/forest-background.jpg')`
-          : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundBlendMode: "overlay",
-      }}
+      
     >
-      <div className="relative z-10 container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex-shrink-0">
-          <Link href="/" prefetch>
-            {isLargeScreen ? (
-              <Image
-                src={isScrolled ? "/images/brandbik-blue-logo-.png" : "/images/logo-brandbik.png"}
-                alt="Logo"
-                width={120}
-                height={40}
-                className=""
-              />
-            ) : (
-              <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className="" />
-            )}
-          </Link>
-        </div>
+      <div className="relative z-10 container mx-auto px-4 py-4">
+        <div className="flex items-center justify-center">
+          {/* Combined Navigation Container with Logo and CTA */}
+          <div className={`flex items-center justify-between w-full space-x-8 transition-all duration-500 ease-in-out ${ isScrolled? "bg-white": "bg-black" }  "backdrop-blur-md" rounded-full px-8 py-3 ${isScrolled ? "shadow-md" : " "}`}>
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link href="/" prefetch>
+                {isLargeScreen ? (
+                  <Image
+                    src={isScrolled ? "/images/brandbik-blue-logo-.png" : "/images/logo-brandbik.png"}
+                    alt="Logo"
+                    width={120}
+                    height={40}
+                    className=""
+                  />
+                ) : (
+                  <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className="" />
+                )}
+              </Link>
+            </div>
 
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link
-            href="/about"
-            prefetch
-            className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
-          >
-            <span className="relative">
-              About
-              <span
-                className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-              ></span>
-            </span>
-          </Link>
-          <Link
-            href="/service"
-            prefetch
-            className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
-          >
-            <span className="relative">
-              Services
-              <span
-                className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-              ></span>
-            </span>
-          </Link>
-          <Link
-            href="/works"
-            prefetch
-            className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
-          >
-            <span className="relative">
-              Works
-              <span
-                className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-              ></span>
-            </span>
-          </Link>
-          <Link
-            href="/contact"
-            prefetch
-            className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
-          >
-            <span className="relative">
-              Contact Us
-              <span
-                className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-              ></span>
-            </span>
-          </Link>
-        </nav>
+            {/* Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link
+                href="/about"
+                prefetch
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                <span className="relative">
+                  About
+                  <span
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                  ></span>
+                </span>
+              </Link>
+              <Link
+                href="/service"
+                prefetch
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                <span className="relative">
+                  Services
+                  <span
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                  ></span>
+                </span>
+              </Link>
+              <Link
+                href="/works"
+                prefetch
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                <span className="relative">
+                  Works
+                  <span
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                  ></span>
+                </span>
+              </Link>
+              <Link
+                href="/contact"
+                prefetch
+                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"} ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                <span className="relative">
+                  Contact Us
+                  <span
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                  ></span>
+                </span>
+              </Link>
+            </nav>
 
-        <div className="flex items-center gap-3">
-          {/* Language Switcher for Desktop */}
-          <div className="hidden md:block">
-            <LanguageSwitcher />
+            <div className="flex items-center gap-3">
+              {/* Language Switcher for Desktop */}
+              <div className="hidden md:block">
+                <LanguageSwitcher />
+              </div>
+
+              {/* Get Started Button */}
+              <button
+                onClick={() => setIsPanelOpen(true)}
+                className={` hidden sm:inline-flex items-center gap-2 cursor-pointer ${
+                  isScrolled ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
+                } text-white px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                <span className="text-white">Get Started</span>
+                <div
+                  className={`h-5 w-5 rounded-full ${
+                    isScrolled ? "bg-gray-700 group-hover:bg-gray-600" : "bg-white/30 group-hover:bg-white/50"
+                  } flex items-center justify-center transition-colors`}
+                >
+                  <ChevronRight className="h-3 w-3 text-white" />
+                </div>
+              </button>
+            </div>
           </div>
 
-          {/* Get Started Button */}
-          <button
-            onClick={() => setIsPanelOpen(true)}
-            className={`inline-flex items-center gap-2 cursor-pointer ${
-              isScrolled ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
-            } text-white px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group ${isLoading ? "opacity-50 pointer-events-none" : ""}`}
-          >
-            <span className="text-white">Get Started</span>
-            <div
-              className={`h-5 w-5 rounded-full ${
-                isScrolled ? "bg-gray-700 group-hover:bg-gray-600" : "bg-white/30 group-hover:bg-white/50"
-              } flex items-center justify-center transition-colors`}
+          {/* Mobile menu button - positioned outside the container */}
+          <div className="md:hidden absolute right-8 flex items-center gap-4">
+            <LanguageSwitcher isMobile={true} />
+            <button 
+              className={`${isScrolled ? "text-black" : "text-white"}`}
+              onClick={() => setIsPanelOpen(true)}
             >
-              <ChevronRight className="h-3 w-3 text-white" />
-            </div>
-          </button>
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
