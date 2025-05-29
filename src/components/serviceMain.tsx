@@ -75,15 +75,7 @@ export default function ServiceMain() {
   const bannerRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
   const [renderer, setRenderer] = useState<THREE.WebGLRenderer | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isPanelOpen, setIsPanelOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("impact")
-  const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0])
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
-  const pathname = usePathname()
-  const [isAchievementHovered, setIsAchievementHovered] = useState(false)
-  const [animationTimer, setAnimationTimer] = useState<NodeJS.Timeout | null>(null)
+  
 
   useEffect(() => {
     setIsClient(true)
