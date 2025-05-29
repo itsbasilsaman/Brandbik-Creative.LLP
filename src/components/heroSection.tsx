@@ -55,44 +55,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Circular Badge */}
-      <div className="fixed bottom-8 right-8 z-20 md:bottom-12 md:right-12">
-      {/* Circle with rotating text */}
-      <div className="relative h-24 w-24 animate-slow-spin md:h-32 md:w-32">
-        <svg viewBox="0 0 100 100" className="h-full w-full">
-          <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-          <text fontSize="13">
-            <textPath href="#circle" className="fill-white font-normal">
-              Together scroll down • for work  
-            </textPath>
-          </text>
-        </svg>
-      </div>
-      
-      {/* Non-rotating mouse container */}
-      <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center  rounded-full border border-white/10 bg-white/10 backdrop-blur-sm md:h-20 md:w-20">
-        {/* Position the mouse icon in the center initially, then move based on scroll */}
-        <div 
-          className="absolute left-[74%] top-[60%]   flex justify-center items-center   -translate-x-1/2 -translate-y-1/2 transition-transform duration-200"
-          style={{ transform: `translate(-50%, calc(-50% + ${mouseTranslateY}))` }}
-        >
-          {/* Custom mouse SVG icon */}
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 24 24"
-            className="h-8 w-8 text-white md:h-10 md:w-10"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="6" y="3" width="12" height="18" rx="6" />
-            <line x1="12" y1="7" x2="12" y2="11" />
-          </svg>
-        </div>
-      </div>
-    </div>
+     
     </main>
   )
 }

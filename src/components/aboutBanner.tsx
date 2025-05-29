@@ -13,11 +13,11 @@ const poppins = Poppins({
 
 // Move images to a separate constant file or environment variables in production
 const images = [
-  "/images/team-1.jpg",
-  "/images/team-2.jpg",
-  "/images/team-3.jpg",
-  "/images/team-4.jpg",
-  "/images/team-5.jpg",
+  "/images/about-image-one.jpg",
+  "/images/about-image-one.jpg",
+  "/images/about-image-one.jpg",
+  "/images/about-image-one.jpg",
+  "/images/about-image-one.jpg",
 ];
 
 // Client component for scroll functionality
@@ -114,7 +114,7 @@ export default function AboutBanner() {
           </p>
 
           <p className="text-gray-600 text-sm sm:text-base">
-            From early-stage startups to global companies, we design stories that connect — and endure.
+            From early-stage startups to global companies, we design stories that connect  and endure.
           </p>
         </div>
       </div>

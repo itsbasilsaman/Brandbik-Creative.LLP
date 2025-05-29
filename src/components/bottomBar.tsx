@@ -94,33 +94,7 @@ export default function BottomBar() {
   return (
 
     <div className="w-full   primary-background  h-full  " ref={containerRef}>
-      {/* Services Marquee Section */}
-      <div 
-        className="relative   z-10 py-6 md:py-8 w-full rotate-3 mt-8 md:-mt-10"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="absolute inset-0 top-[-10px]    bg-gradient-to-r from-teal-800 to-blue-900 z-0"></div>
-        <div className="mx-auto px-4 relative z-10 overflow-hidden">
-          <div 
-            className="flex w-max"
-            ref={sliderRef}
-          >
-            {duplicatedServices.map((service, index) => (
-              <div 
-                key={`${service.id}-${index}`}
-                className="px-4 sm:px-6 md:px-8"
-              >
-                <div className="group cursor-pointer">
-                  <h3 className="text-white text-2xl sm:text-3xl md:text-[48px] font-medium text-center group-hover:scale-105 transition-transform duration-300 whitespace-nowrap">
-                    {service.name}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+     
 
       {/* CTA Section */}
       <div className="relative primary-background w-full px-4 sm:px-6 py-12 md:py-20 lg:px-8 overflow-hidden">

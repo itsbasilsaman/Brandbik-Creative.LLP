@@ -16,12 +16,14 @@ const InteractiveCard = ({
   imageSrc, 
   imageAlt, 
   title, 
-  description 
+  description,
+  className
 }: { 
   imageSrc: string; 
   imageAlt: string; 
   title: string; 
-  description: string; 
+  description: string;
+  className?: string;
 }) => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -49,8 +51,8 @@ const InteractiveCard = ({
       onMouseLeave={handleMouseLeave}
       style={{ transformStyle: 'preserve-3d' }}
     >
-      <div className="p-16 flex justify-center items-center mb-0">
-        <div className="w-16 h-16 flex items-center justify-center">
+      <div className="p-8 lg:p-16 flex justify-center items-center mb-0">
+        <div className="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center">
           <Image
             src={imageSrc}
             alt={imageAlt}
@@ -62,9 +64,9 @@ const InteractiveCard = ({
           />
         </div>
       </div>
-      <div className="bg-white p-4">
-        <h3 className={`text-3xl font-bold text-gray-900 ${poppins.className}`}>{title}</h3>
-        <p className="text-gray-500">{description}</p>
+      <div className="bg-white p-4 lg:p-4 h-[80px] lg:h-auto flex flex-col justify-center">
+        <h3 className={`text-xl lg:text-3xl font-bold text-gray-900 ${poppins.className}`}>{title}</h3>
+        <p className="text-sm lg:text-base text-gray-500">{description}</p>
       </div>
     </div>
   );
@@ -102,6 +104,13 @@ export default function AboutBoxes() {
       imageAlt: "Revenue Generated",
       title: "74M+",
       description: "Revenue Generated"
+    },
+    {
+      imageSrc: "/images/work-one.png",
+      imageAlt: "Happy Clients",
+      title: "500+",
+      description: "Happy Clients",
+      className: "block lg:hidden"
     }
   ];
 
@@ -131,7 +140,7 @@ export default function AboutBoxes() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
           <Suspense fallback={<div>Loading...</div>}>
             {cards.map((card, index) => (
               <InteractiveCard
@@ -140,6 +149,7 @@ export default function AboutBoxes() {
                 imageAlt={card.imageAlt}
                 title={card.title}
                 description={card.description}
+                className={card.className}
               />
             ))}
           </Suspense>

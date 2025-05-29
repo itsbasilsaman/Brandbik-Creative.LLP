@@ -32,13 +32,13 @@ export default function OurTeamSection() {
       id: 1,
       name: "Fadhil Muhammed",
       role: "Brand Consultant",
-      image: "https://images.news9live.com/wp-content/uploads/2023/09/Snapinsta.app_371286028_1237211136939457_5363321923779649254_n_1080.jpg",
+      image: "/images/Fadhil.png",
     },
     {
       id: 2,
       name: "Althaf Shareef",
       role: "AI Chief",
-      image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      image: "/images/Althaf.png",
     },
     {
       id: 3,
