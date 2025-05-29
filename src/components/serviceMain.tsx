@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Poppins } from "next/font/google"
-import { useState } from "react"
 
 const poppins = Poppins({
   subsets: ["latin"],

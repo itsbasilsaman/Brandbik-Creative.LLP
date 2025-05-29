@@ -1,6 +1,5 @@
 "use client";
 
- 
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
@@ -12,19 +11,18 @@ type Service = {
 };
 
 export default function BottomBar() {
-  const services: Service[] = [
-    { name: "Branding", id: "branding" },
-    { name: "App Development", id: "app-dev" },
-    { name: "Social Media", id: "social" },
-    { name: "Website Design", id: "website" },
-    { name: "UX/UI Design", id: "ux-ui" },
-    { name: "Digital Marketing", id: "marketing" },
-  ];
-
-  // Duplicate the services for seamless looping
-  const duplicatedServices = [...services, ...services];
+  const [isPaused, setIsPaused] = useState(false)
+  const services = [
+    "Web Development",
+    "Mobile Development",
+    "UI/UX Design",
+    "Digital Marketing",
+    "Cloud Solutions",
+    "DevOps",
+    "Quality Assurance",
+    "Project Management"
+  ]
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
   
   // Animation controls for review cards
   const containerRef = useRef<HTMLDivElement>(null);
@@ -87,12 +85,7 @@ export default function BottomBar() {
     }
   }, [isInView, controls]);
 
- 
-
-  
-
   return (
-
     <div className="w-full   primary-background  h-full  " ref={containerRef}>
      
 

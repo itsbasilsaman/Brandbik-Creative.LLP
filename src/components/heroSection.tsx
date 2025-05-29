@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   // Track scroll position to move the mouse icon
   useEffect(() => {
@@ -30,7 +31,16 @@ export default function Home() {
   // At 100% scroll, mouse moves toward bottom (translate 50%)
   const mouseTranslateY = `${scrollPosition / 2}%`;
 
-  
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    
+    const mouseX = (clientX - left) / width;
+    const mouseY = (clientY - top) / height;
+    
+    setMousePosition({ x: mouseX, y: mouseY });
+  };
+
   return (
     <main className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}

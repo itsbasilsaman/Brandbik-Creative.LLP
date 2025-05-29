@@ -17,13 +17,11 @@ const InteractiveCard = ({
   imageAlt, 
   title, 
   description,
-  className
 }: { 
   imageSrc: string; 
   imageAlt: string; 
   title: string; 
   description: string;
-  className?: string;
 }) => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -149,7 +147,6 @@ export default function AboutBoxes() {
                 imageAlt={card.imageAlt}
                 title={card.title}
                 description={card.description}
-                className={card.className}
               />
             ))}
           </Suspense>
