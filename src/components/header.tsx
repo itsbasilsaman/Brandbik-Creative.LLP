@@ -288,7 +288,7 @@ export default function Header() {
       <div className="relative z-10 container mx-auto px-4 py-4">
         <div className="flex items-center justify-center">
           {/* Combined Navigation Container with Logo and CTA */}
-          <div className={`flex items-center justify-between w-full space-x-8 transition-all duration-500 ease-in-out ${ isScrolled? "bg-white": "bg-black" }  "backdrop-blur-md" rounded-full px-8 py-3 ${isScrolled ? "shadow-md" : " "}`}>
+          <div className={`flex items-center justify-between w-full space-x-8 transition-all duration-500 ease-in-out bg-white/30 backdrop-blur-md rounded-full px-8 py-3 ${isScrolled ? "shadow-md" : " "}`}>
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" prefetch>

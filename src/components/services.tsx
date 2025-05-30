@@ -54,7 +54,7 @@ export default function ServicesSection() {
               <div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2">App Development</h3>
                 <p className="text-gray-600 text-sm sm:text-base mb-4">
-                  High quality mobile apps with best user interface to transform your thoughts to business
+                Quality mobile apps with user interface to transform thoughts to business.
                 </p>
               </div>
               <ArrowRight className="text-black transition-transform duration-300 group-hover:translate-x-1" />
@@ -75,6 +75,7 @@ export default function ServicesSection() {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         className="object-cover rounded-lg"
       />
+
             </div>
             </div>
             <div className="flex justify-between items-start px-5 sm:px-6">

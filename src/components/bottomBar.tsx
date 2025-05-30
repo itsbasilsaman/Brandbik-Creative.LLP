@@ -2,104 +2,15 @@
 
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
-import { motion, useAnimation, useInView } from "framer-motion"
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 export default function BottomBar() {
-  const [isPaused] = useState(false)
-  const services = [
-    "Web Development",
-    "Mobile Development",
-    "UI/UX Design",
-    "Digital Marketing",
-    "Cloud Solutions",
-    "DevOps",
-    "Quality Assurance",
-    "Project Management"
-  ]
-  const sliderRef = useRef<HTMLDivElement>(null);
-  
-  // Animation controls for review cards
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
-  const controls = useAnimation();
-
   // Arrow animation state
   const [isHovered, setIsHovered] = useState(false);
 
-  // Responsive adjustments
-  const [windowWidth, setWindowWidth] = useState(0);
-  
-  useEffect(() => {
-    // Set initial width
-    setWindowWidth(window.innerWidth);
-    
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    let animationFrameId: number;
-    let position = 0;
-    // Adjust speed based on screen size
-    const speed = windowWidth < 768 ? 0.5 : 1;
-    
-    const animate = () => {
-      if (!isPaused) {
-        position -= speed;
-        // Reset position when we've scrolled one full set of services
-        if (position <= -slider.scrollWidth / 2) {
-          position = 0;
-        }
-        
-        slider.style.transform = `translateX(${position}px)`;
-      }
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [isPaused, windowWidth]);
-
-  // Animate when in view
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [isInView, controls]);
-
   return (
-    <div className="w-full primary-background h-full" ref={containerRef}>
-      {/* Services Slider */}
-      <div className="overflow-hidden py-8">
-        <div 
-          ref={sliderRef}
-          className="flex whitespace-nowrap"
-          style={{ willChange: 'transform' }}
-        >
-          {[...services, ...services].map((service, index) => (
-            <div
-              key={index}
-              className="inline-block px-6 text-white/80 text-lg font-medium"
-            >
-              {service}
-            </div>
-          ))}
-        </div>
-      </div>
-
+    <div className="w-full primary-background h-full">
       {/* CTA Section */}
       <div className="relative primary-background w-full px-4 sm:px-6 py-12 md:py-20 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">

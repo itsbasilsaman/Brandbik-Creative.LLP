@@ -43,24 +43,7 @@ export default function RelatedWorks() {
       description: "AE's School of Commerce is a premier accounting institute located in Perinthalmanna, Malappuram, Kerala.",
       image: "/images/aes-school-of-commerce.jpg",
     },
-    {
-      id: 4,
-      title: "TeamAE",
-      description: "Team AE is a business consultancy firm based in Perinthalmanna, Kerala, offering services in taxation, auditing, and strategic planning.",
-      image: "/images/team-ae.jpg",
-    },
-    {
-      id: 5,
-      title: "Galaxy Paints",
-      description: "Galaxy Paints is a premium paint manufacturer based in Pune, India, offering eco-friendly and durable interior and exterior paints",
-      image: "/images/galaxey-paints.jpg",
-    },
-    {
-      id: 6,
-      title: "Gamegate",
-      description: "High-performance esports gaming platform with real-time tournaments and streaming capabilities.",
-      image: "/images/game-gate.png",
-    },
+    
   ]
 
   return (

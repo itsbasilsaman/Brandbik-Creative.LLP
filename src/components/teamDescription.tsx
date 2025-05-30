@@ -234,6 +234,7 @@ export default function TeamDescription() {
           </div>
         </div>
       </div>
+      
 
       {/* Mobile Contact Button */}
       <div className="md:hidden fixed bottom-6 right-6 z-50">

@@ -27,6 +27,7 @@ export default function Component() {
             </div>
           </div>
         </div>
+        
 
         {/* Top center mockup - Smaller on mobile */}
         <div className="absolute top-8 sm:top-12 md:top-16 left-1/2 transform -translate-x-1/2 w-48 sm:w-64 md:w-80 h-16 sm:h-20 md:h-24 bg-slate-700 rounded-lg shadow-2xl rotate-3 opacity-50">

@@ -183,7 +183,8 @@ export default function ServiceContent() {
   }
 
   return (
-    <div className="relative min-h-[50vh] flex justify-center items-center w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
+
+    <div className="relative py-16  md:h-[50vh] flex justify-center items-center w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
       {/* Background diagonal stripes */}
       <div className="absolute inset-0 z-0">
         {Array.from({ length: 20 }).map((_, i) => (

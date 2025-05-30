@@ -294,7 +294,7 @@ export default function Works() {
 
   return (
     <div
-      className={`lg:h-screen h-auto pb-4 lg:pb-0 ${bgColor} text-white px-5 md:pl-0 md:pr-20 transition-colors duration-1000 ease-in-out`}
+      className={`lg:h-screen h-auto pb-4 pt-2 lg:pb-0 ${bgColor} text-white px-5 md:pl-0 md:pr-20 transition-colors duration-1000 ease-in-out`}
       ref={sectionRef}
     >
       <div className="container mx-auto h-full">

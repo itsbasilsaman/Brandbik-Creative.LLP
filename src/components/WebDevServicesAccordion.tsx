@@ -14,30 +14,31 @@ const services = [
   {
     title: "E-commerce Website Design",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Turn browsers into buyers with a high-converting online store. Our e-commerce solutions combine sleek design, seamless UX, and robust security to maximize sales and scalability",
+    image: "/images/web-two-accordian.png",
   },
   {
     title: "Applications & Dashboard",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Power your business with intuitive, high-performance tools. We build custom web apps and dashboards that simplify workflows, enhance productivity, and keep users engaged.",
+    image: "/images/web-three-accordian.png",
   },
   {
     title: "Custom Website Design",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Stand out in the digital crowd with a website that’s uniquely yours. We design tailor-made sites that capture your brand’s essence, engage visitors, and drive measurable business growth.",
+    image: "/images/web-one-accordian.png",
   },
   {
     title: "Redesign and Website Revamp",
     content:
-      "Without personalisation, a website is just a page on the internet. As a proficient website design company in India, we create a unique website aligned with your brand.",
-    image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      "Don’t let an outdated site hold you back. We transform underperforming websites into modern, fast, and conversion-focused platforms that align with your evolving brand.",
+    image: "/images/web-four-accordian.png",
   },
 ]
 
 export default function WebDevServicesAccordion() {
+
   const [openIndex, setOpenIndex] = useState<number>(-1) // Custom Website Design open by default
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
@@ -74,7 +75,7 @@ export default function WebDevServicesAccordion() {
                 {/* Mobile Image */}
                 <div className="relative w-32 h-20 sm:hidden">
                   <Image
-                    src={service.image || "/placeholder.svg"}
+                    src={service.image || "/p"}
                     alt={`${service.title} preview`}
                     fill
                     className="object-cover shadow-xl transform transition-transform duration-300"
