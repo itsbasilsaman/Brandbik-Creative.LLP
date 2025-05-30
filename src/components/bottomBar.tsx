@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 
 export default function BottomBar() {
