@@ -14,7 +14,7 @@ export default function CyberceedGallery() {
             priority
           />
         </div>
-  
+   
         {/* Two Images - 50-50 on mobile, 70-30 on larger screens */}
         <div className="grid grid-cols-2 md:grid-cols-10 gap-4">
           {/* Left Image - 5 columns on mobile, 7 columns on larger screens */}
