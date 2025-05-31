@@ -15,25 +15,25 @@ const services = [
     title: "E-commerce Website Design",
     content:
       "Turn browsers into buyers with a high-converting online store. Our e-commerce solutions combine sleek design, seamless UX, and robust security to maximize sales and scalability",
-    image: "/images/web-two-accordian.png",
+    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Applications & Dashboard",
     content:
       "Power your business with intuitive, high-performance tools. We build custom web apps and dashboards that simplify workflows, enhance productivity, and keep users engaged.",
-    image: "/images/web-three-accordian.png",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Custom Website Design",
     content:
-      "Stand out in the digital crowd with a website that’s uniquely yours. We design tailor-made sites that capture your brand’s essence, engage visitors, and drive measurable business growth.",
-    image: "/images/web-one-accordian.png",
+      "Stand out in the digital crowd with a website that's uniquely yours. We design tailor-made sites that capture your brand's essence, engage visitors, and drive measurable business growth.",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Redesign and Website Revamp",
     content:
-      "Don’t let an outdated site hold you back. We transform underperforming websites into modern, fast, and conversion-focused platforms that align with your evolving brand.",
-    image: "/images/web-four-accordian.png",
+      "Don't let an outdated site hold you back. We transform underperforming websites into modern, fast, and conversion-focused platforms that align with your evolving brand.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60",
   },
 ]
 

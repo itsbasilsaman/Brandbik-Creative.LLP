@@ -15,31 +15,31 @@ const services = [
     title: "Search Engine Optimization (SEO)",
     content:
       "We optimize your online presence to improve visibility in search results, driving organic traffic through strategic keyword optimization, content creation, and technical SEO improvements.",
-    image: "/images/digital-marketing/seo.jpg",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Pay-Per-Click Advertising (PPC)",
     content:
       "Our targeted PPC campaigns maximize your ROI through strategic ad placement, keyword research, and continuous optimization across Google Ads, social media platforms, and other digital channels.",
-    image: "/images/digital-marketing/ppc.jpg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Content Marketing",
     content:
       "We create engaging, valuable content that resonates with your target audience, including blog posts, articles, infographics, and videos that drive engagement and establish your brand authority.",
-    image: "/images/digital-marketing/content.jpg",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Social Media Marketing",
     content:
       "Our social media strategies build brand awareness and engagement through platform-specific content, community management, and targeted advertising campaigns across major social networks.",
-    image: "/images/digital-marketing/social.jpg",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Email Marketing",
     content:
       "We develop effective email marketing campaigns that nurture leads, retain customers, and drive conversions through personalized content, automation, and strategic segmentation.",
-    image: "/images/digital-marketing/email.jpg",
+    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&auto=format&fit=crop&q=60",
   },
 ]
 

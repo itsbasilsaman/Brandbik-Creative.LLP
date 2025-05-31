@@ -17,6 +17,7 @@ const poppins = Poppins({
   variable: '--font-poppins', // Optional, for Tailwind
 })
 
+
 export default function ContactMain() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -34,7 +35,15 @@ export default function ContactMain() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
-    // Add your form submission logic here
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = `New Contact Form Submission:\n\nName: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nMobile: ${formData.mobile}\nMessage: ${formData.message}`
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+    
+    // Open WhatsApp with the pre-filled message
+    window.open(`https://wa.me/919074851748?text=${encodedMessage}`, '_blank')
   }
 
   return (
@@ -72,7 +81,7 @@ export default function ContactMain() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    placeholder="Value"
+                    placeholder="First name"
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
@@ -86,7 +95,7 @@ export default function ContactMain() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    placeholder="Value"
+                    placeholder="Last name"
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
@@ -103,7 +112,7 @@ export default function ContactMain() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Value"
+                    placeholder="Email address"
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
@@ -117,7 +126,7 @@ export default function ContactMain() {
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    placeholder="Value"
+                    placeholder="Mobile number"
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
@@ -132,7 +141,7 @@ export default function ContactMain() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Value"
+                  placeholder="Your message"
                   className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light min-h-[120px] focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                 />
               </div>
@@ -161,31 +170,33 @@ export default function ContactMain() {
             <div className="flex items-center gap-4 sm:gap-5 bg-[#1f1f1f] p-3 sm:p-4 px-6 sm:px-8 rounded-lg w-full sm:w-auto">
               <Phone className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               <div className="text-gray-300">
-                <p className="text-[14px] sm:text-[16px] font-medium">+91 90748 51748,</p>
-                <p className="text-[14px] sm:text-[16px] font-medium">+91 8075347955</p>
+                <a href="tel:+919074851748" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+91 90748 51748,</a>
+                <br />
+                <a href="tel:+918075347955" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+91 8075347955</a>
               </div>
             </div>
 
             <div className="flex items-center gap-4 sm:gap-5 bg-[#1f1f1f] p-3 sm:p-4 px-6 sm:px-8 rounded-lg w-full sm:w-auto">
               <Mail className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               <div className="text-gray-300">
-                <p className="text-[14px] sm:text-[16px] font-medium">info@brandbik.com</p>
-                <p className="text-[14px] sm:text-[16px] font-medium">hr@brandbik.com</p>
+                <a href="mailto:info@brandbik.com" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">info@brandbik.com</a>
+                <br />
+                <a href="mailto:hr@brandbik.com" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">hr@brandbik.com</a>
               </div>
             </div>
           </div>
 
           <div className="flex gap-6 mt-6 sm:mt-8 justify-center lg:justify-start">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+            <a href="https://www.instagram.com/brandbik_creatives/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
               <FaInstagram className="text-[20px] sm:text-[24px]" />
             </a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+            <a href="https://wa.me/919074851748" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
               <FaWhatsapp className="text-[20px] sm:text-[24px]" />
             </a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+            <a href="https://twitter.com/brandbik" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
               <FaXTwitter className="text-[20px] sm:text-[24px]" />
             </a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
+            <a href="https://www.linkedin.com/company/brandbik-creatives" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
               <FaLinkedin className="text-[20px] sm:text-[24px]" />
             </a>
           </div>

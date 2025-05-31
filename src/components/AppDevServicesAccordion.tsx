@@ -10,30 +10,31 @@ const poppins = Poppins({
   variable: "--font-poppins",
 })
 
+
 const services = [
   {
     title: "Native App Development",
     content:
       "We develop high-performance native applications for iOS and Android platforms using Swift, Kotlin, and Java, ensuring optimal performance and platform-specific features.",
-    image: "/images/app-dev/native-app.jpg",
+    image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=1000&auto=format&fit=crop",
   },
   {
     title: "Cross-Platform Development",
     content:
       "Using React Native and Flutter, we create cross-platform applications that work seamlessly across iOS and Android while maintaining native-like performance and user experience.",
-    image: "/images/app-dev/cross-platform.jpg",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
   },
   {
     title: "UI/UX Design",
     content:
       "Our expert designers create intuitive and engaging user interfaces that enhance user experience and drive engagement, following the latest design trends and best practices.",
-    image: "/images/app-dev/ui-ux.jpg",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop",
   },
   {
     title: "App Maintenance & Support",
     content:
       "We provide comprehensive maintenance and support services to ensure your app stays up-to-date, secure, and performs optimally across all devices and platforms.",
-    image: "/images/app-dev/maintenance.jpg",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1000&auto=format&fit=crop",
   },
 ]
 

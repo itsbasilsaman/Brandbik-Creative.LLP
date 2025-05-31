@@ -15,31 +15,31 @@ const services = [
     title: "Social Media Strategy",
     content:
       "We develop comprehensive social media strategies tailored to your brand's goals and target audience. Our approach includes platform selection, content planning, and performance metrics to ensure maximum impact and engagement.",
-    image: "/images/social-media/strategy.jpg",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Content Creation",
     content:
       "Our creative team produces engaging, platform-optimized content including posts, stories, reels, and videos. We focus on creating content that resonates with your audience and aligns with your brand voice.",
-    image: "/images/social-media/content.jpg",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Community Management",
     content:
       "We manage your social media presence by engaging with your audience, responding to comments, and fostering meaningful conversations. Our team ensures your brand maintains an active and positive community presence.",
-    image: "/images/social-media/community.jpg",
+    image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Social Media Advertising",
     content:
       "We create and manage targeted social media advertising campaigns across platforms like Facebook, Instagram, LinkedIn, and Twitter. Our data-driven approach ensures optimal ROI and campaign performance.",
-    image: "/images/social-media/ads.jpg",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Analytics & Reporting",
     content:
       "We provide detailed analytics and regular performance reports to track your social media success. Our insights help optimize your strategy and demonstrate ROI through key metrics and KPIs.",
-    image: "/images/social-media/analytics.jpg",
+    image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&auto=format&fit=crop&q=60",
   },
 ]
 

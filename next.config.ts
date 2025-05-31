@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
        'clipart-library.com',
       'static.vecteezy.com',
       'wallup.net',
+      'images.unsplash.com',
        // 👈 Add this one too
     ],
     

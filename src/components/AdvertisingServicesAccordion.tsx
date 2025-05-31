@@ -15,31 +15,31 @@ const services = [
     title: "Digital Advertising",
     content:
       "We create and manage comprehensive digital advertising campaigns across multiple platforms including Google Ads, social media, and programmatic advertising. Our data-driven approach ensures optimal ROI and campaign performance.",
-    image: "/images/advertising/digital.jpg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Print & Outdoor Advertising",
     content:
       "From billboards to magazine ads, we design and execute impactful print and outdoor advertising campaigns that capture attention and drive engagement. We handle everything from creative design to media placement.",
-    image: "/images/advertising/print.jpg",
+    image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Social Media Advertising",
     content:
       "We develop targeted social media advertising strategies across platforms like Facebook, Instagram, LinkedIn, and Twitter. Our campaigns are designed to increase brand awareness, drive engagement, and generate leads.",
-    image: "/images/advertising/social.jpg",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Video Advertising",
     content:
       "We create compelling video advertisements for TV, online platforms, and social media. Our video content is designed to tell your brand story and engage your audience through visual storytelling.",
-    image: "/images/advertising/video.jpg",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Performance Marketing",
     content:
       "We implement performance-based marketing strategies that focus on measurable results. Our approach includes conversion rate optimization, A/B testing, and continuous campaign optimization to maximize ROI.",
-    image: "/images/advertising/performance.jpg",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60",
   },
 ]
 

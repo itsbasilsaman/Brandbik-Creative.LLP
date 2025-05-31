@@ -15,31 +15,31 @@ const services = [
     title: "Brand Strategy",
     content:
       "We develop comprehensive brand strategies that define your unique value proposition, target audience, and market positioning. Our strategic approach ensures your brand resonates with your audience and stands out in the market.",
-    image: "/images/branding/strategy.jpg",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Logo Design",
     content:
       "Our creative team crafts distinctive logos that capture your brand's essence and create lasting impressions. We focus on creating memorable, versatile designs that work across all platforms and applications.",
-    image: "/images/branding/logo.jpg",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Brand Identity Design",
     content:
       "We create cohesive brand identity systems including color palettes, typography, imagery guidelines, and design elements that maintain consistency across all brand touchpoints.",
-    image: "/images/branding/identity.jpg",
+    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Brand Voice & Messaging",
     content:
       "We develop your brand's unique voice and messaging framework that communicates your values and connects with your audience. This includes tone of voice guidelines, key messages, and content strategy.",
-    image: "/images/branding/voice.jpg",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60",
   },
   {
     title: "Brand Guidelines",
     content:
       "We create comprehensive brand guidelines that ensure consistent implementation of your brand across all channels. These guidelines serve as a reference for maintaining brand integrity in all communications.",
-    image: "/images/branding/guidelines.jpg",
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&auto=format&fit=crop&q=60",
   },
 ]
 
