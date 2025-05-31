@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Poppins } from 'next/font/google';
+import { useRouter } from 'next/navigation';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,6 +24,7 @@ interface Project {
 }
 
 export default function WorkMain() {
+  const router = useRouter();
   // State to track active category
   const [activeCategory, setActiveCategory] = useState<Category>("website")
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -36,14 +38,19 @@ export default function WorkMain() {
     })
   }
 
+  const handleProjectClick = (projectTitle: string) => {
+    const route = `/works/${projectTitle.toLowerCase().replace(/\s+/g, '-')}`;
+    router.push(route);
+  };
+
   // Sample project data for all categories
   const allProjects: Project[] = [
     // Website Development Projects
     {
       id: 1,
-      title: "Tenderoutes",
-      description: "Tenderoutes is a Kerala-based travel agency specializing in personalized travel experiences across India and international destinations.",
-      image: "/images/game-gate.png",
+      title: "Cyberseed",
+      description: "Cyberseed is a business consultancy firm offering tailored solutions to help companies overcome challenges and achieve sustainable growth.",
+      image: "/images/brandbik-banner.jpg",
       category: "website",
     },
     {
@@ -109,6 +116,14 @@ export default function WorkMain() {
       image: "/images/Web-development/MIKARA-.jpg",
       category: "website",
     },
+    {
+      id: 11,
+      title: "Tenderoutes",
+      description: "Tenderoutes is a Kerala-based travel agency specializing in personalized travel experiences across India and international destinations.",
+      image: "/images/game-gate.png",
+      category: "website",
+    },
+
 
     // App Development Projects
     {
@@ -136,71 +151,71 @@ export default function WorkMain() {
     // Branding Projects
     {
       id: 201,
-      title: "UrbanBite",
-      description: "Restaurant chain rebranding with contemporary urban aesthetic and food photography.",
+      title: "Silhouettes By Saleena",
+      description: "Crafted the brand identity and logo for Silhouettes By Saleena, a modern, elegant fashion label.",
       image: "/images/Branding/sihouettes.png",
       category: "branding",
     },
     {
       id: 202,
-      title: "EcoSmart",
-      description: "Complete brand identity for sustainable products company including logo and guidelines.",
+      title: "The Biriyani & Beyond Co",
+      description: "Crafted a vibrant brand identity capturing the emotion, tradition, and flavor of authentic biryani.",
       image: "/images/Branding/bandb.png",
       category: "branding",
     },
     {
       id: 203,
-      title: "TechFlow",
-      description: "Modern tech startup branding with minimalist design and dynamic visual elements.",
+      title: "Team AE",
+      description: "Built a dynamic brand website for Team AE, showcasing innovation in events, education, and entertainment.",
       image: "/images/Branding/team-ae-work.png",
       category: "branding",
     },
     {
       id: 204,
-      title: "UrbanBite",
-      description: "Restaurant chain rebranding with contemporary urban aesthetic and food photography.",
+      title: "Matrix Microns",
+      description: "Matrix Microns delivers high-quality, sustainably sourced quartz lumps for global industrial applications.",
       image: "/images/Branding/matrix-microns.png",
       category: "branding",
     },
     {
       id: 205,
-      title: "EcoSmart",
-      description: "Complete brand identity for sustainable products company including logo and guidelines.",
+      title: "Cyberseed",
+      description: "We crafted Cyberseed’s bold, modern branding to reflect innovation, growth, and digital excellence.",
       image: "/images/Branding/CYBERBRANDD.jpg",
       category: "branding",
     },
     {
       id: 206,
-      title: "TechFlow",
-      description: "Modern tech startup branding with minimalist design and dynamic visual elements.",
+      title: "Financeva",
+      description: "Financeva: A logo symbolizing financial growth and guidance with a sleek, navigation-inspired design.",
       image: "/images/Branding/FINANCEVA.jpg",
       category: "branding",
     },
     {
       id: 207,
-      title: "UrbanBite",
-      description: "Restaurant chain rebranding with contemporary urban aesthetic and food photography.",
+      title: "IndoArab",
+      description: "We crafted IndoArab’s bold, elegant branding to reflect its luxurious fusion of Indian and Arab aromas.",
       image: "/images/Branding/INDO.jpg",
       category: "branding",
     },
     {
       id: 208,
-      title: "EcoSmart",
-      description: "Complete brand identity for sustainable products company including logo and guidelines.",
+      title: "MPB Group",
+      description: "We developed MPB Group’s branding to unify its diverse ventures in quarry, petroleum, and more.",
       image: "/images/Branding/MPB.jpg",
       category: "branding",
     },
     {
       id: 209,
-      title: "TechFlow",
-      description: "Modern tech startup branding with minimalist design and dynamic visual elements.",
+      title: "SheTalks",
+      description: "We crafted the bold, empowering brand identity for SheTalks – celebrating women's voices worldwide.",
       image: "/images/Branding/SHETALKS.jpg",
       category: "branding",
     },
     {
       id: 210,
-      title: "UrbanBite",
-      description: "Restaurant chain rebranding with contemporary urban aesthetic and food photography.",
+      title: "AES School of Commerce",
+      description: "Crafted a visionary brand identity for AES School of Commerce, symbolizing progress, energy, and connectivity.",
       image: "/images/Branding/aes-school.png",
       category: "branding",
     },
@@ -345,7 +360,11 @@ export default function WorkMain() {
       {/* Projects Grid - Responsive across all devices */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {filteredProjects.map((project) => (
-          <div key={project.id} className="project-card sm:mb-4 border border-gray-200 cursor-pointer">
+          <div 
+            key={project.id} 
+            className="project-card sm:mb-4 border border-gray-200 cursor-pointer"
+            onClick={() => handleProjectClick(project.title)}
+          >
             <div 
               className="mb-3 md:mb-4 overflow-hidden relative"
               onMouseMove={handleMouseMove}
