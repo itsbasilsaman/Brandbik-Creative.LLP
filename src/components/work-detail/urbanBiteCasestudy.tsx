@@ -6,10 +6,10 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional: for using with Tailwind
 });
 
-export default function CyberceedCaseStudy() {
+export default function UrbanBiteCasestudy() {
     const services = [
-      ["App Development", "Social Media", "Advertising"],
-      ["Branding", "2D/3D Visuals"],
+      ["Brand Identity", "UI/UX Design", "Mobile App"],
+      ["Social Media", "Marketing Materials"],
     ]
   
     return (
@@ -22,9 +22,9 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sleek and professional brand identity for Cyberseed, emphasizing their role as a trusted
-                corporate consultancy in the Uae. Delivered cohesive branding, from logo to marketing materials,
-                reflecting their expertise, reliability, and corporate values.
+                Developed a modern and engaging brand identity for Urban Bite, a food delivery service in the UAE. 
+                Created a cohesive visual system that reflects their commitment to quality food and fast delivery, 
+                from logo design to mobile app interface and marketing materials.
               </p>
             </div>
           </div>
@@ -36,8 +36,8 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The client approached us with a need to reposition their brand for a younger audience, while improving
-                conversion through a more intuitive digital experience.
+                The client needed to establish a strong brand presence in the competitive food delivery market while 
+                creating an intuitive mobile app experience that would make ordering food quick and enjoyable.
               </p>
             </div>
           </div>

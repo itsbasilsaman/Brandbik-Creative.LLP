@@ -9,7 +9,7 @@ const poppins = Poppins({
 export default function UrbanBiteBanner() {
   return (
     <div 
-      className="h-[600px] relative flex items-center px-5 md:px-16 lg:px-24"
+      className={`h-[600px] relative flex items-center px-5 md:px-16 lg:px-24 ${poppins.className}`}
       style={{
         backgroundImage: 'url(/images/urban-bite.png)',
         backgroundSize: 'cover',
