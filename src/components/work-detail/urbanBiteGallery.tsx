@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 export default function UrbanBiteGallery() {
   return (
-    <div className="w-full px-4 sm:px-5 md:px-16 lg:px-24 py-6 md:py-8 lg:pb-24 h-auto">
+    <div className={`w-full px-4 sm:px-5 md:px-16 lg:px-24 py-6 md:py-8 lg:pb-24 h-auto ${poppins.className}`}>
       {/* Main Image - Full width on mobile */}
       <div className="w-full rounded-2xl overflow-hidden mb-4 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] relative">
         <Image 
