@@ -61,7 +61,7 @@ export default function AppDevServicesAccordion() {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(-1)}
             >
-              <span className="flex-1 relative z-10">{service.title}</span>
+              <span className="flex-1 relative z-[1]">{service.title}</span>
 
               {/* Centered Hover Image with Slide Effect - Responsive */}
               <div
@@ -69,7 +69,7 @@ export default function AppDevServicesAccordion() {
                   hoveredIndex === idx ? "opacity-100 scale-100 -rotate-3" : "opacity-0 scale-75 rotate-6"
                 }`}
                 style={{
-                  zIndex: 5,
+                  zIndex: 20,
                 }}
               >
                 {/* Mobile Image */}
@@ -117,7 +117,7 @@ export default function AppDevServicesAccordion() {
                 </div>
               </div>
 
-              <span className="text-3xl font-light ml-4 relative z-10 transition-transform duration-300">
+              <span className="text-3xl font-light ml-4 relative z-[1] transition-transform duration-300">
                 {openIndex === idx ? "−" : "+"}
               </span>
             </div>

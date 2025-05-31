@@ -17,6 +17,20 @@ const poppins = Poppins({
   variable: '--font-poppins', // Optional, for Tailwind
 })
 
+// Add keyframes animation
+const gradientAnimation = `
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`;
 
 export default function ContactMain() {
   const [formData, setFormData] = useState({
@@ -47,7 +61,11 @@ export default function ContactMain() {
   }
 
   return (
-    <div className={`min-h-screen flex items-center bg-black justify-center pt-20 md:pt-5 relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 ${poppins.className}`}>
+    <div className={`min-h-screen flex items-center bg-gradient-to-br from-[#1a1a2e] via-[#2a2a4a] to-[#0f3460] justify-center pt-20 md:pt-5 relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 ${poppins.className}`} style={{
+      backgroundSize: '400% 400%',
+      animation: 'gradient 15s ease infinite',
+    }}>
+      <style>{gradientAnimation}</style>
       {/* Background image */}
       {/* <div className="absolute w-full h-full">
         <Image 

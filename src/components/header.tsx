@@ -38,15 +38,15 @@ const languages: Language[] = [
 
 const contentSections: Record<string, ContentSection> = {
   impact: {
-    title: "Our Achivements",
+    title: "Our Impact",
     description:
-      "Every innovation that happens here is out of a quest to get better at what we are already doing. We deliver ideas that make a difference, create experiences that transform lives and build ecosystems that foster progress.",
+      "At BrandBik, we've been transforming businesses through innovative digital solutions. Our commitment to excellence and client success has led to remarkable achievements in the digital landscape.",
     stats: [
-      { number: "700+", label: "Projects launched successfully across the globe" },
-      { number: "10M", label: "Daily customer engagement through our projects" },
-      { number: "100+", label: "Digital transformation stories that made a difference" },
+      { number: "200+", label: "Successful digital transformation projects" },
+      { number: "95%", label: "Client satisfaction rate" },
+      { number: "50+", label: "Enterprise clients served" },
     ],
-    buttonText: "Our Impact",
+    buttonText: "View Our Impact",
     buttonLink: "/impact",
     hasAnimation: true,
     images: {
@@ -55,61 +55,61 @@ const contentSections: Record<string, ContentSection> = {
     },
   },
   testimonials: {
-    title: "Client Testimonials",
+    title: "Client Success Stories",
     description:
-      "Hear from our satisfied clients who have experienced transformational growth through our innovative solutions and dedicated partnership approach.",
+      "Our clients' success is our success. Hear from businesses that have transformed their digital presence and achieved remarkable growth through our solutions.",
     stats: [
-      { number: "98%", label: "Client satisfaction rate across all projects" },
-      { number: "4.9/5", label: "Average rating from client feedback" },
+      { number: "4.9/5", label: "Average client satisfaction rating" },
       { number: "85%", label: "Clients who return for additional projects" },
+      { number: "60%", label: "Average increase in client engagement" },
     ],
-    buttonText: "View Testimonials",
+    buttonText: "Read Testimonials",
     buttonLink: "/testimonials",
   },
   clients: {
     title: "Our Clients",
     description:
-      "We partner with industry leaders and emerging businesses to create meaningful digital experiences that drive growth and innovation.",
+      "We partner with forward-thinking businesses across various industries, helping them achieve their digital goals through innovative solutions and strategic thinking.",
     stats: [
-      { number: "250+", label: "Global clients across various industries" },
-      { number: "50+", label: "Fortune 500 companies trust our solutions" },
-      { number: "30+", label: "Countries where our clients operate" },
+      { number: "50+", label: "Active enterprise clients" },
+      { number: "15+", label: "Industries served" },
+      { number: "30+", label: "Countries with our client presence" },
     ],
-    buttonText: "Our Clients",
+    buttonText: "Meet Our Clients",
     buttonLink: "/clients",
   },
   partnership: {
-    title: "Partnership",
+    title: "Strategic Partnerships",
     description:
-      "Building lasting relationships through strategic partnerships that create mutual value and drive innovation in the digital landscape.",
+      "We believe in the power of collaboration. Our strategic partnerships enable us to deliver comprehensive solutions and stay at the forefront of digital innovation.",
     stats: [
-      { number: "40+", label: "Strategic technology partnerships worldwide" },
-      { number: "15+", label: "Years of partnership excellence" },
-      { number: "200+", label: "Collaborative projects delivered successfully" },
+      { number: "20+", label: "Technology partners" },
+      { number: "10+", label: "Years of partnership excellence" },
+      { number: "100+", label: "Joint projects delivered" },
     ],
     buttonText: "Partner With Us",
     buttonLink: "/partnership",
   },
   insights: {
-    title: "Insights",
+    title: "Digital Insights",
     description:
-      "Stay ahead with our latest research, industry trends, and thought leadership that shapes the future of digital transformation.",
+      "Stay ahead of the curve with our expert insights, industry trends, and thought leadership in digital transformation and innovation.",
     stats: [
-      { number: "500+", label: "Research articles and insights published" },
-      { number: "1M+", label: "Monthly readers of our insights" },
-      { number: "25+", label: "Industry awards for thought leadership" },
+      { number: "100+", label: "Expert articles published" },
+      { number: "50K+", label: "Monthly readers" },
+      { number: "15+", label: "Industry awards" },
     ],
     buttonText: "Explore Insights",
     buttonLink: "/insights",
   },
   contact: {
-    title: "Contact",
+    title: "Get in Touch",
     description:
-      "Ready to start your digital transformation journey? Get in touch with our team of experts to discuss your project requirements.",
+      "Ready to transform your digital presence? Our team of experts is here to help you achieve your business goals through innovative solutions.",
     stats: [
-      { number: "24/7", label: "Support available for all clients" },
-      { number: "< 2hrs", label: "Average response time to inquiries" },
-      { number: "100%", label: "Commitment to client success" },
+      { number: "24/7", label: "Support available" },
+      { number: "< 2hrs", label: "Response time" },
+      { number: "100%", label: "Client satisfaction" },
     ],
     buttonText: "Contact Us",
     buttonLink: "/contact",
@@ -605,7 +605,7 @@ export default function Header() {
                             delay: 1.2,
                           }}
                         >
-                          <span className="text-white font-bold text-lg">🏆</span>
+                          <span className="text-white font-semibold text-lg">🏆</span>
                         </motion.div>
                       </motion.div>
                     </motion.div>
@@ -640,7 +640,7 @@ export default function Header() {
                         className="animate-in fade-in-50 slide-in-from-bottom-4 duration-700"
                         style={{ animationDelay: `${index * 150}ms` }}
                       >
-                        <div className="text-4xl lg:text-5xl font-bold text-white mb-2">{stat.number}</div>
+                        <div className="text-4xl lg:text-5xl font-semibold text-white mb-2">{stat.number}</div>
                         <div className="text-sm text-white/70 leading-relaxed">{stat.label}</div>
                       </div>
                     ))}
