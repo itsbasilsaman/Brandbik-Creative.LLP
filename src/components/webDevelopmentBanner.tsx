@@ -4,6 +4,11 @@ import { ArrowUpRight } from "lucide-react"
 import { Poppins } from 'next/font/google';
 import Image from 'next/image';
 
+// Add type for CSS custom properties
+type CSSPropertiesWithCustomVars = React.CSSProperties & {
+  '--rotation': string;
+};
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // You can include multiple weights
@@ -38,7 +43,7 @@ export default function Component() {
       {/* Floating website images */}
       <div className="absolute inset-0 z-0">
         {/* Top left image */}
-        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 w-32 sm:w-48 md:w-64 h-20 sm:h-32 md:h-40 rounded-lg shadow-2xl opacity-60 overflow-hidden animate-float" style={{ '--rotation': '-12deg' } as any}>
+        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 w-32 sm:w-48 md:w-64 h-20 sm:h-32 md:h-40 rounded-lg shadow-2xl opacity-60 overflow-hidden animate-float" style={{ '--rotation': '-12deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/Web-development/GENCHI.jpg"
             alt="GENCHI"
@@ -48,7 +53,7 @@ export default function Component() {
         </div>
 
         {/* Top center image */}
-        <div className="absolute top-8 sm:top-12 md:top-16 left-1/2 transform -translate-x-1/2 w-48 sm:w-64 md:w-80 h-16 sm:h-20 md:h-24 rounded-lg shadow-2xl opacity-50 overflow-hidden animate-float-delay-1" style={{ '--rotation': '3deg' } as any}>
+        <div className="absolute top-8 sm:top-12 md:top-16 left-1/2 transform -translate-x-1/2 w-48 sm:w-64 md:w-80 h-16 sm:h-20 md:h-24 rounded-lg shadow-2xl opacity-50 overflow-hidden animate-float-delay-1" style={{ '--rotation': '3deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/game-gate.png"
             alt="Game Gate"
@@ -58,7 +63,7 @@ export default function Component() {
         </div>
 
         {/* Top right image */}
-        <div className="absolute top-4 lg:top-8 right-2 lg:right-4 w-48 lg:w-72 h-32 lg:h-48 rounded-lg shadow-2xl opacity-70 overflow-hidden animate-float-delay-2" style={{ '--rotation': '12deg' } as any}>
+        <div className="absolute top-4 lg:top-8 right-2 lg:right-4 w-48 lg:w-72 h-32 lg:h-48 rounded-lg shadow-2xl opacity-70 overflow-hidden animate-float-delay-2" style={{ '--rotation': '12deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/scitor-academy.jpg"
             alt="Scitor Academy"
@@ -68,7 +73,7 @@ export default function Component() {
         </div>
 
         {/* Bottom left image */}
-        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-2 sm:left-4 md:left-8 w-48 sm:w-64 md:w-80 h-32 sm:h-40 md:h-52 rounded-lg shadow-2xl opacity-60 overflow-hidden animate-float-delay-3" style={{ '--rotation': '-6deg' } as any}>
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-2 sm:left-4 md:left-8 w-48 sm:w-64 md:w-80 h-32 sm:h-40 md:h-52 rounded-lg shadow-2xl opacity-60 overflow-hidden animate-float-delay-3" style={{ '--rotation': '-6deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/aes-school-of-commerce.jpg"
             alt="AES School of Commerce"
@@ -78,7 +83,7 @@ export default function Component() {
         </div>
 
         {/* Center left image */}
-        <div className="absolute top-1/2 left-2 xl:left-4 transform -translate-y-1/2 w-48 xl:w-64 h-28 xl:h-36 rounded-lg shadow-2xl opacity-50 overflow-hidden animate-float-delay-4" style={{ '--rotation': '6deg' } as any}>
+        <div className="absolute top-1/2 left-2 xl:left-4 transform -translate-y-1/2 w-48 xl:w-64 h-28 xl:h-36 rounded-lg shadow-2xl opacity-50 overflow-hidden animate-float-delay-4" style={{ '--rotation': '6deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/team-ae.jpg"
             alt="Team AE"
@@ -88,7 +93,7 @@ export default function Component() {
         </div>
 
         {/* Bottom center image */}
-        <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 w-64 md:w-96 h-20 md:h-32 rounded-lg shadow-2xl opacity-40 overflow-hidden animate-float-delay-5" style={{ '--rotation': '-3deg' } as any}>
+        <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 w-64 md:w-96 h-20 md:h-32 rounded-lg shadow-2xl opacity-40 overflow-hidden animate-float-delay-5" style={{ '--rotation': '-3deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/galaxey-paints.jpg"
             alt="Galaxey Paints"
@@ -98,7 +103,7 @@ export default function Component() {
         </div>
 
         {/* Right side image */}
-        <div className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 w-48 sm:w-64 md:w-80 h-32 sm:h-44 md:h-56 rounded-lg shadow-2xl opacity-75 overflow-hidden animate-float-delay-6" style={{ '--rotation': '-12deg' } as any}>
+        <div className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 w-48 sm:w-64 md:w-80 h-32 sm:h-44 md:h-56 rounded-lg shadow-2xl opacity-75 overflow-hidden animate-float-delay-6" style={{ '--rotation': '-12deg' } as CSSPropertiesWithCustomVars}>
           <Image
             src="/images/Web-development/jn-.jpg"
             alt="JN"
