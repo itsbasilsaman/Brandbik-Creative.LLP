@@ -10,7 +10,6 @@ const poppins = Poppins({
   variable: "--font-poppins",
 })
 
-
 const services = [
   {
     title: "Native App Development",
