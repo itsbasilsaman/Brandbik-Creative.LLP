@@ -127,6 +127,9 @@ export default function Header() {
   const [isAchievementHovered, setIsAchievementHovered] = useState(false)
   const [animationTimer, setAnimationTimer] = useState<NodeJS.Timeout | null>(null)
 
+  // Add this helper function to check if we're on the works or about route
+  const isDarkTextRoute = pathname === '/works' || pathname === '/about'
+
   // Close panel when route changes
   useEffect(() => {
     setIsPanelOpen(false)
@@ -294,7 +297,7 @@ export default function Header() {
               <Link href="/" prefetch>
                 {isLargeScreen ? (
                   <Image
-                    src={isScrolled ? "/images/brandbik-blue-logo-.png" : "/images/logo-brandbik.png"}
+                    src={isScrolled || isDarkTextRoute ? "/images/brandbik-blue-logo-.png" : "/images/logo-brandbik.png"}
                     alt="Logo"
                     width={120}
                     height={40}
@@ -311,48 +314,48 @@ export default function Header() {
               <Link
                 href="/about"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   About
                   <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                   ></span>
                 </span>
               </Link>
               <Link
                 href="/service"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   Services
                   <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                   ></span>
                 </span>
               </Link>
               <Link
                 href="/works"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   Works
                   <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                   ></span>
                 </span>
               </Link>
               <Link
                 href="/contact"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
               >
                 <span className="relative">
                   Contact Us
                   <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                   ></span>
                 </span>
               </Link>
@@ -368,13 +371,13 @@ export default function Header() {
               <button
                 onClick={() => setIsPanelOpen(true)}
                 className={`hidden sm:inline-flex items-center gap-2 cursor-pointer ${
-                  isScrolled ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
+                  isScrolled || isDarkTextRoute ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
                 } text-white px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group`}
               >
                 <span className="text-white">Get Started</span>
                 <div
                   className={`h-5 w-5 rounded-full ${
-                    isScrolled ? "bg-gray-700 group-hover:bg-gray-600" : "bg-white/30 group-hover:bg-white/50"
+                    isScrolled || isDarkTextRoute ? "bg-gray-700 group-hover:bg-gray-600" : "bg-white/30 group-hover:bg-white/50"
                   } flex items-center justify-center transition-colors`}
                 >
                   <ChevronRight className="h-3 w-3 text-white" />
@@ -387,7 +390,7 @@ export default function Header() {
           <div className="md:hidden absolute right-8 flex items-center gap-4">
             <LanguageSwitcher isMobile={true} />
             <button 
-              className={`${isScrolled ? "text-black" : "text-white"}`}
+              className={`${isScrolled || isDarkTextRoute ? "text-black" : "text-white"}`}
               onClick={() => setIsPanelOpen(true)}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -3,7 +3,7 @@ export default function CyberceedBanner() {
     <div 
       className=" h-[600px] relative flex items-center px-5 md:px-16 lg:px-24"
       style={{
-        backgroundImage: 'url(/images/cyberceed.png)',
+        backgroundImage: 'url(/images/Web-development/aes-banner.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center right',
         backgroundRepeat: 'no-repeat',

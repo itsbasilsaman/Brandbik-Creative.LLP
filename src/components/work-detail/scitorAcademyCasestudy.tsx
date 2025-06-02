@@ -6,10 +6,10 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional: for using with Tailwind
 });
 
-export default function CyberceedCaseStudy() {
+export default function ScitorAcademyCaseStudy() {
     const services = [
-      ["App Development", "Social Media", "Advertising"],
-      ["Branding", "2D/3D Visuals"],
+      ["Web Development", "Digital Marketing", "Branding"],
+      ["UI/UX Design", "Content Strategy"],
     ]
   
     return (
@@ -22,9 +22,9 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sleek and professional brand identity for Cyberseed, emphasizing their role as a trusted
-                corporate consultancy in the Uae. Delivered cohesive branding, from logo to marketing materials,
-                reflecting their expertise, reliability, and corporate values.
+                Developed a comprehensive digital platform for Scitor Academy, a premier educational institution in Saudi Arabia. 
+                Created an engaging and user-friendly website that showcases their diverse range of courses in digital marketing, 
+                graphic design, and app development, while emphasizing their commitment to quality education and student success.
               </p>
             </div>
           </div>
@@ -36,8 +36,9 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The client approached us with a need to reposition their brand for a younger audience, while improving
-                conversion through a more intuitive digital experience.
+                The challenge was to create a modern, responsive website that effectively communicates Scitor Academy's 
+                educational offerings while maintaining a professional and trustworthy brand image. The platform needed to 
+                handle course registrations, showcase student testimonials, and provide easy access to learning resources.
               </p>
             </div>
           </div>
