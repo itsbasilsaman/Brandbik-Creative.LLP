@@ -36,7 +36,7 @@ export default function ScitorAcademyCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a modern, responsive website that effectively communicates Scitor Academy's 
+                The challenge was to create a modern, responsive website that effectively communicates Scitor Academy&apos;s 
                 educational offerings while maintaining a professional and trustworthy brand image. The platform needed to 
                 handle course registrations, showcase student testimonials, and provide easy access to learning resources.
               </p>
