@@ -13,6 +13,7 @@ export default function FinancevaCasestudy() {
     ]
   
     return (
+      
       <div className={`h-auto lg:h-screen bg-white px-5 md:px-16 lg:px-24 py-12 lg:py-28 lg:pb-0 ${poppins.className}`}>
         <div className="mx-auto space-y-8 md:space-y-16 lg:space-y-20">
           {/* Scope Section */}
@@ -34,7 +35,7 @@ export default function FinancevaCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively communicate Financeva's role as a trusted financial advisor while maintaining a modern and approachable image. The design needed to balance professionalism with innovation, appealing to both traditional clients and those seeking modern financial solutions.
+                The challenge was to create a brand identity that would effectively represent Financeva&apos;s commitment to financial innovation while maintaining a professional and trustworthy image. The design needed to balance professionalism with innovation, appealing to both traditional clients and those seeking modern financial solutions.
               </p>
             </div>
           </div>

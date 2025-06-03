@@ -13,6 +13,7 @@ export default function CyberseedBrandingCasestudy() {
     ]
   
     return (
+      
       <div className={`h-auto lg:h-screen bg-white px-5 md:px-16 lg:px-24 py-12 lg:py-28 lg:pb-0 ${poppins.className}`}>
         <div className="mx-auto space-y-8 md:space-y-16 lg:space-y-20">
           {/* Scope Section */}
@@ -34,7 +35,7 @@ export default function CyberseedBrandingCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively communicate Cyberseed's position as a forward-thinking business consultancy while emphasizing their expertise in digital solutions. The design needed to balance innovation with professionalism, appealing to both tech-savvy clients and traditional businesses seeking digital transformation.
+                The challenge was to create a brand identity that would effectively represent Cyberseed&apos;s commitment to cybersecurity excellence while maintaining a professional and trustworthy image.
               </p>
             </div>
           </div>

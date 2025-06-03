@@ -1,12 +1,3 @@
-import Image from "next/image";
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-
 export default function IndoArabBanner() {
   return (
     <div 
@@ -18,6 +9,7 @@ export default function IndoArabBanner() {
         backgroundRepeat: 'no-repeat',
       }}
     >
+      
       {/* Overlay with gradient for left side darkness */}
       <div 
         className="absolute inset-0"

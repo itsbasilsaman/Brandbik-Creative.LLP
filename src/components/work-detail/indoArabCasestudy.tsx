@@ -34,7 +34,7 @@ export default function IndoArabCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively communicate IndoArab's unique position in the perfume industry, blending Indian and Arab influences. The design needed to appeal to a discerning clientele while maintaining cultural authenticity and luxury appeal.
+                The challenge was to create a brand identity that would effectively represent IndoArab&apos;s commitment to cultural exchange while maintaining a professional and modern image.
               </p>
             </div>
           </div>
