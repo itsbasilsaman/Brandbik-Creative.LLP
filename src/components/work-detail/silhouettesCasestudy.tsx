@@ -22,7 +22,7 @@ export default function SilhouettesCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sophisticated brand identity for Silhouettes By Saleena, a premium fashion label. Created a cohesive visual language that reflects the brand's commitment to modern elegance and timeless style. The project encompassed logo design, brand guidelines, and marketing materials.
+                Developed a sophisticated brand identity for Silhouettes By Saleena, a premium fashion label. Created a cohesive visual language that reflects the brand&apos;s commitment to modern elegance and timeless style. The project encompassed logo design, brand guidelines, and marketing materials.
               </p>
             </div>
           </div>

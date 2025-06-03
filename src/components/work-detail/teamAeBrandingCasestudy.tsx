@@ -13,6 +13,7 @@ export default function TeamAeBrandingCasestudy() {
     ]
   
     return (
+      
       <div className={`h-auto lg:h-screen bg-white px-5 md:px-16 lg:px-24 py-12 lg:py-28 lg:pb-0 ${poppins.className}`}>
         <div className="mx-auto space-y-8 md:space-y-16 lg:space-y-20">
           {/* Scope Section */}
@@ -34,7 +35,7 @@ export default function TeamAeBrandingCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively represent Team AE's diverse range of services while maintaining a cohesive and professional look. The design needed to appeal to both corporate clients and educational institutions while reflecting their innovative approach to business solutions.
+                The challenge was to create a brand identity that would effectively represent Team AE&apos;s diverse range of services while maintaining a cohesive and professional look. The design needed to appeal to both corporate clients and educational institutions while reflecting their innovative approach to business solutions.
               </p>
             </div>
           </div>
