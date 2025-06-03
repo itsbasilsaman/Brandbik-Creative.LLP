@@ -1,13 +1,4 @@
-import Image from "next/image";
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-
-export default function MPBGroupBanner() {
+export default function MpbGroupBanner() {
   return (
     <div 
       className="h-[600px] relative flex items-center px-5 md:px-16 lg:px-24"
@@ -25,6 +16,7 @@ export default function MPBGroupBanner() {
           background: 'linear-gradient(to right, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 80%)',
         }}
       />
+      
       
       <div className="max-w-xl w-full space-y-6 relative z-10 text-white">
         <h1 className="text-white text-3xl md:text-4xl lg:text-4xl font-light leading-tight">

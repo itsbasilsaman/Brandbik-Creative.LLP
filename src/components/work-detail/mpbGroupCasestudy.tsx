@@ -11,6 +11,7 @@ export default function MPBGroupCasestudy() {
       ["Brand Identity", "Logo Design", "Visual Identity"],
       ["Brand Guidelines", "Marketing Materials"],
     ]
+    
   
     return (
       <div className={`h-auto lg:h-screen bg-white px-5 md:px-16 lg:px-24 py-12 lg:py-28 lg:pb-0 ${poppins.className}`}>
@@ -22,7 +23,7 @@ export default function MPBGroupCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a comprehensive brand identity for MPB Group, a diversified business conglomerate. Created a unified visual language that represents the group's various ventures in quarry, petroleum, and other industries while maintaining a cohesive corporate identity. The project encompassed complete brand development, including guidelines and marketing materials.
+                Developed a sophisticated brand identity for MPB Group, a leading business conglomerate. Created a cohesive visual language that reflects the company&apos;s diverse portfolio and commitment to excellence. The project encompassed comprehensive brand development, including guidelines and marketing materials.
               </p>
             </div>
           </div>
@@ -34,7 +35,7 @@ export default function MPBGroupCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively unify MPB Group's diverse business ventures under one cohesive vision. The design needed to reflect the group's strength and reliability while maintaining flexibility to accommodate various industries and future growth.
+                The challenge was to create a brand identity that would effectively represent MPB Group&apos;s diverse range of services while maintaining a cohesive and professional look. The design needed to appeal to both corporate clients and educational institutions while reflecting their innovative approach to business solutions.
               </p>
             </div>
           </div>

@@ -11,6 +11,7 @@ export default function MatrixMicronsCasestudy() {
       ["Brand Identity", "Logo Design", "Visual Identity"],
       ["Brand Guidelines", "Marketing Materials"],
     ]
+    
   
     return (
       <div className={`h-auto lg:h-screen bg-white px-5 md:px-16 lg:px-24 py-12 lg:py-28 lg:pb-0 ${poppins.className}`}>
@@ -34,7 +35,7 @@ export default function MatrixMicronsCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively communicate Matrix Microns' position as a global leader in quartz supply while emphasizing their commitment to quality and sustainability. The design needed to appeal to industrial clients worldwide while maintaining a professional and trustworthy image.
+                The challenge was to create a brand identity that would effectively represent Matrix Microns&apos; commitment to innovation and precision while maintaining a professional and modern image.
               </p>
             </div>
           </div>
