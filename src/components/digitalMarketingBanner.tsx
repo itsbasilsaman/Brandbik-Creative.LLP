@@ -119,7 +119,7 @@ export default function Component() {
         Digital Marketing
         </h1>
 
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">We're experts in driving growth through strategic digital marketing solutions.</p>
+        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">We&apos;re experts in driving growth through strategic digital marketing solutions.</p>
 
         <button
           className="bg-slate-600 hover:bg-slate-500 flex justify-center items-center gap-2 text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg rounded-full shadow-2xl transition-all duration-300 hover:scale-105"

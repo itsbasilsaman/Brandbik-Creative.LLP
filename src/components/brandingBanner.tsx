@@ -81,6 +81,7 @@ export default function Component() {
             className="object-cover"
           />
         </div>
+        
 
         {/* Center left image */}
         <div className="absolute top-1/2 left-2 xl:left-4 transform -translate-y-1/2 w-48 xl:w-64 h-28 xl:h-36 rounded-lg shadow-2xl opacity-50 overflow-hidden animate-float-delay-4" style={{ '--rotation': '6deg' } as CSSPropertiesWithCustomVars}>
@@ -119,7 +120,7 @@ export default function Component() {
         Branding
         </h1>
 
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">We're dedicated to helping businesses build strong, memorable brands.</p>
+        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">We&apos;re experts in creating memorable brand identities that resonate with your audience.</p>
 
         <button
           className="bg-slate-600 hover:bg-slate-500 flex justify-center items-center gap-2 text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg rounded-full shadow-2xl transition-all duration-300 hover:scale-105"
