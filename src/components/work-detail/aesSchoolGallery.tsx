@@ -6,7 +6,7 @@ export default function CyberceedGallery() {
         {/* Main Image - Full width on mobile */}
         <div
   className="w-full rounded-2xl overflow-hidden mb-4 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] relative"
-  style={{ backgroundColor: '#EDEEFF' }}
+  style={{ backgroundColor: '#FFFFFF' }}
 >
   <Image 
     src="/images/Web-development/aes-banner.png" 
@@ -22,9 +22,11 @@ export default function CyberceedGallery() {
         {/* Two Images - 50-50 on mobile, 70-30 on larger screens */}
         <div className="grid grid-cols-2 md:grid-cols-10 gap-4">
           {/* Left Image - 5 columns on mobile, 7 columns on larger screens */}
-          <div className="col-span-1 md:col-span-7 rounded-2xl overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] relative bg-[#ECE2F8]">
+          <div className="col-span-1 md:col-span-7 rounded-2xl overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] relative bg-[#ECE2F8]"
+          style={{ backgroundColor: '#FFFFFF' }}
+          >
   <Image 
-    src="/images/Web-development/scitor-academy-banner.png" 
+    src="/images/Web-development/aes-interface.png" 
     alt="Cyberseed Billboard Design"
     fill
     className="object-contain"
@@ -36,10 +38,10 @@ export default function CyberceedGallery() {
           {/* Right Image - 5 columns on mobile, 3 columns on larger screens */}
           <div
   className="col-span-1 md:col-span-3 rounded-2xl overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] relative"
-  style={{ backgroundColor: '#ECE2F8' }}
+  style={{ backgroundColor: '#FFFFFF' }}
 >
   <Image 
-    src="/images/Web-development/scitor-logo.png" 
+    src="/images/Web-development/aes-logo.png" 
     alt="Cyberseed Branding Design"
     fill
     className="object-contain"

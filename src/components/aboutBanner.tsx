@@ -14,10 +14,13 @@ const poppins = Poppins({
 // Move images to a separate constant file or environment variables in production
 const images = [
   "/images/about-two.jpg",
+  
+  "/images/about-five.jpg",
+  
+  "/images/about-six.jpg",
+  
   "/images/about-one.jpg",
-  "/images/about-three.jpg",
-  "/images/about-image-one.jpg",
-  "/images/about-image-one.jpg",
+  "/images/about-seven.jpg",
 ];
 
 // Client component for scroll functionality

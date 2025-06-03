@@ -6,10 +6,10 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional: for using with Tailwind
 });
 
-export default function CyberceedCaseStudy() {
+export default function IndoArabCasestudy() {
     const services = [
-      ["App Development", "Social Media", "Advertising"],
-      ["Branding", "2D/3D Visuals"],
+      ["Brand Identity", "Logo Design", "Visual Identity"],
+      ["Packaging Design", "Marketing Materials"],
     ]
   
     return (
@@ -22,9 +22,7 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sleek and professional brand identity for Cyberseed, emphasizing their role as a trusted
-                corporate consultancy in the Uae. Delivered cohesive branding, from logo to marketing materials,
-                reflecting their expertise, reliability, and corporate values.
+                Developed a luxurious brand identity for IndoArab, a premium perfume manufacturer. Created a sophisticated visual language that celebrates the fusion of Indian and Arab aromas while maintaining an air of exclusivity. The project encompassed comprehensive brand development, including packaging design and marketing materials.
               </p>
             </div>
           </div>
@@ -36,8 +34,7 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The client approached us with a need to reposition their brand for a younger audience, while improving
-                conversion through a more intuitive digital experience.
+                The challenge was to create a brand identity that would effectively communicate IndoArab's unique position in the perfume industry, blending Indian and Arab influences. The design needed to appeal to a discerning clientele while maintaining cultural authenticity and luxury appeal.
               </p>
             </div>
           </div>

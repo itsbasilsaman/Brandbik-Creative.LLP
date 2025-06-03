@@ -9,20 +9,38 @@ const poppins = Poppins({
 
 export default function IndoArabBanner() {
   return (
-    <div className={`w-full h-[60vh] md:h-[80vh] relative ${poppins.className}`}>
-      <Image
-        src="/images/Digital-Marketing/indo-min.jpg"
-        alt="INDOARAB Digital Marketing"
-        fill
-        className="object-cover"
-        priority
+    <div 
+      className="h-[600px] relative flex items-center px-5 md:px-16 lg:px-24"
+      style={{
+        backgroundImage: 'url(/images/Branding/INDO.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay with gradient for left side darkness */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 80%)',
+        }}
       />
-      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-        <div className="text-center text-white px-4">
-          <h1 className="text-3xl md:text-5xl font-semibold mb-4">INDOARAB</h1>
-          <p className="text-sm md:text-base max-w-2xl mx-auto">
-            Digital Marketing Campaign for a company specializing in the manufacture of perfumes and chemical products.
-          </p>
+      
+      <div className="max-w-xl w-full space-y-6 relative z-10 text-white">
+        <h1 className="text-white text-3xl md:text-4xl lg:text-4xl font-light leading-tight">
+          Brand identity for IndoArab, celebrating the fusion of Indian and Arab aromas
+        </h1>
+
+        <div className="space-y-4 text-white text-lg">
+          <div className="flex flex-row sm:items-center gap-2 sm:gap-4">
+            <span className="font-medium text-base sm:text-lg">Industry:</span>
+            <span className="text-base sm:text-lg text-gray-200">Perfume & Fragrance</span>
+          </div>
+
+          <div className="flex flex-row sm:items-center gap-2 sm:gap-4">
+            <span className="font-medium text-base sm:text-lg">Location:</span>
+            <span className="text-base sm:text-lg text-gray-200">Kerala, India</span>
+          </div>
         </div>
       </div>
     </div>

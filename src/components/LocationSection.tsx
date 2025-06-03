@@ -10,6 +10,7 @@ const poppins = Poppins({
   variable: '--font-poppins', // Optional, for Tailwind
 })
 
+
 interface Location {
   id: string;
   name: string;
@@ -34,11 +35,11 @@ const locations: Location[] = [
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.6719404031995!2d46.6752773!3d24.7135517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sAl%20Batha%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2sin!4v1621234567890!5m2!1sen!2sin'
   },
   {
-    id: 'uae',
-    name: 'UAE',
-    flag: '/images/uae-flag.png',
-    address: 'Al Wahda Street, opposite Al Fardan Centre, Al Majaz 2, Sharjah, United Arab Emirates',
-    mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.8752342615397!2d55.3708333!3d25.3461111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d2b8f5a5a5a%3A0x3b7f8b8f8b8f8b8f!2sAl%20Majaz%202%2C%20Sharjah!5e0!3m2!1sen!2sin!4v1621234567890!5m2!1sen!2sin'
+    id: 'uk',
+    name: 'UK',
+    flag: '/images/uk-flag.png',
+    address: 'Coventry, West Midlands County, England, United Kingdom (UK)\n+44 7384021507',
+    mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.1234567890123!2d-1.5083!3d52.4068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774c9c8e8b3c1f%3A0x1e67c8735d3a2f25!2sCoventry%2C%20UK!5e0!3m2!1sen!2sin!4v1621234567890!5m2!1sen!2sin'
   }
 ];
 
@@ -71,7 +72,14 @@ export default function LocationsSection() {
               <div className="p-6">
                 <div className="flex items-center gap-5 mb-4">
                   <div className="w-10 h-8 relative">
-                    <Image src={location.flag} alt={`${location.name} Flag`} fill className="object-cover rounded-md" />
+                    <Image 
+                      src={location.flag} 
+                      alt={`${location.name} Flag`} 
+                      fill 
+                      className="object-cover rounded-md"
+                      priority
+                      quality={100}
+                    />
                   </div>
                   <h2 className="text-[36px] font-medium">{location.name}</h2>
                 </div>

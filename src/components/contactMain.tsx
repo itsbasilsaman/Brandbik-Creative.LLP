@@ -10,6 +10,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
+import Image from "next/image"
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -61,26 +62,27 @@ export default function ContactMain() {
   }
 
   return (
-    <div className={`min-h-screen flex items-center bg-gradient-to-br from-[#1a1a2e] via-[#2a2a4a] to-[#0f3460] justify-center pt-20 md:pt-5 relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 ${poppins.className}`} style={{
+    <div className={`min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 ${poppins.className}`} style={{
       backgroundSize: '400% 400%',
       animation: 'gradient 15s ease infinite',
     }}>
       <style>{gradientAnimation}</style>
       {/* Background image */}
-      {/* <div className="absolute w-full h-full">
+      <div className="absolute w-full h-full">
         <Image 
-          src="/images/contact-bg.png" 
+          src="/images/contact-bg.webp" 
           alt="Contact background" 
           fill
           className="object-cover"
           priority
         />
-      </div> */}
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
 
       <div className="container mx-auto px-2 sm:px-4 py-8 sm:py-12 z-10 flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-12">
         {/* Right side form */}
         <div className="lg:w-1/2 w-full order-1 lg:order-2">
-          <div className="lg:bg-[#404040] backdrop-blur-sm p-0 sm:p-2 md:p-8 rounded-[12px] lg:border lg:border-[#dedddd] lg:shadow-lg">
+          <div className="lg:bg-[#9696961f] backdrop-blur-sm p-0 sm:p-2 md:p-8 rounded-[24px] lg:border lg:border-[#dedddd] lg:shadow-lg">
             <div className="sm:hidden block text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">Let&apos;s work together.</h1>
           <p className="text-gray-300 text-[14px] sm:text-[16px] mb-8 sm:mb-12 lg:max-w-[460px] max-w-[300px] font-medium mx-auto lg:mx-0">
@@ -185,7 +187,7 @@ export default function ContactMain() {
          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <div className="flex items-center gap-4 sm:gap-5 bg-[#1f1f1f] p-3 sm:p-4 px-6 sm:px-8 rounded-lg w-full sm:w-auto">
+            <div className="flex items-center gap-4 sm:gap-5 bg-[#24242483] border border-[#dedddd] shadow-lg backdrop-blur-sm p-3 sm:p-4 px-6 sm:px-8 rounded-[24px] w-full sm:w-auto">
               <Phone className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               <div className="text-gray-300">
                 <a href="tel:+919074851748" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+91 90748 51748,</a>
@@ -194,7 +196,7 @@ export default function ContactMain() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 sm:gap-5 bg-[#1f1f1f] p-3 sm:p-4 px-6 sm:px-8 rounded-lg w-full sm:w-auto">
+            <div className="flex items-center gap-4 sm:gap-5 bg-[#24242483]  border border-[#dedddd] shadow-lg  backdrop-blur-sm p-3 sm:p-4 px-6 sm:px-8 rounded-[24px] w-full sm:w-auto">
               <Mail className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               <div className="text-gray-300">
                 <a href="mailto:info@brandbik.com" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">info@brandbik.com</a>

@@ -29,6 +29,7 @@ export default function ClientsSection() {
             to craft experiences that resonate and endure.
           </p>
         </div>
+        
 
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
   {/* Row 1 */}
@@ -102,7 +103,8 @@ export default function ClientsSection() {
       </div>
 
       <div className="w-full flex justify-center items-center pt-16">
-        <button 
+        <a 
+          href="/clients"
           className={`group relative inline-flex items-center justify-center gap-3 px-[2px] py-[2px] rounded-full text-sm font-medium text-black before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-r before:from-[#2C6BD8] before:to-[#08E6D5] before:content-[''] before:z-0 transition-all duration-500 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           style={{ transitionDelay: isVisible ? '1050ms' : '0ms' }}
         >
@@ -110,7 +112,7 @@ export default function ClientsSection() {
             View all clients
             <FaArrowRight className="transition-transform duration-500 group-hover:translate-x-1" />
           </span>
-        </button>
+        </a>
       </div>
     </section>
     

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Poppins } from 'next/font/google';
 import { useRouter } from 'next/navigation';
@@ -30,6 +30,31 @@ export default function WorkMain() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
 
+  // Add useEffect to handle initial category from URL and history state
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const categoryParam = searchParams.get('category') as Category;
+    
+    // Check URL parameters first
+    if (categoryParam && categories.some(c => c.id === categoryParam)) {
+      setActiveCategory(categoryParam);
+      // Store in history state
+      window.history.replaceState({ category: categoryParam }, '');
+    } else {
+      // If no URL param, check history state
+      const historyState = window.history.state;
+      if (historyState?.category && categories.some(c => c.id === historyState.category)) {
+        setActiveCategory(historyState.category);
+      }
+    }
+  }, []);
+
+  const handleCategoryChange = (category: Category) => {
+    setActiveCategory(category);
+    // Update history state when category changes
+    window.history.replaceState({ category }, '');
+  };
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     setMousePosition({
@@ -39,7 +64,14 @@ export default function WorkMain() {
   }
 
   const handleProjectClick = (projectTitle: string) => {
-    const route = `/works/${projectTitle.toLowerCase().replace(/\s+/g, '-')}`;
+    // Map project titles to their corresponding folder names
+    const routeMap: { [key: string]: string } = {
+      "The Biriyani & Beyond Co": "biriyani-and-beyond",
+      // Add other mappings as needed
+    };
+
+    const folderName = routeMap[projectTitle] || projectTitle.toLowerCase().replace(/\s+/g, '-');
+    const route = `/works/${folderName}?category=${activeCategory}`;
     router.push(route);
   };
 
@@ -180,7 +212,7 @@ export default function WorkMain() {
     {
       id: 205,
       title: "Cyberseed",
-      description: "We crafted Cyberseed’s bold, modern branding to reflect innovation, growth, and digital excellence.",
+      description: "We crafted Cyberseed's bold, modern branding to reflect innovation, growth, and digital excellence.",
       image: "/images/Branding/CYBERBRANDD.jpg",
       category: "branding",
     },
@@ -194,14 +226,14 @@ export default function WorkMain() {
     {
       id: 207,
       title: "IndoArab",
-      description: "We crafted IndoArab’s bold, elegant branding to reflect its luxurious fusion of Indian and Arab aromas.",
+      description: "We crafted IndoArab's bold, elegant branding to reflect its luxurious fusion of Indian and Arab aromas.",
       image: "/images/Branding/INDO.jpg",
       category: "branding",
     },
     {
       id: 208,
       title: "MPB Group",
-      description: "We developed MPB Group’s branding to unify its diverse ventures in quarry, petroleum, and more.",
+      description: "We developed MPB Group's branding to unify its diverse ventures in quarry, petroleum, and more.",
       image: "/images/Branding/MPB.jpg",
       category: "branding",
     },
@@ -242,6 +274,7 @@ export default function WorkMain() {
       image: "https://wallup.net/wp-content/uploads/2016/01/129751-video_games.jpg",
       category: "social",
     },
+    
 
     // Advertising Projects
     {
@@ -276,7 +309,7 @@ export default function WorkMain() {
       id: 405,
       title: "Green Door Organics",
       description: "Green Door Organics is an organic food company based in Kozhikode, Kerala, committed to promoting healthy living through natural and chemical-free products",
-      image: "/images/Digital-Marketing/chef-pillai.jpg",
+      image: "/images/Digital-Marketing/greensdoor-min.jpg",
       category: "digital-marketing",
     },
     {
@@ -297,7 +330,7 @@ export default function WorkMain() {
       id: 408,
       title: "Ventes",
       description: "Ventes is a Kerala-based brand specializing in frozen fruit products, including tender coconut pulp.",
-      image: "/images/Digital-Marketing/chef-pillai.jpg",
+      image: "/images/Digital-Marketing/ventes-min.jpg",
       category: "digital-marketing",
     },
     {
@@ -336,7 +369,7 @@ export default function WorkMain() {
           {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setActiveCategory(category.id as Category)}
+              onClick={() => handleCategoryChange(category.id as Category)}
               className={`px-3 md:px-7 py-2 md:py-3 cursor-pointer rounded-full text-[12px] md:text-sm whitespace-nowrap border border-gray-300 transition-colors ${
                 activeCategory === category.id ? "bg-black text-white" : "text-black hover:bg-gray-100"
               }`}

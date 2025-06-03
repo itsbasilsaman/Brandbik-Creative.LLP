@@ -20,7 +20,7 @@ export default function ProcessSection() {
                 <span className="text-xl sm:text-2xl md:text-3xl font-semibold">1</span>
               </div>
               <h3 className="text-xl sm:text-2xl mb-2 sm:mb-3">Discover</h3>
-              <p className="text-sm sm:text-base text-gray-400 text-center max-w-[290px] sm:max-w-none">
+              <p className="text-sm sm:text-base text-gray-400 text-center sm:text-left max-w-[290px] sm:max-w-none">
                 We start with deep research to understand your audience, competitors, and goals.
               </p>
             </div>
@@ -31,7 +31,7 @@ export default function ProcessSection() {
                 <span className="text-xl sm:text-2xl md:text-3xl font-semibold">2</span>
               </div>
               <h3 className="text-xl sm:text-2xl mb-2 sm:mb-3">Design</h3>
-              <p className="text-sm sm:text-base text-gray-400 text-center max-w-[290px] sm:max-w-none">
+              <p className="text-sm sm:text-base text-gray-400 text-center sm:text-left max-w-[290px] sm:max-w-none">
                 We craft systems — not just logos — that scale across all touchpoints.
               </p>
             </div>
@@ -42,7 +42,7 @@ export default function ProcessSection() {
                 <span className="text-xl sm:text-2xl md:text-3xl font-semibold">3</span>
               </div>
               <h3 className="text-xl sm:text-2xl mb-2 sm:mb-3">Deliver</h3>
-              <p className="text-sm sm:text-base text-gray-400 text-center max-w-[290px] sm:max-w-none">
+              <p className="text-sm sm:text-base text-gray-400 text-center sm:text-left max-w-[290px] sm:max-w-none">
                 Every file, asset, and guide you need. Ready to launch and grow.
               </p>
             </div>

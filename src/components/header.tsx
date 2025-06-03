@@ -128,7 +128,7 @@ export default function Header() {
   const [animationTimer, setAnimationTimer] = useState<NodeJS.Timeout | null>(null)
 
   // Add this helper function to check if we're on the works or about route
-  const isDarkTextRoute = pathname === '/works' || pathname === '/about'
+  const isDarkTextRoute = pathname === '/works' || pathname === '/about' || '/clients'
 
   // Close panel when route changes
   useEffect(() => {
@@ -310,54 +310,50 @@ export default function Header() {
             </div>
 
             {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-4">
               <Link
                 href="/about"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
+                  isScrolled || isDarkTextRoute 
+                    ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
+                    : "text-white hover:bg-white hover:text-gray-800"
+                }`}
               >
-                <span className="relative">
-                  About
-                  <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-                  ></span>
-                </span>
+                <span className="relative">About Us</span>
               </Link>
               <Link
                 href="/service"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
+                  isScrolled || isDarkTextRoute 
+                    ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
+                    : "text-white hover:bg-white hover:text-gray-800"
+                }`}
               >
-                <span className="relative">
-                  Services
-                  <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-                  ></span>
-                </span>
+                <span className="relative">Services</span>
               </Link>
               <Link
                 href="/works"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
+                  isScrolled || isDarkTextRoute 
+                    ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
+                    : "text-white hover:bg-white hover:text-gray-800"
+                }`}
               >
-                <span className="relative">
-                  Works
-                  <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-                  ></span>
-                </span>
+                <span className="relative">Works</span>
               </Link>
               <Link
                 href="/contact"
                 onClick={handleNavigation}
-                className={`font-medium relative group ${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
+                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
+                  isScrolled || isDarkTextRoute 
+                    ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
+                    : "text-white hover:bg-white hover:text-gray-800"
+                }`}
               >
-                <span className="relative">
-                  Contact Us
-                  <span
-                    className={`absolute left-0 right-0 bottom-0 h-0.5 ${isScrolled || isDarkTextRoute ? "bg-gray-800" : "bg-white"} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
-                  ></span>
-                </span>
+                <span className="relative">Contact Us</span>
               </Link>
             </nav>
 
@@ -731,7 +727,7 @@ export default function Header() {
               <nav className="flex-1 p-6 relative z-10">
                 <div className="space-y-4">
                   {[
-                    { href: "/about", label: "About" },
+                    { href: "/about", label: "About Us" },
                     { href: "/service", label: "Service" },
                     { href: "/works", label: "Works" },
                     { href: "/contact", label: "Contact" }

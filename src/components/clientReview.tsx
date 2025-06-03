@@ -111,9 +111,67 @@ export default function ClientReviews() {
     }
   };
 
+  const reviews = [
+    {
+      name: "Soumya Chandran",
+      role: "Founder of SheTalks",
+      image: "/images/Basil-Saman.jpg",
+      text: "Brandbik truly captured the essence of what SheTalks stands for—empowering women and building a community of inspiration and support. The app they developed is more than just a digital platform; it's a safe, nurturing space where women can connect, share, and grow together. Their dedication to our vision has made all the difference."
+    },
+    {
+      name: "Hamad A.",
+      role: "CEO, Abu Glumbo",
+      image: "/images/IMG_2913.PNG",
+      text: "Brandbik turned our idea for an on-demand services app into a seamless, user-friendly platform that connects customers with the help they need in real time. Their team's creativity, technical expertise, and commitment to excellence made the process smooth and inspiring."
+    },
+    {
+      name: "Sahal Muhammed",
+      role: "Founder of Cyberseed",
+      image: "/images/Basil-Saman.jpg",
+      text: "Working with Brandbik on our new website was a game-changer. They perfectly captured our brand's identity and designed a sleek, modern site that reflects our commitment to excellence in business consultancy. Their professionalism, creativity, and strategic guidance made the entire process effortless."
+    },
+    {
+      name: "Sarah N.",
+      role: "CEO, LegalEase App",
+      image: "/images/IMG_2913.PNG",
+      text: "Brandbik's team brought our vision for a legal consultation app to life with exceptional skill and creativity. They developed a secure, intuitive platform that makes accessing legal advice easier than ever. Their commitment to quality and understanding of the legal industry's needs truly set them apart."
+    },
+    {
+      name: "Fatima A",
+      role: "ALESRAA School",
+      image: "/images/Basil-Saman.jpg",
+      text: "Brandbik's team delivered an outstanding savings app that's transforming how our students manage food waste and make responsible choices. Their creativity, technical skills, and collaborative approach made the process smooth and inspiring."
+    }
+  ];
+
+  // Auto-scroll animation
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollWidth = scrollContainer.scrollWidth;
+    const clientWidth = scrollContainer.clientWidth;
+    let currentPosition = 0;
+
+    const scroll = () => {
+      currentPosition += 0.5; // Adjust speed here
+      if (currentPosition >= scrollWidth / 2) {
+        currentPosition = 0;
+      }
+      setScrollPosition(currentPosition);
+      requestAnimationFrame(scroll);
+    };
+
+    const animationFrame = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
   return (
     <div className="w-full primary-background h-full overflow-x-hidden" ref={containerRef}>
-      <div className="max-w-7xl mx-auto py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+      <div className=" py-12 md:py-20 ">
         <motion.div 
           className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -123,119 +181,68 @@ export default function ClientReviews() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
           }}
         >
-          <span className="bg-teal-700 text-white px-4 py-2 rounded-full text-sm font-medium">Client Reviews</span>
+          <span className="bg-teal-700 text-white px-4 py-2 rounded-full text-sm font-medium max-w-7xl   mx-24  sm:px-6 lg:px-8">Client Reviews</span>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-        >
-          {/* First Review Card */}
+        <div className="relative overflow-hidden">
           <motion.div 
-            className="bg-zinc-900 rounded-2xl md:rounded-3xl p-6 md:p-8 relative custom-corner-border"
-            variants={itemVariants}
+            ref={scrollRef}
+            className="flex gap-4 sm:gap-6"
+            style={{
+              x: -scrollPosition,
+              width: 'fit-content'
+            }}
           >
-            <svg
-              className="absolute top-0 left-0 z-10"
-              width="44"
-              height="44"
-              viewBox="0 0 44 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1,22 A21,21 0 0 1 22,1"
-                stroke="white"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
+            {reviews.map((review, index) => (
+              <motion.div 
+                key={index}
+                className="bg-zinc-900 rounded-2xl md:rounded-3xl p-6 md:p-8 relative custom-corner-border min-w-[380px] md:w-[700px]"
+                variants={itemVariants}
+              >
+                <svg
+                  className="absolute top-0 left-0 z-10"
+                  width="44"
+                  height="44"
+                  viewBox="0 0 44 44"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1,22 A21,21 0 0 1 22,1"
+                    stroke="white"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
 
-            <div className="flex items-center mb-4 md:mb-6">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4">
-                <Image
-                  src="/images/Basil-Saman.jpg"
-                  alt="John Smith"
-                  width={48}
-                  height={48}
-                  className="rounded-full w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-white font-medium text-base md:text-[18px]">John Smith</h3>
-                <p className="text-gray-400 text-xs md:text-sm">Founder of Cyberseed</p>
-              </div>
-            </div>
-            <p className="text-white text-base md:text-[20px] font-normal">
-              Working with Brandbik was transformative. They understood our vision and brought it to life with precision
-              and creativity.
-            </p>
-            <div className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-600">
-              <svg width="30" height="24" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-10 md:h-8">
-                <path
-                  d="M12.9032 0L0 12.9032V32H19.0968V12.9032H6.19355L19.0968 0H12.9032ZM33.8064 0L20.9032 12.9032V32H40V12.9032H27.0968L40 0H33.8064Z"
-                  fill="currentColor"
-                  opacity="0.3"
-                />
-              </svg>
-            </div>
+                <div className="flex items-center mb-4 md:mb-6">
+                  <div className="relative w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4">
+                    <div className="w-full h-full rounded-full bg-teal-600 flex items-center justify-center text-white text-lg font-semibold">
+                      {review.name.charAt(0)}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-medium text-base md:text-[18px]">{review.name}</h3>
+                    <p className="text-gray-400 text-xs md:text-sm">{review.role}</p>
+                  </div>
+                </div>
+                <p className="text-white text-base md:text-[20px] font-normal">
+                  {review.text}
+                </p>
+                <div className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-600">
+                  <svg width="30" height="24" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-10 md:h-8">
+                    <path
+                      d="M12.9032 0L0 12.9032V32H19.0968V12.9032H6.19355L19.0968 0H12.9032ZM33.8064 0L20.9032 12.9032V32H40V12.9032H27.0968L40 0H33.8064Z"
+                      fill="currentColor"
+                      opacity="0.3"
+                    />
+                  </svg>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
-
-          {/* Second Review Card */}
-          <motion.div 
-            className="bg-zinc-900 rounded-2xl md:rounded-3xl p-6 md:p-8 relative custom-corner-border"
-            variants={itemVariants}
-          >
-            <svg
-              className="absolute top-0 left-0 z-10"
-              width="44"
-              height="44"
-              viewBox="0 0 44 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1,22 A21,21 0 0 1 22,1"
-                stroke="white"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
-            <div className="flex items-center mb-4 md:mb-6">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4">
-                <Image
-                  src="/images/IMG_2913.PNG"
-                  alt="John Smith"
-                  width={48}
-                  height={48}
-                  className="rounded-full w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-white font-medium text-base md:text-[18px]">John Smith</h3>
-                <p className="text-gray-400 text-xs md:text-sm">Founder of Cyberseed</p>
-              </div>
-            </div>
-            <p className="text-white text-base md:text-[20px] font-normal">
-              Working with Brandbik was transformative. They understood our vision and brought it to life with precision
-              and creativity.
-            </p>
-            
-            <div className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-600">
-              <svg width="30" height="24" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-10 md:h-8">
-                <path
-                  d="M12.9032 0L0 12.9032V32H19.0968V12.9032H6.19355L19.0968 0H12.9032ZM33.8064 0L20.9032 12.9032V32H40V12.9032H27.0968L40 0H33.8064Z"
-                  fill="currentColor"
-                  opacity="0.3"
-                />
-              </svg>
-            </div>
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Services Marquee Section */}

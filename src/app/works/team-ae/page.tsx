@@ -1,17 +1,17 @@
 import BottomBar from "@/components/bottomBar";
-import TeamAeBanner from "@/components/work-detail/teamAeBanner";
+import TeamAeBrandingBanner from "@/components/work-detail/teamAeBrandingBanner";
 import InnerRelatedWorks from "@/components/innerRelatedWorks";
 import ResultSection from "@/components/resultSection";
 import Testimonial from "@/components/Testimonial";
-import TeamAeCasestudy from "@/components/work-detail/teamAeCasestudy";
-import TeamAeGallery from "@/components/work-detail/teamAeGallery";
+import TeamAeBrandingCasestudy from "@/components/work-detail/teamAeBrandingCasestudy";
+import TeamAeBrandingGallery from "@/components/work-detail/teamAeBrandingGallery";
 
-export default function TeamAe() {
+export default function TeamAeBranding() {
     return (
         <>
-         <TeamAeBanner/>
-         <TeamAeCasestudy/>
-         <TeamAeGallery/>
+         <TeamAeBrandingBanner/>
+         <TeamAeBrandingCasestudy/>
+         <TeamAeBrandingGallery/>
          <ResultSection/>
          <Testimonial/>
          <InnerRelatedWorks/>
