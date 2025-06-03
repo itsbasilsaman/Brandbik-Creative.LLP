@@ -23,7 +23,7 @@ export default function BiriyaniBanner() {
         </h1>
 
         <p className="text-gray-200 text-lg md:text-xl">
-          Crafting a vibrant brand identity that captures the rich tradition and authentic flavors of Kerala's beloved biryani.
+          Crafting a vibrant brand identity that captures the rich tradition and authentic flavors of Kerala&apos;s beloved biryani.
         </p>
 
         <div className="space-y-4 text-white text-lg">
