@@ -36,18 +36,18 @@ export default function WorkMain() {
     const categoryParam = searchParams.get('category') as Category;
     
     // Check URL parameters first
-    if (categoryParam && categories.some(c => c.id === categoryParam)) {
+    if (categoryParam) {
       setActiveCategory(categoryParam);
       // Store in history state
       window.history.replaceState({ category: categoryParam }, '');
     } else {
       // If no URL param, check history state
       const historyState = window.history.state;
-      if (historyState?.category && categories.some(c => c.id === historyState.category)) {
+      if (historyState?.category) {
         setActiveCategory(historyState.category);
       }
     }
-  }, []);
+  }, []); // Remove categories dependency since it's not used in the effect
 
   const handleCategoryChange = (category: Category) => {
     setActiveCategory(category);

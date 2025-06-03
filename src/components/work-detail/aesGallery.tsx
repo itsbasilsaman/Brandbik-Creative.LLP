@@ -1,13 +1,6 @@
 import Image from "next/image";
-import { Poppins } from 'next/font/google';
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-
-export default function AESGallery() {
+export default function AesGallery() {
   return (
     <div className="w-full px-4 sm:px-5 md:px-16 lg:px-24 py-6 md:py-8 lg:pb-24 h-auto">
       {/* Main Image - Full width on mobile */}
@@ -21,6 +14,7 @@ export default function AESGallery() {
           priority
         />
       </div>
+      
 
       {/* Two Images - 50-50 on mobile, 70-30 on larger screens */}
       <div className="grid grid-cols-2 md:grid-cols-10 gap-4">

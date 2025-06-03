@@ -18,8 +18,8 @@ export default function BiriyaniBanner() {
       />
       
       <div className="max-w-xl w-full space-y-6 relative z-10 text-white">
-        <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
-          The Biriyani & Beyond Co: A Flavorful Brand Identity
+        <h1 className="text-white text-3xl md:text-4xl lg:text-4xl font-light leading-tight">
+          Brand identity for Abu Glumbo Biriyani, celebrating Kerala&apos;s authentic flavors
         </h1>
 
         <p className="text-gray-200 text-lg md:text-xl">

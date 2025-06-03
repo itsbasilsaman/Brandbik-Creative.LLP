@@ -34,7 +34,7 @@ export default function AESCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively communicate AES School of Commerce's position as a leading educational institution while appealing to both students and industry professionals. The design needed to balance traditional academic values with modern innovation.
+                The challenge was to create a brand identity that would effectively represent AES&apos;s commitment to educational excellence while maintaining a professional and modern image.
               </p>
             </div>
           </div>
