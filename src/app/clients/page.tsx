@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from "framer-motion";
 
 interface Client {
@@ -106,12 +106,6 @@ const clients: Client[] = [
 ];
 
 export default function ClientsPage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   return (
     <main className="min-h-screen bg-white pt-10">
       {/* Hero Section */}
@@ -166,7 +160,7 @@ export default function ClientsPage() {
             Ready to Join Our Client Family?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's create something extraordinary together. Partner with us to transform
+            Let&apos;s create something extraordinary together. Partner with us to transform
             your business and achieve remarkable results.
           </p>
           <a
