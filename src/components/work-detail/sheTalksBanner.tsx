@@ -1,12 +1,3 @@
-import Image from "next/image";
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-
 export default function SheTalksBanner() {
   return (
     <div 
@@ -28,7 +19,7 @@ export default function SheTalksBanner() {
       
       <div className="max-w-xl w-full space-y-6 relative z-10 text-white">
         <h1 className="text-white text-3xl md:text-4xl lg:text-4xl font-light leading-tight">
-          Brand identity for SheTalks, empowering women's voices worldwide
+          Brand identity for SheTalks, empowering women&apos;s voices worldwide
         </h1>
 
         <div className="space-y-4 text-white text-lg">
@@ -36,6 +27,7 @@ export default function SheTalksBanner() {
             <span className="font-medium text-base sm:text-lg">Industry:</span>
             <span className="text-base sm:text-lg text-gray-200">Women Empowerment</span>
           </div>
+          
 
           <div className="flex flex-row sm:items-center gap-2 sm:gap-4">
             <span className="font-medium text-base sm:text-lg">Location:</span>

@@ -13,6 +13,7 @@ export default function SheTalksCasestudy() {
     ]
   
     return (
+      
       <div className={`h-auto lg:h-screen bg-white px-5 md:px-16 lg:px-24 py-12 lg:py-28 lg:pb-0 ${poppins.className}`}>
         <div className="mx-auto space-y-8 md:space-y-16 lg:space-y-20">
           {/* Scope Section */}
@@ -22,7 +23,7 @@ export default function SheTalksCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a bold and empowering brand identity for SheTalks, a global platform dedicated to amplifying women's voices. Created a distinctive visual language that celebrates diversity, strength, and unity while maintaining a modern and approachable aesthetic. The project encompassed comprehensive brand development, including guidelines and marketing materials.
+                Developed a bold and empowering brand identity for SheTalks, a global platform dedicated to amplifying women&apos;s voices. Created a distinctive visual language that celebrates diversity, strength, and unity while maintaining a modern and approachable aesthetic. The project encompassed comprehensive brand development, including guidelines and marketing materials.
               </p>
             </div>
           </div>
@@ -34,7 +35,7 @@ export default function SheTalksCasestudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The challenge was to create a brand identity that would effectively communicate SheTalks' mission of empowering women while appealing to a diverse global audience. The design needed to be bold and memorable while maintaining inclusivity and accessibility across different cultures and communities.
+                The challenge was to create a brand identity that would effectively communicate SheTalks&apos; mission of empowering women while appealing to a diverse global audience. The design needed to be bold and memorable while maintaining inclusivity and accessibility across different cultures and communities.
               </p>
             </div>
           </div>
