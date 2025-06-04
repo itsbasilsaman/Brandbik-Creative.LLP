@@ -1,7 +1,7 @@
 import AboutBoxes from "@/components/aboutBoxes";
 import ApproachSection from "@/components/approachSection";
 import ClientReviews from "@/components/clientReview";
-import OurTeamSection from "@/components/ourTeamSection";
+// import OurTeamSection from "@/components/ourTeamSection";
 import TeamDescription from "@/components/teamDescription";
 import AboutBanner from "@/components/aboutBanner";
 
@@ -13,7 +13,7 @@ export default function About() {
             <TeamDescription/>
             <AboutBoxes/>
             <ApproachSection/>
-            <OurTeamSection/>
+            {/* <OurTeamSection/> */}
             <ClientReviews/>
         </div>
     )
