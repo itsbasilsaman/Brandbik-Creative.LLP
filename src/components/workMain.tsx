@@ -105,7 +105,7 @@ export default function WorkMain() {
       id: 1,
       title: "Cyberseed",
       description: "Cyberseed is a business consultancy firm offering tailored solutions to help companies overcome challenges and achieve sustainable growth.",
-      image: "/images/Web-development/cyberceed-banner.jpg",
+      image: "/images/Web-development/cyberceed-background.jpg",
       category: "website",
     },
     {
