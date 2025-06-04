@@ -18,7 +18,6 @@ export default function AboutSection() {
   const { t, language } = useLanguage();
   const statsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(statsRef, { once: false, amount: 0.1 })
-  const [highlightedTextIndex] = useState(0)
 
   const shapeRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -48,20 +47,6 @@ export default function AboutSection() {
   const leftStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
   const middleStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
   const rightStatScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
-
-  const highlightedPhrases = [
-    "We're Brandbik",
-    "A creative studio",
-    "visionary brands",
-    "We partner with",
-    "ambitious teams",
-    "shape brands",
-    "design experiences",
-    "bring ideas to life",
-    "shaping bold brands",
-    "stunning designs",
-    "big ideas"
-  ]
 
   const [currentStat, setCurrentStat] = useState(0)
   const stats = [
