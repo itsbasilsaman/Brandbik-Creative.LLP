@@ -107,7 +107,7 @@ export default function ClientReviews() {
       text: "Brandbik truly captured the essence of what SheTalks stands for—empowering women and building a community of inspiration and support. The app they developed is more than just a digital platform; it's a safe, nurturing space where women can connect, share, and grow together. Their dedication to our vision has made all the difference."
     },
     {
-      name: "Hamad A.",
+      name: "Ahmad Al Munif",
       role: "CEO, Abu Glumbo",
       image: "/images/IMG_2913.PNG",
       text: "Brandbik turned our idea for an on-demand services app into a seamless, user-friendly platform that connects customers with the help they need in real time. Their team's creativity, technical expertise, and commitment to excellence made the process smooth and inspiring."
@@ -119,14 +119,14 @@ export default function ClientReviews() {
       text: "Working with Brandbik on our new website was a game-changer. They perfectly captured our brand's identity and designed a sleek, modern site that reflects our commitment to excellence in business consultancy. Their professionalism, creativity, and strategic guidance made the entire process effortless."
     },
     {
-      name: "Sarah N.",
-      role: "CEO, LegalEase App",
+      name: "Majed alkuwayki  ",
+      role: "CEO, Khibra App",
       image: "/images/IMG_2913.PNG",
       text: "Brandbik's team brought our vision for a legal consultation app to life with exceptional skill and creativity. They developed a secure, intuitive platform that makes accessing legal advice easier than ever. Their commitment to quality and understanding of the legal industry's needs truly set them apart."
     },
     {
-      name: "Fatima A",
-      role: "ALESRAA School",
+      name: "Al Esraa School",
+      role: "Saver App",
       image: "/images/Basil-Saman.jpg",
       text: "Brandbik's team delivered an outstanding savings app that's transforming how our students manage food waste and make responsible choices. Their creativity, technical skills, and collaborative approach made the process smooth and inspiring."
     }
