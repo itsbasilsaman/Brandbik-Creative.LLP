@@ -7,6 +7,7 @@ import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { RiCloseLargeLine } from "react-icons/ri"
 import { motion, AnimatePresence } from "framer-motion"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 interface ContentSection {
   title: string
@@ -38,7 +39,7 @@ const languages: Language[] = [
 
 const contentSections: Record<string, ContentSection> = {
   impact: {
-    title: "Our Impact",
+    title: "Our Achivements",
     description:
       "At BrandBik, we've been transforming businesses through innovative digital solutions. Our commitment to excellence and client success has led to remarkable achievements in the digital landscape.",
     stats: [
@@ -67,7 +68,7 @@ const contentSections: Record<string, ContentSection> = {
     buttonLink: "/testimonials",
   },
   clients: {
-    title: "Our Clients",
+    title: "Global Reach",
     description:
       "We partner with forward-thinking businesses across various industries, helping them achieve their digital goals through innovative solutions and strategic thinking.",
     stats: [
@@ -79,7 +80,7 @@ const contentSections: Record<string, ContentSection> = {
     buttonLink: "/clients",
   },
   partnership: {
-    title: "Strategic Partnerships",
+    title: "Innovation",
     description:
       "We believe in the power of collaboration. Our strategic partnerships enable us to deliver comprehensive solutions and stay at the forefront of digital innovation.",
     stats: [
@@ -121,7 +122,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("impact")
-  const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0])
+  const { language, setLanguage } = useLanguage()
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
   const pathname = usePathname()
   const [isAchievementHovered, setIsAchievementHovered] = useState(false)
@@ -213,10 +214,9 @@ export default function Header() {
     }
   }, [animationTimer])
 
-  const handleLanguageChange = (language: Language) => {
-    setCurrentLanguage(language)
+  const handleLanguageChange = (newLanguage: 'en' | 'ar') => {
+    setLanguage(newLanguage)
     setIsLanguageDropdownOpen(false)
-    console.log("Language changed to:", language.code)
   }
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -238,8 +238,8 @@ export default function Header() {
     <div className="relative" onClick={(e) => e.stopPropagation()}>
       <motion.button
         onClick={() => {
-          const newLanguage = currentLanguage.code === "en" ? languages[1] : languages[0];
-          handleLanguageChange(newLanguage);
+          const newLanguage = language === "en" ? "ar" : "en"
+          handleLanguageChange(newLanguage)
         }}
         className={`relative inline-flex items-center h-[42px] px-0 rounded-full cursor-pointer transition-all duration-300 ${
           isScrolled 
@@ -253,15 +253,15 @@ export default function Header() {
           {/* Language Labels */}
           <span className={`text-sm pl-2 font-medium z-10 ${
             isScrolled 
-              ? (currentLanguage.code === "en" ? "text-white" : "text-gray-300")
-              : (currentLanguage.code === "en" ? "text-black" : "text-gray-100")
+              ? (language === "en" ? "text-white" : "text-gray-300")
+              : (language === "en" ? "text-black" : "text-gray-100")
           }`}>
             EN
           </span>
           <span className={`text-sm pr-1 font-medium z-10 ${
             isScrolled 
-              ? (currentLanguage.code === "ar" ? "text-white" : "text-gray-300")
-              : (currentLanguage.code === "ar" ? "text-black" : "text-gray-100")
+              ? (language === "ar" ? "text-white" : "text-gray-300")
+              : (language === "ar" ? "text-black" : "text-gray-100")
           }`}>
             عربي
           </span>
@@ -272,7 +272,7 @@ export default function Header() {
               isScrolled ? "bg-gray-800" : "bg-white"
             } shadow-md`}
             animate={{
-              x: currentLanguage.code === "en" ? 0 : isMobile ? "36px" : "39px"
+              x: language === "en" ? 0 : isMobile ? "36px" : "39px"
             }}
             transition={{ type: "spring", stiffness: 500, damping: 20 }}
           />

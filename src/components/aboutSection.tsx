@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useMediaQuery } from 'react-responsive'
-
+import { useLanguage } from "@/contexts/LanguageContext"
 import Image from "next/image"
 import StatCounter from "./stat-counter"
 import { Onest } from 'next/font/google';
@@ -15,6 +15,7 @@ const onest = Onest({
 });
 
 export default function AboutSection() {
+  const { t, language } = useLanguage();
   const statsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(statsRef, { once: false, amount: 0.1 })
   const [highlightedTextIndex] = useState(0)
@@ -78,10 +79,18 @@ export default function AboutSection() {
     }
   }, [isMobile, stats.length])
 
+  // Handle RTL support for this component
+  useEffect(() => {
+    const contentContainer = document.querySelector('.about-content');
+    if (contentContainer) {
+      contentContainer.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+    }
+  }, [language]);
+
   const renderTextWithHighlights = () => {
     const currentHighlight = highlightedPhrases[highlightedTextIndex]
     const parts = []
-    let remainingText = text
+    let remainingText = t('about.title')
 
     while (remainingText.length > 0) {
       const highlightIndex = remainingText.indexOf(currentHighlight)
@@ -257,10 +266,16 @@ export default function AboutSection() {
 
         {/* Main text content */}
         <div className="flex flex-col items-start justify-center w-full">
-          <div className="max-w-4xl">
-            <h1 className="text-[28px] sm:text-[30px] md:text-[34px] lg:text-[40px] font-medium text-white leading-tight">
-              {renderTextWithHighlights()}
+          <div className="max-w-4xl about-content">
+            <h1 className={`text-[28px] sm:text-[30px] md:text-[34px] lg:text-[40px] font-medium text-white leading-tight ${language === 'ar' ? 'text-right' : ''}`}>
+              {t('about.title')}
             </h1>
+            <p className={`mt-6 text-lg text-white/90 md:text-xl ${language === 'ar' ? 'text-right' : ''}`}>
+              {t('about.subtitle')}
+            </p>
+            <p className={`mt-4 text-lg text-white/90 md:text-xl ${language === 'ar' ? 'text-right' : ''}`}>
+              {t('about.description')}
+            </p>
           </div>
         </div>
 

@@ -3,13 +3,23 @@
 import Image from "next/image";
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ClientsSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Handle RTL support for this component
+  useEffect(() => {
+    const contentContainer = document.querySelector('.clients-content');
+    if (contentContainer) {
+      contentContainer.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+    }
+  }, [language]);
 
   return (
     <section 
@@ -18,15 +28,13 @@ export default function ClientsSection() {
     >
       <div className="space-y-12">
         <div 
-          className={`max-w-[818px] transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[818px] transition-all duration-700 ease-out clients-content ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${language === 'ar' ? 'text-right' : ''}`}
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-medium tracking-tight text-black mb-4 leading-tight">
-            Clients
+            {t('clients.title')}
           </h2>
           <p className="text-lg md:text-xl lg:text-[20px] text-gray-600">
-            We collaborate with brands across industries — from startups to global leaders —
-            <br className="hidden md:inline" />
-            to craft experiences that resonate and endure.
+            {t('clients.subtitle')}
           </p>
         </div>
         
@@ -109,8 +117,8 @@ export default function ClientsSection() {
           style={{ transitionDelay: isVisible ? '1050ms' : '0ms' }}
         >
           <span className="relative z-10 bg-white rounded-full px-4 py-3 flex items-center gap-3 text-base sm:text-[16px] text-black transition-all duration-500 hover:bg-transparent hover:text-white">
-            View all clients
-            <FaArrowRight className="transition-transform duration-500 group-hover:translate-x-1" />
+            {t('clients.viewAll')}
+            <FaArrowRight className={`transition-transform duration-500 group-hover:translate-x-1 ${language === 'ar' ? 'rotate-180' : ''}`} />
           </span>
         </a>
       </div>
