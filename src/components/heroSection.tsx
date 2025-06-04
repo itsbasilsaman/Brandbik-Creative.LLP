@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className="relative h-screen w-full overflow-hidden">
       {/* Background Video */}
-      {/* <div className="absolute inset-0 z-0"> 
+      <div className="absolute inset-0 z-0"> 
         <video
           autoPlay
           loop
@@ -27,10 +27,10 @@ export default function Home() {
           playsInline
           className="absolute h-full w-full object-cover"
         >
-          <source src="/banner-video.mp4" type="video/mp4" />
+          <source src="/banner-video-one.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/20" />
-      </div> */}
+      </div>
 
       {/* Content Container */}
       <div className="absolute top-68 left-2 lg:top-48 lg:left-7 z-10 flex h-full flex-col justify-center px-5 md:px-16 lg:px-24">
