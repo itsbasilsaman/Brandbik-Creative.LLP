@@ -32,7 +32,6 @@ export default function WorkMain() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const projectsPerPage = 9 // Strictly 3x3 grid
 
   // Handle RTL support for this component
   useEffect(() => {
