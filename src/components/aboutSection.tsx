@@ -87,59 +87,6 @@ export default function AboutSection() {
     }
   }, [language]);
 
-  const renderTextWithHighlights = () => {
-    const currentHighlight = highlightedPhrases[highlightedTextIndex]
-    const parts = []
-    let remainingText = t('about.title')
-
-    while (remainingText.length > 0) {
-      const highlightIndex = remainingText.indexOf(currentHighlight)
-
-      if (highlightIndex >= 0) {
-        if (highlightIndex > 0) {
-          parts.push({
-            text: remainingText.substring(0, highlightIndex),
-            highlight: false
-          })
-        }
-
-        parts.push({
-          text: remainingText.substring(highlightIndex, highlightIndex + currentHighlight.length),
-          highlight: true
-        })
-
-        remainingText = remainingText.substring(highlightIndex + currentHighlight.length)
-      } else {
-        parts.push({
-          text: remainingText,
-          highlight: false
-        })
-        break
-      }
-    }
-
-    return parts.map((part, index) => {
-      if (part.highlight) {
-        return (
-          <motion.span
-            key={index}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="gradient-text"
-          >
-            {part.text}
-          </motion.span>
-        )
-      }
-      return <span key={index}>{part.text}</span>
-    })
-  }
-
-  const text = isMobile 
-    ? `We're Brandbik. A creative studio shaping bold brands, stunning designs, and big ideas.`
-    : `We're Brandbik. A creative studio for visionary brands. We partner with ambitious teams to shape brands, design experiences, and bring ideas to life.`
-
   return (
     <div className="relative  h-screen w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
       {/* Background diagonal stripes */}

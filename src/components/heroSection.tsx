@@ -1,7 +1,6 @@
 // src/components/HeroSection.tsx
 'use client';
 
-import Image from "next/image"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useEffect } from "react"
 // import { CiDesktopMouse1 } from "react-icons/ci";

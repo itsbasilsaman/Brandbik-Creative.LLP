@@ -25,18 +25,6 @@ interface ContentSection {
   }
 }
 
-interface Language {
-  code: string
-  name: string
-  flag: string
-  dir: "ltr" | "rtl"
-}
-
-const languages: Language[] = [
-  { code: "en", name: "English", flag: "http://clipart-library.com/new_gallery/644232_english-flag-png.png", dir: "ltr" },
-  { code: "ar", name: "العربية", flag: "https://static.vecteezy.com/system/resources/previews/003/094/399/large_2x/saudi-arabia-national-flag-illustration-editable-image-vector.jpg", dir: "rtl" },
-]
-
 const contentSections: Record<string, ContentSection> = {
   impact: {
     title: "Our Achivements",
