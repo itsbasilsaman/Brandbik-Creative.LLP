@@ -3,12 +3,8 @@
 import type React from "react"
 
 import { useState } from "react" 
-import {   Phone, Mail  } from "lucide-react"
+import {   Phone, Mail, Twitter, Linkedin, MessageCircle, Instagram } from "lucide-react"
 // import Image from "next/image"
-import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaWhatsapp } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
 import Image from "next/image"
 
 // Add keyframes animation
@@ -201,16 +197,16 @@ export default function ContactMain() {
 
           <div className="flex gap-6 mt-6 sm:mt-8 justify-center lg:justify-start">
             <a href="https://www.instagram.com/brandbik_creatives/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
-              <FaInstagram className="text-[20px] sm:text-[24px]" />
+              <Instagram className="text-[20px] sm:text-[24px]" />
             </a>
             <a href="https://wa.me/919074851748" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
-              <FaWhatsapp className="text-[20px] sm:text-[24px]" />
+              <MessageCircle className="text-[20px] sm:text-[24px]" />
             </a>
             <a href="https://twitter.com/brandbik" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
-              <FaXTwitter className="text-[20px] sm:text-[24px]" />
+              <Twitter className="text-[20px] sm:text-[24px]" />
             </a>
             <a href="https://www.linkedin.com/company/brandbik-creatives" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors transform hover:scale-110">
-              <FaLinkedin className="text-[20px] sm:text-[24px]" />
+              <Linkedin className="text-[20px] sm:text-[24px]" />
             </a>
           </div>
         </div>
