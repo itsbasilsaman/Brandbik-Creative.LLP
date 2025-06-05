@@ -8,8 +8,8 @@ export default function GreenDoorGallery() {
       {/* Main Image - Full width on mobile */}
       <div className="w-full rounded-2xl overflow-hidden mb-4 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] relative">
         <Image 
-          src="/images/Digital-Marketing/green-door.jpg" 
-          alt="Green Door Restaurant"
+          src="/images/social/green-door-main.jpg" 
+          alt="Green Door Organics Social Media Campaign"
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
@@ -22,8 +22,8 @@ export default function GreenDoorGallery() {
         {/* Left Image - 5 columns on mobile, 7 columns on larger screens */}
         <div className="col-span-1 md:col-span-7 rounded-2xl overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] relative">
           <Image 
-            src="/images/Digital-Marketing/green-door.jpg" 
-            alt="Green Door Food Photography"
+            src="/images/social/green-door-content.jpg" 
+            alt="Green Door Organics Content Strategy"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 70vw, 60vw"
@@ -33,8 +33,8 @@ export default function GreenDoorGallery() {
         {/* Right Image - 5 columns on mobile, 3 columns on larger screens */}
         <div className="col-span-1 md:col-span-3 rounded-2xl overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] relative">
           <Image 
-            src="/images/Digital-Marketing/green-door.jpg" 
-            alt="Green Door Social Media Campaign"
+            src="/images/social/green-door-social.jpg" 
+            alt="Green Door Organics Social Media Posts"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"

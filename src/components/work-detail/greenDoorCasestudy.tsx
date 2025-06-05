@@ -6,10 +6,10 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional: for using with Tailwind
 });
 
-export default function CyberceedCaseStudy() {
+export default function GreenDoorCasestudy() {
     const services = [
-      ["App Development", "Social Media", "Advertising"],
-      ["Branding", "2D/3D Visuals"],
+      ["Social Media Marketing", "Content Creation", "Community Engagement"],
+      ["Organic Lifestyle Content", "Product Showcase"],
     ]
   
     return (
@@ -22,9 +22,10 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sleek and professional brand identity for Cyberseed, emphasizing their role as a trusted
-                corporate consultancy in the Uae. Delivered cohesive branding, from logo to marketing materials,
-                reflecting their expertise, reliability, and corporate values.
+                Developed and executed a social media marketing strategy for Green Door Organics,
+                focusing on promoting sustainable living and organic products. Created engaging content
+                that educates consumers about the benefits of organic products while showcasing the
+                company's commitment to environmental sustainability.
               </p>
             </div>
           </div>
@@ -36,8 +37,9 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The client approached us with a need to reposition their brand for a younger audience, while improving
-                conversion through a more intuitive digital experience.
+                The client needed to raise awareness about their organic products and build a community
+                of health-conscious consumers. The goal was to position Green Door Organics as a trusted
+                source for organic products while educating the market about sustainable living practices.
               </p>
             </div>
           </div>

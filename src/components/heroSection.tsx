@@ -2,11 +2,12 @@
 'use client';
 
 import { useLanguage } from "@/contexts/LanguageContext"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
 export default function Home() {
   const { t, language } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
 
   // Handle RTL support for this component only
   useEffect(() => {
@@ -16,8 +17,29 @@ export default function Home() {
     }
   }, [language]);
 
+  // Handle mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768;
+      console.log('Window width:', window.innerWidth);
+      console.log('Is mobile:', mobile);
+      setIsMobile(mobile);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+ 
+
   return (
-    <main className="relative h-screen w-full overflow-hidden">
+    <main className="relative h-screen w-full overflow-hidden bg-black">
       {/* Background Video */}
       <div className="absolute inset-0 z-0"> 
         <video
@@ -26,8 +48,12 @@ export default function Home() {
           muted
           playsInline
           className="absolute h-full w-full object-cover"
+          key={isMobile ? 'mobile' : 'desktop'} // Force video reload when source changes
         >
-          <source src="/banner-video-one.mp4" type="video/mp4" />
+          <source 
+            src={isMobile ? "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+Mobile.mp4" : "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview1.mp4"} 
+            type="video/mp4" 
+          />
         </video>
         <div className="absolute inset-0 bg-black/20" />
       </div>

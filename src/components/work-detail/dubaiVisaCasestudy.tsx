@@ -6,10 +6,10 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional: for using with Tailwind
 });
 
-export default function CyberceedCaseStudy() {
+export default function DubaiVisaCaseStudy() {
     const services = [
-      ["App Development", "Social Media", "Advertising"],
-      ["Branding", "2D/3D Visuals"],
+      ["Social Media Marketing", "Content Creation", "Community Management"],
+      ["Paid Advertising", "Lead Generation"],
     ]
   
     return (
@@ -22,9 +22,9 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sleek and professional brand identity for Cyberseed, emphasizing their role as a trusted
-                corporate consultancy in the Uae. Delivered cohesive branding, from logo to marketing materials,
-                reflecting their expertise, reliability, and corporate values.
+                Developed and executed a comprehensive social media marketing strategy for Get Your Dubai Visa,
+                focusing on building trust and credibility in the visa services market. Created engaging content
+                that simplifies the visa application process and highlights the company's expertise in UAE visa services.
               </p>
             </div>
           </div>
@@ -36,8 +36,9 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The client approached us with a need to reposition their brand for a younger audience, while improving
-                conversion through a more intuitive digital experience.
+                The client needed to establish a strong online presence and build trust in a market where visa
+                services are often viewed with skepticism. The goal was to position Get Your Dubai Visa as a
+                reliable and transparent service provider while increasing lead generation through social media.
               </p>
             </div>
           </div>

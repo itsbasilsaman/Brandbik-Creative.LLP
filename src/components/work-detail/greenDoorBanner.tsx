@@ -9,20 +9,38 @@ const poppins = Poppins({
 
 export default function GreenDoorBanner() {
   return (
-    <div className={`w-full h-[60vh] md:h-[80vh] relative ${poppins.className}`}>
-      <Image
-        src="/images/Digital-Marketing/chef-pillai.jpg"
-        alt="Green Door Organics Digital Marketing"
-        fill
-        className="object-cover"
-        priority
+    <div 
+      className="h-[600px] relative flex items-center px-5 md:px-16 lg:px-24"
+      style={{
+        backgroundImage: 'url(/images/social/green-door-banner.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay with gradient for left side darkness */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 80%)',
+        }}
       />
-      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-        <div className="text-center text-white px-4">
-          <h1 className="text-3xl md:text-5xl font-semibold mb-4">Green Door Organics</h1>
-          <p className="text-sm md:text-base max-w-2xl mx-auto">
-            Digital Marketing Campaign for an organic food company based in Kozhikode, Kerala, committed to promoting healthy living through natural and chemical-free products.
-          </p>
+      
+      <div className="max-w-xl w-full space-y-6 relative z-10 text-white">
+        <h1 className="text-white text-3xl md:text-4xl lg:text-4xl font-light leading-tight">
+          Social Media Marketing for Green Door Organics, promoting sustainable and organic living
+        </h1>
+
+        <div className="space-y-4 text-white text-lg">
+          <div className="flex flex-row sm:items-center gap-2 sm:gap-4">
+            <span className="font-medium text-base sm:text-lg">Industry:</span>
+            <span className="text-base sm:text-lg text-gray-200">Organic Products</span>
+          </div>
+
+          <div className="flex flex-row sm:items-center gap-2 sm:gap-4">
+            <span className="font-medium text-base sm:text-lg">Location:</span>
+            <span className="text-base sm:text-lg text-gray-200">Kerala, India</span>
+          </div>
         </div>
       </div>
     </div>

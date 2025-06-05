@@ -6,10 +6,10 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional: for using with Tailwind
 });
 
-export default function CyberceedCaseStudy() {
+export default function AesSchoolCaseStudy() {
     const services = [
-      ["App Development", "Social Media", "Advertising"],
-      ["Branding", "2D/3D Visuals"],
+      ["Social Media Marketing", "Content Strategy", "Student Engagement"],
+      ["Educational Content", "Community Building"],
     ]
   
     return (
@@ -22,9 +22,10 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                Developed a sleek and professional brand identity for Cyberseed, emphasizing their role as a trusted
-                corporate consultancy in the Uae. Delivered cohesive branding, from logo to marketing materials,
-                reflecting their expertise, reliability, and corporate values.
+                Created and implemented a comprehensive social media strategy for AES School of Commerce,
+                focusing on showcasing their academic excellence and student success stories. Developed
+                engaging content that highlights the school's unique value proposition in business education
+                and attracts prospective students.
               </p>
             </div>
           </div>
@@ -36,8 +37,10 @@ export default function CyberceedCaseStudy() {
             </div>
             <div className="lg:col-span-8">
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                The client approached us with a need to reposition their brand for a younger audience, while improving
-                conversion through a more intuitive digital experience.
+                The client needed to enhance their digital presence and effectively communicate their
+                educational offerings to potential students. The goal was to position AES School as a
+                premier institution for commerce education while building an engaged community of students
+                and alumni.
               </p>
             </div>
           </div>
