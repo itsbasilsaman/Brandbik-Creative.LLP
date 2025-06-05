@@ -25,7 +25,7 @@ export default function GreenDoorCasestudy() {
                 Developed and executed a social media marketing strategy for Green Door Organics,
                 focusing on promoting sustainable living and organic products. Created engaging content
                 that educates consumers about the benefits of organic products while showcasing the
-                company's commitment to environmental sustainability.
+                company&apos;s commitment to environmental sustainability.
               </p>
             </div>
           </div>

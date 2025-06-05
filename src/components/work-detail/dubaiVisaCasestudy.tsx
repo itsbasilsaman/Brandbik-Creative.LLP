@@ -24,7 +24,7 @@ export default function DubaiVisaCaseStudy() {
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                 Developed and executed a comprehensive social media marketing strategy for Get Your Dubai Visa,
                 focusing on building trust and credibility in the visa services market. Created engaging content
-                that simplifies the visa application process and highlights the company's expertise in UAE visa services.
+                that simplifies the visa application process and highlights the company&apos;s expertise in UAE visa services.
               </p>
             </div>
           </div>
