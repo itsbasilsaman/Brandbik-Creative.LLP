@@ -6,7 +6,7 @@ import Image from "next/image"
 import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { X } from "lucide-react"
-import { motion, AnimatePresence, useSpring, useTransform } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/contexts/LanguageContext"
 
 interface ContentSection {
@@ -109,13 +109,12 @@ const contentSections: Record<string, ContentSection> = {
 const CountUp = ({ value, duration = 2 }: { value: string, duration?: number }) => {
   const [count, setCount] = useState(0);
   const numericMatch = value.match(/^(\d+)(.*)$/);
-  
-  if (!numericMatch) return <span>{value}</span>;
-  
-  const [, numericPart, suffix] = numericMatch;
+  const [, numericPart, suffix] = numericMatch || ['', '0', ''];
   const targetNumber = parseInt(numericPart);
 
   useEffect(() => {
+    if (!numericMatch) return;
+    
     let startTime: number;
     let animationFrame: number;
 
@@ -138,7 +137,9 @@ const CountUp = ({ value, duration = 2 }: { value: string, duration?: number }) 
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [targetNumber, duration]);
+  }, [targetNumber, duration, numericMatch]);
+
+  if (!numericMatch) return <span>{value}</span>;
 
   return (
     <span>
