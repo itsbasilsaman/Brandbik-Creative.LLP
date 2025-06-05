@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Twitter , MessageCircle } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -50,10 +50,10 @@ export default function Footer() {
                   <div className="flex flex-col space-y-3">
                     <Link href="/" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Home</Link>
                     <Link href="/about" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">About us</Link>
-                    <Link href="/portfolio" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Portfolio</Link>
-                    <Link href="/blog" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Blog</Link>
-                    <Link href="/connect" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Connect</Link>
-                    <Link href="/shopify" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Shopify</Link>
+        
+                    <Link href="/service" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Services</Link>
+                    <Link href="/works" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Works</Link>
+                    <Link href="/contact" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Contack Us</Link>
                   </div>
                 </div>
 
@@ -61,39 +61,41 @@ export default function Footer() {
                 <div className="col-span-1">
                   <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">Services</h3>
                   <div className="flex flex-col space-y-3">
-                    <Link href="/services/website-development" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Website Development</Link>
-                    <Link href="/services/app-development" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">App Development</Link>
-                    <Link href="/services/branding" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Branding</Link>
-                    <Link href="/services/digital-marketing" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Digital Marketing</Link>
-                    <Link href="/services/social-media" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Social Media</Link>
-                    <Link href="/services/marketing" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Marketing</Link>
+                    <Link href="/service/web-development" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Website Development</Link>
+                    <Link href="/service/app-development" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">App Development</Link>
+                    <Link href="/service/branding" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Branding</Link>
+                    <Link href="/service/digital-marketing" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Digital Marketing</Link>
+                    <Link href="/service/social-media" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Social Media</Link>
+                    <Link href="/service/advertising" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Advertising</Link>
                   </div>
                 </div>
 
                 {/* Contact Info - Only visible on md and larger screens */}
                 <div className="hidden md:block col-span-2">
-                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">Contact Us</h3>
-                  <div className="flex flex-col space-y-3 text-white/70 text-sm sm:text-base">
-                    <p>info@brandbik.com</p>
-                    <p>+966 12 345 6789</p>
-                    <p>123 Business District, Riyadh, Saudi Arabia</p>
-                     
-                  </div>
-                </div>
+  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">Contact Us</h3>
+  <div className="flex flex-col space-y-3 text-white/70 text-sm sm:text-base">
+    <p>+966 12 345 6789</p>
+    <p>+91 90748 51748</p>
+    <p>+91 80753 47955</p>
+    <p>info@brandbik.com</p>
+    <p>Batha, Riyadh, Saudi Arabia</p>
+  </div>
+</div>
+
               </div>
 
               {/* Social Media - Desktop */}
               <div className="hidden lg:flex justify-end space-x-5 mt-8">
-                <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
+                <Link href="https://www.instagram.com/brandbik_creatives/" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Instagram className="w-5 h-5" />
                 </Link>
-                <Link href="#" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <Facebook className="w-5 h-5" />
+                <Link href="https://wa.me/919074851748" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
+                  <MessageCircle className="w-5 h-5" />
                 </Link>
-                <Link href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
+                <Link href="https://www.linkedin.com/company/brandbik-creatives" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Linkedin className="w-5 h-5" />
                 </Link>
-                <Link href="#" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
+                <Link href="https://twitter.com/brandbik" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Twitter className="w-5 h-5" />
                 </Link>
               </div>

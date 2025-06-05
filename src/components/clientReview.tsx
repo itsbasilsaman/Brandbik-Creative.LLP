@@ -289,12 +289,14 @@ export default function ClientReviews() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <Link
-                href="#"
+                href="https://wa.me/919074851748"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-teal-500 text-white hover:bg-teal-900/30 transition-colors w-full md:w-auto justify-center"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                Connect 
+                Connect Us
                 <motion.span
                   animate={{
                     x: isHovered ? [0, 4, 0] : 0

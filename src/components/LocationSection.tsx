@@ -31,7 +31,7 @@ const locations: Location[] = [
     id: 'saudi',
     name: 'Saudi Arabia',
     flag: '/images/saudia-flag.jpg',
-    address: 'King Abdulaziz Road, opposite Al Rajhi Bank, Al Malaz, Riyadh 12836, Saudi Arabia',
+    address: 'Batha, Riyadh, Saudi Arabia – KSA +966 5324 34142',
     mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.6719404031995!2d46.6752773!3d24.7135517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sAl%20Batha%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2sin!4v1621234567890!5m2!1sen!2sin'
   },
   {

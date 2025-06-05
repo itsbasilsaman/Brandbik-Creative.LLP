@@ -143,22 +143,30 @@ export default function ServiceMain() {
             Services built to move brands forward.
           </motion.p>
 
-          <motion.button 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className={`flex items-center cursor-pointer bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30 transition-all duration-200 rounded-full px-5 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3 text-sm sm:text-base group ${poppins.className}`}
-          >
-            Let&apos;s Talk
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
-            >
-              <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
-            </motion.span>
-          </motion.button>
+          <a
+  href="https://wa.me/919074851748"
+  target="_blank"
+  rel="noopener noreferrer"
+  className={`inline-block`}
+>
+  <motion.button 
+    initial={{ opacity: 0, y: 20 }}
+    animate={isInView ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 0.5, delay: 0.15 }}
+    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+    whileTap={{ scale: 0.95 }}
+    className={`flex items-center cursor-pointer bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30 transition-all duration-200 rounded-full px-5 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3 text-sm sm:text-base group ${poppins.className}`}
+  >
+    Let&apos;s Talk
+    <motion.span
+      animate={{ x: [0, 5, 0] }}
+      transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
+    >
+      <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+    </motion.span>
+  </motion.button>
+</a>
+
         </motion.div>
       </div>
     </section>

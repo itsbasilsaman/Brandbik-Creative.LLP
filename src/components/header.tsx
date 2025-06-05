@@ -374,7 +374,7 @@ export default function Header() {
           <div className="md:hidden absolute right-8 flex items-center gap-4">
             <LanguageSwitcher isMobile={true} />
             <button 
-              className={`${isScrolled || isDarkTextRoute ? "text-black" : "text-white"}`}
+              className={`${isScrolled || isDarkTextRoute ? "text-white" : "text-white"}`}
               onClick={() => setIsPanelOpen(true)}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
