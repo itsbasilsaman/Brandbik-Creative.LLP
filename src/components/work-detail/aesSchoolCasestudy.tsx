@@ -24,7 +24,7 @@ export default function AesSchoolCaseStudy() {
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                 Created and implemented a comprehensive social media strategy for AES School of Commerce,
                 focusing on showcasing their academic excellence and student success stories. Developed
-                engaging content that highlights the school's unique value proposition in business education
+                engaging content that highlights the school&apos;s unique value proposition in business education
                 and attracts prospective students.
               </p>
             </div>
