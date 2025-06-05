@@ -1,21 +1,65 @@
-import BottomBar from "@/components/bottomBar";
-import CyberceedBanner from "@/components/work-detail/cyberceedBanner";
-import InnerRelatedWorks from "@/components/innerRelatedWorks";
-import ResultSection from "@/components/resultSection";
-import Testimonial from "@/components/Testimonial";
-import CyberceedCaseStudy from "@/components/work-detail/cyberceedCasestudy";
-import CyberceedGallery from "@/components/work-detail/cyberceedGallery";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// Dynamically import components with loading fallbacks
+const CyberceedBanner = dynamic(() => import('@/components/work-detail/cyberceedBanner'), {
+  loading: () => <div className="h-[60vh] animate-pulse bg-gray-200" />
+});
+
+const CyberceedCaseStudy = dynamic(() => import('@/components/work-detail/cyberceedCasestudy'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const CyberceedGallery = dynamic(() => import('@/components/work-detail/cyberceedGallery'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const ResultSection = dynamic(() => import('@/components/resultSection'), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const Testimonial = dynamic(() => import('@/components/Testimonial'), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const InnerRelatedWorks = dynamic(() => import('@/components/innerRelatedWorks'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const BottomBar = dynamic(() => import('@/components/bottomBar'), {
+  loading: () => <div className="h-[100px] animate-pulse bg-gray-200" />
+});
 
 export default function Cyberceed() {
-    return (
-        <>
-         <CyberceedBanner/>
-         <CyberceedCaseStudy/>
-         <CyberceedGallery/>
-         <ResultSection/>
-         <Testimonial/>
-         <InnerRelatedWorks/>
-         <BottomBar/>
-        </>
-    )
+  return (
+    <>
+      <Suspense fallback={<div className="h-[60vh] animate-pulse bg-gray-200" />}>
+        <CyberceedBanner />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <CyberceedCaseStudy />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <CyberceedGallery />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <ResultSection />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <Testimonial />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <InnerRelatedWorks />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[100px] animate-pulse bg-gray-200" />}>
+        <BottomBar />
+      </Suspense>
+    </>
+  );
 }

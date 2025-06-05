@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { RiCloseLargeLine } from "react-icons/ri"
+import { X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/contexts/LanguageContext"
 
@@ -410,7 +410,7 @@ export default function Header() {
               onClick={() => setIsPanelOpen(false)}
               className="absolute top-8 right-8 z-10 p-3 text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110"
             >
-              <RiCloseLargeLine className="w-6 h-6" />
+              <X className="w-6 h-6" />
             </button>
 
             <div className="flex h-full">
@@ -706,7 +706,7 @@ export default function Header() {
                     onClick={() => setIsPanelOpen(false)}
                     className="p-2 text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90"
                   >
-                    <RiCloseLargeLine className="w-6 h-6" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
               </div>

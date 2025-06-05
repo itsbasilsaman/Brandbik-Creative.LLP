@@ -3,12 +3,6 @@
 import { useState } from "react"
 import { Plus, Minus } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: '500', // Medium
-});
 
 interface FaqItem {
   question: string
@@ -59,7 +53,7 @@ export default function FaqAccordion() {
 
   return (
     <div className="w-full px-4 md:px-16 lg:px-32 bg-[#efefef] py-8 lg:py-20">
-      <h1 className={`text-3xl lg:text-[48px] font-bold mb-8 ${poppins.className}`}>FAQ</h1>
+      <h1 className={`text-3xl lg:text-[48px] font-bold mb-8 font-poppins`}>FAQ</h1>
       <div className="space-y-1">
         {faqItems.map((item, index) => (
           <div key={index} className="border-b border-gray-200">

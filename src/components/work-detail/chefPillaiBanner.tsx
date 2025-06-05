@@ -1,15 +1,8 @@
 import Image from "next/image";
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
 
 export default function ChefPillaiBanner() {
   return (
-    <div className={`w-full h-[60vh] md:h-[80vh] relative ${poppins.className}`}>
+    <div className={`w-full h-[60vh] md:h-[80vh] relative font-poppins`}>
       <Image
         src="/images/Digital-Marketing/chef-pillai.jpg"
         alt="Chef Pillai Digital Marketing"

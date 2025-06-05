@@ -1,14 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Poppins } from 'next/font/google';
 import { Suspense } from 'react';
-
-const poppins = Poppins({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 // Separate client component for interactive cards
 
@@ -63,7 +56,7 @@ const InteractiveCard = ({
         </div>
       </div>
       <div className="bg-white p-4 lg:p-4 h-[80px] lg:h-auto flex flex-col justify-center">
-        <h3 className={`text-xl lg:text-3xl font-bold text-gray-900 ${poppins.className}`}>{title}</h3>
+        <h3 className={`text-xl lg:text-3xl font-bold text-gray-900 font-poppins`}>{title}</h3>
         <p className="text-sm lg:text-base text-gray-500">{description}</p>
       </div>
     </div>

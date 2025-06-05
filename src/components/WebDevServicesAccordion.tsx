@@ -1,14 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Poppins } from "next/font/google"
 import Image from "next/image"
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-})
 
 const services = [
   {
@@ -44,7 +37,7 @@ export default function WebDevServicesAccordion() {
 
   return (
     <div className="w-full px-5 md:px-16 lg:px-24 py-16 lg:py-24">
-      <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 ${poppins.className}`}>
+      <h1 className={`text-3xl md:text-4xl lg:text-5xl font-medium mb-2 font-poppins`}>
         Web Development Services We Offer
       </h1>
       <p className="text-gray-500 mb-10 text-base md:text-[16px] max-w-[778px] py-4">

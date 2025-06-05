@@ -1,21 +1,65 @@
-import BottomBar from "@/components/bottomBar";
-import TeamAeBanner from "@/components/work-detail/teamAeBanner";
-import InnerRelatedWorks from "@/components/innerRelatedWorks";
-import ResultSection from "@/components/resultSection";
-import Testimonial from "@/components/Testimonial";
-import TeamAeCasestudy from "@/components/work-detail/teamAeCasestudy";
-import TeamAeGallery from "@/components/work-detail/teamAeGallery";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// Dynamically import components with loading fallbacks
+const TeamAeBanner = dynamic(() => import('@/components/work-detail/teamAeBanner'), {
+  loading: () => <div className="h-[60vh] animate-pulse bg-gray-200" />
+});
+
+const TeamAeCasestudy = dynamic(() => import('@/components/work-detail/teamAeCasestudy'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const TeamAeGallery = dynamic(() => import('@/components/work-detail/teamAeGallery'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const ResultSection = dynamic(() => import('@/components/resultSection'), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const Testimonial = dynamic(() => import('@/components/Testimonial'), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const InnerRelatedWorks = dynamic(() => import('@/components/innerRelatedWorks'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const BottomBar = dynamic(() => import('@/components/bottomBar'), {
+  loading: () => <div className="h-[100px] animate-pulse bg-gray-200" />
+});
 
 export default function TeamAe() {
-    return (
-        <>
-         <TeamAeBanner/>
-         <TeamAeCasestudy/>
-         <TeamAeGallery/>
-         <ResultSection/>
-         <Testimonial/>
-         <InnerRelatedWorks/>
-         <BottomBar/>
-        </>
-    )
+  return (
+    <>
+      <Suspense fallback={<div className="h-[60vh] animate-pulse bg-gray-200" />}>
+        <TeamAeBanner />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <TeamAeCasestudy />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <TeamAeGallery />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <ResultSection />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <Testimonial />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <InnerRelatedWorks />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[100px] animate-pulse bg-gray-200" />}>
+        <BottomBar />
+      </Suspense>
+    </>
+  );
 } 

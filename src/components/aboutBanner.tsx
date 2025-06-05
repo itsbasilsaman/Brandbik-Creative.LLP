@@ -1,13 +1,6 @@
 "use client"
 
 import {   Users, Award, Globe, Zap } from "lucide-react"
-import { Poppins } from "next/font/google"
-
-const poppins = Poppins({
-  weight: "500", // Medium weight
-  subsets: ["latin"],
-  display: "swap",
-})
 
 // Statistics data
  
@@ -48,7 +41,7 @@ export default function AboutBanner() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20">
           <div>
-            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight ${poppins.className}`}>
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight font-poppins`}>
               We build brands that move with purpose.
             </h2>
           </div>
@@ -80,10 +73,10 @@ export default function AboutBanner() {
                       {value.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className={`text-lg sm:text-xl font-semibold text-gray-900 mb-2 ${poppins.className}`}>
+                      <h4 className={`text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-poppins`}>
                         {value.title}
                       </h4>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{value.description}</p>
+                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-poppins">{value.description}</p>
                     </div>
                   </div>
                 </div>

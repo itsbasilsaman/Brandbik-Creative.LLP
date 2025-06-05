@@ -1,21 +1,65 @@
-import BottomBar from "@/components/bottomBar";
-import BiriyaniBanner from "@/components/work-detail/biriyaniBanner";
-import InnerRelatedWorks from "@/components/innerRelatedWorks";
-import ResultSection from "@/components/resultSection";
-import Testimonial from "@/components/Testimonial";
-import BiriyaniCasestudy from "@/components/work-detail/biriyaniCasestudy";
-import BiriyaniGallery from "@/components/work-detail/biriyaniGallery";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// Dynamically import components with loading fallbacks
+const BiriyaniBanner = dynamic(() => import("@/components/work-detail/biriyaniBanner"), {
+  loading: () => <div className="h-[60vh] animate-pulse bg-gray-200" />
+});
+
+const BiriyaniCasestudy = dynamic(() => import("@/components/work-detail/biriyaniCasestudy"), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const BiriyaniGallery = dynamic(() => import("@/components/work-detail/biriyaniGallery"), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const ResultSection = dynamic(() => import("@/components/resultSection"), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const Testimonial = dynamic(() => import("@/components/Testimonial"), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const InnerRelatedWorks = dynamic(() => import("@/components/innerRelatedWorks"), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const BottomBar = dynamic(() => import("@/components/bottomBar"), {
+  loading: () => <div className="h-[100px] animate-pulse bg-gray-200" />
+});
 
 export default function BiriyaniAndBeyond() {
-    return (
-        <>
-         <BiriyaniBanner/>
-         <BiriyaniCasestudy/>
-         <BiriyaniGallery/>
-         <ResultSection/>
-         <Testimonial/>
-         <InnerRelatedWorks/>
-         <BottomBar/>
-        </>
-    )
+  return (
+    <>
+      <Suspense fallback={<div className="h-[60vh] animate-pulse bg-gray-200" />}>
+        <BiriyaniBanner />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <BiriyaniCasestudy />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <BiriyaniGallery />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <ResultSection />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <Testimonial />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <InnerRelatedWorks />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[100px] animate-pulse bg-gray-200" />}>
+        <BottomBar />
+      </Suspense>
+    </>
+  );
 } 

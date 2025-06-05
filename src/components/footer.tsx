@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { FaWhatsapp, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -28,16 +27,16 @@ export default function Footer() {
               {/* Social Media - Mobile */}
               <div className="flex space-x-5 lg:hidden mt-6">
                 <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Instagram className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Facebook className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaLinkedinIn className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Linkedin className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaXTwitter className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Twitter className="w-5 h-5" />
                 </Link>
               </div>
             </div>
@@ -86,16 +85,16 @@ export default function Footer() {
               {/* Social Media - Desktop */}
               <div className="hidden lg:flex justify-end space-x-5 mt-8">
                 <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Instagram className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Facebook className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaLinkedinIn className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Linkedin className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <FaXTwitter className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Twitter className="w-5 h-5" />
                 </Link>
               </div>
             </div>

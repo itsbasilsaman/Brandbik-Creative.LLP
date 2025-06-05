@@ -1,21 +1,65 @@
-import BottomBar from "@/components/bottomBar";
-import GalaxyPaintsBanner from "@/components/work-detail/galaxyPaintsBanner";
-import InnerRelatedWorks from "@/components/innerRelatedWorks";
-import ResultSection from "@/components/resultSection";
-import Testimonial from "@/components/Testimonial";
-import GalaxyPaintsCasestudy from "@/components/work-detail/galaxyPaintsCasestudy";
-import GalaxyPaintsGallery from "@/components/work-detail/galaxyPaintsGallery";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// Dynamically import components with loading fallbacks
+const GalaxyPaintsBanner = dynamic(() => import('@/components/work-detail/galaxyPaintsBanner'), {
+  loading: () => <div className="h-[60vh] animate-pulse bg-gray-200" />
+});
+
+const GalaxyPaintsCasestudy = dynamic(() => import('@/components/work-detail/galaxyPaintsCasestudy'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const GalaxyPaintsGallery = dynamic(() => import('@/components/work-detail/galaxyPaintsGallery'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const ResultSection = dynamic(() => import('@/components/resultSection'), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const Testimonial = dynamic(() => import('@/components/Testimonial'), {
+  loading: () => <div className="h-[300px] animate-pulse bg-gray-200" />
+});
+
+const InnerRelatedWorks = dynamic(() => import('@/components/innerRelatedWorks'), {
+  loading: () => <div className="h-[400px] animate-pulse bg-gray-200" />
+});
+
+const BottomBar = dynamic(() => import('@/components/bottomBar'), {
+  loading: () => <div className="h-[100px] animate-pulse bg-gray-200" />
+});
 
 export default function GalaxyPaints() {
-    return (
-        <>
-         <GalaxyPaintsBanner/>
-         <GalaxyPaintsCasestudy/>
-         <GalaxyPaintsGallery/>
-         <ResultSection/>
-         <Testimonial/>
-         <InnerRelatedWorks/>
-         <BottomBar/>
-        </>
-    )
+  return (
+    <>
+      <Suspense fallback={<div className="h-[60vh] animate-pulse bg-gray-200" />}>
+        <GalaxyPaintsBanner />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <GalaxyPaintsCasestudy />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <GalaxyPaintsGallery />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <ResultSection />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[300px] animate-pulse bg-gray-200" />}>
+        <Testimonial />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[400px] animate-pulse bg-gray-200" />}>
+        <InnerRelatedWorks />
+      </Suspense>
+
+      <Suspense fallback={<div className="h-[100px] animate-pulse bg-gray-200" />}>
+        <BottomBar />
+      </Suspense>
+    </>
+  );
 } 

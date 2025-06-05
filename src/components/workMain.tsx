@@ -2,15 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Poppins } from 'next/font/google';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from "@/contexts/LanguageContext"
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins', // Optional, for Tailwind or CSS variables
-});
 
 // Define project categories
 type Category = "website" | "app" | "branding" | "social" 
@@ -394,7 +387,7 @@ export default function WorkMain() {
   ]
 
   return (
-    <main className={`container mx-auto px-4 py-10 md:py-20 w-full h-auto md:px-16 lg:px-32 ${poppins.className} work-content ${language === 'ar' ? 'text-right' : ''}`}>
+    <main className={`container mx-auto px-4 py-10 md:py-20 w-full h-auto md:px-16 lg:px-32 font-poppins work-content ${language === 'ar' ? 'text-right' : ''}`}>
       {/* Navigation - Responsive with horizontal scrolling on mobile */}
       <nav className="w-full mb-6 md:mb-12">
         <div className="flex flex-wrap  justify-center gap-3 md:gap-3">
@@ -454,7 +447,7 @@ export default function WorkMain() {
                   className="w-full h-[200px] md:h-[250px] hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={75}
+                  quality={60}
                 />
                 {hoveredProjectId === project.id && (
                   <div 
@@ -466,14 +459,14 @@ export default function WorkMain() {
                     }}
                   >
                     <div className="flex items-center justify-center w-[50px] md:w-[60px] h-[50px] md:h-[60px] gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full backdrop-blur-md bg-white/20">
-                      <span className={`text-white text-xs md:text-sm font-light ${poppins.className}`}>View</span>
+                      <span className={`text-white text-xs md:text-sm font-light`}>View</span>
                     </div>
                   </div>
                 )}
               </div>
               <div className="px-3 md:px-4 pb-4 md:pb-5">
-                <h3 className={`text-base md:text-lg lg:text-[24px] font-medium ${poppins.className}`}>{project.title}</h3>
-                <p className={`text-xs md:text-sm text-gray-600 ${poppins.className}`}>{project.description}</p>
+                <h3 className={`text-base md:text-lg lg:text-[24px] font-medium`}>{project.title}</h3>
+                <p className={`text-xs md:text-sm text-gray-600`}>{project.description}</p>
               </div>
             </div>
           ))

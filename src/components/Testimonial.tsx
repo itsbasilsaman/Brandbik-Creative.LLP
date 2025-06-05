@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Quote } from "lucide-react"
 
 export default function Testimonial() {
     return (
@@ -6,13 +7,7 @@ export default function Testimonial() {
         <div className="relative">
           {/* Large decorative quote mark */}
           <div className="absolute top-0 right-0 text-gray-300 text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif leading-none select-none">
-            <svg width="30" height="24" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-8">
-              <path
-                d="M12.9032 0L0 12.9032V32H19.0968V12.9032H6.19355L19.0968 0H12.9032ZM33.8064 0L20.9032 12.9032V32H40V12.9032H27.0968L40 0H33.8064Z"
-                fill="currentColor"
-                opacity="0.3"
-              />
-            </svg>
+            <Quote className="w-8 h-8" />
           </div>
   
           {/* Profile section */}

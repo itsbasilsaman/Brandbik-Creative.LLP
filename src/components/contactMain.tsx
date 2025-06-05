@@ -5,18 +5,11 @@ import type React from "react"
 import { useState } from "react" 
 import {   Phone, Mail  } from "lucide-react"
 // import Image from "next/image"
-import { Poppins } from 'next/font/google'
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import Image from "next/image"
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: '500', // Medium
-  variable: '--font-poppins', // Optional, for Tailwind
-})
 
 // Add keyframes animation
 const gradientAnimation = `
@@ -62,7 +55,7 @@ export default function ContactMain() {
   }
 
   return (
-    <div className={`min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 ${poppins.className}`} style={{
+    <div className={`min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-5 md:px-16 lg:px-24 font-poppins`} style={{
       backgroundSize: '400% 400%',
       animation: 'gradient 15s ease infinite',
     }}>

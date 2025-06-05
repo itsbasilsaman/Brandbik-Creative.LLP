@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from 'react';
-import { FaArrowRight } from "react-icons/fa";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ClientsSection() {
@@ -118,7 +118,7 @@ export default function ClientsSection() {
         >
           <span className="relative z-10 bg-white rounded-full px-4 py-3 flex items-center gap-3 text-base sm:text-[16px] text-black transition-all duration-500 hover:bg-transparent hover:text-white">
             {t('clients.viewAll')}
-            <FaArrowRight className={`transition-transform duration-500 group-hover:translate-x-1 ${language === 'ar' ? 'rotate-180' : ''}`} />
+            <ArrowRight className={`transition-transform duration-500 group-hover:translate-x-1 ${language === 'ar' ? 'rotate-180' : ''}`} />
           </span>
         </a>
       </div>

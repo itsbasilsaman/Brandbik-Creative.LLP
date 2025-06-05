@@ -1,12 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { Poppins } from 'next/font/google'
-
-const poppins = Poppins({
-  weight: '500', // 500 = Medium
-  subsets: ['latin'],
-});
 
 interface TeamMember {
   id: number
@@ -80,7 +74,7 @@ export default function OurTeamSection() {
             <div className="inline-flex items-center rounded-full text-white bg-gray-400 border px-2.5 py-0.5 text-sm  transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ">
               About
             </div>
-            <h2 className={`${poppins.className} text-3xl font-bold tracking-tight py-1 sm:text-4xl md:text-[48px] pb-6`}>Our Creative Minds</h2>
+            <h2 className={`font-poppins text-3xl font-bold tracking-tight py-1 sm:text-4xl md:text-[48px] pb-6`}>Our Creative Minds</h2>
           </div>
           <div className="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide">
             {teamMembers.map((member) => (
