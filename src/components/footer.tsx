@@ -26,7 +26,7 @@ export default function Footer() {
               
               {/* Social Media - Mobile */}
               <div className="flex space-x-5 lg:hidden mt-6">
-                <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
+              <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Instagram className="w-5 h-5" />
                 </Link>
                 <Link href="#" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">

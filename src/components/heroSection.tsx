@@ -59,7 +59,7 @@ export default function Home() {
       </div>
 
       {/* Content Container */}
-      <div className="absolute top-68 left-2 lg:top-48 lg:left-7 z-10 flex h-full flex-col justify-center px-5 md:px-16 lg:px-24">
+      <div className="absolute bottom-14 left-4 sm:bottom-12 sm:left-6 md:bottom-16 md:left-8 lg:bottom-20 lg:left-24 z-10">
         <div className="max-w-[500px] hero-content">
           <h1 className={`font-sans text-[23px] font-light leading-tight tracking-tight text-white md:text-6xl lg:text-[45px] ${language === 'ar' ? 'text-right' : ''}`}>
             <span className="">{t('hero.title.part1')}</span> {t('hero.title.part2')}<span className=""> {t('hero.title.part3')} </span>{t('hero.title.part4')}

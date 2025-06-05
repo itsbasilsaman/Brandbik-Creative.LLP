@@ -6,7 +6,7 @@ import Image from "next/image"
 import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useSpring, useTransform } from "framer-motion"
 import { useLanguage } from "@/contexts/LanguageContext"
 
 interface ContentSection {
@@ -104,6 +104,48 @@ const contentSections: Record<string, ContentSection> = {
     buttonLink: "/contact",
   },
 }
+
+// Add this new component before the Header component
+const CountUp = ({ value, duration = 2 }: { value: string, duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const numericMatch = value.match(/^(\d+)(.*)$/);
+  
+  if (!numericMatch) return <span>{value}</span>;
+  
+  const [, numericPart, suffix] = numericMatch;
+  const targetNumber = parseInt(numericPart);
+
+  useEffect(() => {
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+      
+      const currentCount = Math.floor(progress * targetNumber);
+      setCount(currentCount);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [targetNumber, duration]);
+
+  return (
+    <span>
+      {count}{suffix}
+    </span>
+  );
+};
 
 export default function Header() {
   const [isLargeScreen, setIsLargeScreen] = useState(false)
@@ -279,7 +321,7 @@ export default function Header() {
       <div className="relative z-10 container mx-auto px-4 py-4">
         <div className="flex items-center justify-center">
           {/* Combined Navigation Container with Logo and CTA */}
-          <div className={`flex items-center justify-between w-full space-x-8 transition-all duration-500 ease-in-out bg-white/30 backdrop-blur-md rounded-full px-8 py-3 ${isScrolled ? "shadow-md" : " "}`}>
+          <div className={`flex items-center justify-between w-full space-x-8 transition-all duration-500 ease-in-out bg-white/30 backdrop-blur-md rounded-full px-8 py-3 ${isScrolled ? "shadow-md" : "shadow-[inset_0_0_10px_rgba(0,0,0,0.1)]"}`}>
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" prefetch>
@@ -627,7 +669,9 @@ export default function Header() {
                         className="animate-in fade-in-50 slide-in-from-bottom-4 duration-700"
                         style={{ animationDelay: `${index * 150}ms` }}
                       >
-                        <div className="text-4xl lg:text-5xl font-semibold text-white mb-2">{stat.number}</div>
+                        <div className="text-4xl lg:text-5xl font-semibold text-white mb-2">
+                          <CountUp value={stat.number} />
+                        </div>
                         <div className="text-sm text-white/70 leading-relaxed">{stat.label}</div>
                       </div>
                     ))}
