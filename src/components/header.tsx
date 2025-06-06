@@ -398,6 +398,7 @@ export default function Header() {
                 <span className="relative">Contact Us</span>
               </Link>
             </nav>
+            
 
             <div className="flex items-center gap-2 md:gap-3">
               {/* Language Switcher for Desktop */}
