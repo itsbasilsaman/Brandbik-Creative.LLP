@@ -75,7 +75,7 @@ export default function Home() {
             className={`inline-flex items-center px-4 sm:px-6 mt-4 sm:mt-6 rounded-full cursor-pointer py-2 sm:py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-colors duration-300 group text-sm sm:text-base md:text-lg`}
           >
            
-            <span className="font-medium"> Let's Talk</span>
+            <span className="font-medium"> Let&apos;s Talk</span>
             <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
