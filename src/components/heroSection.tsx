@@ -3,6 +3,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useEffect, useState } from "react"
+import { ChevronDown, ArrowRight } from "lucide-react";
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
 export default function Home() {
@@ -36,7 +37,12 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
- 
+  const scrollToNextSection = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-black">
@@ -59,12 +65,26 @@ export default function Home() {
       </div>
 
       {/* Content Container */}
-      <div className="absolute bottom-14 left-4 sm:bottom-12 sm:left-6 md:bottom-16 md:left-8 lg:bottom-20 lg:left-24 z-10">
+      <div className="absolute bottom-8 left-4 right-4 sm:bottom-12 sm:left-6 sm:right-auto md:bottom-16 md:left-8 lg:bottom-20 lg:left-24 z-10">
         <div className="max-w-[500px] hero-content">
-          <h1 className={`font-sans text-[23px] font-light leading-tight tracking-tight text-white md:text-6xl lg:text-[45px] ${language === 'ar' ? 'text-right' : ''}`}>
+          <h1 className={`font-sans text-2xl font-light leading-tight tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[45px] ${language === 'ar' ? 'text-right' : ''}`}>
             <span className="">{t('hero.title.part1')}</span> {t('hero.title.part2')}<span className=""> {t('hero.title.part3')} </span>{t('hero.title.part4')}
           </h1>
-          {/* <p className={`mt-6 text-lg text-white/90 md:text-xl ${language === 'ar' ? 'text-right' : ''}`}>{t('hero.subtitle')}</p> */}
+          <button 
+            onClick={() => window.location.href = '/contact'}
+            className={`inline-flex items-center px-4 sm:px-6 mt-4 sm:mt-6 rounded-full cursor-pointer py-2 sm:py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-colors duration-300 group text-sm sm:text-base md:text-lg`}
+          >
+           
+            <span className="font-medium"> Let's Talk</span>
+            <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+      </div>
+
+      {/* Animated Arrow */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer" onClick={scrollToNextSection}>
+        <div className="animate-bounce">
+          <ChevronDown className="text-white w-8 h-8" />
         </div>
       </div>
     </main>

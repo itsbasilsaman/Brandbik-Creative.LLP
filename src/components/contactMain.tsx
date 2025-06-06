@@ -176,7 +176,7 @@ export default function ContactMain() {
          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <div className="flex items-center gap-4 sm:gap-5 bg-[#24242483] border border-[#dedddd] shadow-lg backdrop-blur-sm p-3 sm:p-4 px-6 sm:px-8 rounded-[24px] w-full sm:w-auto">
+            <div className="flex items-center gap-4 sm:gap-5 bg-[#24242483] border border-[#dedddd] shadow-lg backdrop-blur-sm p-3 sm:p-4 px-6 sm:px-8 rounded-[24px] w-full sm:w-auto h-[80px]">
               <Phone className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               <div className="text-gray-300">
                 <a href="tel:+919074851748" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+91 90748 51748,</a>
@@ -185,12 +185,11 @@ export default function ContactMain() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 sm:gap-5 bg-[#24242483]  border border-[#dedddd] shadow-lg  backdrop-blur-sm p-3 sm:p-4 px-6 sm:px-8 rounded-[24px] w-full sm:w-auto">
+            <div className="flex items-center gap-4 sm:gap-5 bg-[#24242483] border border-[#dedddd] shadow-lg backdrop-blur-sm p-3 sm:p-4 px-6 sm:px-8 rounded-[24px] w-full sm:w-auto h-[80px]">
               <Mail className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               <div className="text-gray-300">
                 <a href="mailto:info@brandbik.com" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">info@brandbik.com</a>
                 <br />
-                <a href="mailto:hr@brandbik.com" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">hr@brandbik.com</a>
               </div>
             </div>
           </div>

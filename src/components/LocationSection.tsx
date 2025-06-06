@@ -69,9 +69,9 @@ export default function LocationsSection() {
                 selectedLocation.id === location.id ? 'ring-2 ring-black' : ''
               }`}
             >
-              <div className="p-6">
+              <div className="p-6 h-[140px]">
                 <div className="flex items-center gap-5 mb-4">
-                  <div className="w-10 h-8 relative">
+                  <div className="w-10 h-10 relative">
                     <Image 
                       src={location.flag} 
                       alt={`${location.name} Flag`} 

@@ -160,7 +160,8 @@ export default function Header() {
   const [animationTimer, setAnimationTimer] = useState<NodeJS.Timeout | null>(null)
 
   // Add this helper function to check if we're on the works or about route
-  const isDarkTextRoute = pathname === '/works' || pathname === '/about' || '/clients'
+  const isDarkTextRoute = pathname === '/works' || pathname === '/about' || pathname === '/clients'
+  const isLandingPage = pathname === '/'
 
   // Close panel when route changes
   useEffect(() => {
@@ -314,15 +315,14 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full sm:px-4 md:px-16 lg:px-24 transition-all duration-500 ${
+      className={`fixed top-0 left-0 z-50 w-full sm:px-4 md:px-8 lg:px-24 transition-all duration-500 ${
         "bg-transparent"
       }`}
-      
     >
       <div className="relative z-10 container mx-auto px-4 py-4">
         <div className="flex items-center justify-center">
           {/* Combined Navigation Container with Logo and CTA */}
-          <div className={`flex items-center justify-between w-full space-x-8 transition-all duration-500 ease-in-out bg-white/30 backdrop-blur-md rounded-full px-8 py-3 ${isScrolled ? "shadow-md" : "shadow-[inset_0_0_10px_rgba(0,0,0,0.1)]"}`}>
+          <div className={`flex items-center justify-between w-full space-x-4 md:space-x-6 lg:space-x-8 transition-all duration-500 ease-in-out bg-white/20 backdrop-blur-md rounded-full px-4 sm:px-6 md:px-8 py-3 ${isScrolled ? "shadow-md" : "shadow-[inset_0_0_10px_rgba(0,0,0,0.1)]"}`}>
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" prefetch>
@@ -332,21 +332,21 @@ export default function Header() {
                     alt="Logo"
                     width={120}
                     height={40}
-                    className=""
+                    className="w-[120px] h-[40px] object-contain"
                   />
                 ) : (
-                  <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className="" />
+                  <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className="w-[40px] h-[30px] object-contain" />
                 )}
               </Link>
             </div>
 
             {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-4">
+            <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
               <Link
                 href="/about"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
-                  isScrolled || isDarkTextRoute 
+                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                  isScrolled && !isLandingPage || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white hover:text-gray-800"
                 }`}
@@ -356,8 +356,8 @@ export default function Header() {
               <Link
                 href="/service"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
-                  isScrolled || isDarkTextRoute 
+                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                  isScrolled && !isLandingPage || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white hover:text-gray-800"
                 }`}
@@ -367,8 +367,8 @@ export default function Header() {
               <Link
                 href="/works"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
-                  isScrolled || isDarkTextRoute 
+                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                  isScrolled && !isLandingPage || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white hover:text-gray-800"
                 }`}
@@ -376,10 +376,21 @@ export default function Header() {
                 <span className="relative">Works</span>
               </Link>
               <Link
+                href="/careers"
+                onClick={handleNavigation}
+                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                  isScrolled && !isLandingPage || isDarkTextRoute 
+                    ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
+                    : "text-white hover:bg-white hover:text-gray-800"
+                }`}
+              >
+                <span className="relative">Career</span>
+              </Link>
+              <Link
                 href="/contact"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-4 py-2 rounded-full transition-all duration-300 ${
-                  isScrolled || isDarkTextRoute 
+                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                  isScrolled && !isLandingPage || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white hover:text-gray-800"
                 }`}
@@ -388,7 +399,7 @@ export default function Header() {
               </Link>
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               {/* Language Switcher for Desktop */}
               <div className="hidden md:block">
                 <LanguageSwitcher />
@@ -398,13 +409,13 @@ export default function Header() {
               <button
                 onClick={() => setIsPanelOpen(true)}
                 className={`hidden sm:inline-flex items-center gap-2 cursor-pointer ${
-                  isScrolled || isDarkTextRoute ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
+                  isScrolled && !isLandingPage || isDarkTextRoute ? "bg-gray-800 hover:bg-gray-700" : "bg-white/30 hover:bg-white/40"
                 } text-white px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group`}
               >
                 <span className="text-white">Get Started</span>
                 <div
                   className={`h-5 w-5 rounded-full ${
-                    isScrolled || isDarkTextRoute ? "bg-gray-700 group-hover:bg-gray-600" : "bg-white/30 group-hover:bg-white/50"
+                    isScrolled && !isLandingPage || isDarkTextRoute ? "bg-gray-700 group-hover:bg-gray-600" : "bg-white/30 group-hover:bg-white/50"
                   } flex items-center justify-center transition-colors`}
                 >
                   <ChevronRight className="h-3 w-3 text-white" />
@@ -417,7 +428,7 @@ export default function Header() {
           <div className="md:hidden absolute right-8 flex items-center gap-4">
             <LanguageSwitcher isMobile={true} />
             <button 
-              className={`${isScrolled || isDarkTextRoute ? "text-white" : "text-white"}`}
+              className={`${isScrolled && !isLandingPage || isDarkTextRoute ? "text-white" : "text-white"}`}
               onClick={() => setIsPanelOpen(true)}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

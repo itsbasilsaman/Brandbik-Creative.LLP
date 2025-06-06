@@ -104,33 +104,39 @@ export default function ClientReviews() {
       name: "Soumya Chandran",
       role: "Founder of SheTalks",
       image: "/images/Basil-Saman.jpg",
-      text: "Brandbik truly captured the essence of what SheTalks stands for—empowering women and building a community of inspiration and support. The app they developed is more than just a digital platform; it's a safe, nurturing space where women can connect, share, and grow together. Their dedication to our vision has made all the difference."
+      text: "Brandbik built a safe and empowering platform for SheTalks that truly reflects our vision of inspiring and connecting women.",
+      longText: "Brandbik built a safe and empowering platform for SheTalks that truly reflects our vision of inspiring and connecting women. Their attention to detail and understanding of our community's needs made all the difference in creating a space where women can freely express themselves and grow together."
     },
     {
       name: "Ahmad Al Munif",
       role: "CEO, Abu Glumbo",
       image: "/images/IMG_2913.PNG",
-      text: "Brandbik turned our idea for an on-demand services app into a seamless, user-friendly platform that connects customers with the help they need in real time. Their team's creativity, technical expertise, and commitment to excellence made the process smooth and inspiring."
+      text: "Brandbik transformed our idea into a smooth, real-time service app with great design and technical skill.",
+      longText: "Brandbik transformed our idea into a smooth, real-time service app with great design and technical skill. Their team's expertise in both frontend and backend development ensured we got a scalable solution that perfectly matches our business requirements and user expectations."
     },
     {
       name: "Sahal Muhammed",
       role: "Founder of Cyberseed",
       image: "/images/Basil-Saman.jpg",
-      text: "Working with Brandbik on our new website was a game-changer. They perfectly captured our brand's identity and designed a sleek, modern site that reflects our commitment to excellence in business consultancy. Their professionalism, creativity, and strategic guidance made the entire process effortless."
+      text: "Brandbik created a modern, professional website that perfectly matches our brand and business goals.",
+      longText: "Brandbik created a modern, professional website that perfectly matches our brand and business goals. Their strategic approach to design and development helped us establish a strong online presence, resulting in increased engagement and better conversion rates."
     },
     {
-      name: "Majed alkuwayki  ",
+      name: "Majed alkuwayki",
       role: "CEO, Khibra App",
       image: "/images/IMG_2913.PNG",
-      text: "Brandbik's team brought our vision for a legal consultation app to life with exceptional skill and creativity. They developed a secure, intuitive platform that makes accessing legal advice easier than ever. Their commitment to quality and understanding of the legal industry's needs truly set them apart."
+      text: "They built a secure and intuitive legal consultation app, showing deep understanding and high-quality execution.",
+      longText: "They built a secure and intuitive legal consultation app, showing deep understanding and high-quality execution. The platform's robust security features and user-friendly interface have made it easier for our clients to access legal services while maintaining complete confidentiality."
     },
     {
       name: "Al Esraa School",
       role: "Saver App",
       image: "/images/Basil-Saman.jpg",
-      text: "Brandbik's team delivered an outstanding savings app that's transforming how our students manage food waste and make responsible choices. Their creativity, technical skills, and collaborative approach made the process smooth and inspiring."
+      text: "Brandbik delivered a creative savings app that helps students reduce waste and make smarter choices.",
+      longText: "Brandbik delivered a creative savings app that helps students reduce waste and make smarter choices. Their innovative approach to gamification and user engagement has made financial literacy fun and accessible for our students, leading to positive behavioral changes."
     }
   ];
+  
 
   // Auto-scroll animation
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -215,7 +221,7 @@ export default function ClientReviews() {
                   </div>
                 </div>
                 <p className="text-white text-base md:text-[20px] font-normal">
-                  {review.text}
+                  {windowWidth < 768 ? review.text : review.longText}
                 </p>
                 <div className="absolute top-6 right-6 md:top-8 md:right-8 text-gray-600">
                   <svg width="30" height="24" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-10 md:h-8">

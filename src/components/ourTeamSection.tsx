@@ -26,39 +26,81 @@ export default function OurTeamSection() {
       id: 1,
       name: "Fadhil Muhammed",
       role: "Brand Consultant",
-      image: "/images/Fadhil.png",
+      image: "/Photo/fadhi.png",
     },
     {
       id: 2,
       name: "Althaf Shareef",
-      role: "AI Chief",
-      image: "/images/Althaf.png",
+      role: "Co-Founder",
+      image: "/Photo/althh.jpg",
     },
     {
       id: 3,
-      name: "Fadhil Muhammed",
-      role: "Brand Consultant",
-      image: "https://m.economictimes.com/thumb/msid-94315998,width-1200,height-900,resizemode-4,imgsize-117376/dulquer-salmaan-said-he-is-open-to-doing-projects-across-languages-.jpg",
+      name: "Nasih Ameen",
+      role: "Senior Flutter Developer",
+      image: "/Photo/nasiii.jpg",
     },
     {
       id: 4,
-      name: "Althaf Shareef",
-      role: "AI Chief",
-      image: "https://images.news9live.com/wp-content/uploads/2023/09/Snapinsta.app_371286028_1237211136939457_5363321923779649254_n_1080.jpg",
+      name: "Muhammed Swalih",
+      role: "Senior Graphic Designer",
+      image: "/Photo/swalih.jpg",
 
     },
     {
       id: 5,
-      name: "Althaf Shareef",
-      role: "AI Chief",
-      image: "https://wallpapercave.com/wp/wp6394392.jpg",
+      name: "Basil Saman",
+      role: "React/NextJS Developer",
+      image: "/Photo/basiii.jpg",
 
     },
     {
       id: 6,
-      name: "Althaf Shareef",
-      role: "AI Chief",
-      image: "https://m.economictimes.com/thumb/msid-94315998,width-1200,height-900,resizemode-4,imgsize-117376/dulquer-salmaan-said-he-is-open-to-doing-projects-across-languages-.jpg",
+      name: "Muhammed Saleel",
+      role: "Full Stack Developer",
+      image: "/Photo/saleel.jpg",
+
+    },
+    {
+      id: 7,
+      name: "Adnan Yousuf",
+      role: "Flutter Developer",
+      image: "/Photo/swalih.jpg",
+
+    },
+    {
+      id: 8,
+      name: "Arshad",
+      role: "Digital Marketing Specialist",
+      image: "/Photo/basiii.jpg",
+
+    },
+    {
+      id: 9,
+      name: "Amna Abdullah",
+      role: "Software Tester",
+      image: "/Photo/saleel.jpg",
+
+    },
+    {
+      id: 10,
+      name: "Shamna",
+      role: "HR Executive",
+      image: "/Photo/swalih.jpg",
+
+    },
+    {
+      id: 11,
+      name: "Mohamed Rafi",
+      role: "Project Manager",
+      image: "/Photo/basiii.jpg",
+
+    },
+    {
+      id: 12,
+      name: "Amna Abdullah",
+      role: "Software Tester",
+      image: "/Photo/saleel.jpg",
 
     },
   ]
