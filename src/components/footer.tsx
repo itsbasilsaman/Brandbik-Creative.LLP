@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Twitter , MessageCircle } from "lucide-react"
+import { Instagram, Linkedin, Twitter , MessageCircle } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -26,16 +26,16 @@ export default function Footer() {
               
               {/* Social Media - Mobile */}
               <div className="flex space-x-5 lg:hidden mt-6">
-              <Link href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
+               <Link href="https://www.instagram.com/brandbik_creatives/" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Instagram className="w-5 h-5" />
                 </Link>
-                <Link href="#" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
-                  <Facebook className="w-5 h-5" />
+                <Link href="https://wa.me/919074851748" aria-label="WhatsApp" className="text-white/70 hover:text-white transition-colors duration-300">
+                  <MessageCircle className="w-5 h-5" />
                 </Link>
-                <Link href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
+                <Link href="https://www.linkedin.com/company/brandbik-creatives" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Linkedin className="w-5 h-5" />
                 </Link>
-                <Link href="#" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
+                <Link href="https://twitter.com/brandbik" aria-label="Twitter" className="text-white/70 hover:text-white transition-colors duration-300">
                   <Twitter className="w-5 h-5" />
                 </Link>
               </div>
