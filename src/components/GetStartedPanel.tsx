@@ -1,7 +1,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { ChevronRight, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
 
 interface GetStartedPanelProps {
   isOpen: boolean;
@@ -52,7 +51,7 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
                   </h1>
 
                   <p className="text-lg text-white/80 mb-12 leading-relaxed max-w-2xl">
-                    At BrandBik, we're not just building digital solutions – we're crafting experiences that drive real business growth. Our approach combines technical excellence with creative innovation to deliver results that matter.
+                    At BrandBik, we&apos;re not just building digital solutions – we&apos;re crafting experiences that drive real business growth. Our approach combines technical excellence with creative innovation to deliver results that matter.
                   </p>
 
                   <div className="space-y-4 mb-8">
@@ -88,7 +87,7 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
                   </h1>
 
                   <p className="text-lg text-white/80 mb-12 leading-relaxed max-w-2xl">
-                    Our clients' success is our greatest achievement. Each project represents a unique journey of transformation and growth.
+                    Our clients&apos; success is our greatest achievement. Each project represents a unique journey of transformation and growth.
                   </p>
 
                   <div className="space-y-4 mb-8">
@@ -98,7 +97,7 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
                     </div>
                     <div className="bg-white/5 p-4 rounded-lg backdrop-blur-sm">
                       <h3 className="text-xl font-medium text-white mb-2">Startup Success</h3>
-                      <p className="text-white/70">We've helped numerous startups establish their digital presence and scale their operations effectively.</p>
+                      <p className="text-white/70">We&apos;ve helped numerous startups establish their digital presence and scale their operations effectively.</p>
                     </div>
                     <div className="bg-white/5 p-4 rounded-lg backdrop-blur-sm">
                       <h3 className="text-xl font-medium text-white mb-2">Industry Recognition</h3>
@@ -174,7 +173,7 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
                     </div>
                     <div className="bg-white/5 p-4 rounded-lg backdrop-blur-sm">
                       <h3 className="text-xl font-medium text-white mb-2">Research Collaborations</h3>
-                      <p className="text-white/70">We partner with research institutions to develop innovative solutions for tomorrow's challenges.</p>
+                      <p className="text-white/70">We partner with research institutions to develop innovative solutions for tomorrow&apos;s challenges.</p>
                     </div>
                   </div>
 
@@ -228,7 +227,7 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
               {activeSection === "contact" && (
                 <>
                   <h1 className="text-5xl lg:text-6xl font-light text-white mb-8 leading-tight">
-                    Let's Create Together
+                    Let&apos;s Create Together
                   </h1>
 
                   <p className="text-lg text-white/80 mb-12 leading-relaxed max-w-2xl">
@@ -255,7 +254,7 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
                     onClick={onClose}
                     className="inline-flex items-center gap-3 border border-white/30 text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 group"
                   >
-                    <span className="text-lg">Start Your Journey</span>
+                    <span className="text-lg">Get in Touch</span>
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </>
@@ -264,61 +263,21 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
           </div>
 
           {/* Right Navigation Section */}
-          <div className="w-80 flex flex-col justify-center pr-16 lg:pr-24 relative">
-            <nav className="space-y-2 relative z-10">
-              <button
-                onClick={() => setActiveSection("impact")}
-                className={`block w-full text-left text-2xl py-4 transition-all duration-300 hover:translate-x-2 relative ${
-                  activeSection === "impact" ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                <span>Our Impact</span>
-              </button>
-
-              <button
-                onClick={() => setActiveSection("testimonials")}
-                className={`block w-full text-left text-2xl py-4 transition-all duration-300 hover:translate-x-2 relative ${
-                  activeSection === "testimonials" ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                <span>Success Stories</span>
-              </button>
-
-              <button
-                onClick={() => setActiveSection("clients")}
-                className={`block w-full text-left text-2xl py-4 transition-all duration-300 hover:translate-x-2 relative ${
-                  activeSection === "clients" ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                <span>Global Reach</span>
-              </button>
-
-              <button
-                onClick={() => setActiveSection("partnership")}
-                className={`block w-full text-left text-2xl py-4 transition-all duration-300 hover:translate-x-2 relative ${
-                  activeSection === "partnership" ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                <span>Partnership</span>
-              </button>
-
-              <button
-                onClick={() => setActiveSection("insights")}
-                className={`block w-full text-left text-2xl py-4 transition-all duration-300 hover:translate-x-2 relative ${
-                  activeSection === "insights" ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                <span>Insights</span>
-              </button>
-
-              <button
-                onClick={() => setActiveSection("contact")}
-                className={`block w-full text-left text-2xl py-4 transition-all duration-300 hover:translate-x-2 relative ${
-                  activeSection === "contact" ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                <span>Contact</span>
-              </button>
+          <div className="w-64 lg:w-80 border-l border-white/10 flex flex-col justify-center px-8 lg:px-12">
+            <nav className="space-y-2">
+              {["impact", "testimonials", "clients", "partnership", "insights", "contact"].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => setActiveSection(section)}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
+                    activeSection === section
+                      ? "bg-white/10 text-white"
+                      : "text-white/60 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
             </nav>
           </div>
         </div>

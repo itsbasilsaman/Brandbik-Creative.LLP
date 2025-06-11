@@ -19,7 +19,6 @@ export default function Header() {
 
   // Add this helper function to check if we're on the works or about route
   const isDarkTextRoute = pathname === '/works' || pathname === '/about' || pathname === '/clients'
-  const isLandingPage = pathname === '/'
 
   // Close panel when route changes
   useEffect(() => {
