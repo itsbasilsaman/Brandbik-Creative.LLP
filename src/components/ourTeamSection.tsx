@@ -65,7 +65,7 @@ export default function OurTeamSection() {
       id: 7,
       name: "Adnan Yousuf",
       role: "Flutter Developer",
-      image: "/Photo/swalih.jpg",
+      image: "/Photo/adnan.jpg",
 
     },
     {
@@ -100,23 +100,23 @@ export default function OurTeamSection() {
   ]
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 pl-5 md:pl-16 lg:pl-24">
+    <section className="w-full py-12 md:py-24 lg:py-32 px-4 md:pl-16 lg:pl-24">
       <style jsx global>
         {scrollbarHideStyles}
       </style>
-      <div className="container pl-4 md:pl-6">
+      <div className="container mx-auto">
         <div className="space-y-8">
-          <div className="flex flex-col items-start gap-2">
+          <div className="flex flex-col items-center md:items-start gap-2">
             <div className="inline-flex items-center rounded-full text-white bg-gray-400 border px-2.5 py-0.5 text-sm  transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ">
               About
             </div>
-            <h2 className={`font-poppins text-3xl font-bold tracking-tight py-1 sm:text-4xl md:text-[48px] pb-6`}>Our Creative Minds</h2>
+            <h2 className={`font-poppins text-3xl font-bold tracking-tight py-1 sm:text-4xl md:text-[48px] pb-6 text-center md:text-left`}>Our Creative Minds</h2>
           </div>
-          <div className="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide">
+          <div className="flex flex-col md:flex-row md:overflow-x-auto md:space-x-6 space-y-6 md:space-y-0 pb-4 scrollbar-hide">
             {teamMembers.map((member) => (
               <div
                 key={member.id}
-                className="group relative overflow-hidden flex-shrink-0 w-[280px] lg:w-[360px] lg:h-[372px]"
+                className="group relative overflow-hidden w-full md:flex-shrink-0 md:w-[280px] lg:w-[360px] lg:h-[372px] mx-auto md:mx-0 md:mr-6 last:md:mr-0"
               >
                 <Image
                   src={member.image || "/placeholder.svg"}
