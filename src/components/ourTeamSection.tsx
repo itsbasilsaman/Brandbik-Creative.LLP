@@ -72,37 +72,31 @@ export default function OurTeamSection() {
       id: 8,
       name: "Arshad",
       role: "Digital Marketing Specialist",
-      image: "/Photo/basiii.jpg",
+      image: "/Photo/arshad.jpg",
 
     },
     {
       id: 9,
       name: "Amna Abdullah",
       role: "Software Tester",
-      image: "/Photo/saleel.jpg",
+      image: "/Photo/amna.jpg",
 
     },
     {
       id: 10,
       name: "Shamna",
       role: "HR Executive",
-      image: "/Photo/swalih.jpg",
+      image: "/Photo/shamna.jpg",
 
     },
     {
       id: 11,
       name: "Mohamed Rafi",
       role: "Project Manager",
-      image: "/Photo/basiii.jpg",
+      image: "/Photo/rafi.jpg",
 
     },
-    {
-      id: 12,
-      name: "Amna Abdullah",
-      role: "Software Tester",
-      image: "/Photo/saleel.jpg",
-
-    },
+    
   ]
 
   return (
