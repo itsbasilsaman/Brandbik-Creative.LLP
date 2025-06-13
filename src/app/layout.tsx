@@ -16,6 +16,30 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "BrandBik",
   description: "We build bold brands and digital experiences.",
+  icons: {
+    icon: '/images/brandbik-icon.png',
+    shortcut: '/images/brandbik-icon.png',
+    apple: '/images/brandbik-icon.png',
+  },
+  openGraph: {
+    title: 'BrandBik',
+    description: 'We build bold brands and digital experiences.',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BrandBik',
+    description: 'We build bold brands and digital experiences.',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
