@@ -47,7 +47,7 @@ export default function ContactMain() {
     const encodedMessage = encodeURIComponent(whatsappMessage)
     
     // Open WhatsApp with the pre-filled message
-    window.open(`https://wa.me/919074851748?text=${encodedMessage}`, '_blank')
+    window.open(`https://wa.me/966571961404?text=${encodedMessage}`, '_blank')
   }
 
   return (
@@ -181,7 +181,7 @@ export default function ContactMain() {
               <div className="text-gray-300">
                 <a href="tel:+919074851748" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+91 90748 51748,</a>
                 <br />
-                <a href="tel:+918075347955" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+91 8075347955</a>
+                <a href="tel:+966571961404" className="text-[14px] sm:text-[16px] font-medium hover:text-white transition-colors">+966 571 961 404</a>
               </div>
             </div>
 
