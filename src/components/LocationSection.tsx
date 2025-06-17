@@ -81,7 +81,7 @@ export default function LocationsSection() {
                       quality={100}
                     />
                   </div>
-                  <h2 className="text-[36px] font-medium">{location.name}</h2>
+                  <h2 className="text-[30px] font-medium">{location.name}</h2>
                 </div>
                 <p className="text-gray-600 text-sm font-light">
                   {location.address}

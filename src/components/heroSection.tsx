@@ -2,13 +2,14 @@
 'use client';
 
 import { useLanguage } from "@/contexts/LanguageContext"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { ChevronDown, ArrowRight } from "lucide-react";
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
 export default function Home() {
   const { t, language } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Handle RTL support for this component only
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function Home() {
     }
   }, [language]);
 
-  // Handle mobile detection
+  // Handle mobile detection and video preloading
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
@@ -30,8 +31,23 @@ export default function Home() {
     // Initial check
     checkMobile();
 
+    // Preload video
+    const preloadVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.load();
+        // Force play to ensure video starts
+        videoRef.current.play().catch(() => {
+          // Auto-play was prevented, we'll try again when user interacts
+          console.log('Autoplay prevented');
+        });
+      }
+    };
+
     // Add event listener for window resize
     window.addEventListener('resize', checkMobile);
+
+    // Preload video when component mounts
+    preloadVideo();
 
     // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
@@ -49,15 +65,20 @@ export default function Home() {
       {/* Background Video */}
       <div className="absolute inset-0 z-0"> 
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="absolute h-full w-full object-cover"
-          key={isMobile ? 'mobile' : 'desktop'} // Force video reload when source changes
+          key={isMobile ? 'mobile' : 'desktop'}
         >
           <source 
-            src={isMobile ? "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+Mobile.mp4" : "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview1.mp4"} 
+            src={isMobile ? 
+              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+Mobile.mp4" : 
+              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview1.mp4"
+            } 
             type="video/mp4" 
           />
         </video>
