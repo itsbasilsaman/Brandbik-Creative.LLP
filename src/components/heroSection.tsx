@@ -3,12 +3,13 @@
 
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useEffect, useState, useRef } from "react"
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight, Volume2, VolumeX } from "lucide-react";
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
 export default function Home() {
   const { t, language } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Handle RTL support for this component only
@@ -53,6 +54,13 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -68,7 +76,7 @@ export default function Home() {
           ref={videoRef}
           autoPlay
           loop
-          muted
+          muted={isMuted}
           playsInline
           preload="auto"
           className="absolute h-full w-full object-cover"
@@ -76,8 +84,8 @@ export default function Home() {
         >
           <source 
             src={isMobile ? 
-              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+Mobile.mp4" : 
-              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview1.mp4"
+              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+verticle.mp4 " : 
+              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video-Preview.mp4 "
             } 
             type="video/mp4" 
           />
@@ -101,6 +109,19 @@ export default function Home() {
           </button>
         </div>
       </div>
+
+      {/* Audio Control Button */}
+      <button
+        onClick={toggleMute}
+        className="absolute bottom-8 right-4 sm:bottom-12 sm:right-6 md:bottom-16 md:right-8 lg:bottom-20 lg:right-24 z-10 p-3 rounded-full   transition-colors duration-300 backdrop-blur-sm"
+        aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+      >
+        {isMuted ? (
+          <VolumeX className="w-8 h-8 text-white" />
+        ) : (
+         <Volume2 className="w-8 h-8 text-white" />
+        )}
+      </button>
 
       {/* Animated Arrow */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer" onClick={scrollToNextSection}>
