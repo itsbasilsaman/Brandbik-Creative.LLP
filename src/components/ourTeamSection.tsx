@@ -125,9 +125,9 @@ export default function OurTeamSection() {
                   height={500}
                   className="aspect-square w-full h-full object-cover grayscale"
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-4 backdrop-blur-md bg-white/30">
-                  <h3 className="text-lg font-semibold text-white drop-shadow-md">{member.name}</h3>
-                  <p className="text-sm text-white/90 drop-shadow-md">{member.role}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-4 backdrop-blur-md bg-white/05">
+                  <h3 className="text-lg font-semibold text-white drop-shadow-lg">{member.name}</h3>
+                  <p className="text-sm text-white/90 drop-shadow-lg">{member.role}</p>
                 </div>
               </div>
             ))}
