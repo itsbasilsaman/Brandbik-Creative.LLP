@@ -10,7 +10,9 @@ export default function Home() {
   const { t, language } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isInViewport, setIsInViewport] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Handle RTL support for this component only
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function Home() {
     }
   }, [language]);
 
-  // Handle mobile detection and video preloading
+  // Handle mobile detection, video preloading, and viewport detection
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
@@ -44,18 +46,65 @@ export default function Home() {
       }
     };
 
-    // Add event listener for window resize
+    // Intersection Observer for viewport detection
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInViewport(true);
+            // When coming back to viewport, keep it muted initially
+            if (videoRef.current) {
+              videoRef.current.muted = true;
+              setIsMuted(true);
+            }
+          } else {
+            setIsInViewport(false);
+            // When leaving viewport, mute the video
+            if (videoRef.current) {
+              videoRef.current.muted = true;
+              setIsMuted(true);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of component is visible
+    );
+
+    // Handle page visibility change
+    const handleVisibilityChange = () => {
+      if (document.hidden && videoRef.current) {
+        videoRef.current.muted = true;
+        setIsMuted(true);
+      }
+    };
+
+    // Add event listeners
     window.addEventListener('resize', checkMobile);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Start observing the container
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
     // Preload video when component mounts
     preloadVideo();
 
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile);
+    // Cleanup function - mute video when component unmounts
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      observer.disconnect();
+      
+      // Mute video when component unmounts
+      if (videoRef.current) {
+        videoRef.current.muted = true;
+      }
+    };
   }, []);
 
   const toggleMute = () => {
-    if (videoRef.current) {
+    if (videoRef.current && isInViewport) {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(!isMuted);
     }
@@ -69,7 +118,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative h-screen w-full overflow-hidden bg-black">
+    <main ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black">
       {/* Background Video */}
       <div className="absolute inset-0 z-0"> 
         <video
@@ -113,7 +162,7 @@ export default function Home() {
       {/* Audio Control Button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-8 right-4 sm:bottom-12 sm:right-6 md:bottom-16 md:right-8 lg:bottom-20 lg:right-24 z-10 p-3 rounded-full   transition-colors duration-300 backdrop-blur-sm"
+        className="absolute bottom-16 right-4 sm:bottom-12 sm:right-6 md:bottom-16 md:right-8 lg:bottom-20 lg:right-24 z-10 p-3 rounded-full   transition-colors duration-300  "
         aria-label={isMuted ? 'Unmute video' : 'Mute video'}
       >
         {isMuted ? (
