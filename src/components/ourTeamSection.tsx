@@ -129,7 +129,7 @@ export default function OurTeamSection() {
   }, [])
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 px-4 md:pl-16 lg:pl-24">
+    <section className="w-full py-12 md:py-24 lg:py-32 px-6 md:pl-16 lg:pl-24">
       <style jsx global>
         {scrollbarHideStyles}
       </style>

@@ -37,7 +37,7 @@ const InteractiveCard = ({
 
   return (
     <div 
-      className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out"
+      className="flex flex-col relative z-30 border-2 border-gray-400 bg-gray-700/50 backdrop-blur-md transition-all duration-300 ease-out "
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transformStyle: 'preserve-3d' }}
@@ -106,7 +106,7 @@ export default function AboutBoxes() {
   ];
 
   return (
-    <div className="relative py-16 lg:py-28 flex justify-center items-center w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
+    <div className="relative py-16 lg:py-28 flex justify-center items-center w-full primary-background px-4 md:px-16 lg:px-24 overflow-hidden">
       {/* Background diagonal stripes */}
       <div className="absolute inset-0 z-0">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -130,7 +130,7 @@ export default function AboutBoxes() {
         <div className="absolute inset-0 bg-gradient-to-l from-white/20 to-transparent"></div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
           <Suspense fallback={<div>Loading...</div>}>
             {cards.map((card, index) => (
