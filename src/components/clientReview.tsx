@@ -103,35 +103,35 @@ export default function ClientReviews() {
     {
       name: "Soumya Chandran",
       role: "Founder of SheTalks",
-      image: "/images/Basil-Saman.jpg",
+      image: "",
       text: "Brandbik built a safe and empowering platform for SheTalks that truly reflects our vision of inspiring and connecting women.",
       longText: "Brandbik built a safe and empowering platform for SheTalks that truly reflects our vision of inspiring and connecting women. Their attention to detail and understanding of our community's needs made all the difference in creating a space where women can freely express themselves and grow together."
     },
     {
       name: "Ahmad Al Munif",
       role: "CEO, Abu Glumbo",
-      image: "/images/IMG_2913.PNG",
+      image: "",
       text: "Brandbik transformed our idea into a smooth, real-time service app with great design and technical skill.",
       longText: "Brandbik transformed our idea into a smooth, real-time service app with great design and technical skill. Their team's expertise in both frontend and backend development ensured we got a scalable solution that perfectly matches our business requirements and user expectations."
     },
     {
       name: "Sahal Muhammed",
       role: "Founder of Cyberseed",
-      image: "/images/Basil-Saman.jpg",
+      image: "/images/sahal-01.jpg",
       text: "Brandbik created a modern, professional website that perfectly matches our brand and business goals.",
       longText: "Brandbik created a modern, professional website that perfectly matches our brand and business goals. Their strategic approach to design and development helped us establish a strong online presence, resulting in increased engagement and better conversion rates."
     },
     {
       name: "Majed alkuwayki",
       role: "CEO, Khibra App",
-      image: "/images/IMG_2913.PNG",
+      image: "",
       text: "They built a secure and intuitive legal consultation app, showing deep understanding and high-quality execution.",
       longText: "They built a secure and intuitive legal consultation app, showing deep understanding and high-quality execution. The platform's robust security features and user-friendly interface have made it easier for our clients to access legal services while maintaining complete confidentiality."
     },
     {
       name: "Al Esraa School",
       role: "Saver App",
-      image: "/images/Basil-Saman.jpg",
+      image: "",
       text: "Brandbik delivered a creative savings app that helps students reduce waste and make smarter choices.",
       longText: "Brandbik delivered a creative savings app that helps students reduce waste and make smarter choices. Their innovative approach to gamification and user engagement has made financial literacy fun and accessible for our students, leading to positive behavioral changes."
     }
@@ -211,9 +211,17 @@ export default function ClientReviews() {
 
                 <div className="flex items-center mb-4 md:mb-6">
                   <div className="relative w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4">
-                    <div className="w-full h-full rounded-full bg-teal-600 flex items-center justify-center text-white text-lg font-semibold">
-                      {review.name.charAt(0)}
-                    </div>
+                    {review.image ? (
+                      <img 
+                        src={review.image} 
+                        alt={review.name}
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-full bg-teal-600 flex items-center justify-center text-white text-lg font-semibold">
+                        {review.name.charAt(0)}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <h3 className="text-white font-medium text-base md:text-[18px]">{review.name}</h3>
