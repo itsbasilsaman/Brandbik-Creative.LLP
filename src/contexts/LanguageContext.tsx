@@ -36,6 +36,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       'hero.title.part3': '&',
       'hero.title.part4': 'digital experiences.',
       'hero.subtitle': 'Strategy, identity, and design — elevated.',
+      'hero.letsTalk': "Let's Talk",
       
       // About Section
       'about.title': 'We build brands that move with purpose.',
@@ -91,6 +92,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       'hero.title.part3': 'و',
       'hero.title.part4': 'تجارب رقمية.',
       'hero.subtitle': 'استراتيجية، هوية، وتصميم — متطور.',
+      'hero.letsTalk': 'تحدث معنا',
       
       // About Section
       'about.title': 'نحن نبني علامات تجارية تتحرك بهدف.',

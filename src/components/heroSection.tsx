@@ -3,7 +3,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useEffect, useState, useRef } from "react"
-import { ChevronDown, ArrowRight, Volume2, VolumeX } from "lucide-react";
+import { ChevronDown, ArrowRight, ArrowLeft, VolumeOff } from "lucide-react";
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
 export default function Home() {
@@ -174,9 +174,17 @@ export default function Home() {
             onClick={() => window.location.href = '/contact'}
             className={`inline-flex items-center px-4 sm:px-6 mt-4 sm:mt-6 rounded-full cursor-pointer py-2 sm:py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-colors duration-300 group text-sm sm:text-base md:text-lg`}
           >
-           
-            <span className="font-medium"> Let&apos;s Talk</span>
-            <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+            {language === 'ar' ? (
+              <>
+                <ArrowLeft className="mr-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:-translate-x-1 order-first" />
+                <span className="font-medium order-last">{t('hero.letsTalk')}</span>
+              </>
+            ) : (
+              <>
+                <span className="font-medium">{t('hero.letsTalk')}</span>
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+              </>
+            )}
           </button>
         </div>
       </div>
@@ -184,13 +192,28 @@ export default function Home() {
       {/* Audio Control Button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-16 right-4 sm:bottom-12 sm:right-6 md:bottom-16 md:right-8 lg:bottom-20 lg:right-24 z-10 p-3 rounded-full   transition-colors duration-300  "
+        className={`absolute bottom-16 z-10 flex items-center justify-center
+          transition-all duration-300
+          bg-white/10 backdrop-blur-md shadow-md
+          hover:bg-white/20
+          rounded-full
+          p-1.5 sm:p-2
+          border border-white/20
+          ${language === 'ar'
+            ? 'left-4 sm:left-6 md:left-8 lg:left-24 right-auto'
+            : 'right-4 sm:right-6 md:right-8 lg:right-24 left-auto'}
+        `}
+        style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)' }}
         aria-label={isMuted ? 'Unmute video' : 'Mute video'}
       >
         {isMuted ? (
-          <VolumeX className="w-8 h-8 text-white" />
+          <VolumeOff className="w-5 h-5 text-white" />
         ) : (
-         <Volume2 className="w-8 h-8 text-white" />
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
         )}
       </button>
 
