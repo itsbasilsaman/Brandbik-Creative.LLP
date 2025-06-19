@@ -13,6 +13,7 @@ export default function Home() {
   const [isInViewport, setIsInViewport] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // Handle RTL support for this component only
   useEffect(() => {
@@ -38,6 +39,10 @@ export default function Home() {
     const preloadVideo = () => {
       if (videoRef.current) {
         videoRef.current.load();
+        // Listen for loadeddata event to know when video is ready
+        videoRef.current.onloadeddata = () => {
+          setVideoLoaded(true);
+        };
         // Force play to ensure video starts
         videoRef.current.play().catch(() => {
           // Auto-play was prevented, we'll try again when user interacts
@@ -99,6 +104,7 @@ export default function Home() {
       // Mute video when component unmounts
       if (videoRef.current) {
         videoRef.current.muted = true;
+        videoRef.current.onloadeddata = null;
       }
     };
   }, []);
@@ -119,8 +125,23 @@ export default function Home() {
 
   return (
     <main ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0"> 
+      {/* Background Fallback Image */}
+      <div className="absolute inset-0 z-0">
+        {/* Desktop Fallback Image */}
+        <img
+          src="/fullscreen-banner.png"
+          alt="Background fallback desktop"
+          className={`h-full w-full object-cover absolute transition-opacity duration-500 hidden sm:block ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
+          style={{ pointerEvents: 'none' }}
+        />
+        {/* Mobile Fallback Image */}
+        <img
+          src="/mobile-banner.jpg"
+          alt="Background fallback mobile"
+          className={`h-full w-full object-cover absolute transition-opacity duration-500 block sm:hidden ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
+          style={{ pointerEvents: 'none' }}
+        />
+        {/* Background Video */}
         <video
           ref={videoRef}
           autoPlay
@@ -128,18 +149,19 @@ export default function Home() {
           muted={isMuted}
           playsInline
           preload="auto"
-          className="absolute h-full w-full object-cover"
+          poster={isMobile ? "/mobile-banner.jpg" : "/fullscreen-banner.png"}
+          className={`absolute h-full w-full object-cover transition-opacity duration-500 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
           key={isMobile ? 'mobile' : 'desktop'}
         >
           <source 
             src={isMobile ? 
-              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+verticle.mp4 " : 
-              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video-Preview.mp4 "
+              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video+Preview+verticle.mp4" : 
+              "https://brandbikofficial.s3.eu-north-1.amazonaws.com/brandbik_website/Website+Video-Preview.mp4"
             } 
             type="video/mp4" 
           />
         </video>
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>
 
       {/* Content Container */}
