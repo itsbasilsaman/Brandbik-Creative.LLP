@@ -1,31 +1,7 @@
 "use client"
 
-import { Users, Award, Globe, Zap } from "lucide-react"
+ 
 import Image from "next/image"
-
-// Core values data
-const values = [
-  {
-    icon: <Zap className="w-6 h-6" />,
-    title: "Innovation First",
-    description: "We push boundaries and embrace cutting-edge solutions to deliver exceptional results.",
-  },
-  {
-    icon: <Users className="w-6 h-6" />,
-    title: "Client-Centric",
-    description: "Your success is our priority. We build lasting partnerships through trust and transparency.",
-  },
-  {
-    icon: <Award className="w-6 h-6" />,
-    title: "Quality Driven",
-    description: "Excellence isn't negotiable. Every project reflects our commitment to superior craftsmanship.",
-  },
-  {
-    icon: <Globe className="w-6 h-6" />,
-    title: "Global Perspective",
-    description: "We think globally while acting locally, creating brands that resonate across cultures.",
-  },
-]
 
 export default function AboutBanner() {
   // Array of image sources for the gallery
