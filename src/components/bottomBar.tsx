@@ -26,10 +26,7 @@ export default function BottomBar() {
                 Lets work with Us
               </h1>
               <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl">
-                Our portfolio tells you why we are the best <span className="underline">app development</span> company,
-                why we are the best web development company, why we are the best SEO company, why we are the best
-                Digital marketing agency. Our social media pages has some of our recent works and you can understand
-                what makes us Unique.
+              Discover how we turn ideas into impact. From App development to Web Design, SEO, and Digital Marketing, our work speaks for itself. Explore our latest projects on social media and see what sets us apart.
               </p>
             </motion.div>
             <motion.div 

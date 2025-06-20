@@ -128,10 +128,10 @@ export default function ServiceMain() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2 sm:mb-3 ${poppins.className}`}
+            className={`text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white mb-2 sm:mb-3 ${poppins.className}`}
             style={{ animation: "textReveal 0.5s ease-out forwards" }}
           >
-            Our Services
+            Empowering Brands with Next-Gen Solutions
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +140,7 @@ export default function ServiceMain() {
             className="text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-5"
             style={{ animation: "textReveal 0.5s ease-out 0.1s forwards" }}
           >
-            Services built to move brands forward.
+            Discover a full spectrum of services designed to elevate your brand, drive growth, and create lasting impact in the digital era.
           </motion.p>
 
           <a
@@ -157,7 +157,7 @@ export default function ServiceMain() {
     whileTap={{ scale: 0.95 }}
     className={`flex items-center cursor-pointer bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30 transition-all duration-200 rounded-full px-5 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3 text-sm sm:text-base group ${poppins.className}`}
   >
-    Let&apos;s Talk
+    Start Your Project
     <motion.span
       animate={{ x: [0, 5, 0] }}
       transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}

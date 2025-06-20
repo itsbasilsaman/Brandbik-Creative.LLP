@@ -21,7 +21,7 @@ export default function Footer() {
                 />
               </div>
               <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-                Best Advertising Agency in Saudi Arabia, UAE and India
+                Empowering Brands with Creative Excellence Across Saudi Arabia, UAE & India
               </p>
               
               {/* Social Media - Mobile */}

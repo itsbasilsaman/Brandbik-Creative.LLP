@@ -1,6 +1,5 @@
 "use client"
 
- 
 import Image from "next/image"
 
 export default function AboutBanner() {
@@ -25,26 +24,25 @@ export default function AboutBanner() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20">
           <div>
-            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight font-poppins`}>
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight font-poppins`}>
               We build brands that move with purpose.
             </h2>
           </div>
 
           <div className="space-y-4 sm:space-y-6">
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Brandbik is a creative agency crafting modern brands, digital experiences, and growth strategies for the
-              ambitious.
+              Brandbik specializes in building impactful brands, innovative digital experiences, and strategic growth solutions for forward-thinking businesses.
             </p>
 
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              From early-stage startups to global companies, we design stories that connect and endure.
+              Whether you're an emerging startup or an established global enterprise, we craft compelling narratives and design enduring connections that drive success.
             </p>
           </div>
         </div>
 
         {/* Image Gallery Section */}
         <div className="mb-12 sm:mb-16 lg:mb-20">
-          <h3 className="text-gray-600 text-sm sm:text-base font-medium mb-6 sm:mb-8">Our team in action</h3>
+          <h3 className="text-gray-700 text-sm sm:text-[19px] font-medium mb-6 sm:mb-8">Our team in action</h3>
           <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
             {galleryImages.map((img, index) => (
               <div

@@ -39,25 +39,25 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       'hero.letsTalk': "Let's Talk",
       
       // About Section
-      'about.title': 'We build brands that move with purpose.',
-      'about.subtitle': 'Brandbik is a creative agency crafting modern brands, digital experiences, and growth strategies for the ambitious.',
-      'about.description': 'From early-stage startups to global companies, we design stories that connect and endure.',
+      'about.title': 'Building Brands with Purpose.',
+      'about.subtitle': 'Brandbik transforms bold ideas into digital realities, blending creativity, strategy, and technology for next-level impact.',
+      'about.description': "From startups to global icons, we craft unforgettable experiences and measurable results. Let's create something remarkable together.",
       
       // Services Section
       'services.title': 'Our Services',
-      'services.subtitle': 'We offer comprehensive solutions to help your brand thrive in the digital age.',
+      'services.subtitle': 'Strategic solutions, creative execution, and measurable results for ambitious brands.',
       'services.web.title': 'Web Development',
-      'services.web.description': 'Unique and high performing web designs suitable to attract your customers.',
+      'services.web.description': 'Robust, scalable websites engineered for performance and growth.',
       'services.app.title': 'App Development',
-      'services.app.description': 'Quality mobile apps with user interface to transform thoughts to business.',
-      'services.branding.title': 'Branding',
-      'services.branding.description': 'We make you the Brand that outshines in the digital world.',
+      'services.app.description': 'Intuitive mobile solutions that drive engagement and deliver value.',
+      'services.branding.title': 'Brand Strategy',
+      'services.branding.description': 'Distinctive brand identities that inspire trust and recognition.',
       'services.digital.title': 'Digital Marketing',
-      'services.digital.description': 'Outstanding Solutions to elevate your presence in the modern world.',
-      'services.social.title': 'Social Media',
-      'services.social.description': 'Maximise your reach with our expertised ad campaigns and lead generations.',
-      'services.advertising.title': 'Advertising',
-      'services.advertising.description': 'Maximize Your Reach with Targeted Advertising Campaigns.',
+      'services.digital.description': 'Data-driven campaigns that accelerate your brand\'s online impact.',
+      'services.social.title': 'Social Media Management',
+      'services.social.description': 'Strategic content and community building for maximum reach.',
+      'services.advertising.title': 'Performance Advertising',
+      'services.advertising.description': 'Targeted ad solutions designed to maximize ROI and brand visibility.',
       
       // Works Section
       'works.title': 'Our Work',
