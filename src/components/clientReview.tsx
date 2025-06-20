@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimation, useInView } from "framer-motion"
+import Image from "next/image"
 
 type Service = {
   name: string;
@@ -212,10 +213,12 @@ export default function ClientReviews() {
                 <div className="flex items-center mb-4 md:mb-6">
                   <div className="relative w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4">
                     {review.image ? (
-                      <img 
+                      <Image 
                         src={review.image} 
                         alt={review.name}
                         className="w-full h-full rounded-full object-cover"
+                        width={48}
+                        height={48}
                       />
                     ) : (
                       <div className="w-full h-full rounded-full bg-teal-600 flex items-center justify-center text-white text-lg font-semibold">

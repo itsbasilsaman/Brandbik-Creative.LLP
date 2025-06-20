@@ -35,7 +35,7 @@ export default function AboutBanner() {
             </p>
 
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Whether you're an emerging startup or an established global enterprise, we craft compelling narratives and design enduring connections that drive success.
+              Whether you&apos;re an emerging startup or an established global enterprise, we craft compelling narratives and design enduring connections that drive success.
             </p>
           </div>
         </div>
