@@ -14,7 +14,7 @@ const poppins = Poppins({
 
  
 export const metadata: Metadata = {
-  title: "BrandBik",
+  title: "Brandbik",
   description: "We build bold brands and digital experiences.",
   icons: {
     icon: '/images/brandbik-icon.png',
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     apple: '/images/brandbik-icon.png',
   },
   openGraph: {
-    title: 'BrandBik',
+    title: 'Brandbik',
     description: 'We build bold brands and digital experiences.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BrandBik',
+    title: 'Brandbik',
     description: 'We build bold brands and digital experiences.',
   },
   viewport: {
@@ -49,6 +49,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Brandbik",
+              "url": "https://www.brandbik.com",
+              "logo": "https://www.brandbik.com/images/brandbik-icon.png"
+            }),
+          }}
+        />
+      </head>
       <body className={`${poppins.className}`}>
         <LanguageProvider>
           <Header />

@@ -1,9 +1,7 @@
 "use client"
 
-import {   Users, Award, Globe, Zap } from "lucide-react"
-
-// Statistics data
- 
+import { Users, Award, Globe, Zap } from "lucide-react"
+import Image from "next/image"
 
 // Core values data
 const values = [
@@ -30,6 +28,16 @@ const values = [
 ]
 
 export default function AboutBanner() {
+  // Array of image sources for the gallery
+  const galleryImages = [
+   
+    { src: "/images/about-four.jpg", alt: "Team member 4" },
+    { src: "/images/about-three.jpg", alt: "Team member 3" },
+    { src: "/images/about-two.jpg", alt: "Team member 2" },
+    { src: "/images/about-five.jpg", alt: "Team member 5" },
+    { src: "/images/about-six.jpg", alt: "Team member 6" },
+  ]
+
   return (
     <section className="w-full pt-24 lg:pt-32 mx-auto px-4 lg:pb-0 md:px-16 lg:px-24 py-8 sm:py-12 lg:py-16">
       <div className="max-w-7xl mx-auto">
@@ -58,28 +66,22 @@ export default function AboutBanner() {
           </div>
         </div>
 
-       
-
-        {/* Core Values Section */}
-        <div className="mb-12 sm:mb-16">
-           
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 hover:shadow-lg transition-all duration-300 hover:border-gray-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 p-2 bg-gray-100 rounded-lg group-hover:bg-gray-200 transition-colors">
-                      {value.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className={`text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-poppins`}>
-                        {value.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-poppins">{value.description}</p>
-                    </div>
-                  </div>
-                </div>
+        {/* Image Gallery Section */}
+        <div className="mb-12 sm:mb-16 lg:mb-20">
+          <h3 className="text-gray-600 text-sm sm:text-base font-medium mb-6 sm:mb-8">Our team in action</h3>
+          <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+            {galleryImages.map((img, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-[calc(100vw-32px)] sm:w-[calc(50vw-32px)] md:w-[calc(33.33vw-32px)] lg:w-[calc(33.33vw-32px)] aspect-[4/3] rounded-lg overflow-hidden"
+              >
+                <Image
+                  src={img.src || "/placeholder.svg"}
+                  alt={img.alt}
+                  width={600}
+                  height={450}
+                  className="object-cover w-full h-full"
+                />
               </div>
             ))}
           </div>
