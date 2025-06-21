@@ -4,6 +4,7 @@
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useEffect, useState, useRef } from "react"
 import { ChevronDown, ArrowRight, ArrowLeft, VolumeOff } from "lucide-react";
+import Image from "next/image";
 // import { CiDesktopMouse1 } from "react-icons/ci";
 
 export default function Home() {
@@ -102,9 +103,10 @@ export default function Home() {
       observer.disconnect();
       
       // Mute video when component unmounts
-      if (videoRef.current) {
-        videoRef.current.muted = true;
-        videoRef.current.onloadeddata = null;
+      const videoElement = videoRef.current;
+      if (videoElement) {
+        videoElement.muted = true;
+        videoElement.onloadeddata = null;
       }
     };
   }, []);
@@ -128,17 +130,19 @@ export default function Home() {
       {/* Background Fallback Image */}
       <div className="absolute inset-0 z-0">
         {/* Desktop Fallback Image */}
-        <img
+        <Image
           src="/fullscreen-banner.png"
           alt="Background fallback desktop"
-          className={`h-full w-full object-cover absolute transition-opacity duration-500 hidden sm:block ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
+          fill
+          className={`object-cover absolute transition-opacity duration-500 hidden sm:block ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
           style={{ pointerEvents: 'none' }}
         />
         {/* Mobile Fallback Image */}
-        <img
+        <Image
           src="/mobile-banner.jpg"
           alt="Background fallback mobile"
-          className={`h-full w-full object-cover absolute transition-opacity duration-500 block sm:hidden ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
+          fill
+          className={`object-cover absolute transition-opacity duration-500 block sm:hidden ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
           style={{ pointerEvents: 'none' }}
         />
         {/* Background Video */}

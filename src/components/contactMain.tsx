@@ -24,7 +24,7 @@ const gradientAnimation = `
 `;
 
 export default function ContactMain() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
