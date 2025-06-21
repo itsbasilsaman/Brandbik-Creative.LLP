@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useInView, useAnimation, motion } from "framer-motion"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 // Define types for our animations
 type AnimationType = "fade" | "scale" | "slide" | "bounce" | "rotate3d"
@@ -29,6 +30,7 @@ interface HighlightSet {
 }
 
 export default function ServiceContent() {
+  const { t, language } = useLanguage();
   const controls = useAnimation()
   const statsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(statsRef, { once: true, amount: 0.3 })
@@ -102,25 +104,25 @@ export default function ServiceContent() {
 
   const highlightedSets: HighlightSet[] = [
     { 
-      words: ["strategy", "execution"], 
+      words: [t('service.content.highlight.strategy'), t('service.content.highlight.execution')], 
       color: "text-teal-400",
       animation: "rotate3d",
       transition: "spring"
     },
     { 
-      words: ["clarity", "creativity"], 
+      words: [t('service.content.highlight.clarity'), t('service.content.highlight.creativity')], 
       color: "text-blue-400",
       animation: "rotate3d",
       transition: "tween"
     },
     { 
-      words: ["design", "growth"], 
+      words: [t('service.content.highlight.design'), t('service.content.highlight.growth')], 
       color: "text-purple-400",
       animation: "rotate3d",
       transition: "bounce"
     },
     { 
-      words: ["businesses", "impact"], 
+      words: [t('service.content.highlight.businesses'), t('service.content.highlight.impact')], 
       color: "text-emerald-400",
       animation: "rotate3d",
       transition: "spring"
@@ -144,7 +146,7 @@ export default function ServiceContent() {
   }, [isPaused, highlightedSets.length])
 
   const renderText = () => {
-    const text = "From strategy to execution — we help businesses grow through clarity, creativity, and design."
+    const text = t('service.content.text')
     const currentSet = highlightedSets[currentHighlightIndex]
     
     return text.split(' ').map((word, index) => {
@@ -159,7 +161,7 @@ export default function ServiceContent() {
           animate={isHighlighted ? animationVariants[currentSet.animation].animate : {}}
           exit={isHighlighted ? animationVariants[currentSet.animation].exit : {}}
           transition={isHighlighted ? transitions[currentSet.transition] : {}}
-          className={`inline-block ${isHighlighted ? currentSet.color : 'text-white'} ${index !== 0 ? 'ml-1' : ''}`}
+          className={`inline-block ${isHighlighted ? currentSet.color : 'text-white'} ${index !== 0 ? (language === 'ar' ? 'mr-1' : 'ml-1') : ''}`}
           style={{
             transformStyle: "preserve-3d",
             perspective: "1000px"
@@ -184,7 +186,7 @@ export default function ServiceContent() {
 
   return (
 
-    <div className="relative py-16  md:h-[50vh] flex justify-center items-center w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden">
+    <div className={`relative py-16 md:h-[50vh] flex justify-center items-center w-full primary-background px-5 md:px-16 lg:px-32 overflow-hidden ${language === 'ar' ? 'text-right' : ''}`}>
       {/* Background diagonal stripes */}
       <div className="absolute inset-0 z-0">
         {Array.from({ length: 20 }).map((_, i) => (

@@ -7,7 +7,6 @@ import AboutBanner from "@/components/aboutBanner";
 
 export default function About() {
     return (
-        
         <div>
             <AboutBanner/>
             <TeamDescription/>

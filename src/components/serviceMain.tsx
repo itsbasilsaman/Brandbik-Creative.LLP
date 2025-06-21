@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Poppins } from "next/font/google"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ const floatingAnimation = `
 `
 
 export default function ServiceMain() {
+  const { t, language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
   const bannerRef = useRef<HTMLDivElement>(null)
@@ -122,7 +124,7 @@ export default function ServiceMain() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl"
+          className={`max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl ${language === 'ar' ? 'text-right' : ''}`}
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -131,7 +133,7 @@ export default function ServiceMain() {
             className={`text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white mb-2 sm:mb-3 ${poppins.className}`}
             style={{ animation: "textReveal 0.5s ease-out forwards" }}
           >
-            Empowering Brands with Next-Gen Solutions
+            {t('service.main.title')}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +142,7 @@ export default function ServiceMain() {
             className="text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-5"
             style={{ animation: "textReveal 0.5s ease-out 0.1s forwards" }}
           >
-            Discover a full spectrum of services designed to elevate your brand, drive growth, and create lasting impact in the digital era.
+            {t('service.main.subtitle')}
           </motion.p>
 
           <a
@@ -155,14 +157,14 @@ export default function ServiceMain() {
     transition={{ duration: 0.5, delay: 0.15 }}
     whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
     whileTap={{ scale: 0.95 }}
-    className={`flex items-center cursor-pointer bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30 transition-all duration-200 rounded-full px-5 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3 text-sm sm:text-base group ${poppins.className}`}
+    className={`flex items-center cursor-pointer bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30 transition-all duration-200 rounded-full px-5 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3 text-sm sm:text-base group ${poppins.className} ${language === 'ar' ? 'flex-row-reverse' : ''}`}
   >
-    Start Your Project
+    {t('service.main.button')}
     <motion.span
       animate={{ x: [0, 5, 0] }}
       transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
     >
-      <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+      <ArrowRight className={`${language === 'ar' ? 'mr-2 rotate-180' : 'ml-2'} h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform`} />
     </motion.span>
   </motion.button>
 </a>

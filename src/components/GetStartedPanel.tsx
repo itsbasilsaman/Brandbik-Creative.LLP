@@ -1,6 +1,9 @@
+"use client"
+
 import { useState } from "react"
 import Link from "next/link"
 import { ChevronRight, X } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 interface GetStartedPanelProps {
   isOpen: boolean;
@@ -9,6 +12,7 @@ interface GetStartedPanelProps {
 
 export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProps) {
   const [activeSection, setActiveSection] = useState("impact")
+  const { t } = useLanguage()
 
   return (
     <div
@@ -265,17 +269,24 @@ export default function GetStartedPanel({ isOpen, onClose }: GetStartedPanelProp
           {/* Right Navigation Section */}
           <div className="w-64 lg:w-80 border-l border-white/10 flex flex-col justify-center px-8 lg:px-12">
             <nav className="space-y-2">
-              {["impact", "testimonials", "clients", "partnership", "insights", "contact"].map((section) => (
+              {[
+                { key: "impact", label: t('panel.impact') },
+                { key: "testimonials", label: t('panel.testimonials') },
+                { key: "clients", label: t('panel.clients') },
+                { key: "partnership", label: t('panel.partnership') },
+                { key: "insights", label: t('panel.insights') },
+                { key: "contact", label: t('panel.getInTouch') }
+              ].map((section) => (
                 <button
-                  key={section}
-                  onClick={() => setActiveSection(section)}
+                  key={section.key}
+                  onClick={() => setActiveSection(section.key)}
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
-                    activeSection === section
+                    activeSection === section.key
                       ? "bg-white/10 text-white"
                       : "text-white/60 hover:bg-white/5 hover:text-white"
                   }`}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  {section.label}
                 </button>
               ))}
             </nav>

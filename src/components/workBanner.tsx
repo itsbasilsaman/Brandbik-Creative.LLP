@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Poppins } from "next/font/google"
 import { Onest } from "next/font/google"
 import { motion, useInView } from "framer-motion"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const onest = Onest({
   subsets: ["latin"],
@@ -19,6 +20,7 @@ const poppins = Poppins({
 })
 
 export default function WorkBanner() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
   const [isMobile, setIsMobile] = useState(false)
@@ -63,9 +65,7 @@ export default function WorkBanner() {
             <h1
               className={`text-4xl md:text-5xl pl-0  lg:pl-20 lg:text-[48px] font-medium text-black leading-tight ${poppins.className}`}
             >
-              Work that speaks louder
-              <br />
-              than words.
+              {t('work.banner.title')}
             </h1>
           </div>
 

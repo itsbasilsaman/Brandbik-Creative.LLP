@@ -6,6 +6,7 @@ import { useState } from "react"
 import {   Phone, Mail, Twitter, Linkedin, MessageCircle, Instagram } from "lucide-react"
 // import Image from "next/image"
 import Image from "next/image"
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Add keyframes animation
 const gradientAnimation = `
@@ -23,6 +24,7 @@ const gradientAnimation = `
 `;
 
 export default function ContactMain() {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -73,38 +75,37 @@ export default function ContactMain() {
         <div className="lg:w-1/2 w-full order-1 lg:order-2">
           <div className="lg:bg-[#9696961f] backdrop-blur-sm p-0 sm:p-2 md:p-8 rounded-[24px] lg:border lg:border-[#dedddd] lg:shadow-lg">
             <div className="sm:hidden block text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">Let&apos;s work together.</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">{t('contact.title')}</h1>
           <p className="text-gray-300 text-[14px] sm:text-[16px] mb-8 sm:mb-12 lg:max-w-[460px] max-w-[300px] font-medium mx-auto lg:mx-0">
-            Whether you&apos;re launching something new or reinventing your brand — we&apos;d love to{" "}
-            hear from you.
+            {t('contact.subtitle')}
           </p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="firstName" className="text-white font-medium text-left text-sm sm:text-base block">
-                    First Name
+                    {t('contact.form.firstName')}
                   </label>
                   <input
                     id="firstName"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    placeholder="First name"
+                    placeholder={t('contact.form.firstNamePlaceholder')}
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="lastName" className="text-white font-medium text-left text-sm sm:text-base block">
-                    Last Name
+                    {t('contact.form.lastName')}
                   </label>
                   <input
                     id="lastName"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    placeholder="Last name"
+                    placeholder={t('contact.form.lastNamePlaceholder')}
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
@@ -113,7 +114,7 @@ export default function ContactMain() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-white font-medium text-left text-sm sm:text-base block">
-                    Email
+                    {t('contact.form.email')}
                   </label>
                   <input
                     id="email"
@@ -121,21 +122,21 @@ export default function ContactMain() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email address"
+                    placeholder={t('contact.form.emailPlaceholder')}
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="mobile" className="text-white font-medium text-left text-sm sm:text-base block">
-                    Mobile Number
+                    {t('contact.form.mobile')}
                   </label>
                   <input
                     id="mobile"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    placeholder="Mobile number"
+                    placeholder={t('contact.form.mobilePlaceholder')}
                     className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                   />
                 </div>
@@ -143,14 +144,14 @@ export default function ContactMain() {
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-white font-medium text-left text-sm sm:text-base block">
-                  Tell us more
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your message"
+                  placeholder={t('contact.form.messagePlaceholder')}
                   className="w-full px-4 py-3 border border-[#dedddd] rounded-md sm:bg-[#a2a1a1] text-white placeholder:text-white placeholder:font-light min-h-[120px] focus:ring-2 focus:ring-white focus:outline-none transition-all text-left sm:px-3 sm:py-2 sm:rounded-md sm:border-0"
                 />
               </div>
@@ -159,7 +160,7 @@ export default function ContactMain() {
                 type="submit" 
                 className="w-full bg-white sm:bg-black hover:bg-zinc-900 sm:text-white py-3 rounded-md transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] font-medium"
               >
-                Submit
+                {t('contact.form.submit')}
               </button>
             </form>
           </div>
@@ -168,10 +169,9 @@ export default function ContactMain() {
         {/* Left side content */}
         <div className=" w-full lg:w-1/2 space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
          <div className="hidden sm:block">
-         <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">Let&apos;s work together.</h1>
+         <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-4 sm:mb-6">{t('contact.title')}</h1>
           <p className="text-gray-300 text-[14px] sm:text-[16px] mb-8 sm:mb-12 lg:max-w-[460px] max-w-[300px] font-medium mx-auto lg:mx-0">
-            Whether you&apos;re launching something new or reinventing your brand — we&apos;d love to{" "}
-            hear from you.
+            {t('contact.subtitle')}
           </p>
          </div>
 

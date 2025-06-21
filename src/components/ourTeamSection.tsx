@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 interface TeamMember {
   id: number
@@ -24,6 +25,7 @@ const scrollbarHideStyles = `
 export default function OurTeamSection() {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const { t } = useLanguage()
 
   const teamMembers: TeamMember[] = [
     {
@@ -137,9 +139,9 @@ export default function OurTeamSection() {
         <div className="space-y-8">
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="inline-flex items-center rounded-full text-white bg-gray-400 border px-2.5 py-0.5 text-sm  transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ">
-              About
+              {t('team.badge')}
             </div>
-            <h2 className={`font-poppins text-3xl font-medium tracking-tight py-1 sm:text-4xl md:text-[48px] pb-6 text-center md:text-left`}>Our Creative Minds</h2>
+            <h2 className={`font-poppins text-3xl font-medium tracking-tight py-1 sm:text-4xl md:text-[48px] pb-6 text-center md:text-left`}>{t('team.title')}</h2>
           </div>
           <div className="flex flex-col md:flex-row md:overflow-x-auto md:space-x-6 space-y-8 md:space-y-0 pb-4 scrollbar-hide">
             {teamMembers.map((member, index) => {

@@ -13,7 +13,7 @@ export default function Header() {
   const [isLargeScreen, setIsLargeScreen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
-  const { language, setLanguage } = useLanguage()
+  const { language, setLanguage, t } = useLanguage()
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
   const pathname = usePathname()
 
@@ -145,19 +145,18 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full sm:px-4 md:px-8 lg:px-24 transition-all duration-500  
-         bg-transparent
-      `}
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 bg-transparent`}
     >
-      <div className="relative z-10 container mx-auto px-4 py-4">
+      <div className="relative z-10 container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-24 py-3 sm:py-4">
         <div className="flex items-center justify-center">
           {/* Combined Navigation Container with Logo and CTA */}
-          <div className={`flex items-center justify-between w-full space-x-4 md:space-x-6 lg:space-x-8 transition-all duration-500 ease-in-out ${
+          <div className={`relative flex items-center justify-between w-full transition-all duration-500 ease-in-out ${
             isScrolled || isDarkTextRoute
               ? "bg-white/80 backdrop-blur-md shadow-sm"
               : "bg-black/20 backdrop-blur-md"
-          } rounded-full px-4 sm:px-6 md:px-8 py-3`}>
-            {/* Logo */}
+          } rounded-full px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3`}>
+
+            {/* Left side: Logo */}
             <div className="flex-shrink-0">
               <Link href="/" prefetch>
                 {isLargeScreen ? (
@@ -166,114 +165,112 @@ export default function Header() {
                     alt="Logo"
                     width={120}
                     height={40}
-                    className="w-[120px] h-[40px] object-contain"
+                    className="w-[100px] sm:w-[110px] md:w-[120px] h-[32px] sm:h-[36px] md:h-[40px] object-contain"
                   />
                 ) : (
-                  <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className="w-[40px] h-[30px] object-contain" />
+                  <Image src="/images/brandbik-icon.png" alt="Logo" width={30} height={20} className="w-[32px] sm:w-[36px] md:w-[40px] h-[24px] sm:h-[27px] md:h-[30px] object-contain" />
                 )}
               </Link>
             </div>
-
-            {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
+            
+            {/* Centered Navigation */}
+            <nav className="hidden lg:flex absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 items-center space-x-1 xl:space-x-2 2xl:space-x-4">
               <Link
                 href="/about"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                className={`font-medium relative group px-1 xl:px-2 2xl:px-4 py-2 rounded-full transition-all duration-300 text-xs xl:text-sm 2xl:text-base ${
                   isScrolled || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white/20"
                 }`}
               >
-                <span className="relative">About Us</span>
+                <span className="relative">{t('header.about')}</span>
               </Link>
               <Link
                 href="/service"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                className={`font-medium relative group px-1 xl:px-2 2xl:px-4 py-2 rounded-full transition-all duration-300 text-xs xl:text-sm 2xl:text-base ${
                   isScrolled || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white/20"
                 }`}
               >
-                <span className="relative">Services</span>
+                <span className="relative">{t('header.services')}</span>
               </Link>
               <Link
                 href="/works"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                className={`font-medium relative group px-1 xl:px-2 2xl:px-4 py-2 rounded-full transition-all duration-300 text-xs xl:text-sm 2xl:text-base ${
                   isScrolled || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white/20"
                 }`}
               >
-                <span className="relative">Works</span>
+                <span className="relative">{t('header.works')}</span>
               </Link>
               <Link
                 href="/careers"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                className={`font-medium relative group px-1 xl:px-2 2xl:px-4 py-2 rounded-full transition-all duration-300 text-xs xl:text-sm 2xl:text-base ${
                   isScrolled || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white/20"
                 }`}
               >
-                <span className="relative">Career</span>
+                <span className="relative">{t('header.career')}</span>
               </Link>
               <Link
                 href="/contact"
                 onClick={handleNavigation}
-                className={`font-medium relative group px-2 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base ${
+                className={`font-medium relative group px-1 xl:px-2 2xl:px-4 py-2 rounded-full transition-all duration-300 text-xs xl:text-sm 2xl:text-base ${
                   isScrolled || isDarkTextRoute 
                     ? "text-gray-800 hover:bg-gray-800 hover:text-white" 
                     : "text-white hover:bg-white/20"
                 }`}
               >
-                <span className="relative">Contact Us</span>
+                <span className="relative">{t('header.contact')}</span>
               </Link>
             </nav>
-            
 
-            <div className="flex items-center gap-2 md:gap-3">
-              {/* Language Switcher for Desktop */}
-              <div className="hidden md:block">
+            {/* Right side: Controls */}
+            <div className="flex items-center">
+              {/* Desktop Controls */}
+              <div className="hidden lg:flex items-center gap-1 sm:gap-2 md:gap-3">
                 <LanguageSwitcher />
+                <button
+                  onClick={() => setIsPanelOpen(true)}
+                  className={`inline-flex items-center gap-1 sm:gap-2 cursor-pointer ${
+                    isScrolled || isDarkTextRoute 
+                      ? "bg-gray-800 hover:bg-gray-700 text-white" 
+                      : "bg-white/30 hover:bg-white/40 text-white"
+                  } px-2 sm:px-3 md:px-4 py-[8px] sm:py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group`}
+                >
+                  <span className="text-white text-xs sm:text-sm md:text-base">{t('header.getStarted')}</span>
+                  <div
+                    className={`h-4 w-4 sm:h-5 sm:w-5 rounded-full ${
+                      isScrolled || isDarkTextRoute 
+                        ? "bg-gray-700 group-hover:bg-gray-600" 
+                        : "bg-white/30 group-hover:bg-white/50"
+                    } flex items-center justify-center transition-colors`}
+                  >
+                    <ChevronRight className="h-2 w-2 sm:h-3 sm:w-3 text-white" />
+                  </div>
+                </button>
               </div>
 
-              {/* Get Started Button */}
-              <button
-                onClick={() => setIsPanelOpen(true)}
-                className={`hidden sm:inline-flex items-center gap-2 cursor-pointer ${
-                  isScrolled || isDarkTextRoute 
-                    ? "bg-gray-800 hover:bg-gray-700 text-white" 
-                    : "bg-white/30 hover:bg-white/40 text-white"
-                } px-4 py-[10px] rounded-full transition-all duration-300 hover:transform hover:scale-105 group`}
-              >
-                <span className="text-white">Get Started</span>
-                <div
-                  className={`h-5 w-5 rounded-full ${
-                    isScrolled || isDarkTextRoute 
-                      ? "bg-gray-700 group-hover:bg-gray-600" 
-                      : "bg-white/30 group-hover:bg-white/50"
-                  } flex items-center justify-center transition-colors`}
+              {/* Mobile and Tablet Controls */}
+              <div className="lg:hidden flex items-center gap-2 sm:gap-3 md:gap-4">
+                <LanguageSwitcher isMobile={true} />
+                <button 
+                  className={`${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
+                  onClick={() => setIsPanelOpen(true)}
                 >
-                  <ChevronRight className="h-3 w-3 text-white" />
-                </div>
-              </button>
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
-
-          {/* Mobile menu button - positioned outside the container */}
-          <div className="md:hidden absolute right-8 flex items-center gap-4">
-            <LanguageSwitcher isMobile={true} />
-            <button 
-              className={`${isScrolled || isDarkTextRoute ? "text-gray-800" : "text-white"}`}
-              onClick={() => setIsPanelOpen(true)}
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
@@ -330,11 +327,11 @@ export default function Header() {
               <nav className="flex-1 p-6 relative z-10">
                 <div className="space-y-4">
                   {[
-                    { href: "/about", label: "About Us" },
-                    { href: "/service", label: "Service" },
-                    { href: "/works", label: "Works" },
-                    { href: "/careers", label: "Careers" },
-                    { href: "/contact", label: "Contact" }
+                    { href: "/about", label: t('header.about') },
+                    { href: "/service", label: t('header.services') },
+                    { href: "/works", label: t('header.works') },
+                    { href: "/careers", label: t('header.career') },
+                    { href: "/contact", label: t('header.contact') }
                   ].map((item, index) => (
                     <Link
                       key={item.href}
@@ -364,7 +361,7 @@ export default function Header() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 transition-transform duration-300 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Connect Us
+                    {t('header.connectUs')}
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>

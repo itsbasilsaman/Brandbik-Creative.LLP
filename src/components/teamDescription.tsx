@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, memo } from "react"
 import { motion } from "framer-motion"
-import { memo } from "react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 type AnimationType = "fade" | "scale" | "slide" | "bounce" | "rotate3d"
 type TransitionType = "spring" | "tween" | "bounce"
@@ -115,6 +115,28 @@ const highlightedSets: HighlightSet[] = [
   }
 ];
 
+// Arabic highlighted sets
+const arabicHighlightedSets: HighlightSet[] = [
+  { 
+    words: ["متعدد", "التخصصات", "الاستراتيجيين", "المصممين"], 
+    color: "text-teal-400",
+    animation: "rotate3d",
+    transition: "spring"
+  },
+  { 
+    words: ["المطورين", "رواة", "القصص", "إيمان"], 
+    color: "text-blue-400",
+    animation: "rotate3d",
+    transition: "tween"
+  },
+  { 
+    words: ["مشترك", "فريق", "يجمعنا"], 
+    color: "text-purple-400",
+    animation: "rotate3d",
+    transition: "bounce"
+  }
+];
+
 interface AnimatedWordProps {
   word: string;
   isHighlighted: boolean;
@@ -167,24 +189,34 @@ AnimatedWord.displayName = 'AnimatedWord';
 export default function TeamDescription() {
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const { t, language } = useLanguage()
 
   const handlePauseToggle = useCallback(() => {
     setIsPaused(prev => !prev);
   }, []);
 
+  const handleWhatsAppClick = useCallback(() => {
+    const phoneNumber = "+919074851748";
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
+  }, []);
+
+  // Use appropriate highlighted sets based on language
+  const currentHighlightedSets = language === 'ar' ? arabicHighlightedSets : highlightedSets;
+
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
-        setCurrentHighlightIndex((prev) => (prev + 1) % highlightedSets.length)
+        setCurrentHighlightIndex((prev) => (prev + 1) % currentHighlightedSets.length)
       }, 3000)
 
       return () => clearInterval(interval)
     }
-  }, [isPaused])
+  }, [isPaused, currentHighlightedSets.length])
 
   const renderText = useCallback(() => {
-    const text = "We're a cross-disciplinary team of strategists, designers, developers, and storytellers. What brings us together is a shared belief"
-    const currentSet = highlightedSets[currentHighlightIndex]
+    const text = t('team.description.text')
+    const currentSet = currentHighlightedSets[currentHighlightIndex]
     
     return text.split(' ').map((word, index) => {
       const isHighlighted = currentSet.words.includes(
@@ -202,7 +234,7 @@ export default function TeamDescription() {
         />
       )
     })
-  }, [currentHighlightIndex, handlePauseToggle])
+  }, [currentHighlightIndex, handlePauseToggle, t, currentHighlightedSets])
 
   return (
     <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24 lg:pt-16  py-12 pt-2  sm:py-12 md:py-24 md:pt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative">
@@ -221,20 +253,27 @@ export default function TeamDescription() {
         <div className="flex items-center justify-center w-full">
           <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center group">
             <div className="absolute w-full h-full rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 scale-105 group-hover:scale-110 transition-transform duration-300"></div>
-            <button className="relative z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm sm:text-base font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
-              Contact Us
+            <button 
+              onClick={handleWhatsAppClick}
+              className="relative z-10 w-[90%] h-[90%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm sm:text-base font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              {t('team.contactUs')}
             </button>
           </div>
         </div>
       </div>
+      
       
 
       {/* Mobile Contact Button */}
       <div className="md:hidden fixed bottom-6 right-6 z-50">
         <div className="relative w-20 h-20 flex items-center justify-center group">
           <div className="absolute w-full h-full rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 scale-105 group-hover:scale-110 transition-transform duration-300"></div>
-          <button className="relative z-10  w-18 h-18 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-[14px] font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
-            Contact Us
+          <button 
+            onClick={handleWhatsAppClick}
+            className="relative z-10  w-18 h-18 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-[14px] font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            {t('team.contactUs')}
           </button>
         </div>
       </div>

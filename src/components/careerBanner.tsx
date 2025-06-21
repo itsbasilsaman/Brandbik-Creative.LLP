@@ -38,6 +38,7 @@ export default function CareerSection() {
 
   return (
     <>
+    
       <CareerHero onOpenRoles={handleOpenRoles} showOpenings={showOpenings} />
 
       {/* Career openings section */}

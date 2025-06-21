@@ -1,8 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Instagram, Linkedin, Twitter , MessageCircle } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function Footer() {
+  const { t } = useLanguage()
+  
   return (
     <div className="flex flex-col w-full">
       {/* Footer */}
@@ -21,7 +26,7 @@ export default function Footer() {
                 />
               </div>
               <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-                Empowering Brands with Creative Excellence Across Saudi Arabia, UAE & India
+                {t('footer.tagline')}
               </p>
               
               {/* Social Media - Mobile */}
@@ -46,20 +51,20 @@ export default function Footer() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
                 {/* Pages - Column Layout */}
                 <div className="col-span-1">
-                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">Pages</h3>
+                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">{t('footer.pages')}</h3>
                   <div className="flex flex-col space-y-3">
-                    <Link href="/" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Home</Link>
-                    <Link href="/about" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">About us</Link>
+                    <Link href="/" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">{t('footer.home')}</Link>
+                    <Link href="/about" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">{t('footer.aboutUs')}</Link>
         
-                    <Link href="/service" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Services</Link>
-                    <Link href="/works" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Works</Link>
-                    <Link href="/contact" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Contack Us</Link>
+                    <Link href="/service" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">{t('footer.services')}</Link>
+                    <Link href="/works" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">{t('footer.works')}</Link>
+                    <Link href="/contact" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">{t('footer.contactUs')}</Link>
                   </div>
                 </div>
 
                 {/* Services - Column Layout */}
                 <div className="col-span-1">
-                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">Services</h3>
+                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">{t('footer.services')}</h3>
                   <div className="flex flex-col space-y-3">
                     <Link href="/service/web-development" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">Website Development</Link>
                     <Link href="/service/app-development" className="text-white/70 hover:text-white transition-colors duration-300 text-sm sm:text-base">App Development</Link>
@@ -72,7 +77,7 @@ export default function Footer() {
 
                 {/* Contact Info - Only visible on md and larger screens */}
                 <div className="hidden md:block col-span-2">
-  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">Contact Us</h3>
+  <h3 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-5 pb-2 border-b border-white/10">{t('footer.contactInfo')}</h3>
   <div className="flex flex-col space-y-3 text-white/70 text-sm sm:text-base">
     <p>+966 12 345 6789</p>
     <p>+91 90748 51748</p>
@@ -105,13 +110,13 @@ export default function Footer() {
           {/* Bottom Footer */}
           <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-white/60 text-xs sm:text-sm text-center sm:text-left">
-              © {new Date().getFullYear()} Brandbik. All rights reserved.
+              {t('footer.copyright').replace('{year}', new Date().getFullYear().toString())}
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <Link href="/privacy-policy" className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors duration-300">Privacy Policy</Link>
-              <Link href="/terms-of-service" className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors duration-300">Terms of Service</Link>
-              <Link href="/cookie-policy" className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors duration-300">Cookie Policy</Link>
+              <Link href="/privacy-policy" className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors duration-300">{t('footer.privacyPolicy')}</Link>
+              <Link href="/terms-of-service" className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors duration-300">{t('footer.termsOfService')}</Link>
+              <Link href="/cookie-policy" className="text-white/60 hover:text-white text-xs sm:text-sm transition-colors duration-300">{t('footer.cookiePolicy')}</Link>
             </div>
           </div>
         </div>

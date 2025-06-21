@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimation, useInView } from "framer-motion"
 import Image from "next/image"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 type Service = {
   name: string;
@@ -12,13 +13,15 @@ type Service = {
 };
 
 export default function ClientReviews() {
+  const { t } = useLanguage()
+  
   const services: Service[] = [
-    { name: "Branding", id: "branding" },
-    { name: "App Development", id: "app-dev" },
-    { name: "Social Media", id: "social" },
-    { name: "Website Design", id: "website" },
-    { name: "UX/UI Design", id: "ux-ui" },
-    { name: "Digital Marketing", id: "marketing" },
+    { name: t('reviews.services.branding'), id: "branding" },
+    { name: t('reviews.services.app'), id: "app-dev" },
+    { name: t('reviews.services.social'), id: "social" },
+    { name: t('reviews.services.website'), id: "website" },
+    { name: t('reviews.services.uxui'), id: "ux-ui" },
+    { name: t('reviews.services.marketing'), id: "marketing" },
   ];
 
   // Duplicate the services for seamless looping
@@ -102,39 +105,39 @@ export default function ClientReviews() {
 
   const reviews = [
     {
-      name: "Soumya Chandran",
-      role: "Founder of SheTalks",
+      name: t('reviews.soumya.name'),
+      role: t('reviews.soumya.role'),
       image: "",
-      text: "Brandbik built a safe and empowering platform for SheTalks that truly reflects our vision of inspiring and connecting women.",
-      longText: "Brandbik built a safe and empowering platform for SheTalks that truly reflects our vision of inspiring and connecting women. Their attention to detail and understanding of our community's needs made all the difference in creating a space where women can freely express themselves and grow together."
+      text: t('reviews.soumya.text'),
+      longText: t('reviews.soumya.longText')
     },
     {
-      name: "Ahmad Al Munif",
-      role: "CEO, Abu Glumbo",
+      name: t('reviews.ahmad.name'),
+      role: t('reviews.ahmad.role'),
       image: "",
-      text: "Brandbik transformed our idea into a smooth, real-time service app with great design and technical skill.",
-      longText: "Brandbik transformed our idea into a smooth, real-time service app with great design and technical skill. Their team's expertise in both frontend and backend development ensured we got a scalable solution that perfectly matches our business requirements and user expectations."
+      text: t('reviews.ahmad.text'),
+      longText: t('reviews.ahmad.longText')
     },
     {
-      name: "Sahal Muhammed",
-      role: "Founder of Cyberseed",
+      name: t('reviews.sahal.name'),
+      role: t('reviews.sahal.role'),
       image: "/images/sahal-01.jpg",
-      text: "Brandbik created a modern, professional website that perfectly matches our brand and business goals.",
-      longText: "Brandbik created a modern, professional website that perfectly matches our brand and business goals. Their strategic approach to design and development helped us establish a strong online presence, resulting in increased engagement and better conversion rates."
+      text: t('reviews.sahal.text'),
+      longText: t('reviews.sahal.longText')
     },
     {
-      name: "Majed alkuwayki",
-      role: "CEO, Khibra App",
+      name: t('reviews.majed.name'),
+      role: t('reviews.majed.role'),
       image: "",
-      text: "They built a secure and intuitive legal consultation app, showing deep understanding and high-quality execution.",
-      longText: "They built a secure and intuitive legal consultation app, showing deep understanding and high-quality execution. The platform's robust security features and user-friendly interface have made it easier for our clients to access legal services while maintaining complete confidentiality."
+      text: t('reviews.majed.text'),
+      longText: t('reviews.majed.longText')
     },
     {
-      name: "Al Esraa School",
-      role: "Saver App",
+      name: t('reviews.esraa.name'),
+      role: t('reviews.esraa.role'),
       image: "",
-      text: "Brandbik delivered a creative savings app that helps students reduce waste and make smarter choices.",
-      longText: "Brandbik delivered a creative savings app that helps students reduce waste and make smarter choices. Their innovative approach to gamification and user engagement has made financial literacy fun and accessible for our students, leading to positive behavioral changes."
+      text: t('reviews.esraa.text'),
+      longText: t('reviews.esraa.longText')
     }
   ];
   
@@ -175,7 +178,7 @@ export default function ClientReviews() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
           }}
         >
-          <span className="bg-teal-700 text-white px-4 py-2 rounded-full text-sm font-medium max-w-7xl   mx-24  sm:px-6 lg:px-8">Client Reviews</span>
+          <span className="bg-teal-700 text-white px-4 py-2 rounded-full text-sm font-medium max-w-7xl   mx-24  sm:px-6 lg:px-8">{t('reviews.badge')}</span>
         </motion.div>
 
         <div className="relative overflow-hidden">
@@ -289,10 +292,10 @@ export default function ClientReviews() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Lets work with Us
+                {t('reviews.cta.title')}
               </h1>
               <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl">
-                Discover how we turn ideas into impact. From App development to Web Design, SEO, and Digital Marketing, our work speaks for itself. Explore our latest projects on social media and see what sets us apart.
+                {t('reviews.cta.description')}
               </p>
             </motion.div>
             <motion.div 
@@ -310,7 +313,7 @@ export default function ClientReviews() {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                Connect Us
+                {t('reviews.cta.button')}
                 <motion.span
                   animate={{
                     x: isHovered ? [0, 4, 0] : 0

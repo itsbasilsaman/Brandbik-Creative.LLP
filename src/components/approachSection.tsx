@@ -1,3 +1,5 @@
+"use client"
+
 import { 
   Lightbulb, 
   Diamond, 
@@ -13,37 +15,40 @@ import {
   Leaf 
 } from "lucide-react"
 import { Poppins } from 'next/font/google'
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const poppins = Poppins({
   weight: '500',
   subsets: ['latin'],
 });
 
-const approachItems = [
-  { icon: Lightbulb, text: "Innovation" },
-  { icon: Diamond, text: "Quality Focused" },
-  { icon: TrendingUp, text: "Results-driven" },
-  { icon: Users, text: "Skilled Team" },
-  { icon: Heart, text: "Customer-Centric" },
-  { icon: Repeat, text: "Agile Process" },
-  { icon: MessageSquare, text: "Transparent Communication" },
-  { icon: Clock, text: "Timely Delivery" },
-  { icon: Cpu, text: "Cutting-edge Technology" },
-  { icon: BarChart3, text: "Data-Driven Decisions" },
-  { icon: ShieldCheck, text: "Security-First Approach" },
-  { icon: Leaf, text: "Sustainability" }
-];
-
 export default function ApproachSection() {
+  const { t } = useLanguage()
+  
+  const approachItems = [
+    { icon: Lightbulb, text: t('approach.innovation') },
+    { icon: Diamond, text: t('approach.quality') },
+    { icon: TrendingUp, text: t('approach.results') },
+    { icon: Users, text: t('approach.skilled') },
+    { icon: Heart, text: t('approach.customer') },
+    { icon: Repeat, text: t('approach.agile') },
+    { icon: MessageSquare, text: t('approach.transparent') },
+    { icon: Clock, text: t('approach.timely') },
+    { icon: Cpu, text: t('approach.technology') },
+    { icon: BarChart3, text: t('approach.data') },
+    { icon: ShieldCheck, text: t('approach.security') },
+    { icon: Leaf, text: t('approach.sustainability') }
+  ];
+
   return (
     <div className="w-full py-8 md:py-12 lg:py-16 bg-white overflow-hidden">
       <div className="w-full ">
         <div className="flex justify-center mb-4">
-          <div className="bg-gradient-to-r from-[#1893FF] to-[#00C6F7] text-white px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs md:text-sm font-medium">Approach</div>
+          <div className="bg-gradient-to-r from-[#1893FF] to-[#00C6F7] text-white px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs md:text-sm font-medium">{t('approach.badge')}</div>
         </div>
 
         <h1 className={`${poppins.className} text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-12 lg:mb-16`}>
-          What Sets us apart
+          {t('approach.title')}
         </h1>
 
         {/* First row - moving right to left */}

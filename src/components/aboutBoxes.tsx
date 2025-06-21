@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { Suspense } from 'react';
+import { useLanguage } from "@/contexts/LanguageContext"
 
 // Separate client component for interactive cards
 
@@ -65,42 +66,44 @@ const InteractiveCard = ({
 
 // Main server component
 export default function AboutBoxes() {
+  const { t } = useLanguage()
+  
   const cards = [
     {
       imageSrc: "/images/work-one.png",
       imageAlt: "Brands We Work With",
       title: "140+",
-      description: "Brands We Work With"
+      description: t('about.boxes.brands')
     },
     {
       imageSrc: "/images/work-two.png",
       imageAlt: "Projects Completed",
       title: "1000+",
-      description: "Projects Completed"
+      description: t('about.boxes.projects')
     },
     {
       imageSrc: "/images/work-three.png",
       imageAlt: "Countries we work with",
       title: "14+",
-      description: "Countries we work with"
+      description: t('about.boxes.countries')
     },
     {
       imageSrc: "/images/work-four.png",
       imageAlt: "Brands scaled with us",
       title: "45+",
-      description: "Brands scaled with us"
+      description: t('about.boxes.scaled')
     },
     {
       imageSrc: "/images/work-five.png",
       imageAlt: "Revenue Generated",
       title: "74M+",
-      description: "Revenue Generated"
+      description: t('about.boxes.revenue')
     },
     {
       imageSrc: "/images/work-one.png",
       imageAlt: "Happy Clients",
       title: "500+",
-      description: "Happy Clients",
+      description: t('about.boxes.clients'),
       className: "block lg:hidden"
     }
   ];

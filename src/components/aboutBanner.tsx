@@ -1,8 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function AboutBanner() {
+  const { t } = useLanguage()
+  
   // Array of image sources for the gallery
   const galleryImages = [
    
@@ -18,31 +21,31 @@ export default function AboutBanner() {
       <div className="max-w-7xl mx-auto">
         <div className="inline-block mb-4 sm:mb-6">
           <span className="bg-gray-200 text-gray-600 px-3 py-1 sm:px-4 sm:py-1 rounded-full text-xs sm:text-sm">
-            About
+            {t('about.banner.badge')}
           </span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20">
           <div>
             <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight font-poppins`}>
-              We build brands that move with purpose.
+              {t('about.banner.title')}
             </h2>
           </div>
 
           <div className="space-y-4 sm:space-y-6">
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Brandbik specializes in building impactful brands, innovative digital experiences, and strategic growth solutions for forward-thinking businesses.
+              {t('about.banner.subtitle1')}
             </p>
 
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-              Whether you&apos;re an emerging startup or an established global enterprise, we craft compelling narratives and design enduring connections that drive success.
+              {t('about.banner.subtitle2')}
             </p>
           </div>
         </div>
 
         {/* Image Gallery Section */}
         <div className="mb-12 sm:mb-16 lg:mb-20">
-          <h3 className="text-gray-700 text-sm sm:text-[19px] font-medium mb-6 sm:mb-8">Our team in action</h3>
+          <h3 className="text-gray-700 text-sm sm:text-[19px] font-medium mb-6 sm:mb-8">{t('about.banner.gallery.title')}</h3>
           <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
             {galleryImages.map((img, index) => (
               <div
